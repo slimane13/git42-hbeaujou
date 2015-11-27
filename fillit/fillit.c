@@ -6,10 +6,11 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 11:56:10 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/11/27 16:00:05 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/11/27 17:50:49 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "read.h"
 #include "fillit.h"
 
 int		lireFile(char *str)
@@ -34,6 +35,16 @@ int		lireFile(char *str)
 	if (count > 0)
 		count++;
 	return (count);
+}
+
+int 	**lireToTab(char *str)
+{
+	int rd;
+	int **tab;
+
+	rd = open(str, O_RDONLY);
+	tab = struct_to_tab(ft_get_maps(rd));
+	return (tab);
 }
 
 int		*situePoint(char *str)
@@ -116,6 +127,7 @@ int		main(int argc, char **argv)
 	char	**matrResult;
 	char	**tetriList;
 	int		**points;
+	int		**var;
 	int		*final;
 	int		*tmp;
 	int		tailleMax;
@@ -138,8 +150,18 @@ int		main(int argc, char **argv)
 		points[i - 1] = situePoint(tetriList[i - 1]);
 		i--;
 	}
-	tmp = ft_strdup(points[0]);
-	final = try_tetris_test(tmp, points[1], 4);
+	var = lireToTab(argv[1]);
+	printf("%d", var[0][0]);
+	printf("\n");
+	printf("%d", var[0][1]);
+	printf("\n");
+	printf("%d", var[1][0]);
+	printf("\n");
+	printf("%d", var[1][1]);
+	printf("\n");
+	printf("\n");
+	tmp = ft_strdup_int(points[0]);
+	final = try_tetris(tmp, points[1], 4);
 //	afficheFinal(final);
 	printf("%d", nbrTetri);
 	printf("\n");
@@ -184,7 +206,5 @@ int		main(int argc, char **argv)
 	printf("%d", final[14]);
 	printf("%d", final[15]);
 	printf("\n");
-	printf("%d", tmp[0]%4);
-	printf("%d", tmp[0]/4);
 	return (0);
 }

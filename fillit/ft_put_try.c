@@ -6,15 +6,11 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 17:26:23 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/11/27 15:47:39 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/11/27 16:33:55 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-
-//char	*tab_int_to_char(int *tab)
-//{
-//}
 
 int		*tab_char_to_int(char *str)
 {
@@ -43,10 +39,6 @@ int		overlap(int *t1, int *t2)
 
 int		isValid(int *t1, int taille, int *spc)
 {
-/*	if (((t1[0]%taille > 3 || t1[0]/taille > 3) ||
-			(t1[1]%taille > 3 || t1[1]/taille > 3) ||
-			(t1[2]%taille > 3 || t1[2]/taille > 3) ||
-			(t1[3]%taille > 3 || t1[3]/taille > 3)) && keepForm(t1, spc, taille) == 0) */
 	if (keepForm(t1, spc, taille) == 0)
 		return (0);
 	return (1);
@@ -60,7 +52,7 @@ void	assignSpot(int *tab)
 	tab[3] = tab[3] + 1;
 }
 
-int		*try_tetris_test(int *t1, int *t2, int taille)
+int		*try_tetris(int *t1, int *t2, int taille)
 {
 	int i;
 	int	*final;
@@ -70,7 +62,7 @@ int		*try_tetris_test(int *t1, int *t2, int taille)
 	final = (int *)malloc(sizeof(int) * (taille * taille));
 	spc = (int *)malloc(sizeof(int) * 2);
 	spc[0] = 2;
-	spc[1] = 2;
+	spc[1] = 3;
 	i = 0;
 	j = 0;
 	while (!isValid(t1, taille, spc) || overlap(t1, t2))
