@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 11:56:10 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/11/27 17:50:49 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/11/28 18:09:43 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,10 +118,6 @@ char	**recupTetri(int a, int max, char *s)
 	return (tableTetri);
 }
 
-//char	**remplitMatr(int a, char *str)
-//{
-//}
-
 int		main(int argc, char **argv)
 {
 	char	**matrResult;
@@ -129,7 +125,7 @@ int		main(int argc, char **argv)
 	int		**points;
 	int		**var;
 	int		*final;
-	int		*tmp;
+	int 	*tampon;
 	int		tailleMax;
 	int		nbrTetri;
 	int		tailleF;
@@ -143,49 +139,21 @@ int		main(int argc, char **argv)
 	i = nbrTetri;
 	if (!(points = malloc(sizeof(int *) * i)))
 		return (0);
-	printf("%d", i);
-	printf("\n");
 	while (i > 0)
 	{
 		points[i - 1] = situePoint(tetriList[i - 1]);
 		i--;
 	}
 	var = lireToTab(argv[1]);
-	printf("%d", var[0][0]);
-	printf("\n");
-	printf("%d", var[0][1]);
-	printf("\n");
-	printf("%d", var[1][0]);
-	printf("\n");
-	printf("%d", var[1][1]);
-	printf("\n");
-	printf("\n");
-	tmp = ft_strdup_int(points[0]);
-	final = try_tetris(tmp, points[1], 4);
-//	afficheFinal(final);
-	printf("%d", nbrTetri);
-	printf("\n");
-	printf("%s", tetriList[0]);
-	printf("\n");
-	printf("%s", tetriList[1]);
-	printf("\n");
-	printf("%d", points[0][0]);
-	printf("  ");
-	printf("%d", points[0][1]);
-	printf("  ");
-	printf("%d", points[0][2]);
-	printf("  ");
-	printf("%d", points[0][3]);
-	printf("\n");
-	printf("%d", points[1][0]);
-	printf("  ");
-	printf("%d", points[1][1]);
-	printf("  ");
-	printf("%d", points[1][2]);
-	printf("  ");
-	printf("%d", points[1][3]);
-	printf("\n");
-	printf("\n");
+	rewind_tetris(points[1]);
+	final = try_tetris(points[0], points[1], 4, var, 0);
+	i = 2;
+	while (i < nbrTetri)
+	{
+		tampon = resitue(final, (4 * i));
+		final = try_tetris_2(tampon, points[i], 4, var, i, (4 * i));
+		i++;
+	}
 	printf("%d", final[0]);
 	printf("%d", final[1]);
 	printf("%d", final[2]);

@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 17:26:23 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/11/27 16:33:55 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/11/28 18:06:17 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,21 @@ int		*tab_char_to_int(char *str)
 		i++;
 	}
 	return (tab);
+}
+
+int		overlap_3(int *t1, int *t2, int taille)
+{
+	int i;
+
+	i = 0;
+	while (i < taille)
+	{
+		if (t1[i] == t2[0] || t1[i] == t2[1] || t1[i] == t2[2] ||
+				t1[i] == t2[3])
+			return (1);
+		i++;
+	}
+	return (0);
 }
 
 int		overlap(int *t1, int *t2)
@@ -52,20 +67,17 @@ void	assignSpot(int *tab)
 	tab[3] = tab[3] + 1;
 }
 
-int		*try_tetris(int *t1, int *t2, int taille)
+int		*try_tetris(int *t1, int *t2, int taille, int **spc, int k)
 {
 	int i;
 	int	*final;
 	int j;
-	int *spc;
 
 	final = (int *)malloc(sizeof(int) * (taille * taille));
-	spc = (int *)malloc(sizeof(int) * 2);
-	spc[0] = 2;
-	spc[1] = 3;
 	i = 0;
 	j = 0;
-	while (!isValid(t1, taille, spc) || overlap(t1, t2))
+	rewind_tetris(t1);
+	while (!isValid(t1, taille, spc[k]) || overlap(t1, t2))
 		assignSpot(t1);
 	while (j < taille * taille)
 	{
@@ -77,25 +89,44 @@ int		*try_tetris(int *t1, int *t2, int taille)
 			final[j] = 0;
 		j++;
 	}
-	printf("dans try %d", t1[0]%taille);
-	printf("\n");
-	printf("dans try / %d", t1[0]/taille);
-	printf("\n");
-	printf("\n");
-	printf("dans try 1 %d", t1[1]%taille);
-	printf("\n");
-	printf("dans try 1 / %d", t1[1]/taille);
-	printf("\n");
-	printf("\n");
-	printf("dans try 2 %d", t1[2]%taille);
-	printf("\n");
-	printf("dans try 2 / %d", t1[2]/taille);
-	printf("\n");
-	printf("\n");
-	printf("dans try 3 %d", t1[3]%taille);
-	printf("\n");
-	printf("dans try 3 / %d", t1[3]/taille);
-	printf("\n");
-	printf("\n");
+	return (final);
+}
+
+int		*try_tetris_2(int *t1, int *t2, int taille, int **spc, int k, int passage)
+{
+	int i;
+	int	*final;
+	int j;
+	int flag;
+
+	final = (int *)malloc(sizeof(int) * (taille * taille));
+	i = 0;
+	j = 0;
+	flag = 0;
+	rewind_tetris(t2);
+	while (!isValid(t2, taille, spc[k]) || overlap_3(t1, t2, passage))
+		assignSpot(t2);
+	while (j < taille * taille)
+	{
+		while (i < passage && flag == 0)
+		{
+			if (j == t1[i])
+			{
+				final[j] = 1;
+				flag = 1;
+			}
+			i++;
+		}
+		if (flag == 0)
+		{
+			if (j == t2[0] || j == t2[1] || j == t2[2] || j == t2[3])
+				final[j] = 2;
+			else
+				final[j] = 0;
+		}
+		j++;
+		i = 0;
+		flag = 0;
+	}
 	return (final);
 }
