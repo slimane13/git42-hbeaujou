@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 11:56:10 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/11/29 15:27:24 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/11/29 17:21:18 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,7 +155,8 @@ int		main(int argc, char **argv)
 	var[1][1] = 3;
 	var[2][0] = 2;
 	var[2][1] = 2;
-	final = try_tetris(points[0], points[1], tailleMax, var, 0);
+	rewind_tetris(points[0]);
+	final = try_tetris(points[1], points[0], tailleMax, var, 0);
 	affiche(tetriList, final);
 	i = 2;
 	while (i < nbrTetri)
@@ -164,6 +165,9 @@ int		main(int argc, char **argv)
 		final = try_tetris_2(tampon, points[i], tailleMax, var, i, (4 * i));
 		i++;
 		affiche(tetriList, final);
-	} 
+	}
+	tampon = resitue(final, (4 * i));
+	printf("%d\n",calc_larg(tampon, tailleMax));	
+	printf("%d\n",calc_haut(tampon, tailleMax));	
 	return (0);
 }
