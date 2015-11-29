@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 17:26:23 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/11/29 12:05:56 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/11/29 15:20:08 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int		*tab_char_to_int(char *str)
 	int	*tab;
 
 	i = 0;
-	tab = malloc(sizeof(int) * 16);
+	tab = (int *)malloc(sizeof(int) * 36);
 	while (str[i] != '\0')
 	{
 		tab[i] = atoi(&str[i]);

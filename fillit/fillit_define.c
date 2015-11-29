@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/27 16:17:14 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/11/29 12:15:12 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/11/29 15:20:13 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int *resitue(int *tab, int taille)
 	i = 0;
 	count = 0;
 	final = malloc(sizeof(int) * taille);
-	while (i < 16)
+	while (i < 36)
 	{
 		if (tab[i] != 0)
 		{
@@ -51,11 +51,9 @@ int **struct_to_tab(t_map *beg)
 	int count;
 
 	tmp = beg;
-	printf("%d", tmp->x);
 	count = 0;
 	while (tmp)
 	{
-		printf("WW\n");
 		count++;
 		tmp = tmp->nxt_map;
 	}

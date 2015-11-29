@@ -6,7 +6,7 @@
 /*   By: ebouther <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/27 13:44:36 by ebouther          #+#    #+#             */
-/*   Updated: 2015/11/28 15:53:37 by ebouther         ###   ########.fr       */
+/*   Updated: 2015/11/29 14:12:04 by ebouther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,8 @@ static int	ft_nb_occur(char *line, int c, int *first_pos)
 	return (len);
 }
 
-static void	ft_getxy(t_map **map, char *line, int c)
+static void	ft_getxy(t_map **map, t_env *env, char *line, int c)
 {
-	static int	last_pos = 0;
 	int			pos;
 	int			nb;
 
@@ -59,29 +58,32 @@ static void	ft_getxy(t_map **map, char *line, int c)
 		(*map)->x = nb;
 	if (nb > 0)
 		(*map)->y++;
-	if ((*map)->x == 2 && last_pos == 2 && (pos != last_pos))
+	if (nb == 2 && env->last_x == 2 && env->last_pos != 0
+			&& (pos != env->last_pos))
 		(*map)->x++;
-	last_pos = pos;
+	env->last_x = (*map)->x;
+	env->last_pos = pos;
 }
 
 static int	ft_fill_struct(t_map **map, int fd)
 {
 	char	*line;
-	int		last_pos;
-	int		pos;
+	t_env	env;
 
-	pos = 0;
 	while (get_next_line(fd, &line))
 	{
 		if (ft_strlen(line) != 4 && ft_strlen(line) != 0)
 			return (-1);
 		else
 			(*map)->content = ft_strjoin((*map)->content, line);
-		last_pos = pos;
 		if (ft_strlen(line) > 0)
-			ft_getxy(map, line, '#');
-		else if (ft_new_struct(map) == -1)
-			return (-1);
+			ft_getxy(map, &env, line, '#');
+		else
+		{
+			env.last_pos = 0;
+			if (ft_new_struct(map) == -1)
+				return (-1);
+		}
 	}
 	return (0);
 }

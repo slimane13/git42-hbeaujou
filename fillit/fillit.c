@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 11:56:10 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/11/29 13:01:08 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/11/29 15:27:24 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,6 @@ char	**recupTetri(int a, int max, char *s)
 		return (NULL);
 	while (i < a)
 	{
-		printf("ZZ\n");
 		tableTetri[i] = malloc(sizeof(char ) * (max * max));
 		i++;
 	}
@@ -101,7 +100,6 @@ char	**recupTetri(int a, int max, char *s)
 	rd = open(s, O_RDONLY);
 	while (read(rd, &c, 1))
 	{
-		printf("XX\n");
 		if (c == '\n')
 			flag++;
 		else
@@ -136,49 +134,36 @@ int		main(int argc, char **argv)
 	if (argc != 2)
 		return (0);
 	nbrTetri = lireFile(argv[1]);
-	tailleMax = 4 * nbrTetri;
+	tailleMax = 2 * nbrTetri;
 	tetriList = recupTetri(nbrTetri, tailleMax, argv[1]);
 	i = nbrTetri;
 	if (!(points = malloc(sizeof(int *) * i)))
 		return (0);
 	while (i > 0)
 	{
-		printf("VV\n");
 		points[i - 1] = situePoint(tetriList[i - 1]);
 		i--;
 	}
-	printf("PP\n");
-	//var = lireToTab(argv[1]);
-	var = (int **)malloc(sizeof(int *) * 4);
+//	var = lireToTab(argv[1]);
+	var = (int **)malloc(sizeof(int *) * 3);
 	var[0] = (int *)malloc(sizeof(int) * 2);
 	var[1] = (int *)malloc(sizeof(int) * 2);
 	var[2] = (int *)malloc(sizeof(int) * 2);
-	var[3] = (int *)malloc(sizeof(int) * 2);
 	var[0][0] = 2;
 	var[0][1] = 2;
 	var[1][0] = 2;
 	var[1][1] = 3;
-	var[2][0] = 4;
-	var[2][1] = 1;
-	var[3][0] = 4;
-	var[3][1] = 1;
-	printf("QQ\n");
-	printf("%d\n", var[0][0]);
-	printf("%d\n", var[0][1]);
-	printf("%d\n", var[1][0]);
-	printf("%d\n", var[1][1]);
-	printf("%d\n", var[2][0]);
-	printf("%d\n", var[2][1]);
-	printf("LL\n");
-	final = try_tetris(points[0], points[1], 8, var, 0);
+	var[2][0] = 2;
+	var[2][1] = 2;
+	final = try_tetris(points[0], points[1], tailleMax, var, 0);
 	affiche(tetriList, final);
-	printf("KK\n");
 	i = 2;
 	while (i < nbrTetri)
 	{
 		tampon = resitue(final, (4 * i));
-		final = try_tetris_2(tampon, points[i], 8, var, i, (4 * i));
+		final = try_tetris_2(tampon, points[i], tailleMax, var, i, (4 * i));
 		i++;
-	}
+		affiche(tetriList, final);
+	} 
 	return (0);
 }
