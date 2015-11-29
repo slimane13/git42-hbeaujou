@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/27 13:14:45 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/11/28 18:10:22 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/11/29 13:05:20 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	keepForm(int *t1, int *spc, int taille) // spc[0] = largeur - spc[1] = haute
 {
 	if (spc[0] == 1)
 	{
-		if (t1[0]/taille == 0)
+		if (t1[0]/taille <= taille - 4)
 			return (1);
 	}
 	else if (spc[0] == 2 && spc[1] == 3)
@@ -29,7 +29,7 @@ int	keepForm(int *t1, int *spc, int taille) // spc[0] = largeur - spc[1] = haute
 	}
 	else if (spc[0] == 2 && spc[1] == 2)
 	{
-		if (t1[0]%taille != taille && t1[0]/taille != taille - 1)
+		if (t1[0]%taille != taille -1 && t1[0]/taille != taille - 1)
 		{
 			if (t1[3]/taille != 0 && t1[3]%taille != taille)
 				return (1);

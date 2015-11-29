@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 11:53:53 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/11/28 18:06:38 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/11/29 13:03:43 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,6 @@ int	keepForm(int *t1, int *spc, int taille);
 int	**struct_to_tab(t_map *beg);
 void	rewind_tetris(int *tab);
 int	*resitue(int *tab, int taille);
+void	affiche(char **tetriList, int *final);
 
 #endif
