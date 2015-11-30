@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 11:53:53 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/11/29 17:22:35 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/11/30 14:13:46 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,18 @@
 #include "read.h"
 
 int	*try_tetris(int *t1, int *t2, int taille, int **spc, int k);
-int	*try_tetris_2(int *t1, int *t2, int taille, int **spc, int k, int passage);
+int	*try_tetris_2(int *t1, int *t2, int taille, int **spc, int k, int passage, int target);
 int	*tab_char_to_int(char *str);
 int	*ft_strdup_int(int *s);
 int *ft_strcpy_int(int *dest, int *src);
 int	*ft_memalloc_int(size_t size);
 int	keepForm(int *t1, int *spc, int taille);
 int	**struct_to_tab(t_map *beg);
-void	rewind_tetris(int *tab);
-int	*resitue(int *tab, int taille);
+void	rewind_tetris(int *tab, int target);
+int	*resitue(int *tab, int taille, int tailleMax);
 int	calc_larg(int *tab, int taille);
 int	calc_haut(int *tab, int taille);
 void	affiche(char **tetriList, int *final);
+int	abs_minus(int a, int b);
 
 #endif

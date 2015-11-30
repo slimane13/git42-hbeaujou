@@ -6,24 +6,40 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/27 16:17:14 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/11/29 16:57:44 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/11/30 13:30:35 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-void rewind_tetris(int *tab)
+void rewind_tetris(int *tab, int i)
 {
-	while (tab[0] > 0)
+	if (tab[0] > i)
 	{
-		tab[0] = tab[0] - 1;
-		tab[1] = tab[1] - 1;
-		tab[2] = tab[2] - 1;
-		tab[3] = tab[3] - 1;
+		while (tab[0] > i)
+		{
+			tab[0] = tab[0] - 1;
+			tab[1] = tab[1] - 1;
+			tab[2] = tab[2] - 1;
+			tab[3] = tab[3] - 1;
+		}
+	}
+	else if (tab[0] < i)
+	{
+		while (tab[0] < i)
+		{
+			tab[0] = tab[0] + 1;
+			tab[1] = tab[1] + 1;
+			tab[2] = tab[2] + 1;
+			tab[3] = tab[3] + 1;
+		}
+	}
+	else
+	{
 	}
 }
 
-int *resitue(int *tab, int taille)
+int *resitue(int *tab, int taille, int tailleMax)
 {
 	int *final;
 	int i;
@@ -31,8 +47,8 @@ int *resitue(int *tab, int taille)
 
 	i = 0;
 	count = 0;
-	final = malloc(sizeof(int) * taille);
-	while (i < 36)
+	final = (int *)malloc(sizeof(int) * taille);
+	while (i < (tailleMax * tailleMax))
 	{
 		if (tab[i] != 0)
 		{
