@@ -6,13 +6,13 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/29 12:59:31 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/11/30 13:12:28 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/11/30 15:05:56 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-void	affiche(char **tetriList, int * final)
+void	affiche(int * final)
 {
 	printf("\n");
 	printf("\n");

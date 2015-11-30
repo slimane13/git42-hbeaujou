@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 11:53:53 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/11/30 14:13:46 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/11/30 17:00:19 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,10 @@ void	rewind_tetris(int *tab, int target);
 int	*resitue(int *tab, int taille, int tailleMax);
 int	calc_larg(int *tab, int taille);
 int	calc_haut(int *tab, int taille);
-void	affiche(char **tetriList, int *final);
+void	affiche(int *final);
 int	abs_minus(int a, int b);
+int	*ft_intdup(int *src, int len);
+void	boucle_test(int nbrTetri, int iterMax, int nbrCourant, int *largMax,
+		int *hautMax, int *absTmp, int *tampon, int tailleMax, int **var, int **final, int **points, int *clean);
 
 #endif
