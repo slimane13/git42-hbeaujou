@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 11:53:53 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/11/30 17:00:19 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/01 17:52:54 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,31 @@ int	calc_larg(int *tab, int taille);
 int	calc_haut(int *tab, int taille);
 void	affiche(int *final);
 int	abs_minus(int a, int b);
-int	*ft_intdup(int *src, int len);
-void	boucle_test(int nbrTetri, int iterMax, int nbrCourant, int *largMax,
+int	*ft_intdup(int *src, int len); //USELESS
+void	boucle_test(int nbrTetri, int iterMax, int nbrCourant, int *largMax, // USELESS
 		int *hautMax, int *absTmp, int *tampon, int tailleMax, int **var, int **final, int **points, int *clean);
+
+void ft_boucle_f1(void);
+void ft_boucle_f2(void);
+void ft_boucle_f3(void);
+void ft_boucle_f4(void);
+void ft_boucle_f5(void);
+
+extern int *clean;
+extern int	*tampon;
+extern int	*tmpCalc;
+extern int	*final;
+extern int	largMax;
+extern int hautMax;
+extern int	testLarg;
+extern int	testHaut;
+extern int iterMax;
+extern int absTmp;
+extern int tailleMax;
+extern int	**points;
+extern int **var;
+extern int nbrCourant;
+extern int flagF1;
+extern int flagF2;
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/30 13:48:32 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/11/30 17:19:50 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/01 13:22:11 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,26 +45,17 @@ void	boucle_test(int nbrTetri, int iterMax, int nbrCourant, int *largMax,
 	*absTmp = 100;
 	*largMax = 100;
 	*hautMax = 100;
-	if (nbrCourant < nbrTetri - 1)
-	{
-//		while (iCourant < iterMax)
-//		{
-			tampon = resitue(*final, (4 * nbrCourant), tailleMax);
-			boucle_test(nbrTetri, iterMax, nbrCourant + 1, largMax, hautMax, absTmp, tampon, tailleMax,
-					var, final, points, clean);
-			iCourant++;
-//		}
-	}
 //	else
 //	{
+	tampon = resitue(clean, (4 * nbrCourant), tailleMax);
 		while (iCourant < iterMax)
 		{
 			tmpCalc = try_tetris_2(tampon, points[nbrCourant], tailleMax, var, nbrCourant,
 					(4 * nbrCourant), iCourant);
 			testLarg = calc_larg(tmpCalc, tailleMax);
 			testHaut = calc_haut(tmpCalc, tailleMax);
-			if ((testLarg < *largMax && abs_minus(testLarg, testHaut) < *absTmp) ||
-					(testHaut < *hautMax && abs_minus(testLarg, testHaut) < *absTmp))
+			if ((testLarg < *largMax && abs_minus(testLarg, testHaut) < *absTmp && testHaut != 4) ||
+					(testHaut < *hautMax && abs_minus(testLarg, testHaut) < *absTmp && testHaut != 4))
 			{
 				clean = ft_intcpy(tmpCalc, clean, 64);
 				*largMax = calc_larg(clean, tailleMax);
@@ -75,9 +66,21 @@ void	boucle_test(int nbrTetri, int iterMax, int nbrCourant, int *largMax,
 			{
 			}
 			printf("%d\n", nbrCourant);
-			printf("%d\n\n", iCourant);
+			printf("%d\n", iCourant);
+			printf("%d\n", *largMax);
+			printf("%d\n", *hautMax);
 			affiche(clean);
 			iCourant++;
 //		}
 	}	
+	if (nbrCourant < nbrTetri - 1)
+	{
+//		while (iCourant < iterMax)
+//		{
+			tampon = resitue(*final, (4 * nbrCourant), tailleMax);
+			boucle_test(nbrTetri, iterMax, nbrCourant + 1, largMax, hautMax, absTmp, tampon, tailleMax,
+					var, final, points, clean);
+			iCourant++;
+//		}
+	}
 }

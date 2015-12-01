@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 17:26:23 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/11/30 14:13:17 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/01 17:24:15 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,8 @@ void	assignSpot(int *tab)
 int		*try_tetris(int *t1, int *t2, int taille, int **spc, int k)
 {
 	int i;
-	int	*final;
 	int j;
 
-	final = (int *)malloc(sizeof(int) * (taille * taille));
 	i = 0;
 	j = 0;
 	rewind_tetris(t1, 0);
@@ -85,11 +83,9 @@ int		*try_tetris(int *t1, int *t2, int taille, int **spc, int k)
 int		*try_tetris_2(int *t1, int *t2, int taille, int **spc, int k, int passage, int target)
 {
 	int i;
-	int	*final;
 	int j;
 	int flag;
 
-	final = (int *)malloc(sizeof(int) * (taille * taille));
 	i = 0;
 	j = 0;
 	flag = 0;

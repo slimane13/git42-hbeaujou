@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 11:56:10 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/11/30 17:18:18 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/01 18:07:58 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,7 @@ char	**recupTetri(int a, int max, char *s)
 			flag = 0;
 		if (flag == 2)
 		{
+			tableTetri[i][j] = '\0';
 			i++;
 			j = 0;
 		}
@@ -122,22 +123,21 @@ int		main(int argc, char **argv)
 {
 	char	**matrResult;
 	char	**tetriList;
-	int		**points;
-	int		**var;
-	int		*final;
-	int 	*tampon;
-	int		*tmpCalc;
+//	int		**points;
+//	int		**var;
+//	int		*final;
+//	int 	*tampon;
+//	int		*tmpCalc;
 	int		*clean;
-	int		tailleMax;
+//	int		tailleMax;
 	int		nbrTetri;
-	int		tailleF;
 	int		i;
-	int		largMax;
-	int		hautMax;
+//	int		largMax;
+//	int		hautMax;
 	int		target;
-	int		absTmp;
-	int		testLarg;
-	int		testHaut;
+//	int		absTmp;
+//	int		testLarg;
+//	int		testHaut;
 
 	if (argc != 2)
 		return (0);
@@ -162,50 +162,24 @@ int		main(int argc, char **argv)
 	var[0][1] = 2;
 	var[1][0] = 2;
 	var[1][1] = 3;
-	var[2][0] = 2;
-	var[2][1] = 2;
+	var[2][0] = 1;
+	var[2][1] = 4;
 	var[3][0] = 4;
 	var[3][1] = 1;
 /////////////////////////////////////
 	rewind_tetris(points[0], 0);
+	final = (int *)malloc(sizeof(int) * (tailleMax * tailleMax));
+	tampon = (int *)malloc(sizeof(int) * tailleMax);
+	tmpCalc = (int *)malloc(sizeof(int) * (tailleMax * tailleMax));
+	clean = (int *)malloc(sizeof(int) * (tailleMax * tailleMax));
 	final = try_tetris(points[1], points[0], tailleMax, var, 0);
-	affiche(final);
+	flagF1 = 0;
+	flagF2 = 0;
 	largMax = 100;
 	hautMax = 100;
 	absTmp = 100;
-	clean = ft_intdup(final, 64);
-	boucle_test(nbrTetri, 40, 2, &largMax, &hautMax, &absTmp, tampon, tailleMax, var, &final, points, clean);
-	affiche(clean);
-/*	i = 2; ////    nbrCourant
-	target = 0;
-	printf("%s", tetriList[3]);
-	while (i < nbrTetri)
-	{
-		target = 0;
-		absTmp = 100;
-		largMax = 100;
-		hautMax = 100;
-		tampon = resitue(final, (4 * i), tailleMax);
-		while (target < 40)
-		{
-			tmpCalc = try_tetris_2(tampon, points[i], tailleMax, var, i, (4 * i), target);
-			testLarg = calc_larg(tmpCalc, tailleMax);
-			testHaut = calc_haut(tmpCalc, tailleMax);
-			if ((testLarg < largMax && abs_minus(testLarg, testHaut) < absTmp) ||
-					(testHaut < hautMax && abs_minus(testLarg, testHaut) < absTmp))
-			{
-				final = tmpCalc;
-				largMax = calc_larg(final, tailleMax);
-				hautMax = calc_haut(final, tailleMax);
-				absTmp = abs_minus(largMax, hautMax);
-			}
-			else
-			{
-			}
-			affiche(tetriList, final);
-			target++;
-		}
-		i++; 
-	} */
+	nbrCourant = 1;
+	iterMax = 50;
+	ft_boucle_f2();
 	return (0);
 }
