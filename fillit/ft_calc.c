@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/29 16:53:02 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/01 17:40:06 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/02 16:57:04 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	calc_larg(int *tab, int taille)
 
 	i = 0;
 	largMax = 0;
-	largMin = 10;
+	largMin = 100;
 	while (i < taille*taille)
 	{
 		largeur = i%taille;

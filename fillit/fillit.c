@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 11:56:10 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/01 18:07:58 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/02 17:19:10 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,65 +121,101 @@ char	**recupTetri(int a, int max, char *s)
 
 int		main(int argc, char **argv)
 {
-	char	**matrResult;
 	char	**tetriList;
-//	int		**points;
-//	int		**var;
-//	int		*final;
-//	int 	*tampon;
-//	int		*tmpCalc;
-	int		*clean;
-//	int		tailleMax;
 	int		nbrTetri;
-	int		i;
-//	int		largMax;
-//	int		hautMax;
+	int		ite;
 	int		target;
-//	int		absTmp;
-//	int		testLarg;
-//	int		testHaut;
 
 	if (argc != 2)
 		return (0);
 	nbrTetri = lireFile(argv[1]);
-	tailleMax = 2 * nbrTetri;
+	tailleMax = 2 * (nbrTetri - 1);
 	tetriList = recupTetri(nbrTetri, tailleMax, argv[1]);
-	i = nbrTetri;
-	if (!(points = malloc(sizeof(int *) * i)))
+	ite = nbrTetri;
+	if (!(points = malloc(sizeof(int *) * ite)))
 		return (0);
-	while (i > 0)
+	while (ite > 0)
 	{
-		points[i - 1] = situePoint(tetriList[i - 1]);
-		i--;
+		points[ite - 1] = situePoint(tetriList[ite - 1]);
+		ite--;
 	}
 //	var = lireToTab(argv[1]); /////   tempo fonction elliot pdt que je test
-	var = (int **)malloc(sizeof(int *) * 4);
+	var = (int **)malloc(sizeof(int *) * 8);
 	var[0] = (int *)malloc(sizeof(int) * 2);
 	var[1] = (int *)malloc(sizeof(int) * 2);
 	var[2] = (int *)malloc(sizeof(int) * 2);
 	var[3] = (int *)malloc(sizeof(int) * 2);
-	var[0][0] = 2;
-	var[0][1] = 2;
+	var[4] = (int *)malloc(sizeof(int) * 2);
+	var[5] = (int *)malloc(sizeof(int) * 2);
+	var[6] = (int *)malloc(sizeof(int) * 2);
+	var[7] = (int *)malloc(sizeof(int) * 2);
+//	var[8] = (int *)malloc(sizeof(int) * 2);
+//	var[9] = (int *)malloc(sizeof(int) * 2);
+	var[0][0] = 4;
+	var[0][1] = 1;
 	var[1][0] = 2;
-	var[1][1] = 3;
-	var[2][0] = 1;
-	var[2][1] = 4;
-	var[3][0] = 4;
-	var[3][1] = 1;
+	var[1][1] = 2;
+	var[2][0] = 2;
+	var[2][1] = 2;
+	var[3][0] = 1;
+	var[3][1] = 4;
+	var[4][0] = 4;
+	var[4][1] = 1;
+	var[5][0] = 4;
+	var[5][1] = 1;
+	var[6][0] = 2;
+	var[6][1] = 2;
+	var[7][0] = 4;
+	var[7][1] = 1;
+//	var[8][0] = 3;
+//	var[8][1] = 2;
+//	var[9][0] = 3;
+//	var[9][1] = 2;
 /////////////////////////////////////
 	rewind_tetris(points[0], 0);
+	flagTRY = 0;
 	final = (int *)malloc(sizeof(int) * (tailleMax * tailleMax));
-	tampon = (int *)malloc(sizeof(int) * tailleMax);
 	tmpCalc = (int *)malloc(sizeof(int) * (tailleMax * tailleMax));
 	clean = (int *)malloc(sizeof(int) * (tailleMax * tailleMax));
-	final = try_tetris(points[1], points[0], tailleMax, var, 0);
+	tampon = (int *)malloc(sizeof(int) * tailleMax); // define direct final = points[0]
+	final = try_tetris_2(tampon, points[0], tailleMax, var, 0, 4, 0);
+//	affiche(final);
+	flagTRY = 1;
+	ft_strcpy_int(tmpCalc, final, (tailleMax * tailleMax));
 	flagF1 = 0;
 	flagF2 = 0;
+	flagF3 = 0;
+	flagF4 = 0;
+	flagF5 = 0;	//   Big fonction define
+	flagF6 = 0;
+	flagF7 = 0;
+	flagF8 = 0;
+	flagF9 = 0;
+	flagF10 = 0;
+	flagF11 = 0;
+	flagF12 = 0;
+	flagF13 = 0;
+	flagF14 = 0;
+	flagF15 = 0;
+	flagF16 = 0;
+	flagF17 = 0;
+	flagF18 = 0;
+	flagF19 = 0;
+	flagF20 = 0;
+	flagF21 = 0;
+	flagF22 = 0;
+	flagF23 = 0;
+	flagF24 = 0;
+	flagF25 = 0;
+	flagF26 = 0;
 	largMax = 100;
 	hautMax = 100;
 	absTmp = 100;
-	nbrCourant = 1;
-	iterMax = 50;
-	ft_boucle_f2();
+	nbrCourant = -1;
+	iterMax = 80;
+	nbrTetri = nbrTetri - 1;
+	choix_boucle(nbrTetri);
+	affiche(clean);
+//	ft_boucle_f4();
 	return (0);
 }

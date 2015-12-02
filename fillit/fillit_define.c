@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/27 16:17:14 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/11/30 13:30:35 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/02 09:10:39 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,23 +41,23 @@ void rewind_tetris(int *tab, int i)
 
 int *resitue(int *tab, int taille, int tailleMax)
 {
-	int *final;
+	int *passe;
 	int i;
 	int count;
 
 	i = 0;
 	count = 0;
-	final = (int *)malloc(sizeof(int) * taille);
+	passe = (int *)malloc(sizeof(int) * taille);
 	while (i < (tailleMax * tailleMax))
 	{
 		if (tab[i] != 0)
 		{
-			final[count] = i;
+			passe[count] = i;
 			count++;
 		}
 		i++;
 	}
-	return (final);
+	return (passe);
 }
 
 int **struct_to_tab(t_map *beg)
