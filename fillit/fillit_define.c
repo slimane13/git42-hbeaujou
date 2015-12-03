@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/27 16:17:14 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/02 09:10:39 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/03 16:28:25 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int *resitue(int *tab, int taille, int tailleMax)
 
 	i = 0;
 	count = 0;
-	passe = (int *)malloc(sizeof(int) * taille);
+	passe = (int *)malloc(sizeof(int) * (4 + 4 * taille));
 	while (i < (tailleMax * tailleMax))
 	{
 		if (tab[i] != 0)

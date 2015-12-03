@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 11:56:10 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/03 14:51:10 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/03 16:25:09 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,29 +139,29 @@ int		main(int argc, char **argv)
 		ite--;
 	}
 //	var = lireToTab(argv[1]); /////   tempo fonction elliot pdt que je test
-	var = (int **)malloc(sizeof(int *) * 5);
+	var = (int **)malloc(sizeof(int *) * 6);
 	var[0] = (int *)malloc(sizeof(int) * 2);
 	var[1] = (int *)malloc(sizeof(int) * 2);
 	var[2] = (int *)malloc(sizeof(int) * 2);
 	var[3] = (int *)malloc(sizeof(int) * 2);
 	var[4] = (int *)malloc(sizeof(int) * 2);
-//	var[5] = (int *)malloc(sizeof(int) * 2);
+	var[5] = (int *)malloc(sizeof(int) * 2);
 //	var[6] = (int *)malloc(sizeof(int) * 2);
 //	var[7] = (int *)malloc(sizeof(int) * 2);
 //	var[8] = (int *)malloc(sizeof(int) * 2);
 //	var[9] = (int *)malloc(sizeof(int) * 2);
-	var[0][0] = 1;
-	var[0][1] = 4;
+	var[0][0] = 2;
+	var[0][1] = 2;
 	var[1][0] = 2;
 	var[1][1] = 3;
-	var[2][0] = 2;
+	var[2][0] = 3;
 	var[2][1] = 2;
 	var[3][0] = 2;
-	var[3][1] = 2;
-	var[4][0] = 3;
+	var[3][1] = 3;
+	var[4][0] = 2;
 	var[4][1] = 2;
-//	var[5][0] = 2;
-//	var[5][1] = 2;
+	var[5][0] = 2;
+	var[5][1] = 2;
 //	var[6][0] = 2;
 //	var[6][1] = 3;
 //	var[7][0] = 4;
@@ -175,7 +175,7 @@ int		main(int argc, char **argv)
 	flagTRY = 0;
 	final = (int *)malloc(sizeof(int) * (tailleMax * tailleMax));
 	tmpCalc = (int *)malloc(sizeof(int) * (tailleMax * tailleMax));
-	clean = (int *)malloc(sizeof(int) * (tailleMax * tailleMax));
+//	clean = (int *)malloc(sizeof(int) * (tailleMax * tailleMax));
 	tampon = (int *)malloc(sizeof(int) * tailleMax); // define direct final = points[0]
 	tampon[0] = -1;
 	tampon[1] = -1;
@@ -185,11 +185,14 @@ int		main(int argc, char **argv)
 	tampon[5] = -1;
 	tampon[6] = -1;
 	tampon[7] = -1;
+	tampon[8] = -1;
+	tampon[9] = -1;
+	tampon[10] = -1;
+	tampon[11] = -1;
 //	final = try_tetris_2(tampon, points[0], tailleMax, var, 0, 4, 0);
 //	affiche(final);
 	flagTRY = 1;
 	remp_blank(tmpCalc);
-	affiche(tmpCalc);
 //	ft_strcpy_int(tmpCalc, final, (tailleMax * tailleMax));
 	flagF1 = 0;
 	flagF2 = 0;
@@ -220,10 +223,9 @@ int		main(int argc, char **argv)
 	largMax = 100;
 	hautMax = 100;
 	absTmp = 100;
-	iterMax = 40;
-	printf("AAA      %d      AAA\n", nbrTetri);
+	iterMax = 60;
+	printf("%d\n", nbrTetri);
 	nbrTetri = nbrTetri - 1;
-	printf("AAA      %d      AAA\n", nbrTetri);
 	choix_boucle(nbrTetri);
 	affiche(clean);
 //	ft_boucle_f4();

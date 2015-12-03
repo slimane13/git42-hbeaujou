@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 10:06:41 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/03 14:45:48 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/03 15:57:19 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,20 @@ void	choix_boucle(int nbr)
 void	choix_boucle_tier1(int nbr)
 {
 	if (nbr == 1)
+	{
+		nbrCourant2 = -1;
 		ft_boucle_f1();
+	}
 	else if (nbr == 2)
+	{
+		nbrCourant3 = -1;
 		ft_boucle_f2();
+	}
 	else if (nbr == 3)
+	{
+		nbrCourant4 = -1;
 		ft_boucle_f3();
+	}
 	else if (nbr == 4)
 	{
 		nbrCourant5 = -1;
@@ -65,13 +74,25 @@ void	choix_boucle_tier1(int nbr)
 		ft_boucle_f5();
 	}
 	else if (nbr == 6)
+	{
+		nbrCourant7 = -1;
 		ft_boucle_f6();
+	}
 	else if (nbr == 7)
+	{
+		nbrCourant8 = -1;
 		ft_boucle_f7();
+	}
 	else if (nbr == 8)
+	{
+		nbrCourant9 = -1;
 		ft_boucle_f8();
+	}
 	else if (nbr == 9)
+	{
+		nbrCourant10 = -1;
 		ft_boucle_f9();
+	}
 	else
 	{
 	}

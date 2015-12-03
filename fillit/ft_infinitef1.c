@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/01 14:18:16 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/03 14:48:22 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/03 16:23:49 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,6 +124,8 @@ int *clean26;
 
 void	ft_boucle_f1(void)
 {
+	int hautMax1;
+
 	i = 0;
 	if (flagF1 == 0)
 	{
@@ -131,8 +133,8 @@ void	ft_boucle_f1(void)
 		nbrCourant = nbrCourant2 + 1;
 		flagF1 = 1;
 	}
-	hautMax = 100;
-	while (i < iterMax && testHaut < hautMax + 1) // && absTmp != nbrTetri)
+	hautMax1 = hautMax * 4;
+	while (i < iterMax && testHaut < hautMax1 + 1) // && absTmp != nbrTetri)
 	{
 		tmpCalc = try_tetris_2(tampon, points[nbrCourant], tailleMax, var,
 				nbrCourant, (4 * nbrCourant), i);
@@ -145,11 +147,6 @@ void	ft_boucle_f1(void)
 			largMax = calc_larg(final, tailleMax);
 			hautMax = calc_haut(final, tailleMax);
 			absTmp = abs_minus(largMax, hautMax);
-			printf("tailleMax   :   %d\n", tailleMax);
-			printf("larg  :   %d\n", largMax);
-			printf("haut  :   %d\n", hautMax);
-			affiche(clean);
-			printf("---------\n");
 		}
 		else
 		{
@@ -244,8 +241,6 @@ void	ft_boucle_f4(void)
 		tampon = resitue(clean4, (4 * nbrCourant4), tailleMax);
 		tmpCalc = try_tetris_2(tampon, points[nbrCourant4], tailleMax, var,
 				nbrCourant4, (4 * nbrCourant4), i4);
-		printf(" -------------------------- \n");
-		affiche(tmpCalc);
 		testLarg4 = calc_larg(tmpCalc, tailleMax);
 		testHaut4 = calc_haut(tmpCalc, tailleMax);
 		if (testLarg4 < largMax + 1)
@@ -277,8 +272,6 @@ void	ft_boucle_f5(void)
 		tampon = resitue(clean5, (4 * nbrCourant5), tailleMax);
 		tmpCalc = try_tetris_2(tampon, points[nbrCourant5], tailleMax, var,
 				nbrCourant5, (4 * nbrCourant5), i5);
-		printf(" -------------------------- \n");
-		affiche(tmpCalc);
 		testLarg5 = calc_larg(tmpCalc, tailleMax);
 		testHaut5 = calc_haut(tmpCalc, tailleMax);
 		if (testLarg5 < largMax + 1)
