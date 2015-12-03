@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 11:56:10 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/03 12:42:47 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/03 14:51:10 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,27 +139,27 @@ int		main(int argc, char **argv)
 		ite--;
 	}
 //	var = lireToTab(argv[1]); /////   tempo fonction elliot pdt que je test
-	var = (int **)malloc(sizeof(int *) * 4);
+	var = (int **)malloc(sizeof(int *) * 5);
 	var[0] = (int *)malloc(sizeof(int) * 2);
 	var[1] = (int *)malloc(sizeof(int) * 2);
 	var[2] = (int *)malloc(sizeof(int) * 2);
 	var[3] = (int *)malloc(sizeof(int) * 2);
-//	var[4] = (int *)malloc(sizeof(int) * 2);
+	var[4] = (int *)malloc(sizeof(int) * 2);
 //	var[5] = (int *)malloc(sizeof(int) * 2);
 //	var[6] = (int *)malloc(sizeof(int) * 2);
 //	var[7] = (int *)malloc(sizeof(int) * 2);
 //	var[8] = (int *)malloc(sizeof(int) * 2);
 //	var[9] = (int *)malloc(sizeof(int) * 2);
-	var[0][0] = 2;
-	var[0][1] = 3;
+	var[0][0] = 1;
+	var[0][1] = 4;
 	var[1][0] = 2;
-	var[1][1] = 2;
+	var[1][1] = 3;
 	var[2][0] = 2;
-	var[2][1] = 3;
+	var[2][1] = 2;
 	var[3][0] = 2;
-	var[3][1] = 3;
-//	var[4][0] = 3;
-//	var[4][1] = 2;
+	var[3][1] = 2;
+	var[4][0] = 3;
+	var[4][1] = 2;
 //	var[5][0] = 2;
 //	var[5][1] = 2;
 //	var[6][0] = 2;
@@ -220,10 +220,10 @@ int		main(int argc, char **argv)
 	largMax = 100;
 	hautMax = 100;
 	absTmp = 100;
-	nbrCourant = -1;
-	iterMax = 60;
-//	printf("AAA      %d      AAA\n", nbrTetri);
+	iterMax = 40;
+	printf("AAA      %d      AAA\n", nbrTetri);
 	nbrTetri = nbrTetri - 1;
+	printf("AAA      %d      AAA\n", nbrTetri);
 	choix_boucle(nbrTetri);
 	affiche(clean);
 //	ft_boucle_f4();

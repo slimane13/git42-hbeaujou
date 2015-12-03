@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 11:53:53 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/03 12:20:09 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/03 14:41:27 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,6 +138,19 @@ extern int flagF23;
 extern int flagF24;
 extern int flagF25;
 extern int flagF26;
+
+extern int nbrCourant;
+extern int nbrCourant2;
+extern int nbrCourant3;
+extern int nbrCourant4;
+extern int nbrCourant5;
+extern int nbrCourant6;
+extern int nbrCourant7;
+extern int nbrCourant8;
+extern int nbrCourant9;
+extern int nbrCourant10;
+extern int nbrCourant11;
+extern int nbrCourant12;
 
 extern int i2;
 extern int i3;
