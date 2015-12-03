@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/29 12:59:31 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/02 17:19:45 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/03 11:45:26 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	affiche(int * final)
 
 	i = 0;
 	j = 0;
-	taille = 16;
+	taille = tailleMax;
 	while (i < taille * taille)
 	{
 		if (i%taille < taille - 1)

@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 11:53:53 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/02 11:04:27 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/03 12:20:09 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int	calc_larg(int *tab, int taille);
 int	calc_haut(int *tab, int taille);
 int	abs_minus(int a, int b);
 void	affiche(int *final);
+void remp_blank(int *tab);
 void	choix_boucle(int nbr);
 void	choix_boucle_tier1(int nbr);
 void	choix_boucle_tier2(int nbr);
@@ -81,6 +82,7 @@ extern int tailleMax;
 extern int	**points;
 extern int **var;
 extern int nbrCourant;
+extern int nbrTetri;
 
 extern int *clean;
 extern int *clean2;

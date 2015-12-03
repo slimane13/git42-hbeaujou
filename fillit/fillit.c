@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 11:56:10 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/02 17:19:10 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/03 12:42:47 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,6 @@ char	**recupTetri(int a, int max, char *s)
 int		main(int argc, char **argv)
 {
 	char	**tetriList;
-	int		nbrTetri;
 	int		ite;
 	int		target;
 
@@ -140,33 +139,33 @@ int		main(int argc, char **argv)
 		ite--;
 	}
 //	var = lireToTab(argv[1]); /////   tempo fonction elliot pdt que je test
-	var = (int **)malloc(sizeof(int *) * 8);
+	var = (int **)malloc(sizeof(int *) * 4);
 	var[0] = (int *)malloc(sizeof(int) * 2);
 	var[1] = (int *)malloc(sizeof(int) * 2);
 	var[2] = (int *)malloc(sizeof(int) * 2);
 	var[3] = (int *)malloc(sizeof(int) * 2);
-	var[4] = (int *)malloc(sizeof(int) * 2);
-	var[5] = (int *)malloc(sizeof(int) * 2);
-	var[6] = (int *)malloc(sizeof(int) * 2);
-	var[7] = (int *)malloc(sizeof(int) * 2);
+//	var[4] = (int *)malloc(sizeof(int) * 2);
+//	var[5] = (int *)malloc(sizeof(int) * 2);
+//	var[6] = (int *)malloc(sizeof(int) * 2);
+//	var[7] = (int *)malloc(sizeof(int) * 2);
 //	var[8] = (int *)malloc(sizeof(int) * 2);
 //	var[9] = (int *)malloc(sizeof(int) * 2);
-	var[0][0] = 4;
-	var[0][1] = 1;
+	var[0][0] = 2;
+	var[0][1] = 3;
 	var[1][0] = 2;
 	var[1][1] = 2;
 	var[2][0] = 2;
-	var[2][1] = 2;
-	var[3][0] = 1;
-	var[3][1] = 4;
-	var[4][0] = 4;
-	var[4][1] = 1;
-	var[5][0] = 4;
-	var[5][1] = 1;
-	var[6][0] = 2;
-	var[6][1] = 2;
-	var[7][0] = 4;
-	var[7][1] = 1;
+	var[2][1] = 3;
+	var[3][0] = 2;
+	var[3][1] = 3;
+//	var[4][0] = 3;
+//	var[4][1] = 2;
+//	var[5][0] = 2;
+//	var[5][1] = 2;
+//	var[6][0] = 2;
+//	var[6][1] = 3;
+//	var[7][0] = 4;
+//	var[7][1] = 1;
 //	var[8][0] = 3;
 //	var[8][1] = 2;
 //	var[9][0] = 3;
@@ -178,10 +177,20 @@ int		main(int argc, char **argv)
 	tmpCalc = (int *)malloc(sizeof(int) * (tailleMax * tailleMax));
 	clean = (int *)malloc(sizeof(int) * (tailleMax * tailleMax));
 	tampon = (int *)malloc(sizeof(int) * tailleMax); // define direct final = points[0]
-	final = try_tetris_2(tampon, points[0], tailleMax, var, 0, 4, 0);
+	tampon[0] = -1;
+	tampon[1] = -1;
+	tampon[2] = -1;
+	tampon[3] = -1;
+	tampon[4] = -1;
+	tampon[5] = -1;
+	tampon[6] = -1;
+	tampon[7] = -1;
+//	final = try_tetris_2(tampon, points[0], tailleMax, var, 0, 4, 0);
 //	affiche(final);
 	flagTRY = 1;
-	ft_strcpy_int(tmpCalc, final, (tailleMax * tailleMax));
+	remp_blank(tmpCalc);
+	affiche(tmpCalc);
+//	ft_strcpy_int(tmpCalc, final, (tailleMax * tailleMax));
 	flagF1 = 0;
 	flagF2 = 0;
 	flagF3 = 0;
@@ -212,7 +221,8 @@ int		main(int argc, char **argv)
 	hautMax = 100;
 	absTmp = 100;
 	nbrCourant = -1;
-	iterMax = 80;
+	iterMax = 60;
+//	printf("AAA      %d      AAA\n", nbrTetri);
 	nbrTetri = nbrTetri - 1;
 	choix_boucle(nbrTetri);
 	affiche(clean);

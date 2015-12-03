@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 10:06:41 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/02 11:04:52 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/03 11:50:03 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,5 +116,17 @@ void	choix_boucle_tier3(int nbr)
 		ft_boucle_f26();
 	else
 	{
+	}
+}
+
+void	remp_blank(int *tab)
+{
+	int i;
+
+	i = 0;
+	while (i < tailleMax * tailleMax)
+	{
+		tab[i] = 0;
+		i++;
 	}
 }

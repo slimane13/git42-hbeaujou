@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/01 19:39:39 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/02 17:28:12 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/03 12:19:22 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	ft_boucle_f6(void)
 		flagF6 = 1;
 	}
 	ft_strcpy_int(clean6, tmpCalc, tailleMax * tailleMax);
-	while (i6 < iterMax && testHaut6 < hautMax + 1)
+	while (i6 < iterMax && testHaut6 < hautMax + 1 && absTmp != nbrTetri)
 	{
 		tampon = resitue(clean6, (4 * nbrCourant), tailleMax);
 		tmpCalc = try_tetris_2(tampon, points[nbrCourant], tailleMax, var,
@@ -65,17 +65,22 @@ void	ft_boucle_f7(void)
 				nbrCourant, (4 * nbrCourant), i7);
 		testHaut7 = abs_minus(calc_larg(tmpCalc, tailleMax), calc_haut(tmpCalc, tailleMax));
 		testLarg7 = abs_minus(calc_larg(tmpCalc, tailleMax), calc_haut(tmpCalc, tailleMax));
-		if (testLarg7 < largMax + 1)
-		{
+//		if (testLarg7 < largMax + 1)
+//		{
 			tampon = resitue(tmpCalc, (4 * nbrCourant), tailleMax);
 			ft_boucle_f6();
-		}
+//		}
 		i7++;
 	}
 }
 
 void	ft_boucle_f8(void)
 {
+	int testHaut8;
+	int testLarg8;
+
+	testHaut8 = 0;
+	testLarg8 = 0;
 	i8 = 0;
 	if (flagF8 == 0)
 	{
@@ -84,13 +89,16 @@ void	ft_boucle_f8(void)
 		flagF8 = 1;
 	}
 	ft_strcpy_int(clean8, tmpCalc, tailleMax * tailleMax);
-	while (i8 < iterMax)
+	while (i8 < iterMax && testHaut8 < hautMax + 1)
 	{
 		tampon = resitue(clean8, (4 * nbrCourant), tailleMax);
 		tmpCalc = try_tetris_2(tampon, points[nbrCourant], tailleMax, var,
 				nbrCourant, (4 * nbrCourant), i8);
-		tampon = resitue(tmpCalc, (4 * nbrCourant), tailleMax);
-		ft_boucle_f7();
+//		if (testLarg8 < largMax + 1)
+//		{
+			tampon = resitue(tmpCalc, (4 * nbrCourant), tailleMax);
+			ft_boucle_f7();
+//		}
 		i8++;
 	}
 }

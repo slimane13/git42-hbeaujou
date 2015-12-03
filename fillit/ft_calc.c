@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/29 16:53:02 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/02 16:57:04 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/03 11:22:02 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	calc_haut(int *tab, int taille)
 	hautMin = 100;
 	while (i < taille*taille)
 	{
-		hauteur = i/taille + 1;
+		hauteur = i/taille;
 		if (tab[i] != 0 && hauteur > hautMax)
 			hautMax = hauteur;
 		else if (tab[i] != 0 && hauteur < hautMin)
