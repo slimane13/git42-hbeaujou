@@ -6,14 +6,18 @@
 /*   By: ebouther <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/27 13:44:36 by ebouther          #+#    #+#             */
-/*   Updated: 2015/11/29 14:12:04 by ebouther         ###   ########.fr       */
+/*   Updated: 2015/12/02 16:53:45 by ebouther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "read.h"
 
-static int	ft_new_struct(t_map **map)
+static int	ft_new_struct(t_map **map, t_env *env, int tetriminos)
 {
+	ft_check_tetriminos(*map, tetriminos);
+	(*map)->content = ft_strjoin((*map)->content, ft_add_to_map(tetriminos));
+	env->nb_of_line = 0;
+	env->last_pos = 0;
 	if (!((*map)->nxt_map = (t_map *)malloc(sizeof(**map))))
 		return (-1);
 	(*map) = (*map)->nxt_map;
@@ -54,6 +58,7 @@ static void	ft_getxy(t_map **map, t_env *env, char *line, int c)
 
 	pos = 0;
 	nb = ft_nb_occur(line, c, &pos);
+	env->nb_of_line++;
 	if (nb > (*map)->x)
 		(*map)->x = nb;
 	if (nb > 0)
@@ -65,42 +70,50 @@ static void	ft_getxy(t_map **map, t_env *env, char *line, int c)
 	env->last_pos = pos;
 }
 
-static int	ft_fill_struct(t_map **map, int fd)
+static int	ft_fill_struct(t_map **map, int fd, int tetriminos)
 {
 	char	*line;
 	t_env	env;
+	int		i;
+	int		j;
 
+	j = 0;
+	env.nb_of_line = 0;
 	while (get_next_line(fd, &line))
 	{
-		if (ft_strlen(line) != 4 && ft_strlen(line) != 0)
+		i = 0;
+		if ((ft_strlen(line) != 4 && ft_strlen(line) != 0))
 			return (-1);
-		else
-			(*map)->content = ft_strjoin((*map)->content, line);
 		if (ft_strlen(line) > 0)
-			ft_getxy(map, &env, line, '#');
-		else
 		{
-			env.last_pos = 0;
-			if (ft_new_struct(map) == -1)
-				return (-1);
+			(*map)->content = ft_strjoin(ft_strjoin((ft_strjoin((*map)->content, line)), (const char *)ft_add_to_line(tetriminos)), "\n");
+			ft_getxy(map, &env, line, '#');
 		}
+		else if (env.nb_of_line != 4 || ft_new_struct(map, &env, tetriminos) == -1)
+				return (-1);
 	}
+	if (env.nb_of_line != 4)
+		return (-1);
+	ft_check_tetriminos(*map, tetriminos);
+	(*map)->content = ft_strjoin((*map)->content, ft_add_to_map(tetriminos));
 	return (0);
 }
 
-t_map		*ft_get_maps(int fd)
+t_map		*ft_get_maps(int fd, int tetriminos)
 {
 	t_map	*map;
 	t_map	*beg;
 
+	if (tetriminos > 2)
+		tetriminos = (tetriminos * 2);
 	if (fd < 0 || !(map = (t_map *)malloc(sizeof(*map))))
-		return (NULL);
+		ft_error_exit();
 	beg = map;
 	map->nxt_map = NULL;
-	map->x = 0;
+	map->x = 0;	
 	map->y = 0;
 	map->content = ft_strnew(0);
-	if (ft_fill_struct(&map, fd) == -1)
-		return (NULL);
+	if (ft_fill_struct(&map, fd, tetriminos) == -1)
+		ft_error_exit();
 	return (beg);
 }

@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/01 14:18:16 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/03 16:23:49 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/03 17:32:08 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,7 +134,7 @@ void	ft_boucle_f1(void)
 		flagF1 = 1;
 	}
 	hautMax1 = hautMax * 4;
-	while (i < iterMax && testHaut < hautMax1 + 1) // && absTmp != nbrTetri)
+	while (i < iterMax && testHaut < hautMax1 + 1  && absTmp != nbrTetri)
 	{
 		tmpCalc = try_tetris_2(tampon, points[nbrCourant], tailleMax, var,
 				nbrCourant, (4 * nbrCourant), i);
@@ -150,10 +150,6 @@ void	ft_boucle_f1(void)
 		}
 		else
 		{
-//			printf(" i  :    %d\n", i);
-//			printf(" i2  :    %d\n", i2);
-//			printf(" i3  :    %d\n", i3);
-//			printf(" i4  :    %d\n", i4);
 		}
 		i++;
 	}
@@ -174,7 +170,7 @@ void	ft_boucle_f2(void)
 		flagF2 = 1;
 	}
 	ft_strcpy_int(clean2, tmpCalc, tailleMax * tailleMax);
-	while (i2 < iterMax && testHaut2 < hautMax + 1) // && absTmp != nbrTetri)
+	while (i2 < iterMax && testHaut2 < hautMax + 1 && absTmp != nbrTetri)
 	{
 		tampon = resitue(clean2, (4 * nbrCourant2), tailleMax);
 		tmpCalc = try_tetris_2(tampon, points[nbrCourant2], tailleMax, var,
@@ -205,7 +201,7 @@ void	ft_boucle_f3(void)
 		flagF3 = 1;
 	}
 	ft_strcpy_int(clean3, tmpCalc, tailleMax * tailleMax);
-	while (i3 < iterMax && testHaut3 < hautMax + 1) // && absTmp != nbrTetri)
+	while (i3 < iterMax && testHaut3 < hautMax + 1 && absTmp != nbrTetri)
 	{
 		tampon = resitue(clean3, (4 * nbrCourant3), tailleMax);
 		tmpCalc = try_tetris_2(tampon, points[nbrCourant3], tailleMax, var,
@@ -236,7 +232,7 @@ void	ft_boucle_f4(void)
 		flagF4 = 1;
 	}
 	ft_strcpy_int(clean4, tmpCalc, tailleMax * tailleMax);
-	while (i4 < iterMax && testHaut4 < hautMax + 1) // && absTmp != nbrTetri)
+	while (i4 < iterMax && testHaut4 < hautMax + 1 && absTmp != nbrTetri)
 	{
 		tampon = resitue(clean4, (4 * nbrCourant4), tailleMax);
 		tmpCalc = try_tetris_2(tampon, points[nbrCourant4], tailleMax, var,
@@ -267,7 +263,7 @@ void	ft_boucle_f5(void)
 		flagF5 = 1;
 	}
 	ft_strcpy_int(clean5, tmpCalc, tailleMax * tailleMax + 1);
-	while (i5 < iterMax && testHaut5 < hautMax + 1)
+	while (i5 < iterMax && testHaut5 < hautMax + 1 && absTmp != nbrTetri)
 	{
 		tampon = resitue(clean5, (4 * nbrCourant5), tailleMax);
 		tmpCalc = try_tetris_2(tampon, points[nbrCourant5], tailleMax, var,
