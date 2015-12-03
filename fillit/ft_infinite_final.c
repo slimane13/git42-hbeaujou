@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 10:06:41 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/03 18:37:55 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/03 18:42:03 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	ft_boucle_f26(int flag[26])
 
 void	choix_boucle(int nbr)
 {
-	static int flag[26];
+	int flag[26];
 	int pp;
    
 	pp = 0;

@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/01 14:18:16 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/03 18:13:48 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/03 18:44:09 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int nbrCourant;
 int flagTRY;
 int nbrTetri;
 
-int i;
+//int i;
 int i2;
 int i3;
 int i4;
@@ -124,6 +124,7 @@ int *clean26;
 
 void	ft_boucle_f1(int flag[26])
 {
+	int i;
 	int hautMax1;
 
 	i = 0;
