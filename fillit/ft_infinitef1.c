@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/01 14:18:16 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/03 17:32:08 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/03 18:13:48 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,33 +55,33 @@ int i24;
 int i25;
 int i26;
 
-int flagF1;
-int flagF2;
-int flagF3;
-int flagF4;
-int flagF5;
+/*int flag[0];
+int flag[1];
+int flag[2];
+int flag[3];
+int flag[4];
 int flagF6;
 int flagF7;
 int flagF8;
 int flagF9;
-int flagF10;
-int flagF11;
-int flagF12;
-int flagF13;
-int flagF14;
-int flagF15;
-int flagF16;
-int flagF17;
-int flagF18;
-int flagF19;
-int flagF20;
-int flagF21;
-int flagF22;
-int flagF23;
-int flagF24;
-int flagF25;
-int flagF26;
-
+int flag[0]0;
+int flag[0]1;
+int flag[0]2;
+int flag[0]3;
+int flag[0]4;
+int flag[0]5;
+int flag[0]6;
+int flag[0]7;
+int flag[0]8;
+int flag[0]9;
+int flag[1]0;
+int flag[1]1;
+int flag[1]2;
+int flag[1]3;
+int flag[1]4;
+int flag[1]5;
+int flag[1]6;
+*/
 int	nbrCourant1;
 int	nbrCourant2;
 int	nbrCourant3;
@@ -122,16 +122,16 @@ int *clean24;
 int *clean25;
 int *clean26;
 
-void	ft_boucle_f1(void)
+void	ft_boucle_f1(int flag[26])
 {
 	int hautMax1;
 
 	i = 0;
-	if (flagF1 == 0)
+	if (flag[0] == 0)
 	{
 		clean = (int *)malloc(sizeof(int) * (tailleMax * tailleMax));
 		nbrCourant = nbrCourant2 + 1;
-		flagF1 = 1;
+		flag[0] = 1;
 	}
 	hautMax1 = hautMax * 4;
 	while (i < iterMax && testHaut < hautMax1 + 1  && absTmp != nbrTetri)
@@ -155,7 +155,7 @@ void	ft_boucle_f1(void)
 	}
 }
 
-void	ft_boucle_f2(void)
+void	ft_boucle_f2(int flag[26])
 {
 	int	testHaut2;
 	int	testLarg2;
@@ -163,11 +163,11 @@ void	ft_boucle_f2(void)
 	i2 = 0;
 	testHaut2 = 0;
 	testLarg2 = 0;
-	if (flagF2 == 0)
+	if (flag[1] == 0)
 	{
 		clean2 = (int *)malloc(sizeof(int) * (tailleMax * tailleMax));
 		nbrCourant2 = nbrCourant3 + 1;
-		flagF2 = 1;
+		flag[1] = 1;
 	}
 	ft_strcpy_int(clean2, tmpCalc, tailleMax * tailleMax);
 	while (i2 < iterMax && testHaut2 < hautMax + 1 && absTmp != nbrTetri)
@@ -180,13 +180,13 @@ void	ft_boucle_f2(void)
 		if (testLarg2 < largMax + 1)
 		{
 			tampon = resitue(tmpCalc, (4 * nbrCourant2), tailleMax);
-			ft_boucle_f1();
+			ft_boucle_f1(flag);
 		}
 		i2++;
 	}
 }
 
-void	ft_boucle_f3(void)
+void	ft_boucle_f3(int flag[26])
 {
 	int	testHaut3;
 	int	testLarg3;
@@ -194,11 +194,11 @@ void	ft_boucle_f3(void)
 	i3 = 0;
 	testHaut3 = 0;
 	testLarg3 = 0;
-	if (flagF3 == 0)
+	if (flag[2] == 0)
 	{
 		clean3 = (int *)malloc(sizeof(int) * (tailleMax * tailleMax));
 		nbrCourant3 = nbrCourant4 + 1;
-		flagF3 = 1;
+		flag[2] = 1;
 	}
 	ft_strcpy_int(clean3, tmpCalc, tailleMax * tailleMax);
 	while (i3 < iterMax && testHaut3 < hautMax + 1 && absTmp != nbrTetri)
@@ -211,13 +211,13 @@ void	ft_boucle_f3(void)
 		if (testLarg3 < largMax + 1)
 		{
 			tampon = resitue(tmpCalc, (4 * nbrCourant3), tailleMax);
-			ft_boucle_f2();
+			ft_boucle_f2(flag);
 		}
 		i3++;
 	}
 }
 
-void	ft_boucle_f4(void)
+void	ft_boucle_f4(int flag[26])
 {
 	int	testHaut4;
 	int	testLarg4;
@@ -225,11 +225,11 @@ void	ft_boucle_f4(void)
 	i4 = 0;
 	testHaut4 = 0;
 	testLarg4 = 0;
-	if (flagF4 == 0)
+	if (flag[3] == 0)
 	{
 		clean4 = (int *)malloc(sizeof(int) * (tailleMax * tailleMax));
 		nbrCourant4 = nbrCourant5 + 1;
-		flagF4 = 1;
+		flag[3] = 1;
 	}
 	ft_strcpy_int(clean4, tmpCalc, tailleMax * tailleMax);
 	while (i4 < iterMax && testHaut4 < hautMax + 1 && absTmp != nbrTetri)
@@ -242,13 +242,13 @@ void	ft_boucle_f4(void)
 		if (testLarg4 < largMax + 1)
 		{
 			tampon = resitue(tmpCalc, (4 * nbrCourant4), tailleMax);
-			ft_boucle_f3();
+			ft_boucle_f3(flag);
 		}
 		i4++;
 	}
 }
 
-void	ft_boucle_f5(void)
+void	ft_boucle_f5(int flag[26])
 {
 	int	testHaut5;
 	int	testLarg5;
@@ -256,11 +256,11 @@ void	ft_boucle_f5(void)
 	i5 = 0;
 	testLarg5 = 0;
 	testHaut5 = 0;
-	if (flagF5 == 0)
+	if (flag[4] == 0)
 	{
 		clean5 = (int *)malloc(sizeof(int) * (tailleMax * tailleMax));
 		nbrCourant5 = nbrCourant6 + 1;
-		flagF5 = 1;
+		flag[4] = 1;
 	}
 	ft_strcpy_int(clean5, tmpCalc, tailleMax * tailleMax + 1);
 	while (i5 < iterMax && testHaut5 < hautMax + 1 && absTmp != nbrTetri)
@@ -273,7 +273,7 @@ void	ft_boucle_f5(void)
 		if (testLarg5 < largMax + 1)
 		{
 			tampon = resitue(tmpCalc, (4 * nbrCourant5), tailleMax);
-			ft_boucle_f4();
+			ft_boucle_f4(flag);
 		}
 		i5++;
 	}

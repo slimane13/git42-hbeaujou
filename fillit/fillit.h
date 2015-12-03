@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 11:53:53 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/03 17:06:04 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/03 18:09:36 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,36 +36,36 @@ int		abs_minus(int a, int b);
 void	affiche(int *final);
 void	remp_blank(int *tab);
 void	choix_boucle(int nbr);
-void	choix_boucle_tier1(int nbr);
-void	choix_boucle_tier2(int nbr);
-void	choix_boucle_tier3(int nbr);
+void	choix_boucle_tier1(int nbr, int flag[26]);
+void	choix_boucle_tier2(int nbr, int flag[26]);
+void	choix_boucle_tier3(int nbr, int flag[26]);
 
-void ft_boucle_f1(void);
-void ft_boucle_f2(void);
-void ft_boucle_f3(void);
-void ft_boucle_f4(void);
-void ft_boucle_f5(void);
-void ft_boucle_f6(void);
-void ft_boucle_f7(void);
-void ft_boucle_f8(void);
-void ft_boucle_f9(void);
-void ft_boucle_f10(void);
-void ft_boucle_f11(void);
-void ft_boucle_f12(void);
-void ft_boucle_f13(void);
-void ft_boucle_f14(void);
-void ft_boucle_f15(void);
-void ft_boucle_f16(void);
-void ft_boucle_f17(void);
-void ft_boucle_f18(void);
-void ft_boucle_f19(void);
-void ft_boucle_f20(void);
-void ft_boucle_f21(void);
-void ft_boucle_f22(void);
-void ft_boucle_f23(void);
-void ft_boucle_f24(void);
-void ft_boucle_f25(void);
-void ft_boucle_f26(void);
+void ft_boucle_f1(int flag[26]);
+void ft_boucle_f2(int flag[26]);
+void ft_boucle_f3(int flag[26]);
+void ft_boucle_f4(int flag[26]);
+void ft_boucle_f5(int flag[26]);
+void ft_boucle_f6(int flag[26]);
+void ft_boucle_f7(int flag[26]);
+void ft_boucle_f8(int flag[26]);
+void ft_boucle_f9(int flag[26]);
+void ft_boucle_f10(int flag[26]);
+void ft_boucle_f11(int flag[26]);
+void ft_boucle_f12(int flag[26]);
+void ft_boucle_f13(int flag[26]);
+void ft_boucle_f14(int flag[26]);
+void ft_boucle_f15(int flag[26]);
+void ft_boucle_f16(int flag[26]);
+void ft_boucle_f17(int flag[26]);
+void ft_boucle_f18(int flag[26]);
+void ft_boucle_f19(int flag[26]);
+void ft_boucle_f20(int flag[26]);
+void ft_boucle_f21(int flag[26]);
+void ft_boucle_f22(int flag[26]);
+void ft_boucle_f23(int flag[26]);
+void ft_boucle_f24(int flag[26]);
+void ft_boucle_f25(int flag[26]);
+void ft_boucle_f26(int flag[26]);
 
 extern int *resolution;
 extern int	*tampon;
@@ -111,7 +111,7 @@ extern int *clean25;
 extern int *clean26;
 
 extern int flagTRY;
-extern int flagF1;
+/*extern int flagF1;
 extern int flagF2;
 extern int flagF3;
 extern int flagF4;
@@ -137,7 +137,7 @@ extern int flagF23;
 extern int flagF24;
 extern int flagF25;
 extern int flagF26;
-
+*/
 extern int nbrCourant;
 extern int nbrCourant2;
 extern int nbrCourant3;

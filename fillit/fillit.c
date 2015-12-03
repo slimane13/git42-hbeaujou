@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 11:56:10 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/03 17:22:23 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/03 18:33:52 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,6 +132,7 @@ int		main(int argc, char **argv)
 	ite = nbrTetri;
 	if (!(points = malloc(sizeof(int *) * ite)))
 		return (0);
+	tetriList = (char **)malloc(sizeof(char *) * nbrTetri);
 	var = lireToTab(argv[1], tetriList);
 	while (ite > 0)
 	{
@@ -157,32 +158,6 @@ int		main(int argc, char **argv)
 	tampon[11] = -1;
 	flagTRY = 1;
 	remp_blank(tmpCalc);
-	flagF1 = 0;
-	flagF2 = 0;
-	flagF3 = 0;
-	flagF4 = 0;
-	flagF5 = 0;	//   Big fonction define
-	flagF6 = 0;
-	flagF7 = 0;
-	flagF8 = 0;
-	flagF9 = 0;
-	flagF10 = 0;
-	flagF11 = 0;
-	flagF12 = 0;
-	flagF13 = 0;
-	flagF14 = 0;
-	flagF15 = 0;
-	flagF16 = 0;
-	flagF17 = 0;
-	flagF18 = 0;
-	flagF19 = 0;
-	flagF20 = 0;
-	flagF21 = 0;
-	flagF22 = 0;
-	flagF23 = 0;
-	flagF24 = 0;
-	flagF25 = 0;
-	flagF26 = 0;
 	largMax = 100;
 	hautMax = 100;
 	absTmp = 100;

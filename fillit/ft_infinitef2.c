@@ -6,13 +6,13 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/01 19:39:39 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/03 17:23:18 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/03 18:14:29 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-void	ft_boucle_f6(void)
+void	ft_boucle_f6(int flag[26])
 {
 	int testHaut6;
 	int testLarg6;
@@ -20,11 +20,11 @@ void	ft_boucle_f6(void)
 	i6 = 0;
 	testLarg6 = 0;
 	testHaut6 = 0;
-	if (flagF6 == 0)
+	if (flag[5] == 0)
 	{
 		clean6 = (int *)malloc(sizeof(int) * (tailleMax * tailleMax));
 		nbrCourant6 = nbrCourant7 + 1;
-		flagF6 = 1;
+		flag[5] = 1;
 	}
 	ft_strcpy_int(clean6, tmpCalc, tailleMax * tailleMax);
 	while (i6 < iterMax && testHaut6 < hautMax + 1 && absTmp != nbrTetri)
@@ -37,13 +37,13 @@ void	ft_boucle_f6(void)
 		if (testLarg6 < largMax + 1)
 		{
 			tampon = resitue(tmpCalc, (4 * nbrCourant6), tailleMax);
-			ft_boucle_f5();
+			ft_boucle_f5(flag);
 		}
 		i6++;
 	}
 }
 
-void	ft_boucle_f7(void)
+void	ft_boucle_f7(int flag[26])
 {
 	int testLarg7;
 	int testHaut7;
@@ -51,11 +51,11 @@ void	ft_boucle_f7(void)
 	testHaut7 = 0;
 	testLarg7 = 0;
 	i7 = 0;
-	if (flagF7 == 0)
+	if (flag[6] == 0)
 	{
 		clean7 = (int *)malloc(sizeof(int) * (tailleMax * tailleMax));
 		nbrCourant7 = nbrCourant8 + 1;
-		flagF7 = 1;
+		flag[6] = 1;
 	}
 	ft_strcpy_int(clean7, tmpCalc, tailleMax * tailleMax);
 	while (i7 < iterMax && testHaut7 < hautMax + 1)
@@ -68,13 +68,13 @@ void	ft_boucle_f7(void)
 		if (testLarg7 < largMax + 1)
 		{
 			tampon = resitue(tmpCalc, (4 * nbrCourant7), tailleMax);
-			ft_boucle_f6();
+			ft_boucle_f6(flag);
 		}
 		i7++;
 	}
 }
 
-void	ft_boucle_f8(void)
+void	ft_boucle_f8(int flag[26])
 {
 	int testHaut8;
 	int testLarg8;
@@ -82,11 +82,11 @@ void	ft_boucle_f8(void)
 	testHaut8 = 0;
 	testLarg8 = 0;
 	i8 = 0;
-	if (flagF8 == 0)
+	if (flag[7] == 0)
 	{
 		clean8 = (int *)malloc(sizeof(int) * (tailleMax * tailleMax));
 		nbrCourant8 = nbrCourant9 + 1;
-		flagF8 = 1;
+		flag[7] = 1;
 	}
 	ft_strcpy_int(clean8, tmpCalc, tailleMax * tailleMax);
 	while (i8 < iterMax && testHaut8 < hautMax + 1)
@@ -97,20 +97,20 @@ void	ft_boucle_f8(void)
 		if (testLarg8 < largMax + 1)
 		{
 			tampon = resitue(tmpCalc, (4 * nbrCourant8), tailleMax);
-			ft_boucle_f7();
+			ft_boucle_f7(flag);
 		}
 		i8++;
 	}
 }
 
-void	ft_boucle_f9(void)
+void	ft_boucle_f9(int flag[26])
 {
 	i9 = 0;
-	if (flagF9 == 0)
+	if (flag[8] == 0)
 	{
 		clean9 = (int *)malloc(sizeof(int) * (tailleMax * tailleMax));
 		nbrCourant9 = nbrCourant10 + 1;
-		flagF9 = 1;
+		flag[8] = 1;
 	}
 	ft_strcpy_int(clean9, tmpCalc, tailleMax * tailleMax);
 	while (i9 < iterMax)
@@ -120,19 +120,19 @@ void	ft_boucle_f9(void)
 				nbrCourant9, (4 * nbrCourant9), i9);
 		affiche(tmpCalc);
 		tampon = resitue(tmpCalc, (4 * nbrCourant9), tailleMax);
-		ft_boucle_f8();
+		ft_boucle_f8(flag);
 		i9++;
 	}
 }
 
-void	ft_boucle_f10(void)
+void	ft_boucle_f10(int flag[26])
 {
 	i10 = 0;
-	if (flagF10 == 0)
+	if (flag[9] == 0)
 	{
 		clean10 = (int *)malloc(sizeof(int) * (tailleMax * tailleMax));
 		nbrCourant++;
-		flagF10 = 1;
+		flag[9] = 1;
 	}
 	ft_strcpy_int(clean10, tmpCalc, tailleMax * tailleMax);
 	while (i10 < iterMax)
@@ -141,7 +141,7 @@ void	ft_boucle_f10(void)
 		tmpCalc = try_tetris_2(tampon, points[nbrCourant], tailleMax, var,
 				nbrCourant, (4 * nbrCourant), i10);
 		tampon = resitue(tmpCalc, (4 * nbrCourant), tailleMax);
-		ft_boucle_f9();
+		ft_boucle_f9(flag);
 		i10++;
 	}
 }

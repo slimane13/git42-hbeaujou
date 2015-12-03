@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/27 16:17:14 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/03 17:04:23 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/03 18:34:02 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int **struct_to_tab(t_map *beg, char **tetriList)
 		tab[count] = (int *)malloc(sizeof(int) * 2);
 		tab[count][0] = tmp->x;
 		tab[count][1] = tmp->y;
-		tetriList[count] = tmp->content;
+		tetriList[count] = ft_strdup(tmp->content);
 		count++;
 		tmp = tmp->nxt_map;
 	}
