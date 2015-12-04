@@ -6,11 +6,16 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/29 12:59:31 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/04 14:40:15 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/04 14:42:13 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
+
+static void	ft_display(final[i])
+{
+	
+}
 
 void	affiche(int * final)
 {
