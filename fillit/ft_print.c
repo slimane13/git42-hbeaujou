@@ -12,12 +12,15 @@
 
 #include "fillit.h"
 
-static void	ft_display(final[i])
+static void	ft_display(int c)
 {
-	
+	if (c == 0)
+		ft_puchar('.');
+	else
+		ft_puchar('A' - 1 + c);
 }
 
-void	affiche(int * final)
+void	affiche(int *final)
 {
 	int i;
 	int j;
@@ -29,18 +32,10 @@ void	affiche(int * final)
 	while (i < taille * taille)
 	{
 		if (i % taille < taille - 1)
-		{
-			if (final[i] == 0)
-				ft_puchar('.');
-			else
-				ft_puchar('A' - 1 + final[i]);
-		}
+			ft_display(final[i]);
 		else if (i % taille == taille - 1)
 		{
-			if (final[i] == 0)
-				ft_putchar('.');
-			else
-				ft_putchar('A' - 1 + final[i]);
+			ft_display(final[i]);
 			ft_putchar('\n');
 		}
 		i++;
