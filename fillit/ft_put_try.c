@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 17:26:23 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/02 19:15:46 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/04 14:29:36 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ int		*try_tetris_2(int *t1, int *t2, int taille, int **spc, int k, int passage, 
 		{
 			if (j == t1[i] && flagTRY == 1)
 			{
-				final[j] = 1;
+				final[j] = affichageLettre[j];
 				flag = 1;
 			}
 			i++;
@@ -83,7 +83,7 @@ int		*try_tetris_2(int *t1, int *t2, int taille, int **spc, int k, int passage, 
 		if (flag == 0)
 		{
 			if (j == t2[0] || j == t2[1] || j == t2[2] || j == t2[3]) //&& flagTRY == 1)
-				final[j] = 2;
+				final[j] = affichageLettre[j] + 1;
 			else
 				final[j] = 0;
 		}

@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/27 16:17:14 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/03 18:34:02 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/04 14:30:10 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,10 @@ int *resitue(int *tab, int taille, int tailleMax)
 		{
 			passe[count] = i;
 			count++;
+			affichageLettre[i] = tab[i] + 1;
 		}
+		else
+			affichageLettre[i] = 0;
 		i++;
 	}
 	return (passe);

@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/01 14:18:16 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/03 18:44:09 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/04 14:25:52 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int **var;
 int nbrCourant;
 int flagTRY;
 int nbrTetri;
+int *affichageLettre;
 
 //int i;
 int i2;

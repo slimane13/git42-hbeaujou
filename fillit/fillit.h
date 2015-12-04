@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 11:53:53 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/03 18:09:36 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/04 14:26:01 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ extern int	**points;
 extern int **var;
 extern int nbrCourant;
 extern int nbrTetri;
+extern int *affichageLettre;
 
 extern int *clean;
 extern int *clean2;
