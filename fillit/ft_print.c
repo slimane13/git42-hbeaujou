@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/29 12:59:31 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/03 11:45:26 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/04 14:40:15 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,22 @@ void	affiche(int * final)
 	taille = tailleMax;
 	while (i < taille * taille)
 	{
-		if (i%taille < taille - 1)
-			printf("%d", final[i]);
-		else if (i%taille == taille - 1)
+		if (i % taille < taille - 1)
 		{
-			printf("%d", final[i]);
-			printf("\n");
+			if (final[i] == 0)
+				ft_puchar('.');
+			else
+				ft_puchar('A' - 1 + final[i]);
 		}
-		else
+		else if (i % taille == taille - 1)
 		{
+			if (final[i] == 0)
+				ft_putchar('.');
+			else
+				ft_putchar('A' - 1 + final[i]);
+			ft_putchar('\n');
 		}
 		i++;
 	}
-	printf("\n");
+	ft_putchar('\n');
 }
