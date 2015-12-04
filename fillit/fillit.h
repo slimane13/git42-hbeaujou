@@ -6,14 +6,13 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 11:53:53 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/04 14:26:01 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/04 15:32:47 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FILLIT_H
 # define FILLIT_H
 
-//#include "libft.h" // .a ?
 #include <stdlib.h>
 #include <stdio.h>
 #include <strings.h>
@@ -39,6 +38,24 @@ void	choix_boucle(int nbr);
 void	choix_boucle_tier1(int nbr, int flag[26]);
 void	choix_boucle_tier2(int nbr, int flag[26]);
 void	choix_boucle_tier3(int nbr, int flag[26]);
+
+int check1(int *t1);
+int check2(int *t1);
+int check3(int *t1);
+int check4(int *t1);
+int check5(int *t1);
+int check6(int *t1);
+int check7(int *t1);
+int check8(int *t1);
+
+int check1_32(int *t1);
+int check2_32(int *t1);
+int check3_32(int *t1);
+int check4_32(int *t1);
+int check5_32(int *t1);
+int check6_32(int *t1);
+int check7_32(int *t1);
+int check8_32(int *t1);
 
 void ft_boucle_f1(int flag[26]);
 void ft_boucle_f2(int flag[26]);
