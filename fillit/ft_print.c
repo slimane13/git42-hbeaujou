@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/29 12:59:31 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/04 14:42:13 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/04 14:53:29 by ebouther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	ft_display(int c)
 		ft_puchar('A' - 1 + c);
 }
 
-void	affiche(int *final)
+void		affiche(int *final)
 {
 	int i;
 	int j;
