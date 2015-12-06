@@ -1,2 +1,2 @@
-sh map_creator.sh 5
-time ./a.out map.txt
+python map_gen.py 4 > sample44.txt
+time ./a.out sample44.txt

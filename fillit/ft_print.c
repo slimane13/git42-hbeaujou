@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/29 12:59:31 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/04 21:11:11 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/05 14:54:56 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	ft_display(int c)
 	if (c == 0)
 		printf(".");
 	else
-		printf("%c", 'A' + c - 1);
+		printf("%c", 'Z' - 'A' - c + 44);
 }
 
 void		affiche(int *final)

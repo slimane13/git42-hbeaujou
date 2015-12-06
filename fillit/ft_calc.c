@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/29 16:53:02 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/03 11:22:02 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/05 18:54:59 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,19 @@
 int	calc_larg(int *tab, int taille)
 {
 	int i;
-	int largMax;
+	int largMaxTest;
 	int largeur;
 	int	largMin;
 
 	i = 0;
-	largMax = 0;
-	largMin = 100;
+	largeur = 0;
+	largMaxTest = -1;
+	largMin = 10;
 	while (i < taille*taille)
 	{
 		largeur = i%taille;
-		if (tab[i] != 0 && largeur > largMax)
-			largMax = largeur;
+		if (tab[i] != 0 && largeur > largMaxTest)
+			largMaxTest = largeur;
 		else if (tab[i] != 0 && largeur < largMin)
 			largMin = largeur;
 		else
@@ -34,34 +35,42 @@ int	calc_larg(int *tab, int taille)
 		}
 		i++;
 	}
-	largMax++;
-	return(largMax - largMin);
+	largMaxTest++;
+	return(largMaxTest - largMin);
 }
 
 int	calc_haut(int *tab, int taille)
 {
 	int i;
-	int hautMax;
+	int hautMaxTest;
 	int hauteur;
 	int hautMin;
+	int flagM;
 
 	i = 0;
-	hautMax = 0;
-	hautMin = 100;
+	flagM = 0;
+	hautMaxTest = -1;
+	hautMin = 0;
+	hauteur = 0;
 	while (i < taille*taille)
 	{
-		hauteur = i/taille;
-		if (tab[i] != 0 && hauteur > hautMax)
-			hautMax = hauteur;
-		else if (tab[i] != 0 && hauteur < hautMin)
-			hautMin = hauteur;
+		hauteur = i/taille + 1;
+		if (tab[i] != 0 && hauteur > hautMaxTest)
+		{
+			if (flagM == 0)
+			{
+				hautMin = hauteur;
+				flagM = 1;
+			}
+			hautMaxTest = hauteur;
+		}
 		else
 		{
 		}
 		i++;
 	}
-	hautMax++;
-	return(hautMax - hautMin);
+	hautMaxTest++;
+	return(hautMaxTest - hautMin);
 }
 
 int	abs_minus(int a, int b)

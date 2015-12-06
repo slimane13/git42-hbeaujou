@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 11:56:10 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/04 14:26:24 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/05 17:47:10 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,8 +162,11 @@ int		main(int argc, char **argv)
 	largMax = 100;
 	hautMax = 100;
 	absTmp = 100;
-	iterMax = 20 * (nbrTetri - 3);
+	iterMax = 60;
 	choix_boucle(nbrTetri);
 	affiche(clean);
+	printf("larg :     %d\n", largMax);
+	printf("haut :     %d\n", hautMax);
+	printf("abs  :     %d\n", absTmp);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/27 13:14:45 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/04 15:49:21 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/05 18:12:15 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -181,7 +181,7 @@ int	keepForm(int *t1, int *spc, int taille)
 		{
 			if (check8(t1) == 1)
 				return (1);
-		}
+		} 
 	}
 	else if (spc[0] == 4)
 	{
