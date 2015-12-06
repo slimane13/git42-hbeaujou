@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/06 17:10:59 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/06 17:49:25 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/06 19:15:12 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,6 @@ void	ft_boucle_f1_special(int flag[26])
 				nbrCourant, (4 * (nbrCourant + 1)), i);
 		testLarg = calc_larg(tmpCalc, tailleMax);
 		testHaut = calc_haut(tmpCalc, tailleMax);
-		affiche(tmpCalc);
-		printf("\n");
 		if ((testLarg < largMax && abs_minus(testLarg, testHaut) < absTmp) ||
 				(testHaut < hautMax && abs_minus(testLarg, testHaut) < absTmp))
 		{
