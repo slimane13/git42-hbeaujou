@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 10:06:41 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/03 18:42:03 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/06 15:20:28 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,12 +83,12 @@ void	choix_boucle_tier1(int nbr, int flag[26])
 	else if (nbr == 6)
 	{
 		nbrCourant7 = -1;
-		ft_boucle_f6(flag);
+		ft_boucle_f6_big(flag);
 	}
 	else if (nbr == 7)
 	{
 		nbrCourant8 = -1;
-		ft_boucle_f7(flag);
+		ft_boucle_f7_big(flag);
 	}
 	else if (nbr == 8)
 	{

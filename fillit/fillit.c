@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 11:56:10 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/06 11:24:06 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/06 15:41:28 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,6 +130,8 @@ int		main(int argc, char **argv)
 	nbrTetri = lireFile(argv[1]);
 	tailleMax = 2 * (nbrTetri);
 	ite = nbrTetri;
+	if (nbrTetri == 1)
+		tailleMax = 4;
 	if (!(points = malloc(sizeof(int *) * ite)))
 		return (0);
 	tetriList = (char **)malloc(sizeof(char *) * nbrTetri);
@@ -160,10 +162,20 @@ int		main(int argc, char **argv)
 	flagTRY = 1;
 	remp_blank(tmpCalc);
 	largMax = 100;
+	trouve = 0;
 	hautMax = 100;
 	absTmp = 100;
-	iterMax = 10 * nbrTetri;
-	choix_boucle(nbrTetri);
+	iterMax = 10 * nbrTetri + 10 * nbrTetri/7;
+	if (nbrTetri > 5)
+	{
+		while (trouve == 0)
+		{
+			choix_boucle(nbrTetri);
+			testMax++;
+		}
+	}
+	else
+		choix_boucle(nbrTetri);
 	affiche(clean);
 	return (0);
 }

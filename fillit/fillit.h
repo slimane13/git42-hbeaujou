@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 11:53:53 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/04 15:32:47 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/06 15:28:45 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,15 +58,25 @@ int check7_32(int *t1);
 int check8_32(int *t1);
 
 void ft_boucle_f1(int flag[26]);
+void ft_boucle_f1_big(int flag[26]);
 void ft_boucle_f2(int flag[26]);
+void ft_boucle_f2_big(int flag[26]);
 void ft_boucle_f3(int flag[26]);
+void ft_boucle_f3_big(int flag[26]);
 void ft_boucle_f4(int flag[26]);
+void ft_boucle_f4_big(int flag[26]);
 void ft_boucle_f5(int flag[26]);
+void ft_boucle_f5_big(int flag[26]);
 void ft_boucle_f6(int flag[26]);
+void ft_boucle_f6_big(int flag[26]);
 void ft_boucle_f7(int flag[26]);
+void ft_boucle_f7_big(int flag[26]);
 void ft_boucle_f8(int flag[26]);
+void ft_boucle_f8_big(int flag[26]);
 void ft_boucle_f9(int flag[26]);
+void ft_boucle_f9_big(int flag[26]);
 void ft_boucle_f10(int flag[26]);
+void ft_boucle_f10_big(int flag[26]);
 void ft_boucle_f11(int flag[26]);
 void ft_boucle_f12(int flag[26]);
 void ft_boucle_f13(int flag[26]);
@@ -99,6 +109,8 @@ extern int	**points;
 extern int **var;
 extern int nbrCourant;
 extern int nbrTetri;
+extern int testMax;
+extern int trouve;
 extern int *affichageLettre;
 
 extern int *clean;
@@ -129,33 +141,7 @@ extern int *clean25;
 extern int *clean26;
 
 extern int flagTRY;
-/*extern int flagF1;
-extern int flagF2;
-extern int flagF3;
-extern int flagF4;
-extern int flagF5;
-extern int flagF6;
-extern int flagF7;
-extern int flagF8;
-extern int flagF9;
-extern int flagF10;
-extern int flagF11;
-extern int flagF12;
-extern int flagF13;
-extern int flagF14;
-extern int flagF15;
-extern int flagF16;
-extern int flagF17;
-extern int flagF18;
-extern int flagF19;
-extern int flagF20;
-extern int flagF21;
-extern int flagF22;
-extern int flagF23;
-extern int flagF24;
-extern int flagF25;
-extern int flagF26;
-*/
+
 extern int nbrCourant;
 extern int nbrCourant2;
 extern int nbrCourant3;
