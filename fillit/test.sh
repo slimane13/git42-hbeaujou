@@ -1,2 +1,2 @@
-python map_gen.py 4 > sample44.txt
-time ./a.out sample44.txt
+python map_gen.py 5 > sample55.txt
+time ./a.out sample55.txt

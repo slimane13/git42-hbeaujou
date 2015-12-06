@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/01 19:39:39 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/03 18:14:29 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/06 11:12:29 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	ft_boucle_f6(int flag[26])
 		flag[5] = 1;
 	}
 	ft_strcpy_int(clean6, tmpCalc, tailleMax * tailleMax);
-	while (i6 < iterMax && testHaut6 < hautMax + 1 && absTmp != nbrTetri)
+	while (i6 < iterMax && testHaut6 < hautMax + 2 && absTmp != nbrTetri)
 	{
 		tampon = resitue(clean6, (4 * nbrCourant6), tailleMax);
 		tmpCalc = try_tetris_2(tampon, points[nbrCourant6], tailleMax, var,

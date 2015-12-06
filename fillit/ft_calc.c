@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/29 16:53:02 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/05 18:54:59 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/06 10:58:30 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,14 @@ int	calc_larg(int *tab, int taille)
 		i++;
 	}
 	largMaxTest++;
-	return(largMaxTest - largMin);
+/*	if (i4 == 0 && i3 == 2 && i2 == 11)
+	{
+		printf("%d", largMaxTest);
+		printf("   ");
+		printf("%d\n", largMin);
+	}*/
+//	return(largMaxTest - largMin);
+	return (largMaxTest);
 }
 
 int	calc_haut(int *tab, int taille)
