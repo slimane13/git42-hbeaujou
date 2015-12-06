@@ -1,43 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print.c                                         :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/29 12:59:31 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/06 12:30:12 by hbeaujou         ###   ########.fr       */
+/*   Created: 2015/11/23 14:25:54 by hbeaujou          #+#    #+#             */
+/*   Updated: 2015/12/02 08:43:59 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-static void	ft_display(int c)
+int	*ft_strdup_int(int *s, int taille)
 {
-	if (c == 0)
-		printf(".");
-	else
-		printf("%c", 'Z' - 'A' - c + 40 + nbrTetri);
-}
+	int *d;
 
-void		affiche(int *final)
-{
-	int i;
-	int j;
-	int taille;
-
-	i = 0;
-	j = 0;
-	taille = tailleMax;
-	while (i/taille < absTmp)
-	{
-		if (i % taille < absTmp - 1)
-			ft_display(final[i]);
-		else if (i % taille == absTmp - 1)
-		{
-			ft_display(final[i]);
-			printf("\n");
-		}
-		i++;
-	}
+	d = ft_memalloc(taille);
+	if (d != NULL)
+		ft_strcpy_int(d, s, 4);
+	return (d);
 }

@@ -1,43 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print.c                                         :+:      :+:    :+:   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/29 12:59:31 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/06 12:30:12 by hbeaujou         ###   ########.fr       */
+/*   Created: 2015/11/23 14:25:39 by hbeaujou          #+#    #+#             */
+/*   Updated: 2015/12/02 08:36:13 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-static void	ft_display(int c)
-{
-	if (c == 0)
-		printf(".");
-	else
-		printf("%c", 'Z' - 'A' - c + 40 + nbrTetri);
-}
-
-void		affiche(int *final)
+void	ft_strcpy_int(int *dest, int *src, int taille)
 {
 	int i;
-	int j;
-	int taille;
 
 	i = 0;
-	j = 0;
-	taille = tailleMax;
-	while (i/taille < absTmp)
+	while (i < taille)
 	{
-		if (i % taille < absTmp - 1)
-			ft_display(final[i]);
-		else if (i % taille == absTmp - 1)
-		{
-			ft_display(final[i]);
-			printf("\n");
-		}
+		dest[i] = src[i];
 		i++;
 	}
 }

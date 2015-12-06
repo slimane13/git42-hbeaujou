@@ -1,43 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print.c                                         :+:      :+:    :+:   */
+/*   ft_memalloc.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/29 12:59:31 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/06 12:30:12 by hbeaujou         ###   ########.fr       */
+/*   Created: 2015/11/23 15:26:35 by hbeaujou          #+#    #+#             */
+/*   Updated: 2015/11/27 17:42:53 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-static void	ft_display(int c)
+int	*ft_memalloc_int(size_t size)
 {
-	if (c == 0)
-		printf(".");
-	else
-		printf("%c", 'Z' - 'A' - c + 40 + nbrTetri);
-}
-
-void		affiche(int *final)
-{
-	int i;
-	int j;
-	int taille;
+	void	*memory;
+	int		i;
 
 	i = 0;
-	j = 0;
-	taille = tailleMax;
-	while (i/taille < absTmp)
-	{
-		if (i % taille < absTmp - 1)
-			ft_display(final[i]);
-		else if (i % taille == absTmp - 1)
-		{
-			ft_display(final[i]);
-			printf("\n");
-		}
-		i++;
-	}
+	if (!(memory = (int *)malloc(sizeof(int) * size)))
+		return (NULL);
+	return (memory);
 }
