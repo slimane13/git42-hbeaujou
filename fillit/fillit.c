@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 11:56:10 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/06 15:41:28 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/06 15:49:10 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,18 +147,6 @@ int		main(int argc, char **argv)
 	tmpCalc = (int *)malloc(sizeof(int) * (tailleMax * tailleMax));
 	tampon = (int *)malloc(sizeof(int) * tailleMax); // define direct final = points[0]
 	affichageLettre = (int *)malloc(sizeof(int) * (tailleMax * tailleMax));
-	tampon[0] = -1;
-	tampon[1] = -1;
-	tampon[2] = -1;
-	tampon[3] = -1;
-	tampon[4] = -1;
-	tampon[5] = -1;
-	tampon[6] = -1;
-	tampon[7] = -1;
-	tampon[8] = -1;
-	tampon[9] = -1;
-	tampon[10] = -1;
-	tampon[11] = -1;
 	flagTRY = 1;
 	remp_blank(tmpCalc);
 	largMax = 100;
