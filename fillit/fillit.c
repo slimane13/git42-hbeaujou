@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 11:56:10 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/06 15:49:10 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/06 17:50:14 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,7 +145,7 @@ int		main(int argc, char **argv)
 	flagTRY = 0;
 	final = (int *)malloc(sizeof(int) * (tailleMax * tailleMax));
 	tmpCalc = (int *)malloc(sizeof(int) * (tailleMax * tailleMax));
-	tampon = (int *)malloc(sizeof(int) * tailleMax); // define direct final = points[0]
+	tampon = (int *)malloc(sizeof(int) * tailleMax);
 	affichageLettre = (int *)malloc(sizeof(int) * (tailleMax * tailleMax));
 	flagTRY = 1;
 	remp_blank(tmpCalc);
@@ -164,6 +164,11 @@ int		main(int argc, char **argv)
 	}
 	else
 		choix_boucle(nbrTetri);
+	printf("\n");
+	printf("taille  :  %d\n", tailleMax);
+	printf("tetri  :  %d\n", nbrTetri);
+	printf("absTmp  :  %d\n", absTmp);
+	printf("\n");
 	affiche(clean);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 11:53:53 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/06 15:28:45 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/06 17:45:29 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int		calc_larg(int *tab, int taille);
 int		calc_haut(int *tab, int taille);
 int		abs_minus(int a, int b);
 void	affiche(int *final);
+void	affiche_special(int *final);
 void	remp_blank(int *tab);
 void	choix_boucle(int nbr);
 void	choix_boucle_tier1(int nbr, int flag[26]);
@@ -59,8 +60,10 @@ int check8_32(int *t1);
 
 void ft_boucle_f1(int flag[26]);
 void ft_boucle_f1_big(int flag[26]);
+void ft_boucle_f1_special(int flag[26]);
 void ft_boucle_f2(int flag[26]);
 void ft_boucle_f2_big(int flag[26]);
+void ft_boucle_f2_special(int flag[26]);
 void ft_boucle_f3(int flag[26]);
 void ft_boucle_f3_big(int flag[26]);
 void ft_boucle_f4(int flag[26]);
