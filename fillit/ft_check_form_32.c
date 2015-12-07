@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/04 15:13:14 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/07 11:47:22 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/07 15:43:58 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	check1_32(int *t1)
 {
-	if (t1[0]/tailleMax < tailleMax - 1 && t1[0]%tailleMax < tailleMax - 2)
+	if (t1[0]/tailleMax < tailleMax - 1 && t1[0]%tailleMax < tailleMax - 1)
 	{
 		if (t1[3]/tailleMax > 0 && t1[3]%tailleMax < tailleMax - 2)
 			return (1);

@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 11:53:53 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/07 11:06:33 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/07 13:32:51 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 
 int		*try_tetris_2(int *t1, int *t2, int taille, int **spc, int k, int passage, int target);
 int		*try_tetris_2_special(int *t1, int *t2, int taille, int **spc, int k, int passage, int target);
+int		*try_tetris_2_2(int *t1, int *t2, int taille, int **spc, int k, int passage, int target);
 int		*tab_char_to_int(char *str);
 int		*ft_strdup_int(int *s, int taille);
 void 	ft_strcpy_int(int *dest, int *src, int taille);

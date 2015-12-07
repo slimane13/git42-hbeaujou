@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/04 14:56:59 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/04 15:46:54 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/07 15:29:11 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	check1(int *t1)
 
 int	check2(int *t1)
 {
-	if (t1[0]/tailleMax < tailleMax - 2 && t1[1]%tailleMax < tailleMax - 1)
+	if (t1[0]/tailleMax < tailleMax - 2 && t1[0]%tailleMax < tailleMax - 1)
 	{
 		if (t1[3]/tailleMax > 1 && t1[3]%tailleMax > 0)
 			return (1);
