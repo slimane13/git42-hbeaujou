@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/27 13:14:45 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/06 11:02:22 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/07 11:46:25 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,48 +144,48 @@ int	keepForm(int *t1, int *spc, int taille)
 		pos = checkForm32(esp);
 		if (pos == 1)
 		{
-			if (check1(t1) == 1)
+			if (check1_32(t1) == 1)
 				return (1);
 		}
 		else if (pos == 2)
 		{
-			if (check2(t1) == 1)
+			if (check2_32(t1) == 1)
 				return (1);
 		}
 		else if (pos == 3)
 		{
-			if (check3(t1) == 1)
+			if (check3_32(t1) == 1)
 				return (1);
 		}
 		else if (pos == 4)
 		{
-			if (check4(t1) == 1)
+			if (check4_32(t1) == 1)
 				return (1);
 		}
 		else if (pos == 5)
 		{
-			if (check5(t1) == 1)
+			if (check5_32(t1) == 1)
 				return (1);
 		}
 		else if (pos == 6)
 		{
-			if (check6(t1) == 1)
+			if (check6_32(t1) == 1)
 				return (1);
 		}
 		else if (pos == 7)
 		{
-			if (check7(t1) == 1)
+			if (check7_32(t1) == 1)
 				return (1);
 		}
 		else if (pos == 8)
 		{
-			if (check8(t1) == 1)
+			if (check8_32(t1) == 1)
 				return (1);
 		} 
 	}
 	else if (spc[0] == 4)
 	{
-		if (t1[0]%taille < taille - 4)
+		if (t1[0]%taille == 0)
 			return (1);
 	} 
 	return (0);

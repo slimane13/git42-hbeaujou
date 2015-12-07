@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 11:56:10 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/06 19:10:08 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/07 12:15:38 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,9 +129,12 @@ int		main(int argc, char **argv)
 		return (0);
 	nbrTetri = lireFile(argv[1]);
 	tailleMax = 2 * (nbrTetri);
-	ite = nbrTetri;
-	if (nbrTetri == 1)
+	if (nbrTetri == 1 || nbrTetri == 0)
+	{
 		tailleMax = 4;
+		nbrTetri++;
+	}
+	ite = nbrTetri;
 	if (!(points = malloc(sizeof(int *) * ite)))
 		return (0);
 	tetriList = (char **)malloc(sizeof(char *) * nbrTetri);
@@ -153,8 +156,9 @@ int		main(int argc, char **argv)
 	trouve = 0;
 	hautMax = 100;
 	absTmp = 100;
+	testMax = nbrTetri - nbrTetri/3;
 	iterMax = 10 * nbrTetri + 10 * nbrTetri/7;
-	if (nbrTetri > 5)
+	if (nbrTetri > 2)
 	{
 		while (trouve == 0)
 		{
@@ -163,12 +167,9 @@ int		main(int argc, char **argv)
 		}
 	}
 	else
+	{
 		choix_boucle(nbrTetri);
-	printf("\n");
-	printf("taille  :  %d\n", tailleMax);
-	printf("tetri  :  %d\n", nbrTetri);
-	printf("absTmp  :  %d\n", absTmp);
-	printf("\n");
+	}
 	affiche(clean);
 	return (0);
 }
