@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/29 12:59:31 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/06 19:03:42 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/07 17:45:02 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,28 +40,4 @@ void		affiche(int *final)
 		}
 		i++;
 	}
-	printf("\n");
-}
-
-void		affiche_special(int *final)
-{
-	int i;
-	int j;
-	int taille;
-
-	i = 0;
-	j = 0;
-	taille = tailleMax;
-	while (i/taille < 8)
-	{
-		if (i % taille < 7)
-			ft_display(final[i]);
-		else if (i % taille == 7)
-		{
-			ft_display(final[i]);
-			printf("\n");
-		}
-		i++;
-	}
-	printf("\n");
 }

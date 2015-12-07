@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 10:06:41 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/07 13:27:24 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/07 18:19:35 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ void	choix_boucle_tier1(int nbr, int flag[26])
 	else if (nbr == 9)
 	{
 		nbrCourant10 = -1;
-		ft_boucle_f9(flag);
+		ft_boucle_f9_big(flag);
 	}
 	else
 	{
@@ -108,23 +108,50 @@ void	choix_boucle_tier1(int nbr, int flag[26])
 void	choix_boucle_tier2(int nbr, int flag[26])
 {
 	if (nbr == 10)
-		ft_boucle_f10(flag);
+	{
+		nbrCourant11 = -1;
+		ft_boucle_f10_big(flag);
+	}
 	else if (nbr == 11)
-		ft_boucle_f11(flag);
+	{
+		nbrCourant12 = -1;
+		ft_boucle_f11_big(flag);
+	}
 	else if (nbr == 12)
-		ft_boucle_f12(flag);
+	{
+		nbrCourant13 = -1;
+		ft_boucle_f12_big(flag);
+	}
 	else if (nbr == 13)
-		ft_boucle_f13(flag);
+	{
+		nbrCourant14 = -1;
+		ft_boucle_f13_big(flag);
+	}
 	else if (nbr == 14)
-		ft_boucle_f14(flag);
+	{
+		nbrCourant15 = -1;
+		ft_boucle_f14_big(flag);
+	}
 	else if (nbr == 15)
-		ft_boucle_f15(flag);
+	{
+		nbrCourant16 = -1;
+		ft_boucle_f15_big(flag);
+	}
 	else if (nbr == 16)
-		ft_boucle_f16(flag);
+	{
+		nbrCourant17 = -1;
+//		ft_boucle_f16_big(flag);
+	}
 	else if (nbr == 17)
-		ft_boucle_f17(flag);
+	{
+		nbrCourant18 = -1;
+//		ft_boucle_f17_big(flag);
+	}
 	else if (nbr == 18)
-		ft_boucle_f18(flag);
+	{
+		nbrCourant19 = -1;
+//		ft_boucle_f18_big(flag);
+	}
 	else
 	{
 	}

@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 11:53:53 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/07 13:32:51 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/07 18:18:18 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,21 +86,37 @@ void ft_boucle_f9_big(int flag[26]);
 void ft_boucle_f10(int flag[26]);
 void ft_boucle_f10_big(int flag[26]);
 void ft_boucle_f11(int flag[26]);
+void ft_boucle_f11_big(int flag[26]);
 void ft_boucle_f12(int flag[26]);
+void ft_boucle_f12_big(int flag[26]);
 void ft_boucle_f13(int flag[26]);
+void ft_boucle_f13_big(int flag[26]);
 void ft_boucle_f14(int flag[26]);
+void ft_boucle_f14_big(int flag[26]);
 void ft_boucle_f15(int flag[26]);
+void ft_boucle_f15_big(int flag[26]);
 void ft_boucle_f16(int flag[26]);
+void ft_boucle_f16_big(int flag[26]);
 void ft_boucle_f17(int flag[26]);
+void ft_boucle_f17_big(int flag[26]);
 void ft_boucle_f18(int flag[26]);
+void ft_boucle_f18_big(int flag[26]);
 void ft_boucle_f19(int flag[26]);
+void ft_boucle_f19_big(int flag[26]);
 void ft_boucle_f20(int flag[26]);
+void ft_boucle_f20_big(int flag[26]);
 void ft_boucle_f21(int flag[26]);
+void ft_boucle_f21_big(int flag[26]);
 void ft_boucle_f22(int flag[26]);
+void ft_boucle_f22_big(int flag[26]);
 void ft_boucle_f23(int flag[26]);
+void ft_boucle_f23_big(int flag[26]);
 void ft_boucle_f24(int flag[26]);
+void ft_boucle_f24_big(int flag[26]);
 void ft_boucle_f25(int flag[26]);
+void ft_boucle_f25_big(int flag[26]);
 void ft_boucle_f26(int flag[26]);
+void ft_boucle_f26_big(int flag[26]);
 
 extern int *resolution;
 extern int	*tampon;
@@ -162,6 +178,13 @@ extern int nbrCourant9;
 extern int nbrCourant10;
 extern int nbrCourant11;
 extern int nbrCourant12;
+extern int nbrCourant13;
+extern int nbrCourant14;
+extern int nbrCourant15;
+extern int nbrCourant16;
+extern int nbrCourant17;
+extern int nbrCourant18;
+extern int nbrCourant19;
 
 extern int i2;
 extern int i3;

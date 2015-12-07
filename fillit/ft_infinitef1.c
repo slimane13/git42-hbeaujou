@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/01 14:18:16 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/06 19:10:21 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/07 18:18:07 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,13 @@ int	nbrCourant9;
 int	nbrCourant10;
 int	nbrCourant11;
 int	nbrCourant12;
+int	nbrCourant13;
+int	nbrCourant14;
+int	nbrCourant15;
+int	nbrCourant16;
+int	nbrCourant17;
+int	nbrCourant18;
+int	nbrCourant19;
 
 int *clean;
 int *clean2;
