@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 11:53:53 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/08 16:51:28 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/08 17:32:37 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,31 +143,5 @@ extern int *clean25;
 extern int *clean26;
 
 extern int flagTRY;
-
-extern int i2;
-extern int i3;
-extern int i4;
-extern int i5;
-extern int i6;
-extern int i7;
-extern int i8;
-extern int i9;
-extern int i10;
-extern int i11;
-extern int i12;
-extern int i13;
-extern int i14;
-extern int i15;
-extern int i16;
-extern int i17;
-extern int i18;
-extern int i19;
-extern int i20;
-extern int i21;
-extern int i22;
-extern int i23;
-extern int i24;
-extern int i25;
-extern int i26;
 
 #endif

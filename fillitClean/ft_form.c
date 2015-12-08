@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/27 13:14:45 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/08 17:25:58 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/08 17:27:16 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int	check_form_32(int esp[5])
 	return (0);
 }
 
-int return_form(int *t1, int taille, int indice, int esp[5])
+int	return_form(int *t1, int taille, int indice, int esp[5])
 {
 	if (indice == 1)
 	{

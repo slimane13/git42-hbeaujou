@@ -6,13 +6,13 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/08 16:44:27 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/08 16:55:58 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/08 17:28:27 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int first_half_32(int pos, int *t1)
+int	first_half_32(int pos, int *t1)
 {
 	if (pos == 1)
 	{
@@ -37,7 +37,7 @@ int first_half_32(int pos, int *t1)
 	return (0);
 }
 
-int second_half_32(int pos, int *t1)
+int	second_half_32(int pos, int *t1)
 {
 	if (pos == 5)
 	{
