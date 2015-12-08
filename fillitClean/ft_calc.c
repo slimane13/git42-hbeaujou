@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/29 16:53:02 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/06 10:58:30 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/08 14:07:10 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,69 +15,56 @@
 int	calc_larg(int *tab, int taille)
 {
 	int i;
-	int largMaxTest;
+	int larg_max_test;
 	int largeur;
-	int	largMin;
+	int	larg_min;
 
 	i = 0;
 	largeur = 0;
-	largMaxTest = -1;
-	largMin = 10;
-	while (i < taille*taille)
+	larg_max_test = -1;
+	larg_min = 10;
+	while (i < taille * taille)
 	{
-		largeur = i%taille;
-		if (tab[i] != 0 && largeur > largMaxTest)
-			largMaxTest = largeur;
-		else if (tab[i] != 0 && largeur < largMin)
-			largMin = largeur;
-		else
-		{
-		}
+		largeur = i % taille;
+		if (tab[i] != 0 && largeur > larg_max_test)
+			larg_max_test = largeur;
+		else if (tab[i] != 0 && largeur < larg_min)
+			larg_min = largeur;
 		i++;
 	}
-	largMaxTest++;
-/*	if (i4 == 0 && i3 == 2 && i2 == 11)
-	{
-		printf("%d", largMaxTest);
-		printf("   ");
-		printf("%d\n", largMin);
-	}*/
-//	return(largMaxTest - largMin);
-	return (largMaxTest);
+	larg_max_test++;
+	return (larg_max_test);
 }
 
 int	calc_haut(int *tab, int taille)
 {
 	int i;
-	int hautMaxTest;
+	int haut_max_test;
 	int hauteur;
-	int hautMin;
-	int flagM;
+	int haut_min;
+	int flag_m;
 
 	i = 0;
-	flagM = 0;
-	hautMaxTest = -1;
-	hautMin = 0;
+	flag_m = 0;
+	haut_max_test = -1;
+	haut_min = 0;
 	hauteur = 0;
-	while (i < taille*taille)
+	while (i < taille * taille)
 	{
-		hauteur = i/taille + 1;
-		if (tab[i] != 0 && hauteur > hautMaxTest)
+		hauteur = i / taille + 1;
+		if (tab[i] != 0 && hauteur > haut_max_test)
 		{
-			if (flagM == 0)
+			if (flag_m == 0)
 			{
-				hautMin = hauteur;
-				flagM = 1;
+				haut_min = hauteur;
+				flag_m = 1;
 			}
-			hautMaxTest = hauteur;
-		}
-		else
-		{
+			haut_max_test = hauteur;
 		}
 		i++;
 	}
-	hautMaxTest++;
-	return(hautMaxTest - hautMin);
+	haut_max_test++;
+	return (haut_max_test - haut_min);
 }
 
 int	abs_minus(int a, int b)

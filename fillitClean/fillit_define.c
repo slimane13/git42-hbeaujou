@@ -6,13 +6,13 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/27 16:17:14 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/04 14:30:10 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/08 13:58:33 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-void rewind_tetris(int *tab, int i)
+void	rewind_tetris(int *tab, int i)
 {
 	if (tab[0] > i)
 	{
@@ -39,7 +39,7 @@ void rewind_tetris(int *tab, int i)
 	}
 }
 
-int *resitue(int *tab, int taille, int tailleMax)
+int		*resitue(int *tab, int taille, int taille_max)
 {
 	int *passe;
 	int i;
@@ -48,7 +48,7 @@ int *resitue(int *tab, int taille, int tailleMax)
 	i = 0;
 	count = 0;
 	passe = (int *)malloc(sizeof(int) * (4 + 4 * taille));
-	while (i < (tailleMax * tailleMax))
+	while (i < (taille_max * taille_max))
 	{
 		if (tab[i] != 0)
 		{
@@ -63,7 +63,7 @@ int *resitue(int *tab, int taille, int tailleMax)
 	return (passe);
 }
 
-int **struct_to_tab(t_map *beg, char **tetriList)
+int		**struct_to_tab(t_map *beg, char **tetriList)
 {
 	t_map *tmp;
 	int	**tab;
@@ -90,4 +90,3 @@ int **struct_to_tab(t_map *beg, char **tetriList)
 	}
 	return (tab);
 }
-
