@@ -6,19 +6,19 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 11:56:10 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/08 13:19:52 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/08 14:06:03 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "read.h"
 #include "fillit.h"
 
-int		lireFile(char *str)
+int		lire_file(char *str)
 {
-	int rd;
-	char c;
-	int flag;
-	int count;
+	int		rd;
+	char	c;
+	int		flag;
+	int		count;
 
 	rd = open(str, O_RDONLY);
 	flag = 0;
@@ -37,7 +37,7 @@ int		lireFile(char *str)
 	return (count);
 }
 
-int 	**lireToTab(char *str, char **tetriList)
+int		**lireToTab(char *str, char **tetriList)
 {
 	int rd;
 	int **tab;
@@ -77,48 +77,6 @@ int		*situePoint(char *str)
 	return (pos);
 }
 
-char	**recupTetri(int a, int max, char *s)
-{
-	char **tableTetri;
-	int i;
-	int j;
-	int rd;
-	char c;
-	int flag;
-	
-	i = 0;
-	j = 0;
-	flag = 0;
-	if (!(tableTetri = malloc(sizeof(char *) * a)))
-		return (NULL);
-	while (i < a)
-	{
-		tableTetri[i] = malloc(sizeof(char ) * (max * max));
-		i++;
-	}
-	i = 0;
-	rd = open(s, O_RDONLY);
-	while (read(rd, &c, 1))
-	{
-		if (c == '\n')
-			flag++;
-		else
-			flag = 0;
-		if (flag == 2)
-		{
-			tableTetri[i][j] = '\0';
-			i++;
-			j = 0;
-		}
-		else
-		{
-			tableTetri[i][j] = c;
-			j++;
-		}
-	}
-	return (tableTetri);
-}
-
 int		main(int argc, char **argv)
 {
 	char	**tetriList;
@@ -127,7 +85,7 @@ int		main(int argc, char **argv)
 
 	if (argc != 2)
 		return (0);
-	nbrTetri = lireFile(argv[1]);
+	nbrTetri = lire_file(argv[1]);
 	taille_max = 2 * (nbrTetri);
 	if (nbrTetri == 1 || nbrTetri == 0)
 	{
@@ -156,12 +114,12 @@ int		main(int argc, char **argv)
 	trouve = 0;
 	haut_max = 100;
 	absTmp = 100;
-	test_max = nbrTetri - nbrTetri/3;
+	test_max = nbrTetri - nbrTetri / 3;
 	if (nbrTetri > 9)
 	{
-		test_max = nbrTetri/2 + 1;
+		test_max = nbrTetri / 2 + 1;
 	}
-	iter_max = 60;//10 * nbrTetri + 10 * nbrTetri/4;
+	iter_max = 60;
 	if (nbrTetri == 2)
 		iter_max = 14;
 	if (nbrTetri > 2)
