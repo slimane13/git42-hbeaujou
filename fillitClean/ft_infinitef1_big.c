@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/06 15:18:01 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/08 18:56:46 by ebouther         ###   ########.fr       */
+/*   Updated: 2015/12/08 19:03:37 by ebouther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,31 +32,31 @@ int trouve;
 int *affichageLettre;
 
 int *clean;
-int *clean2;
-int *clean3;
-int *clean4;
-int *clean5;
-int *clean6;
-int *clean7;
-int *clean8;
-int *clean9;
-int *clean10;
-int *clean11;
-int *clean12;
-int *clean13;
-int *clean14;
-int *clean15;
-int *clean16;
-int *clean17;
-int *clean18;
-int *clean19;
-int *clean20;
-int *clean21;
-int *clean22;
-int *clean23;
-int *clean24;
-int *clean25;
-int *clean26;
+int *backtrack;
+int *backtrack;
+int *backtrack;
+int *backtrack;
+int *backtrack;
+int *backtrack;
+int *backtrack;
+int *backtrack;
+int *backtrack0;
+int *backtrack1;
+int *backtrack2;
+int *backtrack3;
+int *backtrack4;
+int *backtrack5;
+int *backtrack6;
+int *backtrack7;
+int *backtrack8;
+int *backtrack9;
+int *backtrack0;
+int *backtrack1;
+int *backtrack2;
+int *backtrack3;
+int *backtrack4;
+int *backtrack5;
+int *backtrack6;
 
 void	ft_boucle_f1_big(int flag[26], int nbr_courant[26])
 {
@@ -120,20 +120,21 @@ void	ft_boucle_f3_big(int flag[26], int nbr_courant[26])
 	int	test_haut3;
 	int	test_larg3;
 	int i3;
+	static int	*backtrack;
 
 	i3 = 0;
 	test_haut3 = 0;
 	test_larg3 = 0;
 	if (flag[2] == 0)
 	{
-		clean3 = (int *)malloc(sizeof(int) * (taille_max * taille_max));
+		backtrack = (int *)malloc(sizeof(int) * (taille_max * taille_max));
 		nbr_courant[2] = nbr_courant[3] + 1;
 		flag[2] = 1;
 	}
-	ft_strcpy_int(clean3, tmpCalc, taille_max * taille_max);
+	ft_strcpy_int(backtrack, tmpCalc, taille_max * taille_max);
 	while (i3 < iter_max && test_haut3 < test_max + 1 && trouve == 0)
 	{
-		calc_attrib(clean3, nbr_courant, i3, &test_larg3, &test_haut3, 3);
+		calc_attrib(backtrack, nbr_courant, i3, &test_larg3, &test_haut3, 3);
 		if (test_larg3 < test_max + 1)
 		{
 			tampon = resitue(tmpCalc, (4 * nbr_courant[2]), taille_max);
@@ -148,20 +149,21 @@ void	ft_boucle_f4_big(int flag[26], int nbr_courant[26])
 	int	test_haut4;
 	int	test_larg4;
 	int i4;
+	static int *backtrack;
 
 	i4 = 0;
 	test_haut4 = 0;
 	test_larg4 = 0;
 	if (flag[3] == 0)
 	{
-		clean4 = (int *)malloc(sizeof(int) * (taille_max * taille_max));
+		backtrack = (int *)malloc(sizeof(int) * (taille_max * taille_max));
 		nbr_courant[3] = nbr_courant[4] + 1;
 		flag[3] = 1;
 	}
-	ft_strcpy_int(clean4, tmpCalc, taille_max * taille_max);
+	ft_strcpy_int(backtrack, tmpCalc, taille_max * taille_max);
 	while (i4 < iter_max && test_haut4 < test_max + 1 && trouve == 0)
 	{
-		calc_attrib(clean4, nbr_courant, i4, &test_larg4, &test_haut4, 4);
+		calc_attrib(backtrack, nbr_courant, i4, &test_larg4, &test_haut4, 4);
 		if (test_larg4 < test_max + 1)
 		{
 			tampon = resitue(tmpCalc, (4 * nbr_courant[3]), taille_max);
@@ -176,20 +178,21 @@ void	ft_boucle_f5_big(int flag[26], int nbr_courant[26])
 	int	test_haut5;
 	int	test_larg5;
 	int i5;
+	static int	*backtrack;
 
 	i5 = 0;
 	test_larg5 = 0;
 	test_haut5 = 0;
 	if (flag[4] == 0)
 	{
-		clean5 = (int *)malloc(sizeof(int) * (taille_max * taille_max));
+		backtrack = (int *)malloc(sizeof(int) * (taille_max * taille_max));
 		nbr_courant[4] = nbr_courant[5] + 1;
 		flag[4] = 1;
 	}
-	ft_strcpy_int(clean5, tmpCalc, taille_max * taille_max + 1);
+	ft_strcpy_int(backtrack, tmpCalc, taille_max * taille_max + 1);
 	while (i5 < iter_max && test_haut5 < test_max + 1 && trouve == 0)
 	{
-		calc_attrib(clean5, nbr_courant, i5, &test_larg5, &test_haut5, 5);
+		calc_attrib(backtrack, nbr_courant, i5, &test_larg5, &test_haut5, 5);
 		if (test_larg5 < test_max + 1)
 		{
 			tampon = resitue(tmpCalc, (4 * nbr_courant[4]), taille_max);
