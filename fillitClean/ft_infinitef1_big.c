@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/06 15:18:01 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/08 18:13:08 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/08 18:56:46 by ebouther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,23 +88,24 @@ void	ft_boucle_f1_big(int flag[26], int nbr_courant[26])
 
 void	ft_boucle_f2_big(int flag[26], int nbr_courant[26])
 {
-	int	test_haut2;
-	int	test_larg2;
-	int i2;
+	int			test_haut2;
+	int			test_larg2;
+	int 		i2;
+	static int	*backtrack;
 
 	i2 = 0;
 	test_haut2 = 0;
 	test_larg2 = 0;
 	if (flag[1] == 0)
 	{
-		clean2 = (int *)malloc(sizeof(int) * (taille_max * taille_max));
+		backtrack = (int *)malloc(sizeof(int) * (taille_max * taille_max));
 		nbr_courant[1] = nbr_courant[2] + 1;
 		flag[1] = 1;
 	}
-	ft_strcpy_int(clean2, tmpCalc, taille_max * taille_max);
+	ft_strcpy_int(backtrack, tmpCalc, taille_max * taille_max);
 	while (i2 < iter_max && test_haut2 < test_max + 1 && trouve == 0)
 	{
-		calc_attrib(clean2, nbr_courant, i2, &test_larg2, &test_haut2, 2);
+		calc_attrib(backtrack, nbr_courant, i2, &test_larg2, &test_haut2, 2);
 		if (test_larg2 < test_max + 1)
 		{
 			tampon = resitue(tmpCalc, (4 * nbr_courant[1]), taille_max);
