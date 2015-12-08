@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 17:26:23 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/06 11:16:02 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/08 13:48:05 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ int		*try_tetris_2(int *t1, int *t2, int taille, int **spc, int k, int passage, 
 	j = 0;
 	flag = 0;
 	rewind_tetris(t2, target);
-//	while (!isValid(t2, taille, spc[k]) || overlap_3(t1, t2, passage))
 	while (overlap_3(t1, t2, passage))
 		assignSpot(t2);
 	while (j < taille * taille)
@@ -83,7 +82,7 @@ int		*try_tetris_2(int *t1, int *t2, int taille, int **spc, int k, int passage, 
 		}
 		if (flag == 0)
 		{
-			if (j == t2[0] || j == t2[1] || j == t2[2] || j == t2[3]) //&& flagTRY == 1)
+			if (j == t2[0] || j == t2[1] || j == t2[2] || j == t2[3])
 				final[j] = affichageLettre[j] + 1;
 			else
 				final[j] = 0;
