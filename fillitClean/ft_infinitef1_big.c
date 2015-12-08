@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/06 15:18:01 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/08 16:01:44 by ebouther         ###   ########.fr       */
+/*   Updated: 2015/12/08 16:12:54 by ebouther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ void	ft_boucle_f1_big(int flag[26], int nbrCourant[26])
 {
 	int i;
 	int haut_max1;
-	static int clean;
 	i = 0;
 	if (flag[0] == 0)
 	{
@@ -90,7 +89,8 @@ int		*ft_init_clean(int nbrCourant[26], int i, int flag[26])
 {
 	int *clean42;
 
-	clean42 = (int *)malloc(sizeof(int) * (taille_max * taille_max));
+	if (!(clean42 = (int *)malloc(sizeof(int) * (taille_max * taille_max))))
+		ft_error_exit();
 	nbrCourant[i] = nbrCourant[i + 1] + 1;
 	//A enlever
 	flag[i] = 1;
@@ -103,11 +103,13 @@ void	ft_boucle_f2_big(int flag[26], int nbrCourant[26])
 	int	test_haut2;
 	int	test_larg2;
 	int i2;
-	static int *clean42 = ft_init_clean(nbrCourant, 1, flag);
+	static int *clean42;
+	
+	if (!clean42)
+		clean42 = ft_init_clean(nbrCourant, 1, flag);
 	i2 = 0;
 	test_haut2 = 0;
 	test_larg2 = 0;
-
 	ft_strcpy_int(clean42, tmpCalc, taille_max * taille_max);
 	while (i2 < iter_max && test_haut2 < test_max + 1 && trouve == 0)
 	{
