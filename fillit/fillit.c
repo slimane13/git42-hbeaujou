@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 11:56:10 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/07 19:03:24 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/08 14:23:21 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,8 +156,12 @@ int		main(int argc, char **argv)
 	trouve = 0;
 	hautMax = 100;
 	absTmp = 100;
-	testMax = nbrTetri - nbrTetri/4;
-	iterMax = 100;//10 * nbrTetri + 10 * nbrTetri/4;
+	testMax = nbrTetri - nbrTetri/3;
+	if (nbrTetri > 9)
+	{
+		testMax = nbrTetri/2 + 1;
+	}
+	iterMax = 50;//10 * nbrTetri + 10 * nbrTetri/4;
 	if (nbrTetri == 2)
 		iterMax = 14;
 	if (nbrTetri > 2)

@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 10:06:41 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/07 18:19:35 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/08 12:51:37 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,21 +160,50 @@ void	choix_boucle_tier2(int nbr, int flag[26])
 void	choix_boucle_tier3(int nbr, int flag[26])
 {
 	if (nbr == 19)
-		ft_boucle_f19(flag);
+	{
+//		nbrCourant20 = -1;
+//		ft_boucle_f119_big(flag);
+	}
 	else if (nbr == 20)
-		ft_boucle_f20(flag);
+	{
+//		nbrCourant21 = -1;
+//		ft_boucle_f20_big(flag);
+	}
 	else if (nbr == 21)
-		ft_boucle_f21(flag);
+	{
+//		nbrCourant22 = -1;
+//		ft_boucle_f21_big(flag);
+	}
 	else if (nbr == 22)
-		ft_boucle_f22(flag);
+	{
+//		nbrCourant23 = -1;
+//		ft_boucle_f22_big(flag);
+	}
 	else if (nbr == 23)
-		ft_boucle_f23(flag);
+	{
+//		nbrCourant24 = -1;
+//		ft_boucle_f23_big(flag);
+	}
 	else if (nbr == 24)
-		ft_boucle_f24(flag);
+	{
+//		nbrCourant25 = -1;
+//		ft_boucle_f24_big(flag);
+	}
 	else if (nbr == 25)
-		ft_boucle_f25(flag);
+	{
+//		nbrCourant26 = -1;
+//		ft_boucle_f25_big(flag);
+	}
 	else if (nbr == 26)
-		ft_boucle_f26(flag);
+	{
+//		nbrCourant27 = -1;
+//		ft_boucle_f26_big(flag);
+	}
+	else if (nbr == 18)
+	{
+		nbrCourant19 = -1;
+//		ft_boucle_f18_big(flag);
+	}
 	else
 	{
 	}
