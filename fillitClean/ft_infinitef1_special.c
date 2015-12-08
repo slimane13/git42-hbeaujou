@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/07 10:36:53 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/08 13:17:04 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/08 13:45:35 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ void	ft_boucle_f1_special_2(int flag[26])
 
 void	ft_boucle_f2_special(int flag[26])
 {
+	int i2;
 	int	test_haut2;
 	int	test_larg2;
 
