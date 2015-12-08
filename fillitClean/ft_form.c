@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/27 13:14:45 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/08 17:15:47 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/08 17:25:58 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,27 +76,16 @@ int	check_form_32(int esp[5])
 	return (0);
 }
 
-int	keep_form(int *t1, int *spc, int taille)
+int return_form(int *t1, int taille, int indice, int esp[5])
 {
-	int esp[5];
-	int pos;
-
-	esp[0] = t1[1] - t1[0];
-	esp[1] = t1[2] - t1[1];
-	esp[2] = t1[3] - t1[2];
-	esp[3] = t1[2] - t1[0];
-	esp[4] = t1[3] - t1[0];
-	if (spc[0] == 1)
+	if (indice == 1)
 	{
 		if (t1[0] / taille <= taille - 4)
 			return (1);
 	}
-	else if (spc[0] == 2 && spc[1] == 3)
-	{
-		pos = check_form_23(esp);
-		return (check_pos_23(pos, t1));
-	}
-	else if (spc[0] == 2 && spc[1] == 2)
+	else if (indice == 2)
+		return (check_pos_23(check_form_23(esp), t1));
+	else if (indice == 3)
 	{
 		if (t1[0] % taille < taille - 1 && t1[0] / taille < taille - 1)
 		{
@@ -104,15 +93,34 @@ int	keep_form(int *t1, int *spc, int taille)
 				return (1);
 		}
 	}
-	else if (spc[0] == 3 && spc[1] == 2)
-	{
-		pos = check_form_32(esp);
-		return (check_pos_32(pos, t1));
-	}
-	else if (spc[0] == 4)
+	else if (indice == 4)
+		return (check_pos_32(check_form_32(esp), t1));
+	else if (indice == 5)
 	{
 		if (t1[0] % taille == 0)
 			return (1);
 	}
+	return (0);
+}
+
+int	keep_form(int *t1, int *spc, int taille)
+{
+	int esp[5];
+
+	esp[0] = t1[1] - t1[0];
+	esp[1] = t1[2] - t1[1];
+	esp[2] = t1[3] - t1[2];
+	esp[3] = t1[2] - t1[0];
+	esp[4] = t1[3] - t1[0];
+	if (spc[0] == 1)
+		return (return_form(t1, taille, 1, esp));
+	else if (spc[0] == 2 && spc[1] == 3)
+		return (return_form(t1, taille, 2, esp));
+	else if (spc[0] == 2 && spc[1] == 2)
+		return (return_form(t1, taille, 3, esp));
+	else if (spc[0] == 3 && spc[1] == 2)
+		return (return_form(t1, taille, 4, esp));
+	else if (spc[0] == 4)
+		return (return_form(t1, taille, 5, esp));
 	return (0);
 }
