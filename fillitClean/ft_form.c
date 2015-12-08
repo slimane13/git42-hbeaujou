@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/27 13:14:45 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/08 15:24:09 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/08 16:56:06 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,46 +90,7 @@ int	keep_form(int *t1, int *spc, int taille)
 	else if (spc[0] == 2 && spc[1] == 3)
 	{
 		pos = check_form_23(esp);
-		if (pos == 1)
-		{
-			if (check1(t1) == 1)
-				return (1);
-		}
-		else if (pos == 2)
-		{
-			if (check2(t1) == 1)
-				return (1);
-		}
-		else if (pos == 3)
-		{
-			if (check3(t1) == 1)
-				return (1);
-		}
-		else if (pos == 4)
-		{
-			if (check4(t1) == 1)
-				return (1);
-		}
-		else if (pos == 5)
-		{
-			if (check5(t1) == 1)
-				return (1);
-		}
-		else if (pos == 6)
-		{
-			if (check6(t1) == 1)
-				return (1);
-		}
-		else if (pos == 7)
-		{
-			if (check7(t1) == 1)
-				return (1);
-		}
-		else if (pos == 8)
-		{
-			if (check8(t1) == 1)
-				return (1);
-		}
+		return(check_pos_23(pos, t1));
 	}
 	else if (spc[0] == 2 && spc[1] == 2)
 	{
@@ -142,46 +103,7 @@ int	keep_form(int *t1, int *spc, int taille)
 	else if (spc[0] == 3 && spc[1] == 2)
 	{
 		pos = check_form_32(esp);
-		if (pos == 1)
-		{
-			if (check1_32(t1) == 1)
-				return (1);
-		}
-		else if (pos == 2)
-		{
-			if (check2_32(t1) == 1)
-				return (1);
-		}
-		else if (pos == 3)
-		{
-			if (check3_32(t1) == 1)
-				return (1);
-		}
-		else if (pos == 4)
-		{
-			if (check4_32(t1) == 1)
-				return (1);
-		}
-		else if (pos == 5)
-		{
-			if (check5_32(t1) == 1)
-				return (1);
-		}
-		else if (pos == 6)
-		{
-			if (check6_32(t1) == 1)
-				return (1);
-		}
-		else if (pos == 7)
-		{
-			if (check7_32(t1) == 1)
-				return (1);
-		}
-		else if (pos == 8)
-		{
-			if (check8_32(t1) == 1)
-				return (1);
-		}
+		return(check_pos_32(pos, t1));
 	}
 	else if (spc[0] == 4)
 	{

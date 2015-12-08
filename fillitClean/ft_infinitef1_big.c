@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/06 15:18:01 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/08 16:12:54 by ebouther         ###   ########.fr       */
+/*   Updated: 2015/12/08 17:07:05 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,17 +103,24 @@ void	ft_boucle_f2_big(int flag[26], int nbrCourant[26])
 	int	test_haut2;
 	int	test_larg2;
 	int i2;
-	static int *clean42;
+//	static int *clean42;
 	
-	if (!clean42)
-		clean42 = ft_init_clean(nbrCourant, 1, flag);
+//	if (!clean42)
+//		clean42 = ft_init_clean(nbrCourant, 1, flag);
 	i2 = 0;
 	test_haut2 = 0;
 	test_larg2 = 0;
-	ft_strcpy_int(clean42, tmpCalc, taille_max * taille_max);
+	if (flag[1] == 0)
+	{
+		clean2 = (int *)malloc(sizeof(int) * (taille_max * taille_max));
+		nbrCourant[1] = nbrCourant[2] + 1;
+		flag[1] = 1;
+	}
+	ft_strcpy_int(clean2, tmpCalc, taille_max * taille_max);
+//	ft_strcpy_int(clean42, tmpCalc, taille_max * taille_max);
 	while (i2 < iter_max && test_haut2 < test_max + 1 && trouve == 0)
 	{
-		tampon = resitue(clean42, (4 * nbrCourant[1]), taille_max);
+		tampon = resitue(clean2, (4 * nbrCourant[1]), taille_max);
 		tmpCalc = try_tetris_2(tampon, points[nbrCourant[1]], taille_max, var,
 				nbrCourant[1], (4 * nbrCourant[1]), i2);
 		test_larg2 = calc_larg(tmpCalc, taille_max);

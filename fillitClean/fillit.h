@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 11:53:53 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/08 15:28:18 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/08 16:51:28 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ int		abs_minus(int a, int b);
 void    assign_spot(int *tab);
 int     overlap_3(int *t1, int *t2, int taille);
 int     is_valid(int *t1, int taille, int *spc);
+int		check_pos_23(int pos, int *t1);
+int		check_pos_32(int pos, int *t1);
 void	affiche(int *final);
 void	affiche_special(int *final);
 void	remp_blank(int *tab);
