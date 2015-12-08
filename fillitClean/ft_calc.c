@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/29 16:53:02 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/08 13:55:04 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/08 14:07:10 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int	calc_haut(int *tab, int taille)
 		i++;
 	}
 	haut_max_test++;
-	return(haut_max_test - haut_min);
+	return (haut_max_test - haut_min);
 }
 
 int	abs_minus(int a, int b)
