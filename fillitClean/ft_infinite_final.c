@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 10:06:41 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/08 14:28:08 by ebouther         ###   ########.fr       */
+/*   Updated: 2015/12/08 14:50:46 by ebouther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,7 @@ void	ft_boucle_f26_big(int flag[26], int nbrCourant[26])
 	int i26;
 
 	i26 = 0;
-	if (flag[25] == 0)
-	{
-		clean26 = (int *)malloc(sizeof(int) * (taille_max * taille_max));
-		nbrCourant[25] = nbrCourant[26] + 1;
-		flag[25] = 1;
-	}
-	ft_strcpy_int(clean26, tmpCalc, taille_max * taille_max);
+	ft_strcpy_int(ft_malloc_clean(flag, nbrCourant, 25), tmpCalc, taille_max * taille_max);
 	while (i26 < iter_max)
 	{
 		tampon = resitue(clean26, (4 * nbrCourant[25]), taille_max);
@@ -33,6 +27,18 @@ void	ft_boucle_f26_big(int flag[26], int nbrCourant[26])
 		ft_boucle_f25_big(flag, nbrCourant);
 		i26++;
 	}
+}
+
+int		*ft_malloc_clean(int flag[26], int nbrCourant[26], int i)
+{
+	int	*clean;
+	if (flag[i] == 0)
+	{
+		clean = (int *)malloc(sizeof(int) * (taille_max * taille_max));
+		nbrCourant[i] = nbrCourant[i + 1] + 1;
+		flag[i] = 1;
+	}
+	return (clean);	
 }
 
 void	choix_boucle(int nbr)

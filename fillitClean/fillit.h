@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 11:53:53 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/08 14:27:23 by ebouther         ###   ########.fr       */
+/*   Updated: 2015/12/08 14:50:46 by ebouther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,8 @@ void ft_boucle_f23_big(int flag[26], int nbrCourant[26]);
 void ft_boucle_f24_big(int flag[26], int nbrCourant[26]);
 void ft_boucle_f25_big(int flag[26], int nbrCourant[26]);
 void ft_boucle_f26_big(int flag[26], int nbrCourant[26]);
+
+int		*ft_malloc_clean(int flag[26], int nbrCourant[26], int i);
 
 extern int *resolution;
 extern int	*tampon;
