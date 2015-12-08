@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/06 15:18:01 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/08 15:06:04 by ebouther         ###   ########.fr       */
+/*   Updated: 2015/12/08 15:26:21 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,13 @@ void	ft_boucle_f2_big(int flag[26], int nbrCourant[26])
 	i2 = 0;
 	test_haut2 = 0;
 	test_larg2 = 0;
-	ft_strcpy_int(ft_malloc_clean(flag, nbrCourant, 1), tmpCalc, taille_max * taille_max);
+	if (flag[1] == 0)
+	{
+		clean2 = (int *)malloc(sizeof(int) * (taille_max * taille_max));
+		nbrCourant[1] = nbrCourant[2] + 1;
+		flag[1] = 1;
+	}
+	ft_strcpy_int(clean2, tmpCalc, taille_max * taille_max);
 	while (i2 < iter_max && test_haut2 < test_max + 1 && trouve == 0)
 	{
 		tampon = resitue(clean2, (4 * nbrCourant[1]), taille_max);
