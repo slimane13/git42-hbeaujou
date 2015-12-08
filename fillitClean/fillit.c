@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 11:56:10 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/08 14:45:13 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/08 15:57:07 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int		lire_file(char *str)
 	return (count);
 }
 
-int		**lireToTab(char *str, char **tetri_list)
+int		**lire_to_tab(char *str, char **tetri_list)
 {
 	int rd;
 	int **tab;
@@ -47,31 +47,30 @@ int		**lireToTab(char *str, char **tetri_list)
 	return (tab);
 }
 
-int		*situePoint(char *str)
+int		*situe_point(char *str)
 {
 	int *pos;
-	int i;
-	int j;
+	int iterat[2];
 	int etage;
 
-	i = 0;
-	j = 0;
+	iterat[0] = 0;
+	iterat[1] = 0;
 	etage = 0;
 	if (!(pos = malloc(sizeof(int) * 4)))
 		return (NULL);
-	while (str[i] != '\0')
+	while (str[iterat[0]] != '\0')
 	{
-		if (str[i] == '.' || str[i] == '\n')
+		if (str[iterat[0]] == '.' || str[iterat[0]] == '\n')
 		{
-			if (str[i] == '\n')
+			if (str[iterat[0]] == '\n')
 				etage++;
-			i++;
+			iterat[0]++;
 		}
 		else
 		{
-			pos[j] = i - etage;
-			j++;
-			i++;
+			pos[iteart[1]] = iterat[0] - etage;
+			iterat[1]++;
+			iterat[0]++;
 		}
 	}
 	return (pos);
@@ -96,10 +95,10 @@ int		main(int argc, char **argv)
 	if (!(points = malloc(sizeof(int *) * ite)))
 		return (0);
 	tetri_list = (char **)malloc(sizeof(char *) * nbrTetri);
-	var = lireToTab(argv[1], tetri_list);
+	var = lire_to_tab(argv[1], tetri_list);
 	while (ite > 0)
 	{
-		points[ite - 1] = situePoint(tetri_list[ite - 1]);
+		points[ite - 1] = situe_point(tetri_list[ite - 1]);
 		ite--;
 	}
 	rewind_tetris(points[0], 0);
