@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/29 16:53:02 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/08 14:07:10 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/08 14:50:48 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,35 +36,32 @@ int	calc_larg(int *tab, int taille)
 	return (larg_max_test);
 }
 
-int	calc_haut(int *tab, int taille)
+int	calc_haut(int *tab_tetri, int taille)
 {
+	int tab[4];
 	int i;
-	int haut_max_test;
-	int hauteur;
-	int haut_min;
-	int flag_m;
 
 	i = 0;
-	flag_m = 0;
-	haut_max_test = -1;
-	haut_min = 0;
-	hauteur = 0;
+	tab[0] = 0;
+	tab[1] = -1;
+	tab[3] = 0;
+	tab[2] = 0;
 	while (i < taille * taille)
 	{
-		hauteur = i / taille + 1;
-		if (tab[i] != 0 && hauteur > haut_max_test)
+		tab[2] = i / taille + 1;
+		if (tab_tetri[i] != 0 && tab[2] > tab[1])
 		{
-			if (flag_m == 0)
+			if (tab[0] == 0)
 			{
-				haut_min = hauteur;
-				flag_m = 1;
+				tab[3] = tab[2];
+				tab[0] = 1;
 			}
-			haut_max_test = hauteur;
+			tab[1] = tab[2];
 		}
 		i++;
 	}
-	haut_max_test++;
-	return (haut_max_test - haut_min);
+	tab[1]++;
+	return (tab[1] - tab[3]);
 }
 
 int	abs_minus(int a, int b)
