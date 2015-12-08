@@ -6,19 +6,19 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/07 10:36:53 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/08 13:45:35 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/08 14:31:54 by ebouther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-void	ft_boucle_f1_special(int flag[26])
+void	ft_boucle_f1_special(int flag[26], int nbrCourant[26])
 {
 	int i;
 
 	i = 0;
 	clean = (int *)malloc(sizeof(int) * (taille_max * taille_max));
-	nbrCourant = nbrCourant2 + 1;
+	nbrCourant[0] = nbrCourant[1] + 1;
 	if (nbrCourant == 0)
 	{
 		tampon[0] = -1;
@@ -26,15 +26,15 @@ void	ft_boucle_f1_special(int flag[26])
 		tampon[2] = -1;
 		tampon[3] = -1;
 	}
-	tmpCalc = try_tetris_2_special(tampon, points[nbrCourant], taille_max, var,
-			nbrCourant, 4, i);
+	tmpCalc = try_tetris_2_special(tampon, points[nbrCourant[0]], taille_max, var,
+			nbrCourant[0], 4, i);
 	test_larg = calc_larg(tmpCalc, taille_max);
 	test_haut = calc_haut(tmpCalc, taille_max);
 	absTmp = abs_minus(test_larg, test_haut);
 	ft_strcpy_int(clean, tmpCalc, taille_max * taille_max);
 }
 
-void	ft_boucle_f1_special_2(int flag[26])
+void	ft_boucle_f1_special_2(int flag[26], int nbrCourant[26])
 {
 	int i;
 	int haut_max1;
@@ -43,14 +43,14 @@ void	ft_boucle_f1_special_2(int flag[26])
 	if (flag[0] == 0)
 	{
 		clean = (int *)malloc(sizeof(int) * (taille_max * taille_max));
-		nbrCourant = nbrCourant2 + 1;
+		nbrCourant[0] = nbrCourant[1] + 1;
 		flag[0] = 1;
 	}
 	haut_max1 = haut_max * 4;
 	while (i < iter_max && test_haut < haut_max1 + 4)
 	{
-		tmpCalc = try_tetris_2_2(tampon, points[nbrCourant], taille_max, var,
-				nbrCourant, (4 * nbrCourant), i);
+		tmpCalc = try_tetris_2_2(tampon, points[nbrCourant[0]], taille_max, var,
+				nbrCourant[0], (4 * nbrCourant[0]), i);
 		test_larg = calc_larg(tmpCalc, taille_max);
 		test_haut = calc_haut(tmpCalc, taille_max);
 		if ((test_larg < larg_max && abs_minus(test_larg, test_haut) < absTmp) ||
@@ -65,7 +65,7 @@ void	ft_boucle_f1_special_2(int flag[26])
 	}
 }
 
-void	ft_boucle_f2_special(int flag[26])
+void	ft_boucle_f2_special(int flag[26], int nbrCourant[26])
 {
 	int i2;
 	int	test_haut2;
@@ -77,13 +77,13 @@ void	ft_boucle_f2_special(int flag[26])
 	if (flag[1] == 0)
 	{
 		clean2 = (int *)malloc(sizeof(int) * (taille_max * taille_max));
-		nbrCourant2 = nbrCourant3 + 1;
+		nbrCourant[1] = nbrCourant[2] + 1;
 		flag[1] = 1;
 	}
 	ft_strcpy_int(clean2, tmpCalc, taille_max * taille_max);
 	while (i2 < iter_max && test_haut2 < haut_max + 4)
 	{
-		tampon = resitue(clean2, (4 * (nbrCourant2 + 1)), taille_max);
+		tampon = resitue(clean2, (4 * (nbrCourant[1] + 1)), taille_max);
 		if (i2 == 0)
 		{
 			tampon[0] = -1;
@@ -91,14 +91,14 @@ void	ft_boucle_f2_special(int flag[26])
 			tampon[2] = -1;
 			tampon[3] = -1;
 		}
-		tmpCalc = try_tetris_2_2(tampon, points[nbrCourant2], taille_max, var,
-				nbrCourant2, (4 * (nbrCourant2 + 1)), i2);
+		tmpCalc = try_tetris_2_2(tampon, points[nbrCourant[1]], taille_max, var,
+				nbrCourant[1], (4 * (nbrCourant[1] + 1)), i2);
 		test_larg2 = calc_larg(tmpCalc, taille_max);
 		test_haut2 = calc_haut(tmpCalc, taille_max);
 		if (test_larg2 < larg_max + 1)
 		{
-			tampon = resitue(tmpCalc, (4 * (nbrCourant2 + 1)), taille_max);
-			ft_boucle_f1_special_2(flag);
+			tampon = resitue(tmpCalc, (4 * (nbrCourant[1] + 1)), taille_max);
+			ft_boucle_f1_special_2(flag, nbrCourant);
 		}
 		i2++;
 	}
