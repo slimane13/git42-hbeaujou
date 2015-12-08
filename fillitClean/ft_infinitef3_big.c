@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/07 18:09:09 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/08 13:12:09 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/08 13:38:14 by ebouther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	ft_boucle_f11_big(int flag[26])
 {
 	int test_haut11;
 	int test_larg11;
+	int i11;
 
 	i11 = 0;
 	test_larg11 = 0;
@@ -47,6 +48,7 @@ void	ft_boucle_f12_big(int flag[26])
 {
 	int test_larg12;
 	int test_haut12;
+	int i12;
 
 	test_haut12 = 0;
 	test_larg12 = 0;
@@ -78,6 +80,7 @@ void	ft_boucle_f13_big(int flag[26])
 {
 	int test_larg13;
 	int test_haut13;
+	int i13;
 
 	test_haut13 = 0;
 	test_larg13 = 0;
@@ -109,6 +112,7 @@ void	ft_boucle_f14_big(int flag[26])
 {
 	int test_larg14;
 	int test_haut14;
+	int i14;
 
 	test_haut14 = 0;
 	test_larg14 = 0;
@@ -140,6 +144,7 @@ void	ft_boucle_f15_big(int flag[26])
 {
 	int test_larg15;
 	int test_haut15;
+	int i15;
 
 	test_haut15 = 0;
 	test_larg15 = 0;

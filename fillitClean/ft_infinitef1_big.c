@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/06 15:18:01 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/08 13:29:30 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/08 13:36:36 by ebouther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,32 +30,6 @@ int nbrTetri;
 int test_max;
 int trouve;
 int *affichageLettre;
-
-int i2;
-int i3;
-int i4;
-int i5;
-int i6;
-int i7;
-int i8;
-int i9;
-int i10;
-int i11;
-int i12;
-int i13;
-int i14;
-int i15;
-int i16;
-int i17;
-int i18;
-int i19;
-int i20;
-int i21;
-int i22;
-int i23;
-int i24;
-int i25;
-int i26;
 
 int	nbrCourant1;
 int	nbrCourant2;
@@ -136,9 +110,6 @@ void	ft_boucle_f1_big(int flag[26])
 			ft_strcpy_int(clean, tmpCalc, taille_max * taille_max);
 			trouve = 1;
 		}
-		else
-		{
-		}
 		i++;
 	}
 }
@@ -147,6 +118,7 @@ void	ft_boucle_f2_big(int flag[26])
 {
 	int	test_haut2;
 	int	test_larg2;
+	int i2;
 
 	i2 = 0;
 	test_haut2 = 0;
@@ -178,6 +150,7 @@ void	ft_boucle_f3_big(int flag[26])
 {
 	int	test_haut3;
 	int	test_larg3;
+	int i3;
 	
 	i3 = 0;
 	test_haut3 = 0;
@@ -209,6 +182,7 @@ void	ft_boucle_f4_big(int flag[26])
 {
 	int	test_haut4;
 	int	test_larg4;
+	int i4;
 
 	i4 = 0;
 	test_haut4 = 0;
@@ -240,6 +214,7 @@ void	ft_boucle_f5_big(int flag[26])
 {
 	int	test_haut5;
 	int	test_larg5;
+	int i5;
 
 	i5 = 0;
 	test_larg5 = 0;
