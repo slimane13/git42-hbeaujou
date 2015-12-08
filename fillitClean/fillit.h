@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 11:53:53 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/08 15:24:07 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/08 15:28:18 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ int		*resitue(int *tab, int taille, int taille_max);
 int		calc_larg(int *tab, int taille);
 int		calc_haut(int *tab, int taille);
 int		abs_minus(int a, int b);
-void    assignSpot(int *tab);
+void    assign_spot(int *tab);
 int     overlap_3(int *t1, int *t2, int taille);
-int     isValid(int *t1, int taille, int *spc);
+int     is_valid(int *t1, int taille, int *spc);
 void	affiche(int *final);
 void	affiche_special(int *final);
 void	remp_blank(int *tab);
