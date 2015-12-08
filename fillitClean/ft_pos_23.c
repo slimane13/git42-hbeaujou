@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/08 16:46:07 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/08 16:52:31 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/08 17:18:41 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	first_half_23(int pos, int *t1)
 	return (0);
 }
 
-int second_half_23(int pos, int *t1)
+int	second_half_23(int pos, int *t1)
 {
 	if (pos == 5)
 	{
