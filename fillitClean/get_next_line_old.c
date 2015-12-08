@@ -6,7 +6,7 @@
 /*   By: ebouther <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/27 15:18:00 by ebouther          #+#    #+#             */
-/*   Updated: 2015/11/27 15:18:11 by ebouther         ###   ########.fr       */
+/*   Updated: 2015/12/08 14:02:26 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ char	*read_file(int *ret, char *buf, const int fd)
 	return (tmp);
 }
 
-int	get_next_line(int const fd, char **line)
+int		get_next_line(int const fd, char **line)
 {
-	static char 	*buf = "";
+	static char		*buf = "";
 	int				ret;
 	char			*cpy;
 	char			*str;
