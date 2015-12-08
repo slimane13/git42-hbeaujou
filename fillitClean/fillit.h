@@ -6,19 +6,19 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 11:53:53 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/08 18:48:59 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/08 19:01:55 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FILLIT_H
 # define FILLIT_H
 
-#include <stdlib.h>
-#include <stdio.h>
-#include <strings.h>
-#include <unistd.h>
-#include <fcntl.h>
-#include "read.h"
+# include <stdlib.h>
+# include <stdio.h>
+# include <strings.h>
+# include <unistd.h>
+# include <fcntl.h>
+# include "read.h"
 
 int		*try_tetris_2(int *t1, int *t2, int taille, int **spc, int k, int passage, int target);
 int		*try_tetris_2_special(int *t1, int *t2, int taille, int **spc, int k, int passage, int target);
@@ -50,9 +50,9 @@ void	affiche(int *final);
 void	affiche_special(int *final);
 void	remp_blank(int *tab);
 void	choix_boucle(int nbr);
-void	choix_boucle_tier1(int nbr, int flag[26], int nbrCourant[26]);
-void	choix_boucle_tier2(int nbr, int flag[26], int nbrCourant[26]);
-void	choix_boucle_tier3(int nbr, int flag[26], int nbrCourant[26]);
+void	choix_boucle_tier1(int nbr, int flag[26], int nbr_courant[26]);
+void	choix_boucle_tier2(int nbr, int flag[26], int nbr_courant[26]);
+void	choix_boucle_tier3(int nbr, int flag[26], int nbr_courant[26]);
 
 int check1(int *t1);
 int check2(int *t1);
@@ -72,34 +72,34 @@ int check6_32(int *t1);
 int check7_32(int *t1);
 int check8_32(int *t1);
 
-void ft_boucle_f1_big(int flag[26], int nbrCourant[26]);
-void ft_boucle_f1_special(int flag[26], int nbrCourant[26]);
-void ft_boucle_f2_big(int flag[26], int nbrCourant[26]);
-void ft_boucle_f2_special(int flag[26], int nbrCourant[26]);
-void ft_boucle_f3_big(int flag[26], int nbrCourant[26]);
-void ft_boucle_f4_big(int flag[26], int nbrCourant[26]);
-void ft_boucle_f5_big(int flag[26], int nbrCourant[26]);
-void ft_boucle_f6_big(int flag[26], int nbrCourant[26]);
-void ft_boucle_f7_big(int flag[26], int nbrCourant[26]);
-void ft_boucle_f8_big(int flag[26], int nbrCourant[26]);
-void ft_boucle_f9_big(int flag[26], int nbrCourant[26]);
-void ft_boucle_f10_big(int flag[26], int nbrCourant[26]);
-void ft_boucle_f11_big(int flag[26], int nbrCourant[26]);
-void ft_boucle_f12_big(int flag[26], int nbrCourant[26]);
-void ft_boucle_f13_big(int flag[26], int nbrCourant[26]);
-void ft_boucle_f14_big(int flag[26], int nbrCourant[26]);
-void ft_boucle_f15_big(int flag[26], int nbrCourant[26]);
-void ft_boucle_f16_big(int flag[26], int nbrCourant[26]);
-void ft_boucle_f17_big(int flag[26], int nbrCourant[26]);
-void ft_boucle_f18_big(int flag[26], int nbrCourant[26]);
-void ft_boucle_f19_big(int flag[26], int nbrCourant[26]);
-void ft_boucle_f20_big(int flag[26], int nbrCourant[26]);
-void ft_boucle_f21_big(int flag[26], int nbrCourant[26]);
-void ft_boucle_f22_big(int flag[26], int nbrCourant[26]);
-void ft_boucle_f23_big(int flag[26], int nbrCourant[26]);
-void ft_boucle_f24_big(int flag[26], int nbrCourant[26]);
-void ft_boucle_f25_big(int flag[26], int nbrCourant[26]);
-void ft_boucle_f26_big(int flag[26], int nbrCourant[26]);
+void ft_boucle_f1_big(int flag[26], int nbr_courant[26]);
+void ft_boucle_f1_special(int flag[26], int nbr_courant[26]);
+void ft_boucle_f2_big(int flag[26], int nbr_courant[26]);
+void ft_boucle_f2_special(int flag[26], int nbr_courant[26]);
+void ft_boucle_f3_big(int flag[26], int nbr_courant[26]);
+void ft_boucle_f4_big(int flag[26], int nbr_courant[26]);
+void ft_boucle_f5_big(int flag[26], int nbr_courant[26]);
+void ft_boucle_f6_big(int flag[26], int nbr_courant[26]);
+void ft_boucle_f7_big(int flag[26], int nbr_courant[26]);
+void ft_boucle_f8_big(int flag[26], int nbr_courant[26]);
+void ft_boucle_f9_big(int flag[26], int nbr_courant[26]);
+void ft_boucle_f10_big(int flag[26], int nbr_courant[26]);
+void ft_boucle_f11_big(int flag[26], int nbr_courant[26]);
+void ft_boucle_f12_big(int flag[26], int nbr_courant[26]);
+void ft_boucle_f13_big(int flag[26], int nbr_courant[26]);
+void ft_boucle_f14_big(int flag[26], int nbr_courant[26]);
+void ft_boucle_f15_big(int flag[26], int nbr_courant[26]);
+void ft_boucle_f16_big(int flag[26], int nbr_courant[26]);
+void ft_boucle_f17_big(int flag[26], int nbr_courant[26]);
+void ft_boucle_f18_big(int flag[26], int nbr_courant[26]);
+void ft_boucle_f19_big(int flag[26], int nbr_courant[26]);
+void ft_boucle_f20_big(int flag[26], int nbr_courant[26]);
+void ft_boucle_f21_big(int flag[26], int nbr_courant[26]);
+void ft_boucle_f22_big(int flag[26], int nbr_courant[26]);
+void ft_boucle_f23_big(int flag[26], int nbr_courant[26]);
+void ft_boucle_f24_big(int flag[26], int nbr_courant[26]);
+void ft_boucle_f25_big(int flag[26], int nbr_courant[26]);
+void ft_boucle_f26_big(int flag[26], int nbr_courant[26]);
 
 extern int *resolution;
 extern int	*tampon;
@@ -114,7 +114,7 @@ extern int absTmp;
 extern int taille_max;
 extern int	**points;
 extern int **var;
-extern int nbrCourant;
+extern int nbr_courant;
 extern int nbrTetri;
 extern int test_max;
 extern int trouve;

@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/07 10:36:53 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/08 18:56:23 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/08 18:59:54 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,8 +91,8 @@ void	ft_boucle_f2_special(int flag[26], int nbr_courant[26])
 			tampon[2] = -1;
 			tampon[3] = -1;
 		}
-		tmpCalc = try_tetris_2_2(tampon, points[nbr_courant[1]], taille_max, var,
-				nbr_courant[1], (4 * (nbr_courant[1] + 1)), i2);
+		tmpCalc = try_tetris_2_2(tampon, points[nbr_courant[1]],
+				taille_max, var, nbr_courant[1], (4 * (nbr_courant[1] + 1)), i2);
 		test_larg2 = calc_larg(tmpCalc, taille_max);
 		test_haut2 = calc_haut(tmpCalc, taille_max);
 		if (test_larg2 < larg_max + 1)
@@ -157,7 +157,8 @@ int		*try_tetris_2_2(int *t1, int *t2, int taille, int **spc,
 	flag = 0;
 	if (k != 0)
 		rewind_tetris(t2, 0);
-	while ((!is_valid(t2, taille, spc[k]) || overlap_3(t1, t2, passage)) && counter < 8)
+	while ((!is_valid(t2, taille, spc[k]) ||
+				overlap_3(t1, t2, passage)) && counter < 8)
 	{
 		assign_spot(t2);
 		counter++;
