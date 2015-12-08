@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 11:56:10 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/08 14:06:03 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/08 14:45:13 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,13 @@ int		lire_file(char *str)
 	return (count);
 }
 
-int		**lireToTab(char *str, char **tetriList)
+int		**lireToTab(char *str, char **tetri_list)
 {
 	int rd;
 	int **tab;
 
 	rd = open(str, O_RDONLY);
-	tab = struct_to_tab(ft_get_maps(rd, nbrTetri), tetriList);
+	tab = struct_to_tab(ft_get_maps(rd, nbrTetri), tetri_list);
 	return (tab);
 }
 
@@ -79,7 +79,7 @@ int		*situePoint(char *str)
 
 int		main(int argc, char **argv)
 {
-	char	**tetriList;
+	char	**tetri_list;
 	int		ite;
 	int		target;
 
@@ -95,11 +95,11 @@ int		main(int argc, char **argv)
 	ite = nbrTetri;
 	if (!(points = malloc(sizeof(int *) * ite)))
 		return (0);
-	tetriList = (char **)malloc(sizeof(char *) * nbrTetri);
-	var = lireToTab(argv[1], tetriList);
+	tetri_list = (char **)malloc(sizeof(char *) * nbrTetri);
+	var = lireToTab(argv[1], tetri_list);
 	while (ite > 0)
 	{
-		points[ite - 1] = situePoint(tetriList[ite - 1]);
+		points[ite - 1] = situePoint(tetri_list[ite - 1]);
 		ite--;
 	}
 	rewind_tetris(points[0], 0);
