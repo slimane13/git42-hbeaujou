@@ -6,19 +6,19 @@
 /*   By: ebouther <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/30 20:21:39 by ebouther          #+#    #+#             */
-/*   Updated: 2015/12/02 17:36:47 by ebouther         ###   ########.fr       */
+/*   Updated: 2015/12/08 15:43:16 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "read.h"
 
-void	ft_error_exit(void)
+void		ft_error_exit(void)
 {
 	ft_putstr("error\n");
 	exit(0);
 }
 
-char	*ft_add_to_line(int tetriminos)
+char		*ft_add_to_line(int tetriminos)
 {
 	char	*ret;
 
@@ -34,7 +34,7 @@ char	*ft_add_to_line(int tetriminos)
 	return (ret);
 }
 
-char	*ft_add_to_map(int tetriminos)
+char		*ft_add_to_map(int tetriminos)
 {
 	char	*ret;
 	int		i;
@@ -76,8 +76,8 @@ static void	ft_check_tetriminos_1(char *content, int tetriminos)
 		ft_error_exit();
 }
 
-void	ft_check_tetriminos(t_map *map, int tetriminos)
-{	
+void		ft_check_tetriminos(t_map *map, int tetriminos)
+{
 	char	*content;
 	int		i;
 	int		occur;
