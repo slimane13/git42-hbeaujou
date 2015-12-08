@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 10:06:41 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/08 18:49:04 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/08 18:53:38 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,13 @@ void	choix_boucle(int nbr)
 	int flag[26];
 	int nbr_courant[26];
 	int pp;
-   
+
 	pp = 0;
 	while (pp < 26)
 	{
 		nbr_courant[pp] = 0;
 		flag[pp++] = 0;
 	}
-
 	if (nbr > 0 && nbr < 10)
 		choix_boucle_tier1(nbr, flag, nbr_courant);
 	else if (nbr >= 10 && nbr < 19)
