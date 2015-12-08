@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 10:06:41 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/08 14:50:46 by ebouther         ###   ########.fr       */
+/*   Updated: 2015/12/08 15:06:04 by ebouther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,14 @@ void	ft_boucle_f26_big(int flag[26], int nbrCourant[26])
 
 int		*ft_malloc_clean(int flag[26], int nbrCourant[26], int i)
 {
-	int	*clean;
+	int	*clean42;
 	if (flag[i] == 0)
 	{
-		clean = (int *)malloc(sizeof(int) * (taille_max * taille_max));
+		clean42 = (int *)malloc(sizeof(int) * (taille_max * taille_max));
 		nbrCourant[i] = nbrCourant[i + 1] + 1;
 		flag[i] = 1;
 	}
-	return (clean);	
+	return (clean42);	
 }
 
 void	choix_boucle(int nbr)
