@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 11:53:53 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/08 14:27:23 by ebouther         ###   ########.fr       */
+/*   Updated: 2015/12/08 14:38:18 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,34 +139,6 @@ extern int *clean25;
 extern int *clean26;
 
 extern int flagTRY;
-
-extern int nbrCourant;
-extern int nbrCourant2;
-extern int nbrCourant3;
-extern int nbrCourant4;
-extern int nbrCourant5;
-extern int nbrCourant6;
-extern int nbrCourant7;
-extern int nbrCourant8;
-extern int nbrCourant9;
-extern int nbrCourant10;
-extern int nbrCourant11;
-extern int nbrCourant12;
-extern int nbrCourant13;
-extern int nbrCourant14;
-extern int nbrCourant15;
-extern int nbrCourant16;
-extern int nbrCourant17;
-extern int nbrCourant18;
-extern int nbrCourant19;
-extern int nbrCourant20;
-extern int nbrCourant21;
-extern int nbrCourant22;
-extern int nbrCourant23;
-extern int nbrCourant24;
-extern int nbrCourant25;
-extern int nbrCourant26;
-extern int nbrCourant27;
 
 extern int i2;
 extern int i3;
