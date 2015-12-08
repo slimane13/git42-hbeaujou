@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/27 16:17:14 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/08 14:45:15 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/08 15:37:46 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,9 @@ int		*resitue(int *tab, int taille, int taille_max)
 
 int		**struct_to_tab(t_map *beg, char **tetri_list)
 {
-	t_map *tmp;
-	int	**tab;
-	int count;
+	t_map	*tmp;
+	int		**tab;
+	int		count;
 
 	tmp = beg;
 	count = 0;

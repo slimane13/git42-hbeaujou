@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 17:26:23 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/08 15:28:20 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/08 15:37:05 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,8 @@ void	assign_spot(int *tab)
 	tab[3] = tab[3] + 1;
 }
 
-int		*try_tetris_2(int *t1, int *t2, int taille, int **spc, int k, int passage, int target)
+int		*try_tetris_2(int *t1, int *t2, int taille, int **spc, int k,
+		int passage, int target)
 {
 	int i;
 	int j;
