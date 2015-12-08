@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 11:53:53 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/08 14:54:42 by ebouther         ###   ########.fr       */
+/*   Updated: 2015/12/08 15:24:07 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int		*tab_char_to_int(char *str);
 int		*ft_strdup_int(int *s, int taille);
 void 	ft_strcpy_int(int *dest, int *src, int taille);
 int 	*ft_memalloc_int(size_t size);
-int		keepForm(int *t1, int *spc, int taille);
+int		keep_form(int *t1, int *spc, int taille);
 int		**struct_to_tab(t_map *beg, char **tetriList);
 void	rewind_tetris(int *tab, int target);
 int		*resitue(int *tab, int taille, int taille_max);

@@ -6,13 +6,13 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/27 13:14:45 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/08 14:09:18 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/08 15:24:09 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int	checkForm23(int esp[5])
+int	check_form_23(int esp[5])
 {
 	if (esp[0] == 1)
 	{
@@ -48,7 +48,7 @@ int	checkForm23(int esp[5])
 	return (0);
 }
 
-int	checkForm32(int esp[5])
+int	check_form_32(int esp[5])
 {
 	if (esp[0] == 1)
 	{
@@ -72,7 +72,7 @@ int	checkForm32(int esp[5])
 	return (0);
 }
 
-int	keepForm(int *t1, int *spc, int taille)
+int	keep_form(int *t1, int *spc, int taille)
 {
 	int esp[5];
 	int pos;
@@ -89,7 +89,7 @@ int	keepForm(int *t1, int *spc, int taille)
 	}
 	else if (spc[0] == 2 && spc[1] == 3)
 	{
-		pos = checkForm23(esp);
+		pos = check_form_23(esp);
 		if (pos == 1)
 		{
 			if (check1(t1) == 1)
@@ -141,7 +141,7 @@ int	keepForm(int *t1, int *spc, int taille)
 	}
 	else if (spc[0] == 3 && spc[1] == 2)
 	{
-		pos = checkForm32(esp);
+		pos = check_form_32(esp);
 		if (pos == 1)
 		{
 			if (check1_32(t1) == 1)

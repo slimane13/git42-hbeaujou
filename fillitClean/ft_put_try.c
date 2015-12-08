@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 17:26:23 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/08 13:48:05 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/08 15:24:29 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int		overlap_3(int *t1, int *t2, int taille)
 
 int		isValid(int *t1, int taille, int *spc)
 {
-	if (keepForm(t1, spc, taille) == 0)
+	if (keep_form(t1, spc, taille) == 0)
 		return (0);
 	return (1);
 }
