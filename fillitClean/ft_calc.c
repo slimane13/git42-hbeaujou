@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/29 16:53:02 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/08 13:52:04 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/08 13:55:04 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,26 +23,16 @@ int	calc_larg(int *tab, int taille)
 	largeur = 0;
 	larg_max_test = -1;
 	larg_min = 10;
-	while (i < taille*taille)
+	while (i < taille * taille)
 	{
-		largeur = i%taille;
+		largeur = i % taille;
 		if (tab[i] != 0 && largeur > larg_max_test)
 			larg_max_test = largeur;
 		else if (tab[i] != 0 && largeur < larg_min)
 			larg_min = largeur;
-		else
-		{
-		}
 		i++;
 	}
 	larg_max_test++;
-/*	if (i4 == 0 && i3 == 2 && i2 == 11)
-	{
-		printf("%d", larg_max_test);
-		printf("   ");
-		printf("%d\n", larg_min);
-	}*/
-//	return(larg_max_test - larg_min);
 	return (larg_max_test);
 }
 
@@ -59,9 +49,9 @@ int	calc_haut(int *tab, int taille)
 	haut_max_test = -1;
 	haut_min = 0;
 	hauteur = 0;
-	while (i < taille*taille)
+	while (i < taille * taille)
 	{
-		hauteur = i/taille + 1;
+		hauteur = i / taille + 1;
 		if (tab[i] != 0 && hauteur > haut_max_test)
 		{
 			if (flag_m == 0)
@@ -70,9 +60,6 @@ int	calc_haut(int *tab, int taille)
 				flag_m = 1;
 			}
 			haut_max_test = hauteur;
-		}
-		else
-		{
 		}
 		i++;
 	}
