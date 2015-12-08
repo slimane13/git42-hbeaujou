@@ -6,9 +6,11 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/08 18:40:45 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/08 18:43:19 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/08 18:44:24 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "fillit.h"
 
 void	lance_boucle_14_2(int nbr, int flag[26], int nbr_courant[26])
 {
