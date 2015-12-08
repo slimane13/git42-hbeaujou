@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 11:56:10 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/08 15:57:07 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/08 16:02:53 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int		*situe_point(char *str)
 		}
 		else
 		{
-			pos[iteart[1]] = iterat[0] - etage;
+			pos[iterat[1]] = iterat[0] - etage;
 			iterat[1]++;
 			iterat[0]++;
 		}
