@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/06 15:18:01 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/08 19:03:37 by ebouther         ###   ########.fr       */
+/*   Updated: 2015/12/08 19:27:03 by ebouther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int test_max;
 int trouve;
 int *affichageLettre;
 
-int *clean;
+/*int *clean; 
 int *backtrack;
 int *backtrack;
 int *backtrack;
@@ -57,16 +57,18 @@ int *backtrack3;
 int *backtrack4;
 int *backtrack5;
 int *backtrack6;
+*/
 
 void	ft_boucle_f1_big(int flag[26], int nbr_courant[26])
 {
 	int i;
 	int haut_max1;
+	static int	*backtrack;
 
 	i = 0;
 	if (flag[0] == 0)
 	{
-		clean = (int *)malloc(sizeof(int) * (taille_max * taille_max));
+		backtrack = (int *)malloc(sizeof(int) * (taille_max * taille_max));
 		nbr_courant[0] = nbr_courant[1] + 1;
 		flag[0] = 1;
 	}
@@ -79,7 +81,8 @@ void	ft_boucle_f1_big(int flag[26], int nbr_courant[26])
 		absTmp = abs_minus(test_haut, test_larg);
 		if (absTmp <= test_max)
 		{
-			ft_strcpy_int(clean, tmpCalc, taille_max * taille_max);
+			ft_strcpy_int(backtrack, tmpCalc, taille_max * taille_max);
+			affiche(backtrack);
 			trouve = 1;
 		}
 		i++;

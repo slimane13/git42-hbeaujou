@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 11:53:53 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/08 19:01:55 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/08 19:26:01 by ebouther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,7 @@ extern int test_max;
 extern int trouve;
 extern int *affichageLettre;
 
-extern int *clean;
+/*extern int *g_clean;
 extern int *clean2;
 extern int *clean3;
 extern int *clean4;
@@ -145,7 +145,7 @@ extern int *clean22;
 extern int *clean23;
 extern int *clean24;
 extern int *clean25;
-extern int *clean26;
+extern int *clean26;*/
 
 extern int flagTRY;
 

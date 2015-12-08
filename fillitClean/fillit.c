@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 11:56:10 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/08 17:59:10 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/08 19:26:17 by ebouther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,9 +115,7 @@ int		main(int argc, char **argv)
 	absTmp = 100;
 	test_max = nbrTetri - nbrTetri / 3;
 	if (nbrTetri > 9)
-	{
 		test_max = nbrTetri / 2 + 1;
-	}
 	iter_max = 65;
 	if (nbrTetri == 2)
 		iter_max = 14;
@@ -130,9 +128,7 @@ int		main(int argc, char **argv)
 		}
 	}
 	else
-	{
 		choix_boucle(nbrTetri);
-	}
-	affiche(clean);
+	//affiche(g_clean);
 	return (0);
 }
