@@ -6,26 +6,11 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 17:26:23 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/08 16:40:28 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/08 18:29:48 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-
-int		*tab_char_to_int(char *str)
-{
-	int	i;
-	int	*tab;
-
-	i = 0;
-	tab = (int *)malloc(sizeof(int) * 36);
-	while (str[i] != '\0')
-	{
-		tab[i] = atoi(&str[i]);
-		i++;
-	}
-	return (tab);
-}
 
 int		overlap_3(int *t1, int *t2, int taille)
 {

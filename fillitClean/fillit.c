@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 11:56:10 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/08 17:04:04 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/08 17:59:10 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,7 @@ int		main(int argc, char **argv)
 	{
 		test_max = nbrTetri / 2 + 1;
 	}
-	iter_max = 60;
+	iter_max = 65;
 	if (nbrTetri == 2)
 		iter_max = 14;
 	if (nbrTetri > 2)

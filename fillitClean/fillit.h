@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 11:53:53 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/08 17:32:37 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/08 18:39:54 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,9 @@ int     overlap_3(int *t1, int *t2, int taille);
 int     is_valid(int *t1, int taille, int *spc);
 int		check_pos_23(int pos, int *t1);
 int		check_pos_32(int pos, int *t1);
+void	lance_boucle_14(int nbr, int flag[26], int nbr_courant[26]);
+void	lance_boucle_59(int nbr, int flag[26], int nbr_courant[26]);
+void	calc_attrib(int *clean, int *nbr, int i, int *t1, int *t2, int indice);
 void	affiche(int *final);
 void	affiche_special(int *final);
 void	remp_blank(int *tab);
@@ -93,8 +96,6 @@ void ft_boucle_f23_big(int flag[26], int nbrCourant[26]);
 void ft_boucle_f24_big(int flag[26], int nbrCourant[26]);
 void ft_boucle_f25_big(int flag[26], int nbrCourant[26]);
 void ft_boucle_f26_big(int flag[26], int nbrCourant[26]);
-
-int		*ft_malloc_clean(int flag[26], int nbrCourant[26], int i);
 
 extern int *resolution;
 extern int	*tampon;
