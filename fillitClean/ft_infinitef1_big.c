@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/06 15:18:01 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/08 19:27:03 by ebouther         ###   ########.fr       */
+/*   Updated: 2015/12/09 10:30:53 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,38 +31,10 @@ int test_max;
 int trouve;
 int *affichageLettre;
 
-/*int *clean; 
-int *backtrack;
-int *backtrack;
-int *backtrack;
-int *backtrack;
-int *backtrack;
-int *backtrack;
-int *backtrack;
-int *backtrack;
-int *backtrack0;
-int *backtrack1;
-int *backtrack2;
-int *backtrack3;
-int *backtrack4;
-int *backtrack5;
-int *backtrack6;
-int *backtrack7;
-int *backtrack8;
-int *backtrack9;
-int *backtrack0;
-int *backtrack1;
-int *backtrack2;
-int *backtrack3;
-int *backtrack4;
-int *backtrack5;
-int *backtrack6;
-*/
-
 void	ft_boucle_f1_big(int flag[26], int nbr_courant[26])
 {
-	int i;
-	int haut_max1;
+	int			i;
+	int			haut_max1;
 	static int	*backtrack;
 
 	i = 0;
@@ -78,12 +50,11 @@ void	ft_boucle_f1_big(int flag[26], int nbr_courant[26])
 				nbr_courant[0], (4 * nbr_courant[0]), i);
 		test_larg = calc_larg(tmpCalc, taille_max);
 		test_haut = calc_haut(tmpCalc, taille_max);
-		absTmp = abs_minus(test_haut, test_larg);
+		absTmp = absc(test_haut, test_larg);
 		if (absTmp <= test_max)
 		{
 			ft_strcpy_int(backtrack, tmpCalc, taille_max * taille_max);
 			affiche(backtrack);
-			trouve = 1;
 		}
 		i++;
 	}
@@ -93,7 +64,7 @@ void	ft_boucle_f2_big(int flag[26], int nbr_courant[26])
 {
 	int			test_haut2;
 	int			test_larg2;
-	int 		i2;
+	int			i2;
 	static int	*backtrack;
 
 	i2 = 0;
@@ -108,7 +79,7 @@ void	ft_boucle_f2_big(int flag[26], int nbr_courant[26])
 	ft_strcpy_int(backtrack, tmpCalc, taille_max * taille_max);
 	while (i2 < iter_max && test_haut2 < test_max + 1 && trouve == 0)
 	{
-		calc_attrib(backtrack, nbr_courant, i2, &test_larg2, &test_haut2, 2);
+		calc(backtrack, nbr_courant, i2, &test_larg2, &test_haut2, 2);
 		if (test_larg2 < test_max + 1)
 		{
 			tampon = resitue(tmpCalc, (4 * nbr_courant[1]), taille_max);
@@ -120,9 +91,9 @@ void	ft_boucle_f2_big(int flag[26], int nbr_courant[26])
 
 void	ft_boucle_f3_big(int flag[26], int nbr_courant[26])
 {
-	int	test_haut3;
-	int	test_larg3;
-	int i3;
+	int			test_haut3;
+	int			test_larg3;
+	int			i3;
 	static int	*backtrack;
 
 	i3 = 0;
@@ -137,7 +108,7 @@ void	ft_boucle_f3_big(int flag[26], int nbr_courant[26])
 	ft_strcpy_int(backtrack, tmpCalc, taille_max * taille_max);
 	while (i3 < iter_max && test_haut3 < test_max + 1 && trouve == 0)
 	{
-		calc_attrib(backtrack, nbr_courant, i3, &test_larg3, &test_haut3, 3);
+		calc(backtrack, nbr_courant, i3, &test_larg3, &test_haut3, 3);
 		if (test_larg3 < test_max + 1)
 		{
 			tampon = resitue(tmpCalc, (4 * nbr_courant[2]), taille_max);
@@ -149,10 +120,10 @@ void	ft_boucle_f3_big(int flag[26], int nbr_courant[26])
 
 void	ft_boucle_f4_big(int flag[26], int nbr_courant[26])
 {
-	int	test_haut4;
-	int	test_larg4;
-	int i4;
-	static int *backtrack;
+	int			test_haut4;
+	int			test_larg4;
+	int			i4;
+	static int	*backtrack;
 
 	i4 = 0;
 	test_haut4 = 0;
@@ -166,7 +137,7 @@ void	ft_boucle_f4_big(int flag[26], int nbr_courant[26])
 	ft_strcpy_int(backtrack, tmpCalc, taille_max * taille_max);
 	while (i4 < iter_max && test_haut4 < test_max + 1 && trouve == 0)
 	{
-		calc_attrib(backtrack, nbr_courant, i4, &test_larg4, &test_haut4, 4);
+		calc(backtrack, nbr_courant, i4, &test_larg4, &test_haut4, 4);
 		if (test_larg4 < test_max + 1)
 		{
 			tampon = resitue(tmpCalc, (4 * nbr_courant[3]), taille_max);
@@ -178,9 +149,9 @@ void	ft_boucle_f4_big(int flag[26], int nbr_courant[26])
 
 void	ft_boucle_f5_big(int flag[26], int nbr_courant[26])
 {
-	int	test_haut5;
-	int	test_larg5;
-	int i5;
+	int			test_haut5;
+	int			test_larg5;
+	int			i5;
 	static int	*backtrack;
 
 	i5 = 0;
@@ -195,7 +166,7 @@ void	ft_boucle_f5_big(int flag[26], int nbr_courant[26])
 	ft_strcpy_int(backtrack, tmpCalc, taille_max * taille_max + 1);
 	while (i5 < iter_max && test_haut5 < test_max + 1 && trouve == 0)
 	{
-		calc_attrib(backtrack, nbr_courant, i5, &test_larg5, &test_haut5, 5);
+		calc(backtrack, nbr_courant, i5, &test_larg5, &test_haut5, 5);
 		if (test_larg5 < test_max + 1)
 		{
 			tampon = resitue(tmpCalc, (4 * nbr_courant[4]), taille_max);

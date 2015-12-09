@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 10:06:41 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/08 19:20:40 by ebouther         ###   ########.fr       */
+/*   Updated: 2015/12/09 09:55:32 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_boucle_f26_big(int flag[26], int nbr_courant[26])
 {
-	int i26;
+	int			i26;
 	static int	*backtrack;
 
 	i26 = 0;

@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2515/12/08 13:24:24 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/08 19:10:27 by ebouther         ###   ########.fr       */
+/*   Updated: 2015/12/09 09:56:23 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	ft_boucle_f21_big(int flag[26], int nbr_courant[26])
 {
-	int test_haut21;
-	int test_larg21;
-	int i21;
+	int			test_haut21;
+	int			test_larg21;
+	int			i21;
 	static int	*backtrack;
 
 	i21 = 0;
@@ -31,7 +31,7 @@ void	ft_boucle_f21_big(int flag[26], int nbr_courant[26])
 	ft_strcpy_int(backtrack, tmpCalc, taille_max * taille_max);
 	while (i21 < iter_max && test_haut21 < test_max + 1 && trouve == 0)
 	{
-		calc_attrib(backtrack, nbr_courant, i21, &test_larg21, &test_haut21, 21);
+		calc(backtrack, nbr_courant, i21, &test_larg21, &test_haut21, 21);
 		if (test_larg21 < test_max + 1)
 		{
 			tampon = resitue(tmpCalc, (4 * nbr_courant[20]), taille_max);
@@ -43,9 +43,9 @@ void	ft_boucle_f21_big(int flag[26], int nbr_courant[26])
 
 void	ft_boucle_f22_big(int flag[26], int nbr_courant[26])
 {
-	int test_larg22;
-	int test_haut22;
-	int i22;
+	int			test_larg22;
+	int			test_haut22;
+	int			i22;
 	static int	*backtrack;
 
 	test_haut22 = 0;
@@ -60,7 +60,7 @@ void	ft_boucle_f22_big(int flag[26], int nbr_courant[26])
 	ft_strcpy_int(backtrack, tmpCalc, taille_max * taille_max);
 	while (i22 < iter_max && test_haut22 < test_max + 1 && trouve == 0)
 	{
-		calc_attrib(backtrack, nbr_courant, i22, &test_larg22, &test_haut22, 22);
+		calc(backtrack, nbr_courant, i22, &test_larg22, &test_haut22, 22);
 		if (test_larg22 < test_max + 1)
 		{
 			tampon = resitue(tmpCalc, (4 * nbr_courant[21]), taille_max);
@@ -72,9 +72,9 @@ void	ft_boucle_f22_big(int flag[26], int nbr_courant[26])
 
 void	ft_boucle_f23_big(int flag[26], int nbr_courant[26])
 {
-	int test_larg23;
-	int test_haut23;
-	int i23;
+	int			test_larg23;
+	int			test_haut23;
+	int			i23;
 	static int	*backtrack;
 
 	test_haut23 = 0;
@@ -89,7 +89,7 @@ void	ft_boucle_f23_big(int flag[26], int nbr_courant[26])
 	ft_strcpy_int(backtrack, tmpCalc, taille_max * taille_max);
 	while (i23 < iter_max && test_haut23 < test_max + 1 && trouve == 0)
 	{
-		calc_attrib(backtrack, nbr_courant, i23, &test_larg23, &test_haut23, 23);
+		calc(backtrack, nbr_courant, i23, &test_larg23, &test_haut23, 23);
 		if (test_larg23 < test_max + 1)
 		{
 			tampon = resitue(tmpCalc, (4 * nbr_courant[22]), taille_max);
@@ -101,9 +101,9 @@ void	ft_boucle_f23_big(int flag[26], int nbr_courant[26])
 
 void	ft_boucle_f24_big(int flag[26], int nbr_courant[26])
 {
-	int test_larg24;
-	int test_haut24;
-	int i24;
+	int			test_larg24;
+	int			test_haut24;
+	int			i24;
 	static int	*backtrack;
 
 	test_haut24 = 0;
@@ -118,7 +118,7 @@ void	ft_boucle_f24_big(int flag[26], int nbr_courant[26])
 	ft_strcpy_int(backtrack, tmpCalc, taille_max * taille_max);
 	while (i24 < iter_max && test_haut24 < test_max + 1 && trouve == 0)
 	{
-		calc_attrib(backtrack, nbr_courant, i24, &test_larg24, &test_haut24, 24);
+		calc(backtrack, nbr_courant, i24, &test_larg24, &test_haut24, 24);
 		if (test_larg24 < test_max + 1)
 		{
 			tampon = resitue(tmpCalc, (4 * nbr_courant[23]), taille_max);
@@ -130,9 +130,9 @@ void	ft_boucle_f24_big(int flag[26], int nbr_courant[26])
 
 void	ft_boucle_f25_big(int flag[26], int nbr_courant[26])
 {
-	int test_larg25;
-	int test_haut25;
-	int i25;
+	int			test_larg25;
+	int			test_haut25;
+	int			i25;
 	static int	*backtrack;
 
 	test_haut25 = 0;
@@ -147,7 +147,7 @@ void	ft_boucle_f25_big(int flag[26], int nbr_courant[26])
 	ft_strcpy_int(backtrack, tmpCalc, taille_max * taille_max);
 	while (i25 < iter_max)
 	{
-		calc_attrib(backtrack, nbr_courant, i25, &test_larg25, &test_haut25, 25);
+		calc(backtrack, nbr_courant, i25, &test_larg25, &test_haut25, 25);
 		if (test_larg25 < test_max + 1)
 		{
 			tampon = resitue(tmpCalc, (4 * nbr_courant[24]), taille_max);

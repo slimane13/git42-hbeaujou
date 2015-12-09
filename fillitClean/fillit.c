@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 11:56:10 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/08 19:26:17 by ebouther         ###   ########.fr       */
+/*   Updated: 2015/12/09 10:57:34 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,6 @@ int		main(int argc, char **argv)
 {
 	char	**tetri_list;
 	int		ite;
-	int		target;
 
 	if (argc != 2)
 		return (0);
@@ -129,6 +128,5 @@ int		main(int argc, char **argv)
 	}
 	else
 		choix_boucle(nbrTetri);
-	//affiche(g_clean);
 	return (0);
 }

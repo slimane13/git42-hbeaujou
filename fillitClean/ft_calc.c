@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/29 16:53:02 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/08 14:50:48 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/09 10:03:33 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int	calc_haut(int *tab_tetri, int taille)
 	return (tab[1] - tab[3]);
 }
 
-int	abs_minus(int a, int b)
+int	absc(int a, int b)
 {
 	int n;
 

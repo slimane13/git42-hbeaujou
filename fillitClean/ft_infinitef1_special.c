@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/07 10:36:53 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/08 19:14:53 by ebouther         ###   ########.fr       */
+/*   Updated: 2015/12/09 10:17:35 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_boucle_f1_special(int flag[26], int nbr_courant[26])
 {
-	int i;
+	int			i;
 	static int	*backtrack;
 
 	i = 0;
@@ -31,14 +31,14 @@ void	ft_boucle_f1_special(int flag[26], int nbr_courant[26])
 			taille_max, var, nbr_courant[0], 4, i);
 	test_larg = calc_larg(tmpCalc, taille_max);
 	test_haut = calc_haut(tmpCalc, taille_max);
-	absTmp = abs_minus(test_larg, test_haut);
+	absTmp = absc(test_larg, test_haut);
 	ft_strcpy_int(backtrack, tmpCalc, taille_max * taille_max);
 }
 
 void	ft_boucle_f1_special_2(int flag[26], int nbr_courant[26])
 {
-	int i;
-	int haut_max1;
+	int			i;
+	int			haut_max1;
 	static int	*backtrack;
 
 	i = 0;
@@ -55,23 +55,18 @@ void	ft_boucle_f1_special_2(int flag[26], int nbr_courant[26])
 				taille_max, var, nbr_courant[0], (4 * nbr_courant[0]), i);
 		test_larg = calc_larg(tmpCalc, taille_max);
 		test_haut = calc_haut(tmpCalc, taille_max);
-		if ((test_larg < larg_max && abs_minus(test_larg, test_haut) < absTmp) ||
-				(test_haut < haut_max && abs_minus(test_larg, test_haut) < absTmp))
-		{
-			ft_strcpy_int(backtrack, tmpCalc, taille_max * taille_max);
-			larg_max = calc_larg(final, taille_max);
-			haut_max = calc_haut(final, taille_max);
-			absTmp = abs_minus(larg_max, haut_max);
-		}
+		if ((test_larg < larg_max && absc(test_larg, test_haut) < absTmp) ||
+				(test_haut < haut_max && absc(test_larg, test_haut) < absTmp))
+			attrb_2(backtrack);
 		i++;
 	}
 }
 
 void	ft_boucle_f2_special(int flag[26], int nbr_courant[26])
 {
-	int i2;
-	int	test_haut2;
-	int	test_larg2;
+	int			i2;
+	int			test_haut2;
+	int			test_larg2;
 	static int	*backtrack;
 
 	i2 = 0;
@@ -94,8 +89,8 @@ void	ft_boucle_f2_special(int flag[26], int nbr_courant[26])
 			tampon[2] = -1;
 			tampon[3] = -1;
 		}
-		tmpCalc = try_tetris_2_2(tampon, points[nbr_courant[1]],
-				taille_max, var, nbr_courant[1], (4 * (nbr_courant[1] + 1)), i2);
+		tmpCalc = try_tetris_2_2(tampon, points[nbr_courant[1]], taille_max,
+				var, nbr_courant[1], (4 * (nbr_courant[1] + 1)), i2);
 		test_larg2 = calc_larg(tmpCalc, taille_max);
 		test_haut2 = calc_haut(tmpCalc, taille_max);
 		if (test_larg2 < larg_max + 1)
