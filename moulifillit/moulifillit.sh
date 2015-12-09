@@ -246,3 +246,7 @@ do
                 echo ""
         fi
 done
+
+rm domi.txt
+rm slim.txt
+rm sample*
