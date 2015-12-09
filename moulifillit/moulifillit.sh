@@ -247,6 +247,51 @@ do
         fi
 done
 
+echo "\033[33m-------------------- Error 1 --------------------"
+
+for i in 'seq 1 50'
+do
+        timeout 30 "./test_fillit errors.txt > slim.txt"
+        ./solution_fillit errors.txt > domi.txt
+        diff slim.txt domi.txt > diff.txt
+        if [ -s diff.txt ]
+        then
+                echo ""
+                echo "\033[31m          Votre grille pour error 1 :"
+                cat slim.txt
+                echo ""
+                echo "\033[31m            Solution pour error 1 :"
+                cat domi.txt
+        else
+                echo ""
+                echo "\033[32m          [✔] Grille erreur 1 bonne"
+                echo ""
+        fi
+done
+
+echo "\033[33m-------------------- Error 2 --------------------"
+
+for i in 'seq 1 50'
+do
+        timeout 30 "./test_fillit errors2.txt > slim.txt"
+        ./solution_fillit errors2.txt > domi.txt
+        diff slim.txt domi.txt > diff.txt
+        if [ -s diff.txt ]
+        then
+                echo ""
+                echo "\033[31m          Votre grille pour error 2 :"
+                cat slim.txt
+                echo ""
+                echo "\033[31m            Solution pour error 2 :"
+                cat domi.txt
+        else
+                echo ""
+                echo "\033[32m          [✔] Grille erreur 2 bonne"
+                echo ""
+        fi
+done
+
+rm diff.txt
 rm domi.txt
 rm slim.txt
 rm sample*
