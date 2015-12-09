@@ -6,17 +6,11 @@
 /*   By: ebouther <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/30 20:21:39 by ebouther          #+#    #+#             */
-/*   Updated: 2015/12/08 15:43:16 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/09 19:20:39 by ebouther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "read.h"
-
-void		ft_error_exit(void)
-{
-	ft_putstr("error\n");
-	exit(0);
-}
 
 char		*ft_add_to_line(int tetriminos)
 {
@@ -45,34 +39,64 @@ char		*ft_add_to_map(int tetriminos)
 	if (tetriminos <= 2)
 		return (ret);
 	while (i--)
-		ret = ft_strjoin(ret, ft_strjoin(ft_add_to_line(tetriminos + 4), ft_strdup("\n")));
+		ret = ft_strjoin(ret, ft_strjoin(ft_add_to_line(tetriminos + 4),
+					ft_strdup("\n")));
 	return (ret);
+}
+
+static int	ft_check_tetriminos_2(char *content, int tetriminos)
+{
+	if (!((content[tetriminos + 1] == '#' && content[tetriminos] == '#'
+					&& content[tetriminos + 2] == '#')
+			|| (content[tetriminos + 1] == '#' && content[tetriminos + 2] == '#'
+				&& content[(tetriminos + 1) * 2] == '#')
+			|| (content[tetriminos + 1] == '#' && content[tetriminos] == '#'
+				&& content[(tetriminos + 1) * 2] == '#')
+			|| (content[tetriminos + 1] == '#' && content[tetriminos + 2] == '#'
+				&& content[tetriminos + 3] == '#')
+			|| (content[tetriminos + 1] == '#' && content[(tetriminos + 1) * 2]
+				== '#' && content[((tetriminos + 1) * 2) + 1] == '#')
+			|| (content[tetriminos + 1] == '#' && content[tetriminos + 1 - 1]
+				== '#' && content[(tetriminos + 1) - 2] == '#')
+			|| (content[tetriminos + 1] == '#' && content[(tetriminos + 1) * 2]
+				== '#' && content[(tetriminos + 1) * 2 - 1] == '#')
+			|| (content[1] == '#' && content[2] == '#' && content[(tetriminos
+					+ 1) + 2] == '#')
+			|| (content[1] == '#' && content[2] == '#' && content[tetriminos
+				+ 1] == '#')
+			|| (content[tetriminos + 1] == '#' && content[(tetriminos + 1) * 2]
+				== '#' && content[1] == '#')
+			|| (content[tetriminos + 2] == '#' && content[(tetriminos + 1) * 2
+				+ 1] == '#' && content[1] == '#')))
+		return (-1);
+	return (0);
 }
 
 static void	ft_check_tetriminos_1(char *content, int tetriminos)
 {
+	int test;
+
 	if (tetriminos <= 2)
 		tetriminos = 4;
-	if (!((content[tetriminos + 1] == '#' && content[tetriminos] == '#' && content[tetriminos + 2] == '#')
-			|| (content[tetriminos + 1] == '#' && content[tetriminos + 2] == '#' && content[(tetriminos + 1) * 2] == '#')
-			|| (content[tetriminos + 1] == '#' && content[tetriminos] == '#' && content[(tetriminos + 1) * 2] == '#')
-			|| (content[tetriminos + 1] == '#' && content[tetriminos + 2] == '#' && content[tetriminos + 3] == '#')
-			|| (content[tetriminos + 1] == '#' && content[(tetriminos + 1) * 2] == '#' && content[((tetriminos + 1) * 2) + 1] == '#')
-			|| (content[tetriminos + 1] == '#' && content[tetriminos + 1 - 1] == '#' && content[(tetriminos + 1) - 2] == '#')
-			|| (content[tetriminos + 1] == '#' && content[(tetriminos + 1) * 2] == '#' && content[(tetriminos + 1) * 2 - 1] == '#')
-			|| (content[1] == '#' && content[2] == '#' && content[(tetriminos + 1) + 2] == '#')
-			|| (content[1] == '#' && content[2] == '#' && content[tetriminos + 1] == '#')
-			|| (content[tetriminos + 1] == '#' && content[(tetriminos + 1) * 2] == '#' && content[1] == '#')
-			|| (content[tetriminos + 2] == '#' && content[(tetriminos + 1) * 2 + 1] == '#' && content[1] == '#')
-			|| (content[tetriminos + 1] == '#' && content[(tetriminos + 1) * 2] == '#' && content[(tetriminos + 1) * 3] == '#')
+	if (!((content[tetriminos + 1] == '#' && content[(tetriminos + 1) * 2] ==
+					'#' && content[(tetriminos + 1) * 3] == '#')
 			|| (content[1] == '#' && content[2] == '#' && content[3] == '#')
-			|| (content[1] == '#' && content[2] == '#' && content[tetriminos + 2] == '#')
-			|| (content[1] == '#' && content[tetriminos + 1] == '#' && content[tetriminos + 2] == '#')
-			|| (content[1] == '#' && content[tetriminos] == '#' && content[tetriminos + 1] == '#')
-			|| (content[1] == '#' && content[tetriminos] == '#' && content[tetriminos + 1] == '#')
-			|| (content[tetriminos + 1] == '#' && content[tetriminos + 2] == '#' && content[(tetriminos + 1) * 2 + 1] == '#')
-			|| (content[tetriminos + 1] == '#' && content[tetriminos] == '#' && content[(tetriminos + 1) * 2 - 1] == '#')
-			|| (content[1] == '#' && content[tetriminos + 2] == '#' && content[tetriminos + 3] == '#')))
+			|| (content[1] == '#' && content[2] == '#' && content[tetriminos
+				+ 2] == '#')
+			|| (content[1] == '#' && content[tetriminos + 1] == '#'
+				&& content[tetriminos + 2] == '#')
+			|| (content[1] == '#' && content[tetriminos] == '#'
+				&& content[tetriminos + 1] == '#')
+			|| (content[1] == '#' && content[tetriminos] == '#'
+				&& content[tetriminos + 1] == '#')
+			|| (content[tetriminos + 1] == '#' && content[tetriminos + 2]
+				== '#' && content[(tetriminos + 1) * 2 + 1] == '#')
+			|| (content[tetriminos + 1] == '#' && content[tetriminos] == '#'
+				&& content[(tetriminos + 1) * 2 - 1] == '#')
+			|| (content[1] == '#' && content[tetriminos + 2] == '#'
+				&& content[tetriminos + 3] == '#')))
+		test = -1;
+	if (test == -1 && ft_check_tetriminos_2(content, tetriminos) == -1)
 		ft_error_exit();
 }
 
