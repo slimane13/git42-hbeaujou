@@ -6,7 +6,7 @@
 /*   By: ebouther <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/27 17:17:29 by ebouther          #+#    #+#             */
-/*   Updated: 2015/12/09 14:43:12 by ebouther         ###   ########.fr       */
+/*   Updated: 2015/12/09 14:48:28 by ebouther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ typedef struct	s_env
 	int			last_pos;
 }				t_env;
 
+void			ft_error_exit(void);
 t_map			*ft_get_maps(int fd, int tetriminos);
 char			*ft_add_to_line(int tetriminos);
 char			*ft_add_to_map(int tetriminos);
