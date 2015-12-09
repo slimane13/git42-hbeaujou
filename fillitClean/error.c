@@ -6,7 +6,7 @@
 /*   By: ebouther <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/30 20:21:39 by ebouther          #+#    #+#             */
-/*   Updated: 2015/12/09 14:41:41 by ebouther         ###   ########.fr       */
+/*   Updated: 2015/12/09 14:52:46 by ebouther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,8 @@ static void	ft_check_tetriminos_1(char *content, int tetriminos)
 				|| (content[tetriminos + 1] == '#' && content[tetriminos + 1 - 1] == '#' && content[(tetriminos + 1) - 2] == '#')
 				|| (content[tetriminos + 1] == '#' && content[(tetriminos + 1) * 2] == '#' && content[(tetriminos + 1) * 2 - 1] == '#')
 				|| (content[1] == '#' && content[2] == '#' && content[(tetriminos + 1) + 2] == '#')
-				|| (content[1] == '#' && content[2] == '#' && content[tetriminos + 1] == '#'))
-				|| ft_check_tetriminos_2(content, tetriminos) == -1)
+				|| (content[1] == '#' && content[2] == '#' && content[tetriminos + 1] == '#')))
+			//|| ft_check_tetriminos_2(content, tetriminos) == -1)
 		ft_error_exit();
 }
 
