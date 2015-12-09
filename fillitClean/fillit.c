@@ -43,7 +43,7 @@ int		**lire_to_tab(char *str, char **tetri_list)
 	int **tab;
 
 	rd = open(str, O_RDONLY);
-	tab = struct_to_tab(ft_get_maps(rd, nbrTetri), tetri_list);
+	tab = struct_to_tab(ft_get_maps(rd, g_nbrTetri), tetri_list);
 	return (tab);
 }
 
@@ -83,50 +83,50 @@ int		main(int argc, char **argv)
 
 	if (argc != 2)
 		return (0);
-	nbrTetri = lire_file(argv[1]);
-	taille_max = 2 * (nbrTetri);
-	if (nbrTetri == 1 || nbrTetri == 0)
+	g_nbrTetri = lire_file(argv[1]);
+	g_taille_max = 2 * (g_nbrTetri);
+	if (g_nbrTetri == 1 || g_nbrTetri == 0)
 	{
-		taille_max = 4;
-		nbrTetri++;
+		g_taille_max = 4;
+		g_nbrTetri++;
 	}
-	ite = nbrTetri;
-	if (!(points = malloc(sizeof(int *) * ite)))
+	ite = g_nbrTetri;
+	if (!(g_points = malloc(sizeof(int *) * ite)))
 		return (0);
-	tetri_list = (char **)malloc(sizeof(char *) * nbrTetri);
-	var = lire_to_tab(argv[1], tetri_list);
+	tetri_list = (char **)malloc(sizeof(char *) * g_nbrTetri);
+	g_var = lire_to_tab(argv[1], tetri_list);
 	while (ite > 0)
 	{
-		points[ite - 1] = situe_point(tetri_list[ite - 1]);
+		g_points[ite - 1] = situe_point(tetri_list[ite - 1]);
 		ite--;
 	}
-	rewind_tetris(points[0], 0);
-	flagTRY = 0;
-	final = (int *)malloc(sizeof(int) * (taille_max * taille_max));
-	tmpCalc = (int *)malloc(sizeof(int) * (taille_max * taille_max));
-	tampon = (int *)malloc(sizeof(int) * taille_max);
-	affichageLettre = (int *)malloc(sizeof(int) * (taille_max * taille_max));
-	flagTRY = 1;
-	remp_blank(tmpCalc);
-	larg_max = 100;
-	trouve = 0;
-	haut_max = 100;
-	absTmp = 100;
-	test_max = nbrTetri - nbrTetri / 3;
-	if (nbrTetri > 9)
-		test_max = nbrTetri / 2 + 1;
-	iter_max = 65;
-	if (nbrTetri == 2)
-		iter_max = 14;
-	if (nbrTetri > 2)
+	rewind_tetris(g_points[0], 0);
+	g_flagTRY = 0;
+	g_final = (int *)malloc(sizeof(int) * (g_taille_max * g_taille_max));
+	g_tmpCalc = (int *)malloc(sizeof(int) * (g_taille_max * g_taille_max));
+	g_tampon = (int *)malloc(sizeof(int) * g_taille_max);
+	g_affichageLettre = (int *)malloc(sizeof(int) * (g_taille_max * g_taille_max));
+	g_flagTRY = 1;
+	remp_blank(g_tmpCalc);
+	g_larg_max = 100;
+	g_trouve = 0;
+	g_haut_max = 100;
+	g_absTmp = 100;
+	g_test_max = g_nbrTetri - g_nbrTetri / 3;
+	if (g_nbrTetri > 9)
+		g_test_max = g_nbrTetri / 2 + 1;
+	g_iter_max = 65;
+	if (g_nbrTetri == 2)
+		g_iter_max = 14;
+	if (g_nbrTetri > 2)
 	{
-		while (trouve == 0)
+		while (g_trouve == 0)
 		{
-			choix_boucle(nbrTetri);
-			test_max++;
+			choix_boucle(g_nbrTetri);
+			g_test_max++;
 		}
 	}
 	else
-		choix_boucle(nbrTetri);
+		choix_boucle(g_nbrTetri);
 	return (0);
 }

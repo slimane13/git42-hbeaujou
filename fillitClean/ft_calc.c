@@ -15,25 +15,25 @@
 int	calc_larg(int *tab, int taille)
 {
 	int i;
-	int larg_max_test;
+	int g_larg_max_test;
 	int largeur;
 	int	larg_min;
 
 	i = 0;
 	largeur = 0;
-	larg_max_test = -1;
+	g_larg_max_test = -1;
 	larg_min = 10;
 	while (i < taille * taille)
 	{
 		largeur = i % taille;
-		if (tab[i] != 0 && largeur > larg_max_test)
-			larg_max_test = largeur;
+		if (tab[i] != 0 && largeur > g_larg_max_test)
+			g_larg_max_test = largeur;
 		else if (tab[i] != 0 && largeur < larg_min)
 			larg_min = largeur;
 		i++;
 	}
-	larg_max_test++;
-	return (larg_max_test);
+	g_larg_max_test++;
+	return (g_larg_max_test);
 }
 
 int	calc_haut(int *tab_tetri, int taille)

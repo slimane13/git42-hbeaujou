@@ -12,165 +12,165 @@
 
 #include "fillit.h"
 
-int	*tampon;
-int	*tmpCalc;
-int	*final;
-int	larg_max;
-int haut_max;
-int	test_larg;
-int	test_haut;
-int iter_max;
-int absTmp;
-int taille_max;
-int	**points;
-int **var;
-int nbr_courant;
-int flagTRY;
-int nbrTetri;
-int test_max;
-int trouve;
-int *affichageLettre;
+int	*g_tampon;
+int	*g_tmpCalc;
+int	*g_final;
+int	g_larg_max;
+int g_haut_max;
+int	g_test_larg;
+int	g_test_haut;
+int g_iter_max;
+int g_absTmp;
+int g_taille_max;
+int	**g_points;
+int **g_var;
+int g_nbr_courant;
+int g_flagTRY;
+int g_nbrTetri;
+int g_test_max;
+int g_trouve;
+int *g_affichageLettre;
 
-void	ft_boucle_f1_big(int flag[26], int nbr_courant[26])
+void	ft_boucle_f1_big(int flag[26], int g_nbr_courant[26])
 {
 	int			i;
-	int			haut_max1;
+	int			g_haut_max1;
 	static int	*backtrack;
 
 	i = 0;
 	if (flag[0] == 0)
 	{
-		backtrack = (int *)malloc(sizeof(int) * (taille_max * taille_max));
-		nbr_courant[0] = nbr_courant[1] + 1;
+		backtrack = (int *)malloc(sizeof(int) * (g_taille_max * g_taille_max));
+		g_nbr_courant[0] = g_nbr_courant[1] + 1;
 		flag[0] = 1;
 	}
-	while (i < iter_max && test_haut < test_max + 4 && trouve == 0)
+	while (i < g_iter_max && g_test_haut < g_test_max + 4 && g_trouve == 0)
 	{
-		tmpCalc = try_tetris_2(tampon, points[nbr_courant[0]], taille_max, var,
-				nbr_courant[0], (4 * nbr_courant[0]), i);
-		test_larg = calc_larg(tmpCalc, taille_max);
-		test_haut = calc_haut(tmpCalc, taille_max);
-		absTmp = absc(test_haut, test_larg);
-		if (absTmp <= test_max)
+		g_tmpCalc = try_tetris_2(g_tampon, g_points[g_nbr_courant[0]], g_taille_max, g_var,
+				g_nbr_courant[0], (4 * g_nbr_courant[0]), i);
+		g_test_larg = calc_larg(g_tmpCalc, g_taille_max);
+		g_test_haut = calc_haut(g_tmpCalc, g_taille_max);
+		g_absTmp = absc(g_test_haut, g_test_larg);
+		if (g_absTmp <= g_test_max)
 		{
-			ft_strcpy_int(backtrack, tmpCalc, taille_max * taille_max);
+			ft_strcpy_int(backtrack, g_tmpCalc, g_taille_max * g_taille_max);
 			affiche(backtrack);
 		}
 		i++;
 	}
 }
 
-void	ft_boucle_f2_big(int flag[26], int nbr_courant[26])
+void	ft_boucle_f2_big(int flag[26], int g_nbr_courant[26])
 {
-	int			test_haut2;
-	int			test_larg2;
+	int			g_test_haut2;
+	int			g_test_larg2;
 	int			i2;
 	static int	*backtrack;
 
 	i2 = 0;
-	test_haut2 = 0;
-	test_larg2 = 0;
+	g_test_haut2 = 0;
+	g_test_larg2 = 0;
 	if (flag[1] == 0)
 	{
-		backtrack = (int *)malloc(sizeof(int) * (taille_max * taille_max));
-		nbr_courant[1] = nbr_courant[2] + 1;
+		backtrack = (int *)malloc(sizeof(int) * (g_taille_max * g_taille_max));
+		g_nbr_courant[1] = g_nbr_courant[2] + 1;
 		flag[1] = 1;
 	}
-	ft_strcpy_int(backtrack, tmpCalc, taille_max * taille_max);
-	while (i2 < iter_max && test_haut2 < test_max + 1 && trouve == 0)
+	ft_strcpy_int(backtrack, g_tmpCalc, g_taille_max * g_taille_max);
+	while (i2 < g_iter_max && g_test_haut2 < g_test_max + 1 && g_trouve == 0)
 	{
-		calc(backtrack, nbr_courant, i2, &test_larg2, &test_haut2, 2);
-		if (test_larg2 < test_max + 1)
+		calc(backtrack, g_nbr_courant, i2, &g_test_larg2, &g_test_haut2, 2);
+		if (g_test_larg2 < g_test_max + 1)
 		{
-			tampon = resitue(tmpCalc, (4 * nbr_courant[1]), taille_max);
-			ft_boucle_f1_big(flag, nbr_courant);
+			g_tampon = resitue(g_tmpCalc, (4 * g_nbr_courant[1]), g_taille_max);
+			ft_boucle_f1_big(flag, g_nbr_courant);
 		}
 		i2++;
 	}
 }
 
-void	ft_boucle_f3_big(int flag[26], int nbr_courant[26])
+void	ft_boucle_f3_big(int flag[26], int g_nbr_courant[26])
 {
-	int			test_haut3;
-	int			test_larg3;
+	int			g_test_haut3;
+	int			g_test_larg3;
 	int			i3;
 	static int	*backtrack;
 
 	i3 = 0;
-	test_haut3 = 0;
-	test_larg3 = 0;
+	g_test_haut3 = 0;
+	g_test_larg3 = 0;
 	if (flag[2] == 0)
 	{
-		backtrack = (int *)malloc(sizeof(int) * (taille_max * taille_max));
-		nbr_courant[2] = nbr_courant[3] + 1;
+		backtrack = (int *)malloc(sizeof(int) * (g_taille_max * g_taille_max));
+		g_nbr_courant[2] = g_nbr_courant[3] + 1;
 		flag[2] = 1;
 	}
-	ft_strcpy_int(backtrack, tmpCalc, taille_max * taille_max);
-	while (i3 < iter_max && test_haut3 < test_max + 1 && trouve == 0)
+	ft_strcpy_int(backtrack, g_tmpCalc, g_taille_max * g_taille_max);
+	while (i3 < g_iter_max && g_test_haut3 < g_test_max + 1 && g_trouve == 0)
 	{
-		calc(backtrack, nbr_courant, i3, &test_larg3, &test_haut3, 3);
-		if (test_larg3 < test_max + 1)
+		calc(backtrack, g_nbr_courant, i3, &g_test_larg3, &g_test_haut3, 3);
+		if (g_test_larg3 < g_test_max + 1)
 		{
-			tampon = resitue(tmpCalc, (4 * nbr_courant[2]), taille_max);
-			ft_boucle_f2_big(flag, nbr_courant);
+			g_tampon = resitue(g_tmpCalc, (4 * g_nbr_courant[2]), g_taille_max);
+			ft_boucle_f2_big(flag, g_nbr_courant);
 		}
 		i3++;
 	}
 }
 
-void	ft_boucle_f4_big(int flag[26], int nbr_courant[26])
+void	ft_boucle_f4_big(int flag[26], int g_nbr_courant[26])
 {
-	int			test_haut4;
-	int			test_larg4;
+	int			g_test_haut4;
+	int			g_test_larg4;
 	int			i4;
 	static int	*backtrack;
 
 	i4 = 0;
-	test_haut4 = 0;
-	test_larg4 = 0;
+	g_test_haut4 = 0;
+	g_test_larg4 = 0;
 	if (flag[3] == 0)
 	{
-		backtrack = (int *)malloc(sizeof(int) * (taille_max * taille_max));
-		nbr_courant[3] = nbr_courant[4] + 1;
+		backtrack = (int *)malloc(sizeof(int) * (g_taille_max * g_taille_max));
+		g_nbr_courant[3] = g_nbr_courant[4] + 1;
 		flag[3] = 1;
 	}
-	ft_strcpy_int(backtrack, tmpCalc, taille_max * taille_max);
-	while (i4 < iter_max && test_haut4 < test_max + 1 && trouve == 0)
+	ft_strcpy_int(backtrack, g_tmpCalc, g_taille_max * g_taille_max);
+	while (i4 < g_iter_max && g_test_haut4 < g_test_max + 1 && g_trouve == 0)
 	{
-		calc(backtrack, nbr_courant, i4, &test_larg4, &test_haut4, 4);
-		if (test_larg4 < test_max + 1)
+		calc(backtrack, g_nbr_courant, i4, &g_test_larg4, &g_test_haut4, 4);
+		if (g_test_larg4 < g_test_max + 1)
 		{
-			tampon = resitue(tmpCalc, (4 * nbr_courant[3]), taille_max);
-			ft_boucle_f3_big(flag, nbr_courant);
+			g_tampon = resitue(g_tmpCalc, (4 * g_nbr_courant[3]), g_taille_max);
+			ft_boucle_f3_big(flag, g_nbr_courant);
 		}
 		i4++;
 	}
 }
 
-void	ft_boucle_f5_big(int flag[26], int nbr_courant[26])
+void	ft_boucle_f5_big(int flag[26], int g_nbr_courant[26])
 {
-	int			test_haut5;
-	int			test_larg5;
+	int			g_test_haut5;
+	int			g_test_larg5;
 	int			i5;
 	static int	*backtrack;
 
 	i5 = 0;
-	test_larg5 = 0;
-	test_haut5 = 0;
+	g_test_larg5 = 0;
+	g_test_haut5 = 0;
 	if (flag[4] == 0)
 	{
-		backtrack = (int *)malloc(sizeof(int) * (taille_max * taille_max));
-		nbr_courant[4] = nbr_courant[5] + 1;
+		backtrack = (int *)malloc(sizeof(int) * (g_taille_max * g_taille_max));
+		g_nbr_courant[4] = g_nbr_courant[5] + 1;
 		flag[4] = 1;
 	}
-	ft_strcpy_int(backtrack, tmpCalc, taille_max * taille_max + 1);
-	while (i5 < iter_max && test_haut5 < test_max + 1 && trouve == 0)
+	ft_strcpy_int(backtrack, g_tmpCalc, g_taille_max * g_taille_max + 1);
+	while (i5 < g_iter_max && g_test_haut5 < g_test_max + 1 && g_trouve == 0)
 	{
-		calc(backtrack, nbr_courant, i5, &test_larg5, &test_haut5, 5);
-		if (test_larg5 < test_max + 1)
+		calc(backtrack, g_nbr_courant, i5, &g_test_larg5, &g_test_haut5, 5);
+		if (g_test_larg5 < g_test_max + 1)
 		{
-			tampon = resitue(tmpCalc, (4 * nbr_courant[4]), taille_max);
-			ft_boucle_f4_big(flag, nbr_courant);
+			g_tampon = resitue(g_tmpCalc, (4 * g_nbr_courant[4]), g_taille_max);
+			ft_boucle_f4_big(flag, g_nbr_courant);
 		}
 		i5++;
 	}

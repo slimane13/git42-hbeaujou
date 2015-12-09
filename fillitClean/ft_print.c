@@ -17,10 +17,10 @@ static void	ft_display(int c)
 	if (c == 0)
 		printf(".");
 	else
-		printf("%c", 'Z' - 'A' - c + 40 + nbrTetri);
+		printf("%c", 'Z' - 'A' - c + 40 + g_nbrTetri);
 }
 
-void		affiche(int *final)
+void		affiche(int *g_final)
 {
 	int i;
 	int j;
@@ -28,17 +28,17 @@ void		affiche(int *final)
 
 	i = 0;
 	j = 0;
-	taille = taille_max;
-	while (i / taille < absTmp)
+	taille = g_taille_max;
+	while (i / taille < g_absTmp)
 	{
-		if (i % taille < absTmp - 1)
-			ft_display(final[i]);
-		else if (i % taille == absTmp - 1)
+		if (i % taille < g_absTmp - 1)
+			ft_display(g_final[i]);
+		else if (i % taille == g_absTmp - 1)
 		{
-			ft_display(final[i]);
+			ft_display(g_final[i]);
 			printf("\n");
 		}
 		i++;
 	}
-	trouve = 1;
+	g_trouve = 1;
 }

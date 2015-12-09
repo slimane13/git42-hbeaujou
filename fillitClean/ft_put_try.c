@@ -46,9 +46,9 @@ void	ft_boucle(int *i, int *j, int *flag, int *t1, int *t2, int passage)
 {
 	while (*i < passage && *flag == 0)
 	{
-		if (*j == t1[*i] && flagTRY == 1)
+		if (*j == t1[*i] && g_flagTRY == 1)
 		{
-			final[*j] = affichageLettre[*j];
+			g_final[*j] = g_affichageLettre[*j];
 			*flag = 1;
 		}
 		*i = *i + 1;
@@ -56,9 +56,9 @@ void	ft_boucle(int *i, int *j, int *flag, int *t1, int *t2, int passage)
 	if (*flag == 0)
 	{
 		if (*j == t2[0] || *j == t2[1] || *j == t2[2] || *j == t2[3])
-			final[*j] = affichageLettre[*j] + 1;
+			g_final[*j] = g_affichageLettre[*j] + 1;
 		else
-			final[*j] = 0;
+			g_final[*j] = 0;
 	}
 	*j = *j + 1;
 	*i = 0;
@@ -80,5 +80,5 @@ int		*try_tetris_2(int *t1, int *t2, int taille, int **spc, int k,
 		assign_spot(t2);
 	while (j < taille * taille)
 		ft_boucle(&i, &j, &flag, t1, t2, passage);
-	return (final);
+	return (g_final);
 }
