@@ -6,7 +6,7 @@
 /*   By: ebouther <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/27 13:44:36 by ebouther          #+#    #+#             */
-/*   Updated: 2015/12/08 13:57:01 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/09 19:44:51 by ebouther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static int	ft_new_struct(t_map **map, t_env *env, int tetriminos)
 	(*map)->x = 0;
 	(*map)->y = 0;
 	(*map)->content = ft_strnew(0);
-	return (0);
+	return (1);
 }
 
 static int	ft_nb_occur(char *line, int c, int *first_pos)
@@ -70,7 +70,7 @@ static void	ft_getxy(t_map **map, t_env *env, char *line, int c)
 	env->last_pos = pos;
 }
 
-static int	ft_fill_struct(t_map **map, int fd, int tetriminos)
+static void	ft_fill_struct(t_map **map, int fd, int tetriminos)
 {
 	char	*line;
 	t_env	env;
@@ -83,20 +83,20 @@ static int	ft_fill_struct(t_map **map, int fd, int tetriminos)
 	{
 		i = 0;
 		if ((ft_strlen(line) != 4 && ft_strlen(line) != 0))
-			return (-1);
+			ft_error_exit();
 		if (ft_strlen(line) > 0)
 		{
-			(*map)->content = ft_strjoin(ft_strjoin((ft_strjoin((*map)->content, line)), (const char *)ft_add_to_line(tetriminos)), "\n");
+			(*map)->content = ft_strjoin(ft_strjoin((ft_strjoin((*map)->content,
+					line)), (const char *)ft_add_to_line(tetriminos)), "\n");
 			ft_getxy(map, &env, line, '#');
 		}
-		else if (env.nb_of_line != 4 || ft_new_struct(map, &env, tetriminos) == -1)
-			return (-1);
+		else if (env.nb_of_line != 4 || !ft_new_struct(map, &env, tetriminos))
+			ft_error_exit();
 	}
 	if (env.nb_of_line != 4)
-		return (-1);
+		ft_error_exit();
 	ft_check_tetriminos(*map, tetriminos);
 	(*map)->content = ft_strjoin((*map)->content, ft_add_to_map(tetriminos));
-	return (0);
 }
 
 t_map		*ft_get_maps(int fd, int tetriminos)
@@ -113,7 +113,6 @@ t_map		*ft_get_maps(int fd, int tetriminos)
 	map->x = 0;
 	map->y = 0;
 	map->content = ft_strnew(0);
-	if (ft_fill_struct(&map, fd, tetriminos) == -1)
-		ft_error_exit();
+	ft_fill_struct(&map, fd, tetriminos);
 	return (beg);
 }
