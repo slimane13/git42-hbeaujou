@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 11:56:10 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/08 14:23:21 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/09 17:02:48 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,6 +119,30 @@ char	**recupTetri(int a, int max, char *s)
 	return (tableTetri);
 }
 
+void	attrib_iter(void)
+{
+	if (nbrTetri == 1)
+		iterMax = 10;
+	else if (nbrTetri == 2)
+		iterMax = 21;
+	else if (nbrTetri == 3)
+		iterMax = 24;
+	else if (nbrTetri == 4)
+		iterMax = 28;
+	else if (nbrTetri == 5)
+		iterMax = 45;
+	else if (nbrTetri == 6)
+		iterMax = 58;
+	else if (nbrTetri == 7)
+		iterMax = 67;
+	else if (nbrTetri == 8)
+		iterMax = 75;
+	else if (nbrTetri == 9)
+		iterMax = 100;
+	else if (nbrTetri == 10)
+		iterMax = 120;
+}
+
 int		main(int argc, char **argv)
 {
 	char	**tetriList;
@@ -161,7 +185,8 @@ int		main(int argc, char **argv)
 	{
 		testMax = nbrTetri/2 + 1;
 	}
-	iterMax = 50;//10 * nbrTetri + 10 * nbrTetri/4;
+	attrib_iter();
+//	iterMax = 50;//10 * nbrTetri + 10 * nbrTetri/4;
 	if (nbrTetri == 2)
 		iterMax = 14;
 	if (nbrTetri > 2)
