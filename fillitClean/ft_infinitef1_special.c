@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/07 10:36:53 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/09 10:17:35 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/09 18:17:21 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	ft_boucle_f1_special(int flag[26], int g_nbr_courant[26])
 	g_test_haut = calc_haut(g_tmpCalc, g_taille_max);
 	g_absTmp = absc(g_test_larg, g_test_haut);
 	ft_strcpy_int(backtrack, g_tmpCalc, g_taille_max * g_taille_max);
+	affiche(g_tmpCalc);
 }
 
 void	ft_boucle_f1_special_2(int flag[26], int g_nbr_courant[26])

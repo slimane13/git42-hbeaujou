@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 11:56:10 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/09 10:57:34 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/09 18:10:23 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,60 @@ int		*situe_point(char *str)
 	return (pos);
 }
 
+void	attrib_iter(void)
+{
+	if (g_nbrTetri == 1)
+	{
+		g_iter_max = 10;
+		g_test_max = 0;
+	}
+	else if (g_nbrTetri == 2)
+	{
+		g_iter_max = 17;
+		g_test_max = 0;
+	}
+	else if (g_nbrTetri == 3)
+	{
+		g_iter_max = 22;
+		g_test_max = 1;
+	}
+	else if (g_nbrTetri == 4)
+	{
+		g_iter_max = 30;
+		g_test_max = 2;
+	}
+	else if (g_nbrTetri == 5)
+	{
+		g_iter_max = 45;
+		g_test_max = 2;
+	}
+	else if (g_nbrTetri == 6)
+	{
+		g_iter_max = 58;
+		g_test_max = 2;
+	}
+	else if (g_nbrTetri == 7)
+	{
+		g_iter_max = 68;
+		g_test_max = 3;
+	}
+	else if (g_nbrTetri == 8)
+	{
+		g_iter_max = 74;
+		g_test_max = 5;
+	}
+	else if (g_nbrTetri == 9)
+	{
+		g_iter_max = 85;
+		g_test_max = 5;
+	}
+	else if (g_nbrTetri == 10)
+	{
+		g_iter_max = 110;
+		g_test_max = 5;
+	}	
+}
+
 int		main(int argc, char **argv)
 {
 	char	**tetri_list;
@@ -112,12 +166,13 @@ int		main(int argc, char **argv)
 	g_trouve = 0;
 	g_haut_max = 100;
 	g_absTmp = 100;
-	g_test_max = g_nbrTetri - g_nbrTetri / 3;
-	if (g_nbrTetri > 9)
-		g_test_max = g_nbrTetri / 2 + 1;
-	g_iter_max = 65;
-	if (g_nbrTetri == 2)
-		g_iter_max = 14;
+	attrib_iter();
+//	g_test_max = g_nbrTetri - g_nbrTetri / 3;
+//	if (g_nbrTetri > 9)
+//		g_test_max = g_nbrTetri / 2 + 1;
+//	g_iter_max = 65;
+//	if (g_nbrTetri == 2)
+//		g_iter_max = 14;
 	if (g_nbrTetri > 2)
 	{
 		while (g_trouve == 0)
