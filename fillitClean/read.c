@@ -6,7 +6,7 @@
 /*   By: ebouther <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/27 13:44:36 by ebouther          #+#    #+#             */
-/*   Updated: 2015/12/09 14:24:02 by ebouther         ###   ########.fr       */
+/*   Updated: 2015/12/09 14:28:58 by ebouther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,11 +86,11 @@ static void	ft_fill_struct(t_map **map, int fd, int tetriminos)
 			ft_error_exit();
 		if (ft_strlen(line) > 0)
 		{
-			(*map)->content = ft_strjoin(ft_strjoin((ft_strjoin((*map)->content, line)),
-						(const char *)ft_add_to_line(tetriminos)), "\n");
+			(*map)->content = ft_strjoin(ft_strjoin((ft_strjoin((*map)->content,
+				line)), (const char *)ft_add_to_line(tetriminos)), "\n");
 			ft_getxy(map, &env, line, '#');
 		}
-		else if (env.nb_of_line != 4 || ft_new_struct(map, &env, tetriminos) == -1)
+		else if (env.nb_of_line != 4 || !ft_new_struct(map, &env, tetriminos))
 			ft_error_exit();
 	}
 	if (env.nb_of_line != 4)
