@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/07 18:09:09 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/10 13:59:04 by ebouther         ###   ########.fr       */
+/*   Updated: 2015/12/10 14:32:18 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,15 +133,15 @@ void	ft_boucle_f15_big(int flag[26], int g_nbr_crt[26])
 		backtrack = (int *)malloc(sizeof(int) * (g_len_mx * g_len_mx));
 		g_nbr_crt[14] = g_nbr_crt[15] + 1;
 		flag[14] = 1;
-		}
-				ft_strcpy_int(backtrack, g_tmp_calc, g_len_mx * g_len_mx);
+	}
+	ft_strcpy_int(backtrack, g_tmp_calc, g_len_mx * g_len_mx);
 	while (boucle[2] < g_iter_max)
 	{
 		calc(backtrack, g_nbr_crt, boucle, 15);
 		if (boucle[1] < g_test_max + 1)
 		{
 			g_tampon = resitue(g_tmp_calc, (4 * g_nbr_crt[14]), g_len_mx);
-		ft_boucle_f14_big(flag, g_nbr_crt);
+			ft_boucle_f14_big(flag, g_nbr_crt);
 		}
 		boucle[2]++;
 	}
