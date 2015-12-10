@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 11:53:53 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/10 11:18:15 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/10 11:26:01 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ int		check_pos_32(int pos, int *t1);
 int		*situe_point(char *str);
 void	ft_cut_f2_special(int i2, int g_nbr_crt[26],
 		int *g_t_h2, int *g_t_l2, int flag[26]);
+void	cut_main(int *ite, char **tetri_list);
 void	attrib_iter(void);
 void	attrib_iter_first(void);
 void	attrib_iter_second(void);

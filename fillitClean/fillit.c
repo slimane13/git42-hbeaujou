@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 11:56:10 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/10 11:17:38 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/10 11:25:23 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,13 +103,7 @@ int		main(int argc, char **argv)
 		return (0);
 	tetri_list = (char **)malloc(sizeof(char *) * g_nbr_tetri);
 	g_var = lire_to_tab(argv[1], tetri_list);
-	while (ite > 0)
-	{
-		g_points[ite - 1] = situe_point(tetri_list[ite - 1]);
-		ite--;
-	}
-	rewind_tetris(g_points[0], 0);
-	g_flag_try = 0;
+	cut_main(&ite, tetri_list);
 	g_final = (int *)malloc(sizeof(int) * (g_len_mx * g_len_mx));
 	g_tmp_calc = (int *)malloc(sizeof(int) * (g_len_mx * g_len_mx));
 	g_tampon = (int *)malloc(sizeof(int) * g_len_mx);

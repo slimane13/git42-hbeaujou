@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/10 10:34:33 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/10 11:17:58 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/10 11:26:21 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,4 +82,15 @@ void	resolve(void)
 	}
 	else
 		choix_boucle(g_nbr_tetri);
+}
+
+void	cut_main(int *ite, char **tetri_list)
+{
+	while (*ite > 0)
+	{
+		g_points[*ite - 1] = situe_point(tetri_list[*ite - 1]);
+		*ite = *ite - 1;
+	}
+	rewind_tetris(g_points[0], 0);
+	g_flag_try = 0;
 }
