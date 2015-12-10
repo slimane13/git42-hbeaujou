@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/06 15:18:01 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/10 09:07:01 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/10 13:29:39 by ebouther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,14 +62,15 @@ void	ft_boucle_f1_big(int flag[26], int g_nbr_crt[26])
 
 void	ft_boucle_f2_big(int flag[26], int g_nbr_crt[26])
 {
-	int			g_t_h2;
-	int			g_t_l2;
-	int			i2;
+	//int			g_t_h2;
+	//int			g_t_l2;
+	//int			i2;
+	int			boucle[3];
 	static int	*backtrack;
 
-	i2 = 0;
-	g_t_h2 = 0;
-	g_t_l2 = 0;
+	boucle[0] = 0;
+	boucle[1] = 0;
+	boucle[2] = 0;
 	if (flag[1] == 0)
 	{
 		backtrack = (int *)malloc(sizeof(int) * (g_len_mx * g_len_mx));
@@ -77,28 +78,26 @@ void	ft_boucle_f2_big(int flag[26], int g_nbr_crt[26])
 		flag[1] = 1;
 	}
 	ft_strcpy_int(backtrack, g_tmp_calc, g_len_mx * g_len_mx);
-	while (i2 < g_iter_max && g_t_h2 < g_test_max + 1 && g_trouve == 0)
+	while (boucle[2] < g_iter_max && boucle[0] < g_test_max + 1 && g_trouve == 0)
 	{
-		calc(backtrack, g_nbr_crt, i2, &g_t_l2, &g_t_h2, 2);
-		if (g_t_l2 < g_test_max + 1)
+		calc(backtrack, g_nbr_crt, boucle, 2);
+		if (boucle[1] < g_test_max + 1)
 		{
 			g_tampon = resitue(g_tmp_calc, (4 * g_nbr_crt[1]), g_len_mx);
 			ft_boucle_f1_big(flag, g_nbr_crt);
 		}
-		i2++;
+		boucle[2]++;
 	}
 }
 
 void	ft_boucle_f3_big(int flag[26], int g_nbr_crt[26])
 {
-	int			g_t_h3;
-	int			g_t_l3;
-	int			i3;
+	int			boucle[3];
 	static int	*backtrack;
 
-	i3 = 0;
-	g_t_h3 = 0;
-	g_t_l3 = 0;
+	boucle[0] = 0;
+	boucle[1] = 0;
+	boucle[2] = 0;
 	if (flag[2] == 0)
 	{
 		backtrack = (int *)malloc(sizeof(int) * (g_len_mx * g_len_mx));
@@ -106,28 +105,26 @@ void	ft_boucle_f3_big(int flag[26], int g_nbr_crt[26])
 		flag[2] = 1;
 	}
 	ft_strcpy_int(backtrack, g_tmp_calc, g_len_mx * g_len_mx);
-	while (i3 < g_iter_max && g_t_h3 < g_test_max + 1 && g_trouve == 0)
+	while (boucle[2] < g_iter_max && boucle[0] < g_test_max + 1 && g_trouve == 0)
 	{
-		calc(backtrack, g_nbr_crt, i3, &g_t_l3, &g_t_h3, 3);
-		if (g_t_l3 < g_test_max + 1)
+		calc(backtrack, g_nbr_crt, boucle, 3);
+		if (boucle[1] < g_test_max + 1)
 		{
 			g_tampon = resitue(g_tmp_calc, (4 * g_nbr_crt[2]), g_len_mx);
 			ft_boucle_f2_big(flag, g_nbr_crt);
 		}
-		i3++;
+		boucle[2]++;
 	}
 }
 
 void	ft_boucle_f4_big(int flag[26], int g_nbr_crt[26])
 {
-	int			g_t_h4;
-	int			g_t_l4;
-	int			i4;
+	int			boucle[3];
 	static int	*backtrack;
 
-	i4 = 0;
-	g_t_h4 = 0;
-	g_t_l4 = 0;
+	boucle[0] = 0;
+	boucle[1] = 0;
+	boucle[2] = 0;
 	if (flag[3] == 0)
 	{
 		backtrack = (int *)malloc(sizeof(int) * (g_len_mx * g_len_mx));
@@ -135,28 +132,26 @@ void	ft_boucle_f4_big(int flag[26], int g_nbr_crt[26])
 		flag[3] = 1;
 	}
 	ft_strcpy_int(backtrack, g_tmp_calc, g_len_mx * g_len_mx);
-	while (i4 < g_iter_max && g_t_h4 < g_test_max + 1 && g_trouve == 0)
+	while (boucle[2] < g_iter_max && boucle[0] < g_test_max + 1 && g_trouve == 0)
 	{
-		calc(backtrack, g_nbr_crt, i4, &g_t_l4, &g_t_h4, 4);
-		if (g_t_l4 < g_test_max + 1)
+		calc(backtrack, g_nbr_crt, boucle, 4);
+		if (boucle[1] < g_test_max + 1)
 		{
 			g_tampon = resitue(g_tmp_calc, (4 * g_nbr_crt[3]), g_len_mx);
 			ft_boucle_f3_big(flag, g_nbr_crt);
 		}
-		i4++;
+		boucle[2]++;
 	}
 }
 
 void	ft_boucle_f5_big(int flag[26], int g_nbr_crt[26])
 {
-	int			g_t_h5;
-	int			g_t_l5;
-	int			i5;
+	int			boucle[3];
 	static int	*backtrack;
 
-	i5 = 0;
-	g_t_l5 = 0;
-	g_t_h5 = 0;
+	boucle[0] = 0;
+	boucle[1] = 0;
+	boucle[2] = 0;
 	if (flag[4] == 0)
 	{
 		backtrack = (int *)malloc(sizeof(int) * (g_len_mx * g_len_mx));
@@ -164,14 +159,14 @@ void	ft_boucle_f5_big(int flag[26], int g_nbr_crt[26])
 		flag[4] = 1;
 	}
 	ft_strcpy_int(backtrack, g_tmp_calc, g_len_mx * g_len_mx + 1);
-	while (i5 < g_iter_max && g_t_h5 < g_test_max + 1 && g_trouve == 0)
+	while (boucle[2] < g_iter_max && boucle[0] < g_test_max + 1 && g_trouve == 0)
 	{
-		calc(backtrack, g_nbr_crt, i5, &g_t_l5, &g_t_h5, 5);
-		if (g_t_l5 < g_test_max + 1)
+		calc(backtrack, g_nbr_crt, boucle, 5);
+		if (boucle[1] < g_test_max + 1)
 		{
 			g_tampon = resitue(g_tmp_calc, (4 * g_nbr_crt[4]), g_len_mx);
 			ft_boucle_f4_big(flag, g_nbr_crt);
 		}
-		i5++;
+		boucle[2]++;
 	}
 }

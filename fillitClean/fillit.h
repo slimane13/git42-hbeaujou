@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 11:53:53 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/10 11:36:53 by ebouther         ###   ########.fr       */
+/*   Updated: 2015/12/10 13:29:40 by ebouther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	lance_boucle_14_2(int nbr, int flag[26], int g_nbr_crt[26]);
 void	lance_boucle_59_2(int nbr, int flag[26], int g_nbr_crt[26]);
 void	lance_boucle_14_3(int nbr, int flag[26], int g_nbr_crt[26]);
 void	lance_boucle_59_3(int nbr, int flag[26], int g_nbr_crt[26]);
-void	calc(int *clean, int *nbr, int i, int *t1, int *t2, int indice);
+void	calc(int *clean, int *nbr, int boucle[3], int indice);
 void	affiche(int *g_final);
 void	affiche_special(int *g_final);
 void	remp_blank(int *tab);
