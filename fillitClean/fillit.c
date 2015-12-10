@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 11:56:10 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/09 10:57:34 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/10 10:04:37 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int		**lire_to_tab(char *str, char **tetri_list)
 	int **tab;
 
 	rd = open(str, O_RDONLY);
-	tab = struct_to_tab(ft_get_maps(rd, g_nbrTetri), tetri_list);
+	tab = struct_to_tab(ft_get_maps(rd, g_nbr_tetri), tetri_list);
 	return (tab);
 }
 
@@ -76,6 +76,14 @@ int		*situe_point(char *str)
 	return (pos);
 }
 
+void	attrib_iter(void)
+{
+	if (g_nbr_tetri < 6)
+		attrib_iter_first();
+	else
+		attrib_iter_second();
+}
+
 int		main(int argc, char **argv)
 {
 	char	**tetri_list;
@@ -83,17 +91,17 @@ int		main(int argc, char **argv)
 
 	if (argc != 2)
 		return (0);
-	g_nbrTetri = lire_file(argv[1]);
-	g_taille_max = 2 * (g_nbrTetri);
-	if (g_nbrTetri == 1 || g_nbrTetri == 0)
+	g_nbr_tetri = lire_file(argv[1]);
+	g_len_mx = 2 * (g_nbr_tetri);
+	if (g_nbr_tetri == 1 || g_nbr_tetri == 0)
 	{
-		g_taille_max = 4;
-		g_nbrTetri++;
+		g_len_mx = 4;
+		g_nbr_tetri++;
 	}
-	ite = g_nbrTetri;
+	ite = g_nbr_tetri;
 	if (!(g_points = malloc(sizeof(int *) * ite)))
 		return (0);
-	tetri_list = (char **)malloc(sizeof(char *) * g_nbrTetri);
+	tetri_list = (char **)malloc(sizeof(char *) * g_nbr_tetri);
 	g_var = lire_to_tab(argv[1], tetri_list);
 	while (ite > 0)
 	{
@@ -101,32 +109,27 @@ int		main(int argc, char **argv)
 		ite--;
 	}
 	rewind_tetris(g_points[0], 0);
-	g_flagTRY = 0;
-	g_final = (int *)malloc(sizeof(int) * (g_taille_max * g_taille_max));
-	g_tmpCalc = (int *)malloc(sizeof(int) * (g_taille_max * g_taille_max));
-	g_tampon = (int *)malloc(sizeof(int) * g_taille_max);
-	g_affichageLettre = (int *)malloc(sizeof(int) * (g_taille_max * g_taille_max));
-	g_flagTRY = 1;
-	remp_blank(g_tmpCalc);
+	g_flag_try = 0;
+	g_final = (int *)malloc(sizeof(int) * (g_len_mx * g_len_mx));
+	g_tmp_calc = (int *)malloc(sizeof(int) * (g_len_mx * g_len_mx));
+	g_tampon = (int *)malloc(sizeof(int) * g_len_mx);
+	g_show_l = (int *)malloc(sizeof(int) * (g_len_mx * g_len_mx));
+	g_flag_try = 1;
+	remp_blank(g_tmp_calc);
 	g_larg_max = 100;
 	g_trouve = 0;
 	g_haut_max = 100;
-	g_absTmp = 100;
-	g_test_max = g_nbrTetri - g_nbrTetri / 3;
-	if (g_nbrTetri > 9)
-		g_test_max = g_nbrTetri / 2 + 1;
-	g_iter_max = 65;
-	if (g_nbrTetri == 2)
-		g_iter_max = 14;
-	if (g_nbrTetri > 2)
+	g_abs_tmp = 100;
+	attrib_iter();
+	if (g_nbr_tetri > 2)
 	{
 		while (g_trouve == 0)
 		{
-			choix_boucle(g_nbrTetri);
+			choix_boucle(g_nbr_tetri);
 			g_test_max++;
 		}
 	}
 	else
-		choix_boucle(g_nbrTetri);
+		choix_boucle(g_nbr_tetri);
 	return (0);
 }

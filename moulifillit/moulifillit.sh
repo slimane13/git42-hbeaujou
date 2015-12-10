@@ -22,7 +22,11 @@ echo "\033[33m-------------------- N = 1 ---------------------"
 for i in 'seq 1 50'
 do
         python map_gen.py 1 > sample11.txt
+<<<<<<< HEAD
         timeout 30 "./test_fillit sample11.txt > slim.txt"
+=======
+        timeout 15 "./test_fillit sample11.txt > slim.txt"
+>>>>>>> 4fb15dc22062ae95f58a853c169c840e2e104b24
         ./solution_fillit sample11.txt > domi.txt
         diff slim.txt domi.txt > diff.txt
         if [ -s diff.txt ]
@@ -45,7 +49,11 @@ echo "\033[33m-------------------- N = 2 ---------------------"
 for i in 'seq 1 50'
 do
         python map_gen.py 2 > sample22.txt
+<<<<<<< HEAD
         timeout 30 "./test_fillit sample22.txt > slim.txt"
+=======
+        timeout 15 "./test_fillit sample22.txt > slim.txt"
+>>>>>>> 4fb15dc22062ae95f58a853c169c840e2e104b24
         ./solution_fillit sample22.txt > domi.txt
         diff slim.txt domi.txt > diff.txt
         if [ -s diff.txt ]
@@ -68,7 +76,11 @@ echo "\033[33m-------------------- N = 3 ---------------------"
 for i in 'seq 1 50'
 do
         python map_gen.py 3 > sample33.txt
+<<<<<<< HEAD
         timeout 30 "./test_fillit sample33.txt > slim.txt"
+=======
+        timeout 15 "./test_fillit sample33.txt > slim.txt"
+>>>>>>> 4fb15dc22062ae95f58a853c169c840e2e104b24
         ./solution_fillit sample33.txt > domi.txt
         diff slim.txt domi.txt > diff.txt
         if [ -s diff.txt ]
@@ -91,7 +103,11 @@ echo "\033[33m-------------------- N = 4 ---------------------"
 for i in 'seq 1 50'
 do
         python map_gen.py 4 > sample44.txt
+<<<<<<< HEAD
         timeout 30 "./test_fillit sample44.txt > slim.txt"
+=======
+        timeout 15 "./test_fillit sample44.txt > slim.txt"
+>>>>>>> 4fb15dc22062ae95f58a853c169c840e2e104b24
         ./solution_fillit sample44.txt > domi.txt
         diff slim.txt domi.txt > diff.txt
         if [ -s diff.txt ]
@@ -114,7 +130,11 @@ echo "\033[33m-------------------- N = 5 ---------------------"
 for i in 'seq 1 50'
 do
         python map_gen.py 5 > sample55.txt
+<<<<<<< HEAD
         timeout 30 "./test_fillit sample55.txt > slim.txt"
+=======
+        timeout 15 "./test_fillit sample55.txt > slim.txt"
+>>>>>>> 4fb15dc22062ae95f58a853c169c840e2e104b24
         ./solution_fillit sample55.txt > domi.txt
         diff slim.txt domi.txt > diff.txt
         if [ -s diff.txt ]
@@ -137,7 +157,11 @@ echo "\033[33m-------------------- N = 6 ---------------------"
 for i in 'seq 1 50'
 do
 	python map_gen.py 6 > sample66.txt
+<<<<<<< HEAD
 	timeout 30 "./test_fillit sample66.txt > slim.txt"
+=======
+	timeout 15 "./test_fillit sample66.txt > slim.txt"
+>>>>>>> 4fb15dc22062ae95f58a853c169c840e2e104b24
 	./solution_fillit sample66.txt > domi.txt
 	diff slim.txt domi.txt > diff.txt
 	if [ -s diff.txt ]
@@ -160,7 +184,11 @@ echo "\033[33m-------------------- N = 7 ---------------------"
 for i in 'seq 1 50'
 do
         python map_gen.py 7 > sample77.txt
+<<<<<<< HEAD
         timeout 30 "./test_fillit sample77.txt > slim.txt"
+=======
+        timeout 15 "./test_fillit sample77.txt > slim.txt"
+>>>>>>> 4fb15dc22062ae95f58a853c169c840e2e104b24
         ./solution_fillit sample77.txt > domi.txt
         diff slim.txt domi.txt > diff.txt
         if [ -s diff.txt ]
@@ -251,7 +279,11 @@ echo "\033[33m-------------------- Error 1 --------------------"
 
 for i in 'seq 1 50'
 do
+<<<<<<< HEAD
         timeout 30 "./test_fillit errors.txt > slim.txt"
+=======
+        timeout 15 "./test_fillit errors.txt > slim.txt"
+>>>>>>> 4fb15dc22062ae95f58a853c169c840e2e104b24
         ./solution_fillit errors.txt > domi.txt
         diff slim.txt domi.txt > diff.txt
         if [ -s diff.txt ]
@@ -273,7 +305,11 @@ echo "\033[33m-------------------- Error 2 --------------------"
 
 for i in 'seq 1 50'
 do
+<<<<<<< HEAD
         timeout 30 "./test_fillit errors2.txt > slim.txt"
+=======
+        timeout 15 "./test_fillit errors2.txt > slim.txt"
+>>>>>>> 4fb15dc22062ae95f58a853c169c840e2e104b24
         ./solution_fillit errors2.txt > domi.txt
         diff slim.txt domi.txt > diff.txt
         if [ -s diff.txt ]
@@ -291,6 +327,31 @@ do
         fi
 done
 
+<<<<<<< HEAD
+=======
+echo "\033[33m-------------------- Error 3 --------------------"
+
+for i in 'seq 1 50'
+do
+        timeout 15 "./test_fillit errors3.txt > slim.txt"
+        ./solution_fillit errors3.txt > domi.txt
+        diff slim.txt domi.txt > diff.txt
+        if [ -s diff.txt ]
+        then
+                echo ""
+                echo "\033[31m          Votre grille pour error 3 :"
+                cat slim.txt
+                echo ""
+                echo "\033[31m            Solution pour error 3 :"
+                cat domi.txt
+        else
+                echo ""
+                echo "\033[32m          [✔] Grille erreur 3 bonne"
+                echo ""
+        fi
+done
+
+>>>>>>> 4fb15dc22062ae95f58a853c169c840e2e104b24
 rm diff.txt
 rm domi.txt
 rm slim.txt

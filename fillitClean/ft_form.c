@@ -14,16 +14,16 @@
 
 int	check_esp_23(int esp[5])
 {
-	if (esp[3] == g_taille_max)
+	if (esp[3] == g_len_mx)
 	{
-		if (esp[4] == 2 * g_taille_max - 1)
+		if (esp[4] == 2 * g_len_mx - 1)
 			return (7);
 		else
 			return (2);
 	}
-	else if (esp[3] == g_taille_max + 1)
+	else if (esp[3] == g_len_mx + 1)
 	{
-		if (esp[4] == 2 * g_taille_max + 1)
+		if (esp[4] == 2 * g_len_mx + 1)
 			return (8);
 		else
 			return (5);
@@ -35,18 +35,18 @@ int	check_form_23(int esp[5])
 {
 	if (esp[0] == 1)
 	{
-		if (esp[3] == g_taille_max + 1)
+		if (esp[3] == g_len_mx + 1)
 			return (1);
-		else if (esp[3] == g_taille_max)
+		else if (esp[3] == g_len_mx)
 			return (4);
 	}
 	else if (esp[1] == 1)
 		return (check_esp_23(esp));
 	else if (esp[2] == 1)
 	{
-		if (esp[3] == 2 * g_taille_max - 1)
+		if (esp[3] == 2 * g_len_mx - 1)
 			return (3);
-		else if (esp[3] == 2 * g_taille_max)
+		else if (esp[3] == 2 * g_len_mx)
 			return (6);
 	}
 	return (0);
@@ -56,22 +56,22 @@ int	check_form_32(int esp[5])
 {
 	if (esp[0] == 1)
 	{
-		if (esp[1] == g_taille_max)
+		if (esp[1] == g_len_mx)
 			return (8);
-		else if (esp[1] == g_taille_max - 2)
+		else if (esp[1] == g_len_mx - 2)
 			return (7);
-		else if (esp[4] == g_taille_max + 1)
+		else if (esp[4] == g_len_mx + 1)
 			return (2);
-		else if (esp[4] == g_taille_max)
+		else if (esp[4] == g_len_mx)
 			return (1);
-		else if (esp[4] == g_taille_max + 2)
+		else if (esp[4] == g_len_mx + 2)
 			return (3);
 	}
-	else if (esp[0] == g_taille_max)
+	else if (esp[0] == g_len_mx)
 		return (4);
-	else if (esp[0] == g_taille_max - 1)
+	else if (esp[0] == g_len_mx - 1)
 		return (5);
-	else if (esp[0] == g_taille_max - 2)
+	else if (esp[0] == g_len_mx - 2)
 		return (6);
 	return (0);
 }
