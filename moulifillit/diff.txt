@@ -1,0 +1,7 @@
+0a1,6
+> AA..GG
+> CAABGG
+> C.BB.E
+> CCBDDE
+> HHDDFE
+> HHFFFE
