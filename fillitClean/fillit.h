@@ -56,7 +56,7 @@ void	lance_boucle_14_2(int nbr, int flag[26], int g_nbr_crt[26]);
 void	lance_boucle_59_2(int nbr, int flag[26], int g_nbr_crt[26]);
 void	lance_boucle_14_3(int nbr, int flag[26], int g_nbr_crt[26]);
 void	lance_boucle_59_3(int nbr, int flag[26], int g_nbr_crt[26]);
-void	calc(int *clean, int *nbr, int boucle[3], int indice);
+void	calc(int *clean, int *nbr, int bcl[3], int indice);
 void	affiche(int *g_final);
 void	affiche_special(int *g_final);
 void	remp_blank(int *tab);

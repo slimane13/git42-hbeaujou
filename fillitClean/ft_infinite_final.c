@@ -14,19 +14,19 @@
 
 void	ft_boucle_f26_big(int flag[26], int g_nbr_crt[26])
 {
-	int			boucle[3];
+	int			bcl[3];
 	static int	*backtrack;
 
-	boucle[2] = 0;
+	bcl[2] = 0;
 	ft_strcpy_int(backtrack, g_tmp_calc, g_len_mx * g_len_mx);
-	while (boucle[2]++ < g_iter_max)
+	while (bcl[2]++ < g_iter_max)
 	{
 		g_tampon = resitue(backtrack, (4 * g_nbr_crt[25]), g_len_mx);
 		g_tmp_calc = try_tetris_2(g_tampon, g_points[g_nbr_crt[25]],
-				(4 * g_nbr_crt[25]), boucle[2]);
+				(4 * g_nbr_crt[25]), bcl[2]);
 		g_tampon = resitue(g_tmp_calc, (4 * g_nbr_crt[25]), g_len_mx);
 		ft_boucle_f25_big(flag, g_nbr_crt);
-		boucle[2]++;
+		bcl[2]++;
 	}
 }
 
