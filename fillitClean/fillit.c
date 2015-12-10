@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 11:56:10 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/10 10:04:37 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/10 11:17:38 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,22 +114,6 @@ int		main(int argc, char **argv)
 	g_tmp_calc = (int *)malloc(sizeof(int) * (g_len_mx * g_len_mx));
 	g_tampon = (int *)malloc(sizeof(int) * g_len_mx);
 	g_show_l = (int *)malloc(sizeof(int) * (g_len_mx * g_len_mx));
-	g_flag_try = 1;
-	remp_blank(g_tmp_calc);
-	g_larg_max = 100;
-	g_trouve = 0;
-	g_haut_max = 100;
-	g_abs_tmp = 100;
-	attrib_iter();
-	if (g_nbr_tetri > 2)
-	{
-		while (g_trouve == 0)
-		{
-			choix_boucle(g_nbr_tetri);
-			g_test_max++;
-		}
-	}
-	else
-		choix_boucle(g_nbr_tetri);
+	resolve();
 	return (0);
 }

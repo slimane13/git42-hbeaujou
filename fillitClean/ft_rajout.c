@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/10 10:34:33 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/10 11:12:21 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/10 11:17:58 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,25 @@ void	ft_cut_try_2_2(int *flag, int j, int *i,
 		else
 			g_final[j] = 0;
 	}
+}
+
+void	resolve(void)
+{
+	g_flag_try = 1;
+	remp_blank(g_tmp_calc);
+	g_larg_max = 100;
+	g_trouve = 0;
+	g_haut_max = 100;
+	g_abs_tmp = 100;
+	attrib_iter();
+	if (g_nbr_tetri > 2)
+	{
+		while (g_trouve == 0)
+		{
+			choix_boucle(g_nbr_tetri);
+			g_test_max++;
+		}
+	}
+	else
+		choix_boucle(g_nbr_tetri);
 }

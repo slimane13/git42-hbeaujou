@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 11:53:53 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/10 11:12:03 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/10 11:18:15 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ void	calc(int *clean, int *nbr, int i, int *t1, int *t2, int indice);
 void	affiche(int *g_final);
 void	affiche_special(int *g_final);
 void	remp_blank(int *tab);
+void	resolve(void);
 void	assign_spot_special(int *tab, int *counter);
 void	ft_cut_try_2_2(int *flag, int j, int *i,
 		int passage, int *t1, int *t2);
