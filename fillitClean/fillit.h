@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 11:53:53 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/10 11:36:53 by ebouther         ###   ########.fr       */
+/*   Updated: 2015/12/10 12:19:36 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,7 @@ void	affiche_special(int *g_final);
 void	remp_blank(int *tab);
 void	resolve(void);
 void	assign_spot_special(int *tab, int *counter);
-void	ft_cut_try_2_2(int *flag, int j, int *i,
-		int passage, int *t1, int *t2);
+void	ft_cut_try_2_2(int vari[3], int passage, int *t1, int *t2);
 void	choix_boucle(int nbr);
 void	choix_boucle_tier1(int nbr, int flag[26], int g_nbr_crt[26]);
 void	choix_boucle_tier2(int nbr, int flag[26], int g_nbr_crt[26]);

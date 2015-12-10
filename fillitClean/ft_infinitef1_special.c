@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/07 10:36:53 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/10 11:37:41 by ebouther         ###   ########.fr       */
+/*   Updated: 2015/12/10 12:17:23 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,26 +114,24 @@ int		*try_tetris_2_special(int *t1, int *t2, int taille, int **spc,
 int		*try_tetris_2_2(int *t1, int *t2, int taille, int **spc,
 		int k, int passage, int target)
 {
-	int i;
-	int j;
-	int flag;
+	int vari[3];
 	int counter;
 
-	i = 0;
-	j = 0;
+	vari[0] = 0;
+	vari[1] = 0;
 	counter = 0;
-	flag = 0;
+	vari[2] = 0;
 	if (k != 0)
 		rewind_tetris(t2, 0);
 	while ((!is_valid(t2, taille, spc[k]) ||
 				overlap_3(t1, t2, passage)) && counter < 8)
 		assign_spot_special(t2, &counter);
-	while (j < taille * taille)
+	while (vari[1] < taille * taille)
 	{
-		ft_cut_try_2_2(&flag, j, &i, passage, t1, t2);
-		j++;
-		i = 0;
-		flag = 0;
+		ft_cut_try_2_2(vari, passage, t1, t2);
+		vari[1]++;
+		vari[0] = 0;
+		vari[2] = 0;
 	}
 	return (g_final);
 }

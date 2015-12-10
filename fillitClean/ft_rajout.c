@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/10 10:34:33 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/10 11:26:21 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/10 12:19:44 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,24 +42,24 @@ void	assign_spot_special(int *tab, int *counter)
 	*counter = *counter + 1;
 }
 
-void	ft_cut_try_2_2(int *flag, int j, int *i,
-		int passage, int *t1, int *t2)
+void	ft_cut_try_2_2(int vari[3], int passage, int *t1, int *t2)
 {
-	while (*i < passage && *flag == 0)
+	while (vari[0] < passage && vari[2] == 0)
 	{
-		if (j == t1[*i] && g_flag_try == 1)
+		if (vari[1] == t1[vari[0]] && g_flag_try == 1)
 		{
-			g_final[j] = g_show_l[j];
-			*flag = 1;
+			g_final[vari[1]] = g_show_l[vari[1]];
+			vari[2] = 1;
 		}
-		*i = *i + 1;
+		vari[0] = vari[0] + 1;
 	}
-	if (*flag == 0)
+	if (vari[2] == 0)
 	{
-		if (j == t2[0] || j == t2[1] || j == t2[2] || j == t2[3])
-			g_final[j] = g_show_l[j] + 1;
+		if (vari[1] == t2[0] || vari[1] == t2[1] ||
+				vari[1] == t2[2] || vari[1] == t2[3])
+			g_final[vari[1]] = g_show_l[vari[1]] + 1;
 		else
-			g_final[j] = 0;
+			g_final[vari[1]] = 0;
 	}
 }
 
