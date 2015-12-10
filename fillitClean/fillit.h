@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 11:53:53 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/10 12:19:36 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/10 12:25:59 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,7 @@ void	cut_main(int *ite, char **tetri_list);
 void	attrib_iter(void);
 void	attrib_iter_first(void);
 void	attrib_iter_second(void);
-void	ft_cut_try_special(int *flag, int j,
-		int *i, int passage, int *t1, int *t2);
+void	ft_cut_try_special(int varx[3], int passage, int *t1, int *t2);
 void	define(void);
 void	instance(int ite, char **tetri_list, char *str);
 void	attrb_2(int *backtrack);

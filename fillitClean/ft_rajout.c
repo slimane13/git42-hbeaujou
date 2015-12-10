@@ -6,30 +6,30 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/10 10:34:33 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/10 12:19:44 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/10 12:25:37 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-void	ft_cut_try_special(int *flag, int j, int *i,
-		int passage, int *t1, int *t2)
+void	ft_cut_try_special(int varx[3], int passage, int *t1, int *t2)
 {
-	while (*i < passage && *flag == 0)
+	while (varx[0] < passage && varx[2] == 0)
 	{
-		if (j == t1[*i] && g_flag_try == 1)
+		if (varx[1] == t1[varx[0]] && g_flag_try == 1)
 		{
-			g_final[j] = g_show_l[j];
-			*flag = 1;
+			g_final[varx[1]] = g_show_l[varx[1]];
+			varx[2] = 1;
 		}
-		*i = *i + 1;
+		varx[0] = varx[0] + 1;
 	}
-	if (*flag == 0)
+	if (varx[2] == 0)
 	{
-		if (j == t2[0] || j == t2[1] || j == t2[2] || j == t2[3])
-			g_final[j] = g_show_l[j] + 1;
+		if (varx[1] == t2[0] || varx[1] == t2[1] ||
+				varx[1] == t2[2] || varx[1] == t2[3])
+			g_final[varx[1]] = g_show_l[varx[1]] + 1;
 		else
-			g_final[j] = 0;
+			g_final[varx[1]] = 0;
 	}
 }
 
