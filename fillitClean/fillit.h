@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 11:53:53 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/10 09:23:25 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/10 10:16:42 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,9 @@ int		is_valid(int *t1, int taille, int *spc);
 int		check_pos_23(int pos, int *t1);
 int		check_pos_32(int pos, int *t1);
 int		*situe_point(char *str);
+void	ft_cut_f2_special(int i2, int g_nbr_crt[26],
+		int *g_t_h2, int *g_t_l2, int flag[26]);
+void	attrib_iter(void);
 void	attrib_iter_first(void);
 void	attrib_iter_second(void);
 void	define(void);
@@ -83,6 +86,7 @@ int		check8_32(int *t1);
 
 void	ft_boucle_f1_big(int flag[26], int g_nbr_crt[26]);
 void	ft_boucle_f1_special(int flag[26], int g_nbr_crt[26]);
+void	ft_boucle_f1_special_2(int flag[26], int g_nbr_crt[26]);
 void	ft_boucle_f2_big(int flag[26], int g_nbr_crt[26]);
 void	ft_boucle_f2_special(int flag[26], int g_nbr_crt[26]);
 void	ft_boucle_f3_big(int flag[26], int g_nbr_crt[26]);

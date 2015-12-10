@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/07 10:36:53 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/10 09:17:40 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/10 10:14:14 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,23 +83,7 @@ void	ft_boucle_f2_special(int flag[26], int g_nbr_crt[26])
 	while (i2 < g_iter_max && g_t_h2 < g_haut_max + 4)
 	{
 		g_tampon = resitue(backtrack, (4 * (g_nbr_crt[1] + 1)), g_len_mx);
-		if (i2 == 0)
-		{
-			g_tampon[0] = -1;
-			g_tampon[1] = -1;
-			g_tampon[2] = -1;
-			g_tampon[3] = -1;
-		}
-		g_tmp_calc = try_tetris_2_2(g_tampon, g_points[g_nbr_crt[1]],
-				g_len_mx, g_var, g_nbr_crt[1], (4 * (g_nbr_crt[1] + 1)), i2);
-		g_t_l2 = calc_larg(g_tmp_calc, g_len_mx);
-		g_t_h2 = calc_haut(g_tmp_calc, g_len_mx);
-		if (g_t_l2 < g_larg_max + 1)
-		{
-			g_tampon = resitue(g_tmp_calc, (4 * (g_nbr_crt[1] + 1)),
-					g_len_mx);
-			ft_boucle_f1_special_2(flag, g_nbr_crt);
-		}
+		ft_cut_f2_special(i2, g_nbr_crt, &g_t_h2, &g_t_l2, flag);
 		i2++;
 	}
 }

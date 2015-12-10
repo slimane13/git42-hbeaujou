@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/08 17:42:50 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/10 09:11:33 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/10 10:15:01 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,26 @@ void	define(void)
 {
 }
 
-void	instance(int ite, char **tetri_list, char *str)
+void	ft_cut_f2_special(int i2, int g_nbr_crt[26], int *g_t_h2,
+		int *g_t_l2, int flag[26])
 {
+	if (i2 == 0)
+	{
+		g_tampon[0] = -1;
+		g_tampon[1] = -1;
+		g_tampon[2] = -1;
+		g_tampon[3] = -1;
+	}
+	g_tmp_calc = try_tetris_2_2(g_tampon, g_points[g_nbr_crt[1]],
+			g_len_mx, g_var, g_nbr_crt[1], (4 * (g_nbr_crt[1] + 1)), i2);
+	*g_t_l2 = calc_larg(g_tmp_calc, g_len_mx);
+	*g_t_h2 = calc_haut(g_tmp_calc, g_len_mx);
+	if (*g_t_l2 < g_larg_max + 1)
+	{
+		g_tampon = resitue(g_tmp_calc, (4 * (g_nbr_crt[1] + 1)),
+				g_len_mx);
+		ft_boucle_f1_special_2(flag, g_nbr_crt);
+	}
 }
 
 void	calc(int *clean, int *nbr, int i, int *t1, int *t2, int indice)
