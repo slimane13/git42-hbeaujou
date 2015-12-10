@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 17:26:23 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/10 11:55:02 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/10 13:16:08 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,7 @@ void	ft_boucle(int var[3], int *t1, int *t2, int passage)
 	var[2] = 0;
 }
 
-int		*try_tetris_2(int *t1, int *t2, int taille, int **spc, int k,
-		int passage, int target)
+int		*try_tetris_2(int *t1, int *t2, int k, int passage, int target)
 {
 	int var[3];
 
@@ -77,7 +76,7 @@ int		*try_tetris_2(int *t1, int *t2, int taille, int **spc, int k,
 	rewind_tetris(t2, target);
 	while (overlap_3(t1, t2, passage))
 		assign_spot(t2);
-	while (var[1] < taille * taille)
+	while (var[1] < g_len_mx * g_len_mx)
 		ft_boucle(var, t1, t2, passage);
 	return (g_final);
 }

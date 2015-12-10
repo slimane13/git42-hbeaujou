@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 11:53:53 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/10 12:25:59 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/10 13:23:42 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,10 @@
 # include <fcntl.h>
 # include "read.h"
 
-int		*try_tetris_2(int *t1, int *t2, int taille, int **spc, int k,
-		int passage, int target);
-int		*try_tetris_2_special(int *t1, int *t2, int taille, int **spc,
+int		*try_tetris_2(int *t1, int *t2, int k, int passage, int target);
+int		*try_tetris_2_special(int *t1, int *t2,
 		int k, int passage, int target);
-int		*try_tetris_2_2(int *t1, int *t2, int taille, int **spc,
-		int k, int passage, int target);
+int		*try_tetris_2_2(int *t1, int *t2, int k, int passage, int target);
 int		*tab_char_to_int(char *str);
 int		*ft_strdup_int(int *s, int taille);
 void	ft_strcpy_int(int *dest, int *src, int taille);

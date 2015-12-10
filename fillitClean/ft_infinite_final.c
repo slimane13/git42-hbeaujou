@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/10 09:04:22 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/10 09:04:43 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/10 13:24:30 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	ft_boucle_f26_big(int flag[26], int g_nbr_crt[26])
 	{
 		g_tampon = resitue(backtrack, (4 * g_nbr_crt[25]), g_len_mx);
 		g_tmp_calc = try_tetris_2(g_tampon, g_points[g_nbr_crt[25]],
-				g_len_mx, g_var, g_nbr_crt[25], (4 * g_nbr_crt[25]), i26);
+				g_nbr_crt[25], (4 * g_nbr_crt[25]), i26);
 		g_tampon = resitue(g_tmp_calc, (4 * g_nbr_crt[25]), g_len_mx);
 		ft_boucle_f25_big(flag, g_nbr_crt);
 		i26++;
