@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/06 15:18:01 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/10 14:21:47 by ebouther         ###   ########.fr       */
+/*   Updated: 2015/12/10 14:46:23 by ebouther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,6 @@ void	ft_boucle_f1_big(int flag[26], int g_nbr_crt[26])
 
 void	ft_boucle_f2_big(int flag[26], int g_nbr_crt[26])
 {
-	//int			g_t_h2;
-	//int			g_t_l2;
-	//int			i2;
 	int			bcl[3];
 	static int	*backtrack;
 
