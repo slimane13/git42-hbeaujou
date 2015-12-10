@@ -6,7 +6,7 @@
 /*   By: ebouther <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/27 13:44:36 by ebouther          #+#    #+#             */
-/*   Updated: 2015/12/09 19:44:51 by ebouther         ###   ########.fr       */
+/*   Updated: 2015/12/10 17:49:01 by ebouther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,7 @@ t_map		*ft_get_maps(int fd, int tetriminos)
 	t_map	*map;
 	t_map	*beg;
 
+	map = NULL;
 	if (tetriminos > 2)
 		tetriminos = (tetriminos * 2);
 	if (fd < 0 || !(map = (t_map *)malloc(sizeof(*map))))

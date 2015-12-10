@@ -6,7 +6,7 @@
 /*   By: ebouther <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/30 20:21:39 by ebouther          #+#    #+#             */
-/*   Updated: 2015/12/09 19:20:39 by ebouther         ###   ########.fr       */
+/*   Updated: 2015/12/10 17:44:43 by ebouther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ static void	ft_check_tetriminos_1(char *content, int tetriminos)
 {
 	int test;
 
+	test = 0;
 	if (tetriminos <= 2)
 		tetriminos = 4;
 	if (!((content[tetriminos + 1] == '#' && content[(tetriminos + 1) * 2] ==
