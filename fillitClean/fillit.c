@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 11:56:10 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/10 09:09:17 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/10 09:22:24 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,56 +78,10 @@ int		*situe_point(char *str)
 
 void	attrib_iter(void)
 {
-	if (g_nbr_tetri == 1)
-	{
-		g_iter_max = 10;
-		g_test_max = 0;
-	}
-	else if (g_nbr_tetri == 2)
-	{
-		g_iter_max = 17;
-		g_test_max = 0;
-	}
-	else if (g_nbr_tetri == 3)
-	{
-		g_iter_max = 22;
-		g_test_max = 1;
-	}
-	else if (g_nbr_tetri == 4)
-	{
-		g_iter_max = 30;
-		g_test_max = 2;
-	}
-	else if (g_nbr_tetri == 5)
-	{
-		g_iter_max = 45;
-		g_test_max = 2;
-	}
-	else if (g_nbr_tetri == 6)
-	{
-		g_iter_max = 58;
-		g_test_max = 2;
-	}
-	else if (g_nbr_tetri == 7)
-	{
-		g_iter_max = 68;
-		g_test_max = 3;
-	}
-	else if (g_nbr_tetri == 8)
-	{
-		g_iter_max = 74;
-		g_test_max = 5;
-	}
-	else if (g_nbr_tetri == 9)
-	{
-		g_iter_max = 85;
-		g_test_max = 5;
-	}
-	else if (g_nbr_tetri == 10)
-	{
-		g_iter_max = 110;
-		g_test_max = 5;
-	}
+	if (g_nbr_tetri < 6)
+		attrib_iter_first();
+	else
+		attrib_iter_second();
 }
 
 int		main(int argc, char **argv)

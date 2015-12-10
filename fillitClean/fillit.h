@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 11:53:53 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/10 09:02:03 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/10 09:23:25 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ int		is_valid(int *t1, int taille, int *spc);
 int		check_pos_23(int pos, int *t1);
 int		check_pos_32(int pos, int *t1);
 int		*situe_point(char *str);
+void	attrib_iter_first(void);
+void	attrib_iter_second(void);
 void	define(void);
 void	instance(int ite, char **tetri_list, char *str);
 void	attrb_2(int *backtrack);

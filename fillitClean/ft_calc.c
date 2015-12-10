@@ -6,13 +6,71 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/29 16:53:02 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/09 10:03:33 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/10 09:22:57 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int	calc_larg(int *tab, int taille)
+void	attrib_iter_first(void)
+{
+	if (g_nbr_tetri == 1)
+	{
+		g_iter_max = 10;
+		g_test_max = 0;
+	}
+	else if (g_nbr_tetri == 2)
+	{
+		g_iter_max = 17;
+		g_test_max = 0;
+	}
+	else if (g_nbr_tetri == 3)
+	{
+		g_iter_max = 22;
+		g_test_max = 1;
+	}
+	else if (g_nbr_tetri == 4)
+	{
+		g_iter_max = 30;
+		g_test_max = 2;
+	}
+	else if (g_nbr_tetri == 5)
+	{
+		g_iter_max = 45;
+		g_test_max = 2;
+	}
+}
+
+void	attrib_iter_second(void)
+{
+	if (g_nbr_tetri == 6)
+	{
+		g_iter_max = 58;
+		g_test_max = 2;
+	}
+	else if (g_nbr_tetri == 7)
+	{
+		g_iter_max = 68;
+		g_test_max = 3;
+	}
+	else if (g_nbr_tetri == 8)
+	{
+		g_iter_max = 74;
+		g_test_max = 5;
+	}
+	else if (g_nbr_tetri == 9)
+	{
+		g_iter_max = 85;
+		g_test_max = 5;
+	}
+	else if (g_nbr_tetri == 10)
+	{
+		g_iter_max = 110;
+		g_test_max = 5;
+	}
+}
+
+int		calc_larg(int *tab, int taille)
 {
 	int i;
 	int g_larg_max_test;
@@ -36,7 +94,7 @@ int	calc_larg(int *tab, int taille)
 	return (g_larg_max_test);
 }
 
-int	calc_haut(int *tab_tetri, int taille)
+int		calc_haut(int *tab_tetri, int taille)
 {
 	int tab[4];
 	int i;
@@ -64,7 +122,7 @@ int	calc_haut(int *tab_tetri, int taille)
 	return (tab[1] - tab[3]);
 }
 
-int	absc(int a, int b)
+int		absc(int a, int b)
 {
 	int n;
 
