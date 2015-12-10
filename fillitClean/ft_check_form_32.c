@@ -14,10 +14,10 @@
 
 int	check1_32(int *t1)
 {
-	if (t1[0] / g_taille_max < g_taille_max - 1 &&
-			t1[0] % g_taille_max < g_taille_max - 1)
+	if (t1[0] / g_len_mx < g_len_mx - 1 &&
+			t1[0] % g_len_mx < g_len_mx - 1)
 	{
-		if (t1[3] / g_taille_max > 0 && t1[3] % g_taille_max < g_taille_max - 2)
+		if (t1[3] / g_len_mx > 0 && t1[3] % g_len_mx < g_len_mx - 2)
 			return (1);
 	}
 	return (0);
@@ -25,10 +25,10 @@ int	check1_32(int *t1)
 
 int	check2_32(int *t1)
 {
-	if (t1[0] / g_taille_max < g_taille_max - 1 &&
-			t1[0] % g_taille_max < g_taille_max - 2)
+	if (t1[0] / g_len_mx < g_len_mx - 1 &&
+			t1[0] % g_len_mx < g_len_mx - 2)
 	{
-		if (t1[3] / g_taille_max > 0 && t1[3] % g_taille_max > 0)
+		if (t1[3] / g_len_mx > 0 && t1[3] % g_len_mx > 0)
 			return (1);
 	}
 	return (0);
@@ -36,10 +36,10 @@ int	check2_32(int *t1)
 
 int	check3_32(int *t1)
 {
-	if (t1[0] / g_taille_max < g_taille_max - 1 &&
-			t1[0] % g_taille_max < g_taille_max - 2)
+	if (t1[0] / g_len_mx < g_len_mx - 1 &&
+			t1[0] % g_len_mx < g_len_mx - 2)
 	{
-		if (t1[3] / g_taille_max > 0 && t1[3] % g_taille_max > 1)
+		if (t1[3] / g_len_mx > 0 && t1[3] % g_len_mx > 1)
 			return (1);
 	}
 	return (0);
@@ -47,10 +47,10 @@ int	check3_32(int *t1)
 
 int	check4_32(int *t1)
 {
-	if (t1[0] / g_taille_max < g_taille_max - 1 &&
-			t1[0] % g_taille_max < g_taille_max - 2)
+	if (t1[0] / g_len_mx < g_len_mx - 1 &&
+			t1[0] % g_len_mx < g_len_mx - 2)
 	{
-		if (t1[1] / g_taille_max > 0 && t1[3] % g_taille_max > 1)
+		if (t1[1] / g_len_mx > 0 && t1[3] % g_len_mx > 1)
 			return (1);
 	}
 	return (0);

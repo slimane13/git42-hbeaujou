@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 11:56:10 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/10 09:04:01 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/10 09:09:17 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,7 @@ void	attrib_iter(void)
 	{
 		g_iter_max = 110;
 		g_test_max = 5;
-	}	
+	}
 }
 
 int		main(int argc, char **argv)
@@ -138,10 +138,10 @@ int		main(int argc, char **argv)
 	if (argc != 2)
 		return (0);
 	g_nbr_tetri = lire_file(argv[1]);
-	g_taille_max = 2 * (g_nbr_tetri);
+	g_len_mx = 2 * (g_nbr_tetri);
 	if (g_nbr_tetri == 1 || g_nbr_tetri == 0)
 	{
-		g_taille_max = 4;
+		g_len_mx = 4;
 		g_nbr_tetri++;
 	}
 	ite = g_nbr_tetri;
@@ -156,10 +156,10 @@ int		main(int argc, char **argv)
 	}
 	rewind_tetris(g_points[0], 0);
 	g_flag_try = 0;
-	g_final = (int *)malloc(sizeof(int) * (g_taille_max * g_taille_max));
-	g_tmp_calc = (int *)malloc(sizeof(int) * (g_taille_max * g_taille_max));
-	g_tampon = (int *)malloc(sizeof(int) * g_taille_max);
-	g_affichage_lettre = (int *)malloc(sizeof(int) * (g_taille_max * g_taille_max));
+	g_final = (int *)malloc(sizeof(int) * (g_len_mx * g_len_mx));
+	g_tmp_calc = (int *)malloc(sizeof(int) * (g_len_mx * g_len_mx));
+	g_tampon = (int *)malloc(sizeof(int) * g_len_mx);
+	g_show_l = (int *)malloc(sizeof(int) * (g_len_mx * g_len_mx));
 	g_flag_try = 1;
 	remp_blank(g_tmp_calc);
 	g_larg_max = 100;

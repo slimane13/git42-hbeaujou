@@ -28,7 +28,7 @@ void		affiche(int *g_final)
 
 	i = 0;
 	j = 0;
-	taille = g_taille_max;
+	taille = g_len_mx;
 	while (i / taille < g_abs_tmp)
 	{
 		if (i % taille < g_abs_tmp - 1)

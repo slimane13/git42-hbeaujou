@@ -48,7 +48,7 @@ void	ft_boucle(int *i, int *j, int *flag, int *t1, int *t2, int passage)
 	{
 		if (*j == t1[*i] && g_flag_try == 1)
 		{
-			g_final[*j] = g_affichage_lettre[*j];
+			g_final[*j] = g_show_l[*j];
 			*flag = 1;
 		}
 		*i = *i + 1;
@@ -56,7 +56,7 @@ void	ft_boucle(int *i, int *j, int *flag, int *t1, int *t2, int passage)
 	if (*flag == 0)
 	{
 		if (*j == t2[0] || *j == t2[1] || *j == t2[2] || *j == t2[3])
-			g_final[*j] = g_affichage_lettre[*j] + 1;
+			g_final[*j] = g_show_l[*j] + 1;
 		else
 			g_final[*j] = 0;
 	}

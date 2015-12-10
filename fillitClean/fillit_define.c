@@ -39,7 +39,7 @@ void	rewind_tetris(int *tab, int i)
 	}
 }
 
-int		*resitue(int *tab, int taille, int g_taille_max)
+int		*resitue(int *tab, int taille, int g_len_mx)
 {
 	int *passe;
 	int i;
@@ -48,16 +48,16 @@ int		*resitue(int *tab, int taille, int g_taille_max)
 	i = 0;
 	count = 0;
 	passe = (int *)malloc(sizeof(int) * (4 + 4 * taille));
-	while (i < (g_taille_max * g_taille_max))
+	while (i < (g_len_mx * g_len_mx))
 	{
 		if (tab[i] != 0)
 		{
 			passe[count] = i;
 			count++;
-			g_affichage_lettre[i] = tab[i] + 1;
+			g_show_l[i] = tab[i] + 1;
 		}
 		else
-			g_affichage_lettre[i] = 0;
+			g_show_l[i] = 0;
 		i++;
 	}
 	return (passe);
