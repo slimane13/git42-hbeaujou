@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/08 17:42:50 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/10 13:33:36 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/10 14:23:14 by ebouther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,13 @@ void	ft_cut_f2_special(int i2, int g_nbr_crt[26], int gt[2], int flag[26])
 	}
 }
 
-void	calc(int *clean, int *nbr, int i, int *t1, int *t2, int indice)
+void	calc(int *clean, int *nbr, int boucle[3], int indice)
 {
 	g_tampon = resitue(clean, (4 * nbr[indice - 1]), g_len_mx);
 	g_tmp_calc = try_tetris_2(g_tampon, g_points[nbr[indice - 1]],
 			(4 * nbr[indice - 1]), i);
-	*t1 = calc_larg(g_tmp_calc, g_len_mx);
-	*t2 = calc_haut(g_tmp_calc, g_len_mx);
+	boucle[1] = calc_larg(g_tmp_calc, g_len_mx);
+	boucle[0] = calc_haut(g_tmp_calc, g_len_mx);
 }
 
 void	attrb_2(int *backtrack)
