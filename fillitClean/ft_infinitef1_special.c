@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/07 10:36:53 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/10 17:44:04 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/10 17:57:41 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,7 +121,7 @@ int		*try_tetris_2_2(int *t2, int k, int passage, int target)
 	if (k != 0 && target != 200)
 		rewind_tetris(t2, 0);
 	while ((!is_valid(t2, g_len_mx, g_var[k]) ||
-				overlap_3(g_tampon, t2, passage)) && counter < 8)
+				overlap_3(g_tampon, t2, passage)) && counter < 9)
 		assign_spot_special(t2, &counter);
 	while (vari[1] < g_len_mx * g_len_mx)
 	{
