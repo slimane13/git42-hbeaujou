@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/07 10:36:53 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/10 11:09:59 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/10 11:37:41 by ebouther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,13 +66,12 @@ void	ft_boucle_f1_special_2(int flag[26], int g_nbr_crt[26])
 void	ft_boucle_f2_special(int flag[26], int g_nbr_crt[26])
 {
 	int			i2;
-	int			g_t_h2;
-	int			g_t_l2;
+	int			gt[2];
 	static int	*backtrack;
 
 	i2 = 0;
-	g_t_h2 = 0;
-	g_t_l2 = 0;
+	gt[0] = 0;
+	gt[1] = 0;
 	if (flag[1] == 0)
 	{
 		backtrack = (int *)malloc(sizeof(int) * (g_len_mx * g_len_mx));
@@ -80,10 +79,10 @@ void	ft_boucle_f2_special(int flag[26], int g_nbr_crt[26])
 		flag[1] = 1;
 	}
 	ft_strcpy_int(backtrack, g_tmp_calc, g_len_mx * g_len_mx);
-	while (i2 < g_iter_max && g_t_h2 < g_haut_max + 4)
+	while (i2 < g_iter_max && gt[0] < g_haut_max + 4)
 	{
 		g_tampon = resitue(backtrack, (4 * (g_nbr_crt[1] + 1)), g_len_mx);
-		ft_cut_f2_special(i2, g_nbr_crt, &g_t_h2, &g_t_l2, flag);
+		ft_cut_f2_special(i2, g_nbr_crt, gt, flag);
 		i2++;
 	}
 }
