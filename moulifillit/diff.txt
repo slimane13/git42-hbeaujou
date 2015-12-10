@@ -1,8 +1,0 @@
-0a1,7
-> ..ABBCC
-> AAABBEC
-> .DD.EEC
-> DDFFHE.
-> GGFFHHH
-> .G.II..
-> .GII...

@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/08 17:42:50 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/10 14:23:14 by ebouther         ###   ########.fr       */
+/*   Updated: 2015/12/10 14:27:19 by ebouther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	calc(int *clean, int *nbr, int boucle[3], int indice)
 {
 	g_tampon = resitue(clean, (4 * nbr[indice - 1]), g_len_mx);
 	g_tmp_calc = try_tetris_2(g_tampon, g_points[nbr[indice - 1]],
-			(4 * nbr[indice - 1]), i);
+			(4 * nbr[indice - 1]), boucle[2]);
 	boucle[1] = calc_larg(g_tmp_calc, g_len_mx);
 	boucle[0] = calc_haut(g_tmp_calc, g_len_mx);
 }
