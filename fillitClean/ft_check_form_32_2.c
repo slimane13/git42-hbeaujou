@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/08 13:40:25 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/08 13:42:36 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/10 15:26:32 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 int	check5_32(int *t1)
 {
 	if (t1[0] / g_len_mx < g_len_mx - 1 &&
-			t1[0] % g_len_mx < g_len_mx - 1)
+			t1[0] % g_len_mx < g_len_mx - 1 &&
+			t1[0] % g_len_mx > 0)
 	{
 		if (t1[3] / g_len_mx > 0 && t1[3] % g_len_mx > 0)
 			return (1);
@@ -37,7 +38,8 @@ int	check6_32(int *t1)
 int	check7_32(int *t1)
 {
 	if (t1[0] / g_len_mx < g_len_mx - 1 &&
-			t1[0] % g_len_mx < g_len_mx - 1)
+			t1[0] % g_len_mx < g_len_mx - 1 &&
+			t1[0] % g_len_mx > 0)
 	{
 		if (t1[3] / g_len_mx > 0 && t1[3] % g_len_mx > 0)
 			return (1);

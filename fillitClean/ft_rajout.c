@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/10 10:34:33 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/10 12:25:37 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/10 16:59:07 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,12 @@ void	ft_cut_try_special(int varx[3], int passage, int *t1, int *t2)
 {
 	while (varx[0] < passage && varx[2] == 0)
 	{
-		if (varx[1] == t1[varx[0]] && g_flag_try == 1)
-		{
-			g_final[varx[1]] = g_show_l[varx[1]];
-			varx[2] = 1;
-		}
-		varx[0] = varx[0] + 1;
-	}
-	if (varx[2] == 0)
-	{
 		if (varx[1] == t2[0] || varx[1] == t2[1] ||
 				varx[1] == t2[2] || varx[1] == t2[3])
 			g_final[varx[1]] = g_show_l[varx[1]] + 1;
 		else
 			g_final[varx[1]] = 0;
+		varx[0] = varx[0] + 1;
 	}
 }
 

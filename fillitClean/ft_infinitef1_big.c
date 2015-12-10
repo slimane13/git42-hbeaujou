@@ -6,12 +6,13 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/06 15:18:01 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/10 14:46:23 by ebouther         ###   ########.fr       */
+/*   Updated: 2015/12/10 17:38:47 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
+int	*g_backtrack_sp2;
 int	*g_tampon;
 int	*g_tmp_calc;
 int	*g_final;
@@ -34,7 +35,6 @@ int *g_show_l;
 void	ft_boucle_f1_big(int flag[26], int g_nbr_crt[26])
 {
 	int			i;
-	int			g_haut_max1;
 	static int	*backtrack;
 
 	i = 0;

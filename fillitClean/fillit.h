@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 11:53:53 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/10 14:24:42 by ebouther         ###   ########.fr       */
+/*   Updated: 2015/12/10 17:00:59 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 int		*try_tetris_2(int *t1, int *t2, int passage, int target);
 int		*try_tetris_2_special(int *t1, int *t2,
 		int k, int target);
-int		*try_tetris_2_2(int *t1, int *t2, int k, int passage, int target);
+int		*try_tetris_2_2(int *t2, int k, int passage, int target);
 int		*tab_char_to_int(char *str);
 int		*ft_strdup_int(int *s, int taille);
 void	ft_strcpy_int(int *dest, int *src, int taille);
@@ -118,6 +118,7 @@ void	ft_boucle_f26_big(int flag[26], int g_nbr_crt[26]);
 
 extern int *g_resolution;
 extern int	*g_tampon;
+extern int	*g_backtrack_sp2;
 extern int	*g_tmp_calc;
 extern int	*g_final;
 extern int	g_larg_max;
