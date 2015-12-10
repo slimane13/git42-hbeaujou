@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 11:53:53 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/10 13:23:42 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/10 13:32:44 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <fcntl.h>
 # include "read.h"
 
-int		*try_tetris_2(int *t1, int *t2, int k, int passage, int target);
+int		*try_tetris_2(int *t1, int *t2, int passage, int target);
 int		*try_tetris_2_special(int *t1, int *t2,
 		int k, int passage, int target);
 int		*try_tetris_2_2(int *t1, int *t2, int k, int passage, int target);
