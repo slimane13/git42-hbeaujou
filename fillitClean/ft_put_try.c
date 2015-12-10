@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 17:26:23 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/10 13:34:57 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/10 13:54:04 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	ft_boucle(int var[3], int *t1, int *t2, int passage)
 		var[0] = var[0] + 1;
 	}
 	if (var[2] == 0)
-	
+	{
 		if (var[1] == t2[0] || var[1] == t2[1] ||
 				var[1] == t2[2] || var[1] == t2[3])
 			g_final[var[1]] = g_show_l[var[1]] + 1;
