@@ -12,7 +12,7 @@
 
 #include "fillit.h"
 
-void	ft_boucle_f11_big(int flag[26], int g_nbr_courant[26])
+void	ft_boucle_f11_big(int flag[26], int g_nbr_crt[26])
 {
 	int			g_test_haut11;
 	int			g_test_larg11;
@@ -25,23 +25,23 @@ void	ft_boucle_f11_big(int flag[26], int g_nbr_courant[26])
 	if (flag[10] == 0)
 	{
 		backtrack = (int *)malloc(sizeof(int) * (g_taille_max * g_taille_max));
-		g_nbr_courant[10] = g_nbr_courant[11] + 1;
+		g_nbr_crt[10] = g_nbr_crt[11] + 1;
 		flag[10] = 1;
 	}
-	ft_strcpy_int(backtrack, g_tmpCalc, g_taille_max * g_taille_max);
+	ft_strcpy_int(backtrack, g_tmp_calc, g_taille_max * g_taille_max);
 	while (i11 < g_iter_max && g_test_haut11 < g_test_max + 1 && g_trouve == 0)
 	{
-		calc(backtrack, g_nbr_courant, i11, &g_test_larg11, &g_test_haut11, 11);
+		calc(backtrack, g_nbr_crt, i11, &g_test_larg11, &g_test_haut11, 11);
 		if (g_test_larg11 < g_test_max + 1)
 		{
-			g_tampon = resitue(g_tmpCalc, (4 * g_nbr_courant[10]), g_taille_max);
-			ft_boucle_f10_big(flag, g_nbr_courant);
+			g_tampon = resitue(g_tmp_calc, (4 * g_nbr_crt[10]), g_taille_max);
+			ft_boucle_f10_big(flag, g_nbr_crt);
 		}
 		i11++;
 	}
 }
 
-void	ft_boucle_f12_big(int flag[26], int g_nbr_courant[26])
+void	ft_boucle_f12_big(int flag[26], int g_nbr_crt[26])
 {
 	int			g_test_larg12;
 	int			g_test_haut12;
@@ -54,23 +54,23 @@ void	ft_boucle_f12_big(int flag[26], int g_nbr_courant[26])
 	if (flag[11] == 0)
 	{
 		backtrack = (int *)malloc(sizeof(int) * (g_taille_max * g_taille_max));
-		g_nbr_courant[11] = g_nbr_courant[12] + 1;
+		g_nbr_crt[11] = g_nbr_crt[12] + 1;
 		flag[11] = 1;
 	}
-	ft_strcpy_int(backtrack, g_tmpCalc, g_taille_max * g_taille_max);
+	ft_strcpy_int(backtrack, g_tmp_calc, g_taille_max * g_taille_max);
 	while (i12 < g_iter_max && g_test_haut12 < g_test_max + 1 && g_trouve == 0)
 	{
-		calc(backtrack, g_nbr_courant, i12, &g_test_larg12, &g_test_haut12, 12);
+		calc(backtrack, g_nbr_crt, i12, &g_test_larg12, &g_test_haut12, 12);
 		if (g_test_larg12 < g_test_max + 1)
 		{
-			g_tampon = resitue(g_tmpCalc, (4 * g_nbr_courant[11]), g_taille_max);
-			ft_boucle_f11_big(flag, g_nbr_courant);
+			g_tampon = resitue(g_tmp_calc, (4 * g_nbr_crt[11]), g_taille_max);
+			ft_boucle_f11_big(flag, g_nbr_crt);
 		}
 		i12++;
 	}
 }
 
-void	ft_boucle_f13_big(int flag[26], int g_nbr_courant[26])
+void	ft_boucle_f13_big(int flag[26], int g_nbr_crt[26])
 {
 	int			g_test_larg13;
 	int			g_test_haut13;
@@ -83,23 +83,23 @@ void	ft_boucle_f13_big(int flag[26], int g_nbr_courant[26])
 	if (flag[12] == 0)
 	{
 		backtrack = (int *)malloc(sizeof(int) * (g_taille_max * g_taille_max));
-		g_nbr_courant[12] = g_nbr_courant[13] + 1;
+		g_nbr_crt[12] = g_nbr_crt[13] + 1;
 		flag[12] = 1;
 	}
-	ft_strcpy_int(backtrack, g_tmpCalc, g_taille_max * g_taille_max);
+	ft_strcpy_int(backtrack, g_tmp_calc, g_taille_max * g_taille_max);
 	while (i13 < g_iter_max && g_test_haut13 < g_test_max + 1 && g_trouve == 0)
 	{
-		calc(backtrack, g_nbr_courant, i13, &g_test_larg13, &g_test_haut13, 13);
+		calc(backtrack, g_nbr_crt, i13, &g_test_larg13, &g_test_haut13, 13);
 		if (g_test_larg13 < g_test_max + 1)
 		{
-			g_tampon = resitue(g_tmpCalc, (4 * g_nbr_courant[12]), g_taille_max);
-			ft_boucle_f12_big(flag, g_nbr_courant);
+			g_tampon = resitue(g_tmp_calc, (4 * g_nbr_crt[12]), g_taille_max);
+			ft_boucle_f12_big(flag, g_nbr_crt);
 		}
 		i13++;
 	}
 }
 
-void	ft_boucle_f14_big(int flag[26], int g_nbr_courant[26])
+void	ft_boucle_f14_big(int flag[26], int g_nbr_crt[26])
 {
 	int			g_test_larg14;
 	int			g_test_haut14;
@@ -112,23 +112,23 @@ void	ft_boucle_f14_big(int flag[26], int g_nbr_courant[26])
 	if (flag[13] == 0)
 	{
 		backtrack = (int *)malloc(sizeof(int) * (g_taille_max * g_taille_max));
-		g_nbr_courant[13] = g_nbr_courant[14] + 1;
+		g_nbr_crt[13] = g_nbr_crt[14] + 1;
 		flag[13] = 1;
 	}
-	ft_strcpy_int(backtrack, g_tmpCalc, g_taille_max * g_taille_max);
+	ft_strcpy_int(backtrack, g_tmp_calc, g_taille_max * g_taille_max);
 	while (i14 < g_iter_max && g_test_haut14 < g_test_max + 1 && g_trouve == 0)
 	{
-		calc(backtrack, g_nbr_courant, i14, &g_test_larg14, &g_test_haut14, 14);
+		calc(backtrack, g_nbr_crt, i14, &g_test_larg14, &g_test_haut14, 14);
 		if (g_test_larg14 < g_test_max + 1)
 		{
-			g_tampon = resitue(g_tmpCalc, (4 * g_nbr_courant[13]), g_taille_max);
-			ft_boucle_f13_big(flag, g_nbr_courant);
+			g_tampon = resitue(g_tmp_calc, (4 * g_nbr_crt[13]), g_taille_max);
+			ft_boucle_f13_big(flag, g_nbr_crt);
 		}
 		i14++;
 	}
 }
 
-void	ft_boucle_f15_big(int flag[26], int g_nbr_courant[26])
+void	ft_boucle_f15_big(int flag[26], int g_nbr_crt[26])
 {
 	int			g_test_larg15;
 	int			g_test_haut15;
@@ -141,17 +141,17 @@ void	ft_boucle_f15_big(int flag[26], int g_nbr_courant[26])
 	if (flag[15] == 0)
 	{
 		backtrack = (int *)malloc(sizeof(int) * (g_taille_max * g_taille_max));
-		g_nbr_courant[14] = g_nbr_courant[15] + 1;
+		g_nbr_crt[14] = g_nbr_crt[15] + 1;
 		flag[14] = 1;
 	}
-	ft_strcpy_int(backtrack, g_tmpCalc, g_taille_max * g_taille_max);
+	ft_strcpy_int(backtrack, g_tmp_calc, g_taille_max * g_taille_max);
 	while (i15 < g_iter_max)
 	{
-		calc(backtrack, g_nbr_courant, i15, &g_test_larg15, &g_test_haut15, 15);
+		calc(backtrack, g_nbr_crt, i15, &g_test_larg15, &g_test_haut15, 15);
 		if (g_test_larg15 < g_test_max + 1)
 		{
-			g_tampon = resitue(g_tmpCalc, (4 * g_nbr_courant[14]), g_taille_max);
-			ft_boucle_f14_big(flag, g_nbr_courant);
+			g_tampon = resitue(g_tmp_calc, (4 * g_nbr_crt[14]), g_taille_max);
+			ft_boucle_f14_big(flag, g_nbr_crt);
 		}
 		i15++;
 	}

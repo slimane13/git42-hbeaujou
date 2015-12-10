@@ -54,10 +54,10 @@ int		*resitue(int *tab, int taille, int g_taille_max)
 		{
 			passe[count] = i;
 			count++;
-			g_affichageLettre[i] = tab[i] + 1;
+			g_affichage_lettre[i] = tab[i] + 1;
 		}
 		else
-			g_affichageLettre[i] = 0;
+			g_affichage_lettre[i] = 0;
 		i++;
 	}
 	return (passe);

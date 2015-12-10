@@ -17,7 +17,7 @@ static void	ft_display(int c)
 	if (c == 0)
 		printf(".");
 	else
-		printf("%c", 'Z' - 'A' - c + 40 + g_nbrTetri);
+		printf("%c", 'Z' - 'A' - c + 40 + g_nbr_tetri);
 }
 
 void		affiche(int *g_final)
@@ -29,11 +29,11 @@ void		affiche(int *g_final)
 	i = 0;
 	j = 0;
 	taille = g_taille_max;
-	while (i / taille < g_absTmp)
+	while (i / taille < g_abs_tmp)
 	{
-		if (i % taille < g_absTmp - 1)
+		if (i % taille < g_abs_tmp - 1)
 			ft_display(g_final[i]);
-		else if (i % taille == g_absTmp - 1)
+		else if (i % taille == g_abs_tmp - 1)
 		{
 			ft_display(g_final[i]);
 			printf("\n");

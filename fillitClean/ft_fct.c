@@ -23,18 +23,18 @@ void	instance(int ite, char **tetri_list, char *str)
 void	calc(int *clean, int *nbr, int i, int *t1, int *t2, int indice)
 {
 	g_tampon = resitue(clean, (4 * nbr[indice - 1]), g_taille_max);
-	g_tmpCalc = try_tetris_2(g_tampon, g_points[nbr[indice - 1]], g_taille_max, g_var,
+	g_tmp_calc = try_tetris_2(g_tampon, g_points[nbr[indice - 1]], g_taille_max, g_var,
 			nbr[indice - 1], (4 * nbr[indice - 1]), i);
-	*t1 = calc_larg(g_tmpCalc, g_taille_max);
-	*t2 = calc_haut(g_tmpCalc, g_taille_max);
+	*t1 = calc_larg(g_tmp_calc, g_taille_max);
+	*t2 = calc_haut(g_tmp_calc, g_taille_max);
 }
 
 void	attrb_2(int *backtrack)
 {
-	ft_strcpy_int(backtrack, g_tmpCalc, g_taille_max * g_taille_max);
+	ft_strcpy_int(backtrack, g_tmp_calc, g_taille_max * g_taille_max);
 	g_larg_max = calc_larg(g_final, g_taille_max);
 	g_haut_max = calc_haut(g_final, g_taille_max);
-	g_absTmp = absc(g_larg_max, g_haut_max);
+	g_abs_tmp = absc(g_larg_max, g_haut_max);
 }
 
 void	remp_blank(int *tab)
