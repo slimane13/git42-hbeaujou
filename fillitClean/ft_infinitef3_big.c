@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/07 18:09:09 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/10 14:45:58 by ebouther         ###   ########.fr       */
+/*   Updated: 2015/12/10 14:47:24 by ebouther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,7 +135,7 @@ void	ft_boucle_f15_big(int flag[26], int g_nbr_crt[26])
 		flag[14] = 1;
 	}
 	ft_strcpy_int(backtrack, g_tmp_calc, g_len_mx * g_len_mx);
-	while (boucle[2] < g_iter_max)
+	while (bcl[2] < g_iter_max)
 	{
 		calc(backtrack, g_nbr_crt, bcl, 15);
 		if (bcl[1] < g_test_max + 1)
