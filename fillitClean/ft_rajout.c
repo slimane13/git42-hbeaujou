@@ -6,13 +6,14 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/10 10:34:33 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/10 10:52:16 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/10 10:55:47 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-void	ft_cut_try_special(int *flag, int j, int *i, int passage, int *t1, int *t2)
+void	ft_cut_try_special(int *flag, int j, int *i,
+		int passage, int *t1, int *t2)
 {
 	while (*i < passage && *flag == 0)
 	{
