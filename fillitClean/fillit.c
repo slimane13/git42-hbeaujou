@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 11:56:10 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/10 17:25:28 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/11 10:25:40 by ebouther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ int		main(int argc, char **argv)
 	int		ite;
 
 	if (argc != 2)
-		return (0);
+		ft_error_exit();
 	g_nbr_tetri = lire_file(argv[1]);
 	g_len_mx = 2 * (g_nbr_tetri);
 	if (g_nbr_tetri == 1 || g_nbr_tetri == 0)
@@ -100,7 +100,7 @@ int		main(int argc, char **argv)
 	}
 	ite = g_nbr_tetri;
 	if (!(g_points = malloc(sizeof(int *) * ite)))
-		return (0);
+		ft_error_exit();
 	tetri_list = (char **)malloc(sizeof(char *) * g_nbr_tetri);
 	g_var = lire_to_tab(argv[1], tetri_list);
 	cut_main(&ite, tetri_list);
