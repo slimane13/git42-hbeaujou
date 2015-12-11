@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 11:56:10 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/11 10:27:58 by ebouther         ###   ########.fr       */
+/*   Updated: 2015/12/11 10:41:55 by ebouther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,15 +99,16 @@ int		main(int argc, char **argv)
 		g_nbr_tetri++;
 	}
 	ite = g_nbr_tetri;
-	if (!(g_points = malloc(sizeof(int *) * ite)))
+	if (!(tetri_list = (char **)malloc(sizeof(char *) * g_nbr_tetri)) ||
+			!(g_points = malloc(sizeof(int *) * ite)) ||
+			!(g_var = lire_to_tab(argv[1], tetri_list)))
 		ft_error_exit();
-	tetri_list = (char **)malloc(sizeof(char *) * g_nbr_tetri);
-	g_var = lire_to_tab(argv[1], tetri_list);
 	cut_main(&ite, tetri_list);
-	g_final = (int *)malloc(sizeof(int) * (g_len_mx * g_len_mx));
-	g_tmp_calc = (int *)malloc(sizeof(int) * (g_len_mx * g_len_mx));
-	g_tampon = (int *)malloc(sizeof(int) * g_len_mx);
-	g_show_l = (int *)malloc(sizeof(int) * (g_len_mx * g_len_mx));
+	if (!(g_final = (int *)malloc(sizeof(int) * (g_len_mx * g_len_mx))) ||
+		!(g_tmp_calc = (int *)malloc(sizeof(int) * (g_len_mx * g_len_mx))) ||
+		!(g_tampon = (int *)malloc(sizeof(int) * g_len_mx)) ||
+		!(g_show_l = (int *)malloc(sizeof(int) * (g_len_mx * g_len_mx))))
+		ft_error_exit();
 	resolve();
 	return (0);
 }
