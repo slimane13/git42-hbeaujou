@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/11 12:48:44 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/11 16:47:12 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/11 16:52:59 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,19 +37,7 @@ void	recover(char *format, char *str, int len)
 	j = 0;
 	while (i < len)
 	{
-		if (format[i] == '\n')
-		{
-			str[j] = '\\';
-			j++;
-			str[j] = 'n';
-		}
-		else if (format[i] == '\t')
-		{
-			str[j] = '\\';
-			j++;
-			str[j] = 't';
-		}
-		else if (format[i] == '%')
+		if (format[i] == '%')
 		{
 			str[j] = '%';
 			j++;
@@ -131,13 +119,9 @@ void	ft_printf(char *format ,...)
 	va_start(liste, format);
 
 	recup_var(var, nbr_var, liste);
-	ft_strcpy(new_str, format);
-	ft_putstr(new_str);
-	ft_putchar('\n');
+	recover(format, new_str, size);
 	str_split = ft_strsplit(new_str, '%');
-	// REMPLACER LES PREMIERS CHAR DE CHAQUE STRING PAR LES VARIABLES
 	replace_char(str_split, var);
-	// AFFICHER LA DERNIERE STRING
 
 	i = 0;
 	while (str_split[i])
@@ -145,7 +129,7 @@ void	ft_printf(char *format ,...)
 		ft_putstr(str_split[i]);
 		i++;
 	}
-	
+
 	va_end(liste);
 }
 
