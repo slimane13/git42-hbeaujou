@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/29 16:53:02 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/10 18:12:27 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/11 11:12:04 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@ void	attrib_iter_first(void)
 {
 	if (g_nbr_tetri == 1)
 	{
-		g_iter_max = 10;
+		g_iter_max = 6;
 		g_test_max = 0;
 	}
 	else if (g_nbr_tetri == 2)
 	{
-		g_iter_max = 20;
-		g_test_max = 0;
+		g_iter_max = 6;
+		g_test_max = 1;
 	}
 	else if (g_nbr_tetri == 3)
 	{
@@ -31,7 +31,7 @@ void	attrib_iter_first(void)
 	}
 	else if (g_nbr_tetri == 4)
 	{
-		g_iter_max = 35;
+		g_iter_max = 45;
 		g_test_max = 3;
 	}
 	else if (g_nbr_tetri == 5)

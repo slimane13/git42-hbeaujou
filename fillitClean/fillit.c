@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 11:56:10 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/11 10:41:55 by ebouther         ###   ########.fr       */
+/*   Updated: 2015/12/11 10:51:46 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ int		main(int argc, char **argv)
 		ft_error_exit();
 	g_nbr_tetri = lire_file(argv[1]);
 	g_len_mx = 2 * (g_nbr_tetri);
-	if (g_nbr_tetri == 1 || g_nbr_tetri == 0)
+	if (g_nbr_tetri == 0)
 	{
 		g_len_mx = 4;
 		g_nbr_tetri++;

@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/10 10:34:33 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/10 17:44:51 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/11 10:51:39 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,8 @@ void	resolve(void)
 
 void	cut_main(int *ite, char **tetri_list)
 {
+	if (g_nbr_tetri == 2)
+		g_len_mx = 5;
 	while (*ite > 0)
 	{
 		g_points[*ite - 1] = situe_point(tetri_list[*ite - 1]);
