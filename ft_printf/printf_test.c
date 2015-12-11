@@ -6,17 +6,13 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/11 12:48:44 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/11 14:30:13 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/11 16:47:12 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <string.h>
-#include <stdlib.h>
-#include <ctype.h>	// pour iscntrl() a recoder
-#include <stdarg.h>
+#include "ft_printf.h"
 
-int		run_ctrl(char *str)
+int		run_var(char *str)
 {
 	int count;
 	int i;
@@ -32,37 +28,140 @@ int		run_ctrl(char *str)
 	return (count);
 }
 
+void	recover(char *format, char *str, int len)
+{
+	int i;
+	int j;
+
+	i = 0;
+	j = 0;
+	while (i < len)
+	{
+		if (format[i] == '\n')
+		{
+			str[j] = '\\';
+			j++;
+			str[j] = 'n';
+		}
+		else if (format[i] == '\t')
+		{
+			str[j] = '\\';
+			j++;
+			str[j] = 't';
+		}
+		else if (format[i] == '%')
+		{
+			str[j] = '%';
+			j++;
+			i++;
+			str[j] = format[i];
+			j++;
+			str[j] = '%';
+		}
+		else
+			str[j] = format[i];
+		i++;
+		j++;
+	}
+	str[j] = '\0';
+}
+
+void	recup_var(t_var **tab, int nbr_var, va_list liste)
+{
+	int i;
+
+	i = 0;
+	while (i < nbr_var)
+	{
+		tab[i]->entier = va_arg(liste, int);
+		i++;
+	}
+}
+
+void	replace_char(char **str, t_var **var)
+{
+	int i;
+	int j;
+	int count;
+
+	i = 0;
+	count = 0;
+	while (str[i] != '\0')
+	{
+		j = 0;
+		while (str[i][j])
+		{
+			if (str[i][j] == 'd')
+			{
+				str[i] = (char *)malloc(sizeof(char) * 3);
+				str[i] = ft_itoa(var[count]->entier);
+				str[i][2] = '\0';
+				count++;
+			}
+			j++;
+		}
+		i++;
+	}
+}
+
 void	ft_printf(char *format ,...)
 {
 	va_list		liste;
-	int			nbr_ctrl;
-	int			i;
-	int			j;
+	char		**str_split;
+	char		*new_str;
+	t_var		**var;
+	int			nbr_var;
 	int			size;
+	int			i;
 
 	size = 0;
-	j = 0;
 	i = 0;
+	
 	size = ft_strlen(format);
+	nbr_var = run_var(format);
 	size++;
 
-	va_start(liste, format);
-	nbr_ctrl = run_ctrl(format);
-	while (i < nbr_ctrl)
+	new_str = (char *)malloc(sizeof(char) * (ft_strlen(format) + nbr_var * 2));
+	var = (t_var **)malloc(sizeof(t_var) * nbr_var);  /// REMPLISSAGE TABLEAU VAR, A FAIRE AVEC STRUCT
+	while (i < nbr_var)
 	{
-		ft_putchar((char)va_arg(liste, int));
+		var[i] = (t_var *)malloc(sizeof(t_var));
 		i++;
 	}
+	va_start(liste, format);
+
+	recup_var(var, nbr_var, liste);
+	ft_strcpy(new_str, format);
+	ft_putstr(new_str);
+	ft_putchar('\n');
+	str_split = ft_strsplit(new_str, '%');
+	// REMPLACER LES PREMIERS CHAR DE CHAQUE STRING PAR LES VARIABLES
+	replace_char(str_split, var);
+	// AFFICHER LA DERNIERE STRING
+
+	i = 0;
+	while (str_split[i])
+	{	
+		ft_putstr(str_split[i]);
+		i++;
+	}
+	
 	va_end(liste);
 }
 
 int		main(void)
 {
 	int i;
+	int i2;
+	int i3;
+	int i7;
 	char c;
 	char c2;
 
-	i = 21;
+	i = 14;
+	i2 = 21;
+	i3 = 34;
+	i7 = 84;
 	c2 = 'F';
-	ft_printf("c = %c\n c2 = %c\n", 'A', c2);
+	ft_printf("i7 = %d\ni = %d\ni2 = %d\ni3 = %d\n", i7, i, i2, i3);
 }
