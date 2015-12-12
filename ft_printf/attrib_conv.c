@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/12 15:20:45 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/12 18:08:17 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/12 18:22:09 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ void	attrib_d(char **str, t_var **var, int count[3])
 	int k;
 
 	k = 0;
+	c = 't';
 	nbr = ft_nbrlen(var[count[2]]->entier);
 	flag = check_flag(str, count, &nbr, &c);
 	str[count[0]] = (char *)malloc(sizeof(char) * nbr);
@@ -84,6 +85,14 @@ void	attrib_d(char **str, t_var **var, int count[3])
 			{
 				str[count[0]] = ft_strjoin(str[count[0]], " ");
 				k--;
+			}
+		}
+		else if (flag > 0 && c == '0')
+		{
+			while (k < flag)
+			{
+				str[count[0]] = ft_strjoin("0", str[count[0]]);
+				k++;
 			}
 		}
 		else

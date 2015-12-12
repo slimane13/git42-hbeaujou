@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/12 12:27:22 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/12 18:08:57 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/12 18:12:19 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,41 @@ void	add_flag_three(char *format, char *str, int var[3])
 
 void	add_flag_four(char *format, char *str, int var[3])
 {
+	str[var[1]] = '%';
+	var[1]++;
+	var[0]++;
+	str[var[1]] = format[var[0]];
+	var[1]++;
+	var[0]++;
+	str[var[1]] = format[var[0]];
+	var[1]++;
+	var[0]++;
+	str[var[1]] = format[var[0]];
+	var[1]++;
+	var[0]++;
+	str[var[1]] = format[var[0]];
+	var[1]++;
+	str[var[1]] = '%';
 }
 
 void	add_flag_five(char *format, char *str, int var[3])
 {
+	str[var[1]] = '%';
+	var[1]++;
+	var[0]++;
+	str[var[1]] = format[var[0]];
+	var[1]++;
+	var[0]++;
+	str[var[1]] = format[var[0]];
+	var[1]++;
+	var[0]++;
+	str[var[1]] = format[var[0]];
+	var[1]++;
+	var[0]++;
+	str[var[1]] = format[var[0]];
+	var[1]++;
+	var[0]++;
+	str[var[1]] = format[var[0]];
+	var[1]++;
+	str[var[1]] = '%';
 }

@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/12 13:34:50 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/12 18:09:48 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/12 18:22:39 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,5 +117,5 @@ int		main(void)
 	s2 = "TEST";
 	c = 'a';
 	c2 = 'F';
-	ft_printf("var c = %c\ni3 = %+d\ns2 = %s\ni7 = %17d\ns4 = %s\n", c, i3, s2, i7, s4);
+	ft_printf("var c = %c\ni3 = %+d\ns2 = %s\ni7 = %07d\ns4 = %s\n", c, i3, s2, i7, s4);
 }
