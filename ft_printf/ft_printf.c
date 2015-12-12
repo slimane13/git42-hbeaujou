@@ -1,198 +1,121 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   recup_arguments.c                                  :+:      :+:    :+:   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/09 11:22:12 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/11 13:22:09 by hbeaujou         ###   ########.fr       */
+/*   Created: 2015/12/12 13:34:50 by hbeaujou          #+#    #+#             */
+/*   Updated: 2015/12/12 17:24:57 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdarg.h>
+#include "ft_printf.h"
 
-#define PRINT_BUF_LEN 12
-#define PAD_ZERO 2
-#define PAD_RIGHT 1
-
-
-static void printchar(char **str, int c)
+int		run_var(char *str, char c)
 {
-	extern int putchar(int c);
+	int count;
+	int i;
 
-	if (str) {
-		**str = c;
-		++(*str);
+	count = 0;
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == c)
+			count++;
+		i++;
 	}
-	else (void)putchar(c);
+	return (count);
 }
 
-
-static int prints(char **out, const char *string, int width, int pad)
+void	replace_char(char **str, t_var **var, va_list liste)
 {
-	register int pc = 0, padchar = ' ';
+	int count[3];
 
-	if (width > 0) {
-		register int len = 0;
-		register const char *ptr;
-		for (ptr = string; *ptr; ++ptr) ++len;
-		if (len >= width) width = 0;
-		else width -= len;
-		if (pad & PAD_ZERO) padchar = '0';
-	}
-	if (!(pad & PAD_RIGHT)) {
-		for ( ; width > 0; --width) {
-			printchar (out, padchar);
-			++pc;
+	count[0] = 0;
+	count[1] = 0;
+	count[2] = 0;
+	while (str[count[0]] != '\0')
+	{
+		if (count[0]%2 == 1)
+		{
+			if (str[count[0]][ft_strlen(str[count[0]]) - 1] == 'd')
+			{
+				var[count[2]]->entier = va_arg(liste, int);
+				attrib_alpha(str, var, count);
+			}
+			else if (str[count[0]][ft_strlen(str[count[0]]) - 1] == 'c')
+			{
+				var[count[2]]->string = ft_itoa(va_arg(liste, int));
+				attrib_alpha(str, var, count);
+			}
+			else if (str[count[0]][ft_strlen(str[count[0]]) - 1] == 's')
+			{
+				var[count[2]]->string = va_arg(liste, char *);
+				attrib_alpha(str, var, count);
+			}
 		}
+		count[0]++;
 	}
-	for ( ; *string ; ++string) {
-		printchar (out, *string);
-		++pc;
-	}
-	for ( ; width > 0; --width) {
-		printchar (out, padchar);
-		++pc;
-	}
-
-	return pc;
 }
 
-
-static int printi(char **out, int i, int b, int sg, int width, int pad, int letbase)
+void	ft_printf(char *format ,...)
 {
-	char print_buf[PRINT_BUF_LEN];
-	register char *s;
-	register int t, neg = 0, pc = 0;
-	register unsigned int u = i;
+	va_list		liste;
+	char		**str_split;
+	char		*new_str;
+	t_var		**var;
+	int			nbr_var_percent;
+	int			size;
+	int			i;
 
-	if (i == 0) {
-		print_buf[0] = '0';
-		print_buf[1] = '\0';
-		return prints (out, print_buf, width, pad);
+	size = 0;
+	i = 0;
+	
+	size = ft_strlen(format);
+	nbr_var_percent = run_var(format, '%');
+	size++;
+
+	new_str = (char *)malloc(sizeof(char) * (ft_strlen(format) + nbr_var_percent * 2));
+	var = (t_var **)malloc(sizeof(t_var) * nbr_var_percent);
+	while (i < nbr_var_percent)
+	{
+		var[i] = (t_var *)malloc(sizeof(t_var));
+		i++;
 	}
+	recover_percent(format, new_str, size);
+	str_split = ft_strsplit(new_str, '%');
+	va_start(liste, format);
+	replace_char(str_split, var, liste);
+	va_end(liste);
 
-	if (sg && b == 10 && i < 0) {
-		neg = 1;
-		u = -i;
+	i = 0;
+	while (str_split[i])
+	{	
+		ft_putstr(str_split[i]);
+		i++;
 	}
-
-	s = print_buf + PRINT_BUF_LEN-1;
-	*s = '\0';
-
-	while (u) {
-		t = u % b;
-		if( t >= 10 )
-			t += letbase - '0' - 10;
-		*--s = t + '0';
-		u /= b;
-	}
-
-	if (neg) {
-		if( width && (pad & PAD_ZERO) ) {
-			printchar (out, '-');
-			++pc;
-			--width;
-		}
-		else {
-			*--s = '-';
-		}
-	}
-
-	return pc + prints (out, s, width, pad);
 }
 
-static int print(char **out, const char *format, va_list args )
+int		main(void)
 {
-	register int width, pad;
-	char *s;
-	register int pc = 0;
-	char scr[2];
+	int i;
+	int i2;
+	int i3;
+	int i4;
+	int i7;
+	char c;
+	char c2;
+	char *s2;
+	char *s4;
 
-	for (; *format != 0; ++format) {
-		if (*format == '%') {
-			++format;
-			width = pad = 0;
-			if (*format == '\0') break;
-			if (*format == '%') goto out;
-			if (*format == '-') {
-				++format;
-				pad = PAD_RIGHT;
-			}
-			while (*format == '0') {
-				++format;
-				pad |= PAD_ZERO;
-			}
-			for ( ; *format >= '0' && *format <= '9'; ++format) {
-				width *= 10;
-				width += *format - '0';
-			}
-			if( *format == 's' ) {
-				s = (char *)va_arg( args, int );
-				pc += prints (out, s?s:"(null)", width, pad);
-				continue;
-			}
-			if( *format == 'd' ) {
-				pc += printi (out, va_arg( args, int ), 10, 1, width, pad, 'a');
-				continue;
-			}
-			if( *format == 'x' ) {
-				pc += printi (out, va_arg( args, int ), 16, 0, width, pad, 'a');
-				continue;
-			}
-			if( *format == 'X' ) {
-				pc += printi (out, va_arg( args, int ), 16, 0, width, pad, 'A');
-				continue;
-			}
-			if( *format == 'u' ) {
-				pc += printi (out, va_arg( args, int ), 10, 0, width, pad, 'a');
-				continue;
-			}
-			if( *format == 'c' ) {
-				scr[0] = (char)va_arg( args, int );
-				scr[1] = '\0';
-				pc += prints (out, scr, width, pad);
-				continue;
-			}
-		}
-		else {
-out:
-			printchar (out, *format);
-			++pc;
-		}
-	}
-	if (out) **out = '\0';
-	va_end( args );
-	return pc;
-}
-
-int ft_printf(char *out, const char *format, ...)
-{
-	va_list args;
-
-	va_start(args, format);
-	return print(&out, format, args);
-}
-
-int	main(int argc, char **argv)
-{
-	char *ptr = "Hello world!";
-	char *np = 0;
-	int i = 5;
-	unsigned int bs = sizeof(int)*8;
-	int mi;
-	char buf[80];
-
-	mi = (1 << (bs-1)) + 1;
-	ft_printf(buf, "justif: \"%-10s\"\n", "left");
-	ft_printf(buf, "justif: \"%10s\"\n", "right");
-	ft_printf(buf, " 3: %04d zero padded\n", 3);
-	ft_printf(buf, " 3: %-4d left justif.\n", 3);
-	ft_printf(buf, " 3: %4d right justif.\n", 3);
-	ft_printf(buf, "-3: %04d zero padded\n", -3);
-	ft_printf(buf, "-3: %-4d left justif.\n", -3);
-	ft_printf(buf, "-3: %4d right justif.\n", -3);
-
-	return 0;
+	i = 144;
+	i2 = 21;
+	i3 = 34;
+	s4 = "test22";
+	i7 = 84;
+	s2 = "TEST";
+	c = 'a';
+	c2 = 'F';
+	ft_printf("var c = %c\ni3 = %+d\ns2 = %s\ni7 = % d\ns4 = %s\n", c, i3, s2, i7, s4);
 }
