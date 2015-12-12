@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/11 15:28:05 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/12 15:25:48 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/12 17:56:07 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,9 @@ typedef struct		s_var
 }					t_var;
 
 int		check_conver(char *format, int var[3]);
+int		check_flag_number(char **str, int count[3], int *nbr, char *c);
 int		run_var(char *str, char c);
+
 void	add_flag_one(char *format, char *str, int var[3]);
 void	add_flag_two(char *format, char *str, int var[3]);
 void	add_flag_three(char *format, char *str, int var[3]);

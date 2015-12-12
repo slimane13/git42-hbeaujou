@@ -6,11 +6,26 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/12 15:32:56 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/12 15:37:55 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/12 17:56:23 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+int		check_flag_number(char **str, int count[3], int *nbr, char *c)
+{
+	int flag;
+
+	if (str[count[0]][0] == '.')
+	{
+		*c = '.';
+		flag = ft_atoi(str[count[0]]);
+	}
+	else
+		flag = ft_atoi(str[count[0]]);
+	return (flag);
+}
+
 /*
 void	attrib_s(char **str, t_var **var, int count[3])
 {
