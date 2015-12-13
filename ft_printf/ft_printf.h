@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/11 15:28:05 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/13 15:53:35 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/13 16:08:48 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 typedef struct		s_var
 {
 	int				entier;
-	double			dble;
 	char			carac;
 	char			*string;
 }					t_var;
@@ -43,6 +42,7 @@ void	attrib_o(char **str, t_var **var, int count[3]);
 void	attrib_p(char **str, t_var **var, int count[3]);
 void	attrib_s(char **str, t_var **var, int count[3]);
 void	attrib_x(char **str, t_var **var, int count[3]);
+void	attrib_x_maj(char **str, t_var **var, int count[3]);
 void	choix_add_flag(char *format, char *str, int var[3]);
 void	recover_percent(char *format, char *str, int len);
 void	recup_var(t_var **tab, int nbr_var, va_list liste);

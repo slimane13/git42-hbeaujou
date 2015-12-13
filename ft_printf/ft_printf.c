@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/12 13:34:50 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/13 15:59:13 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/13 16:53:03 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,11 @@ void	replace_char(char **str, t_var **var, va_list liste)
 				attrib_alpha(str, var, count);
 			}
 			else if (str[count[0]][ft_strlen(str[count[0]]) - 1] == 'x')
+			{
+				var[count[2]]->entier = va_arg(liste, int);
+				attrib_alpha(str, var, count);
+			}
+			else if (str[count[0]][ft_strlen(str[count[0]]) - 1] == 'X')
 			{
 				var[count[2]]->entier = va_arg(liste, int);
 				attrib_alpha(str, var, count);
@@ -122,6 +127,7 @@ int		main(void)
 	int i4;
 	int i7;
 	char c;
+	char c5;
 	char c2;
 	char *s2;
 	char *s4;
@@ -134,7 +140,8 @@ int		main(void)
 	i7 = 84;
 	s2 = "TEST";
 	c = 'a';
+	c5 = 'T';
 	c2 = 'F';
-	ft_printf("var c = %-3c\ni3 = %+d\ns2 = %-3p\ni7 = %-6d\ns4 = %-.4s\ni2 = %3o\n", c, i3, &i7, i7, s4, i2);
-	printf("i2 = %3o\n", i2);
+	ft_printf("var c = %-3c\ni3 = %+d\ns2 = %-3p\ni7 = %-6d\ns4 = %-.4s\ni2 = %3X\n", c, i3, &i7, i7, s4, i2);
+	printf("c5 = %hhd\n", c5);
 }

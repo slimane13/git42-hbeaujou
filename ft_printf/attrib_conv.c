@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/12 15:20:45 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/13 15:53:07 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/13 16:10:56 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ void	attrib_alpha(char **str, t_var **var, int count[3])
 		attrib_p(str, var, count);
 	else if (str[count[0]][ft_strlen(str[count[0]]) - 1] == 'x')
 		attrib_x(str, var, count);
+	else if (str[count[0]][ft_strlen(str[count[0]]) - 1] == 'X')
+		attrib_x_maj(str, var, count);
 	else if (str[count[0]][ft_strlen(str[count[0]]) - 1] == 'o')
 		attrib_o(str, var, count);
 }

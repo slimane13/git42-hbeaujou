@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/12 11:58:53 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/13 12:12:20 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/13 16:51:17 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,10 @@ int		check_conver(char *format, int var[3])
 	i = 1;
 	while (i < 5 && (format[var[0] + i] == '.' || format[var[0] + i] == '-' ||
 				format[var[0] + i] == '+' || format[var[0] + i] == ' ' ||
-				format[var[0] + i] == '#' || ft_isdigit(format[var[0] + i])) &&
-			ft_isalpha(format[var[0] + i]) == 0)
+				format[var[0] + i] == '#' || ft_isdigit(format[var[0] + i]) ||
+				format[var[0] + i] == 'j' || format[var[0] + i] == 'z' ||
+				format[var[0] + i] == 't' || format[var[0] + i] == 'h' ||
+				format[var[0] + i] == 'l'))
 	{
 		i++;
 	}
