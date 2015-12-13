@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/12 13:34:50 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/13 13:48:22 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/13 15:59:13 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,9 @@ void	replace_char(char **str, t_var **var, va_list liste)
 	{
 		if (count[0]%2 == 1)
 		{
-			if (str[count[0]][ft_strlen(str[count[0]]) - 1] == 'd')
+			if (str[count[0]][ft_strlen(str[count[0]]) - 1] == 'd' ||
+					str[count[0]][ft_strlen(str[count[0]]) - 1] == 'i' ||
+					str[count[0]][ft_strlen(str[count[0]]) - 1] == 'u')	/////  A VERIFIER
 			{
 				var[count[2]]->entier = va_arg(liste, int);
 				attrib_alpha(str, var, count);
@@ -52,6 +54,21 @@ void	replace_char(char **str, t_var **var, va_list liste)
 			else if (str[count[0]][ft_strlen(str[count[0]]) - 1] == 's')
 			{
 				var[count[2]]->string = va_arg(liste, char *);
+				attrib_alpha(str, var, count);
+			}
+			else if (str[count[0]][ft_strlen(str[count[0]]) - 1] == 'p')
+			{
+				var[count[2]]->entier = va_arg(liste, int);
+				attrib_alpha(str, var, count);
+			}
+			else if (str[count[0]][ft_strlen(str[count[0]]) - 1] == 'x')
+			{
+				var[count[2]]->entier = va_arg(liste, int);
+				attrib_alpha(str, var, count);
+			}
+			else if (str[count[0]][ft_strlen(str[count[0]]) - 1] == 'o')
+			{
+				var[count[2]]->entier = va_arg(liste, int);
 				attrib_alpha(str, var, count);
 			}
 		}
@@ -108,15 +125,16 @@ int		main(void)
 	char c2;
 	char *s2;
 	char *s4;
+	char *s7;
 
 	i = 144;
-	i2 = 21;
+	i2 = 29;
 	i3 = 34;
 	s4 = "test22";
 	i7 = 84;
 	s2 = "TEST";
 	c = 'a';
 	c2 = 'F';
-	ft_printf("var c = %c\ni3 = %+d\ns2 = %s\ni7 = %-6d\ns4 = %-.4s\n", c, i3, s2, i7, s4);
-	printf("s4 = %.4s\n", s4);
+	ft_printf("var c = %-3c\ni3 = %+d\ns2 = %-3p\ni7 = %-6d\ns4 = %-.4s\ni2 = %3o\n", c, i3, &i7, i7, s4, i2);
+	printf("i2 = %3o\n", i2);
 }
