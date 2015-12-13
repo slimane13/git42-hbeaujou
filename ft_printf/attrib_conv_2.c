@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/12 15:32:56 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/12 18:22:32 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/13 13:13:08 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,17 @@ int		check_flag_number(char **str, int count[3], int *nbr, char *c)
 {
 	int flag;
 
-	if (str[count[0]][0] == '.')
+	if (str[count[0]][0] == '.' || (str[count[0]][0] == '0' &&
+				str[count[0]][1] == '.'))
 	{
 		*c = '.';
-		flag = ft_atoi(str[count[0]]);
+		flag = ft_atoi_spec(str[count[0]]);
+	}
+	else if (str[count[0]][0] == '-' && str[count[0]][1] == '.')
+	{
+		*c = '.';
+		str[count[0]][0] = '0';
+		flag = ft_atoi_spec(str[count[0]]);
 	}
 	else if (str[count[0]][0] == '-' && str[count[0]][1] == '0')
 	{

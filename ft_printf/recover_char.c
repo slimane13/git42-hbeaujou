@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/12 11:58:53 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/12 17:00:13 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/13 12:12:20 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,15 @@ void	choix_add_flag(char *format, char *str, int var[3])
 		add_flag_two(format, str, var);
 	else if (var[2] == 3)
 		add_flag_three(format, str, var);
-	else if (var[3] == 4)
+	else if (var[2] == 4)
 		add_flag_four(format, str, var);
-	else if (var[3] == 5)
+	else if (var[2] == 5)
 		add_flag_five(format, str, var);
 	else
+	{
+		ft_putstr("ERREUR");
 		exit(0);
+	}
 }
 
 void	recover_percent(char *format, char *str, int len)

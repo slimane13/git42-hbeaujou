@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/12 15:20:45 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/12 18:22:09 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/13 13:48:13 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,7 @@ int		check_flag(char **str, int count[3], int *nbr, char *c)
 		return (5000);
 	}
 	else
-	{
 		return (check_flag_number(str, count, nbr, c));
-	}
 	return (-1);
 }
 void	attrib_alpha(char **str, t_var **var, int count[3])
@@ -73,31 +71,39 @@ void	attrib_d(char **str, t_var **var, int count[3])
 		str[count[0]] = ft_strjoin("+", str[count[0]]);
 	else if (flag == 2000 && var[count[2]]->entier >= 0)
 		str[count[0]] = ft_strjoin(" ", str[count[0]]);
-	else if (flag == 5000)
-	{ /////  EN COURS
-	}
 	else if (flag != -1 && flag != 1000 && flag != 2000 &&
 			flag != 3000 && flag != 4000 && flag != 5000)
 	{
-		if (flag < -1)
+		if (flag < -1 && c != '0')
 		{
-			while (k > flag)
+			while (k > flag + nbr)
 			{
 				str[count[0]] = ft_strjoin(str[count[0]], " ");
 				k--;
 			}
 		}
-		else if (flag > 0 && c == '0')
+		else if (flag > 0 && (c == '0' || c == '.'))
 		{
-			while (k < flag)
+			while (k < flag - nbr)
+			{
+				if (c == '.')
+					str[count[0]] = ft_strjoin("0", str[count[0]]);
+				else
+					str[count[0]] = ft_strjoin(str[count[0]], "0");
+				k++;
+			}
+		}
+		else if (flag < -1 && c == '0')
+		{
+			while (k > flag)
 			{
 				str[count[0]] = ft_strjoin("0", str[count[0]]);
-				k++;
+				k--;
 			}
 		}
 		else
 		{
-			while (k < flag)
+			while (k < flag - nbr)
 			{
 				str[count[0]] = ft_strjoin(" ", str[count[0]]);
 				k++;
@@ -118,9 +124,45 @@ void	attrib_c(char **str, t_var **var, int count[3])
 void	attrib_s(char **str, t_var **var, int count[3])
 {
 	int str_len;
+	int flag;
+	int k;
+	char c;
 
+	k = 0;
+	c = 't';
 	str_len = ft_strlen(var[count[2]]->string);
+	flag = check_flag(str, count, &str_len, &c);
 	str[count[0]] = (char *)malloc(sizeof(char) * str_len);
 	str[count[0]] = ft_strcpy(str[count[0]], var[count[2]]->string);
+	if (flag == 1000 && var[count[2]]->entier >= 0)
+		str[count[0]] = ft_strjoin("+", str[count[0]]);
+	else if (flag == 2000 && var[count[2]]->entier >= 0)
+		str[count[0]] = ft_strjoin(" ", str[count[0]]);
+	else if (flag != -1 && flag != 1000 && flag != 2000 &&
+			flag != 3000 && flag != 4000 && flag != 5000)
+	{
+		if (flag < -1 && c != '0')
+		{
+			while (k > flag + str_len)
+			{
+				str[count[0]] = ft_strjoin(str[count[0]], " ");
+				k--;
+			}
+		}
+		else if (flag > 0 && c == '.')
+		{
+			if (flag < 0)
+				flag = -flag;
+			str[count[0]] = ft_strsub(str[count[0]], 0, flag);
+		}
+		else
+		{
+			while (k < flag - str_len)
+			{
+				str[count[0]] = ft_strjoin(" ", str[count[0]]);
+				k++;
+			}
+		}
+	}
 	count[2]++;
 }

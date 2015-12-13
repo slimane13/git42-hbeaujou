@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/12 13:34:50 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/12 18:22:39 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/13 13:48:22 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	ft_printf(char *format ,...)
 	nbr_var_percent = run_var(format, '%');
 	size++;
 
-	new_str = (char *)malloc(sizeof(char) * (ft_strlen(format) + nbr_var_percent * 2));
+	new_str = (char *)malloc(sizeof(char) * (ft_strlen(format) + nbr_var_percent * 4));
 	var = (t_var **)malloc(sizeof(t_var) * nbr_var_percent);
 	while (i < nbr_var_percent)
 	{
@@ -117,5 +117,6 @@ int		main(void)
 	s2 = "TEST";
 	c = 'a';
 	c2 = 'F';
-	ft_printf("var c = %c\ni3 = %+d\ns2 = %s\ni7 = %07d\ns4 = %s\n", c, i3, s2, i7, s4);
+	ft_printf("var c = %c\ni3 = %+d\ns2 = %s\ni7 = %-6d\ns4 = %-.4s\n", c, i3, s2, i7, s4);
+	printf("s4 = %.4s\n", s4);
 }
