@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/12 15:32:56 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/13 16:10:31 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/14 17:41:24 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int		check_flag_number(char **str, int count[3], int *nbr, char *c)
 {
 	int flag;
 
+	*nbr = *nbr;
 	if (str[count[0]][0] == '.' || (str[count[0]][0] == '0' &&
 				str[count[0]][1] == '.'))
 	{
@@ -24,9 +25,12 @@ int		check_flag_number(char **str, int count[3], int *nbr, char *c)
 	}
 	else if (str[count[0]][0] == '-' && str[count[0]][1] == '.')
 	{
-		*c = '.';
 		str[count[0]][0] = '0';
-		flag = ft_atoi_spec(str[count[0]]);
+		if (*c == 'h')
+			flag = ft_atoi_length(str[count[0]]);
+		else
+			flag = ft_atoi_spec(str[count[0]]);
+		*c = '.';
 	}
 	else if (str[count[0]][0] == '-' && str[count[0]][1] == '0')
 	{
@@ -81,8 +85,10 @@ void	attrib_x(char **str, t_var **var, int count[3])
 		str[count[0]] = ft_strjoin("+", str[count[0]]);
 	else if (flag == 2000 && var[count[2]]->entier >= 0)
 		str[count[0]] = ft_strjoin(" ", str[count[0]]);
-	else if (flag != -1 && flag != 1000 && flag != 2000 &&
-			flag != 3000 && flag != 4000 && flag != 5000)
+	else if (flag == 5000 && var[count[2]]->entier >= 0)
+		str[count[0]] = ft_strjoin("0x", str[count[0]]);
+	else if (flag != -1 && flag != 1000 &&
+			flag != 2000 && flag != 5000)
 	{
 		if (flag < -1 && c != '0')
 		{
@@ -140,8 +146,10 @@ void	attrib_x_maj(char **str, t_var **var, int count[3])
 		str[count[0]] = ft_strjoin("+", str[count[0]]);
 	else if (flag == 2000 && var[count[2]]->entier >= 0)
 		str[count[0]] = ft_strjoin(" ", str[count[0]]);
-	else if (flag != -1 && flag != 1000 && flag != 2000 &&
-			flag != 3000 && flag != 4000 && flag != 5000)
+	else if (flag == 5000 && var[count[2]]->entier >= 0)
+		str[count[0]] = ft_strjoin("0x", str[count[0]]);
+	else if (flag != -1 && flag != 1000 &&
+			flag != 2000 && flag != 5000)
 	{
 		if (flag < -1 && c != '0')
 		{
@@ -199,8 +207,10 @@ void	attrib_o(char **str, t_var **var, int count[3])
 		str[count[0]] = ft_strjoin("+", str[count[0]]);
 	else if (flag == 2000 && var[count[2]]->entier >= 0)
 		str[count[0]] = ft_strjoin(" ", str[count[0]]);
-	else if (flag != -1 && flag != 1000 && flag != 2000 &&
-			flag != 3000 && flag != 4000 && flag != 5000)
+	else if (flag == 5000 && var[count[2]]->entier >= 0)
+		str[count[0]] = ft_strjoin("0", str[count[0]]);
+	else if (flag != -1 && flag != 1000 &&
+			flag != 2000 && flag != 5000)
 	{
 		if (flag < -1 && c != '0')
 		{

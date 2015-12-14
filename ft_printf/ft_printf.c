@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/12 13:34:50 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/13 16:53:03 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/14 15:33:32 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,43 +39,91 @@ void	replace_char(char **str, t_var **var, va_list liste)
 	{
 		if (count[0]%2 == 1)
 		{
-			if (str[count[0]][ft_strlen(str[count[0]]) - 1] == 'd' ||
+			if ((str[count[0]][ft_strlen(str[count[0]]) - 1] == 'd' ||
 					str[count[0]][ft_strlen(str[count[0]]) - 1] == 'i' ||
-					str[count[0]][ft_strlen(str[count[0]]) - 1] == 'u')	/////  A VERIFIER
+					str[count[0]][ft_strlen(str[count[0]]) - 1] == 'u') && //// A VERIFIER
+					str[count[0]][ft_strlen(str[count[0]]) - 2] != 'h')
 			{
 				var[count[2]]->entier = va_arg(liste, int);
-				attrib_alpha(str, var, count);
+				attrib_d(str, var, count);
 			}
-			else if (str[count[0]][ft_strlen(str[count[0]]) - 1] == 'c')
+			else if (str[count[0]][ft_strlen(str[count[0]]) - 1] == 'c' &&
+					str[count[0]][ft_strlen(str[count[0]]) - 2] != 'h')  /////// A DEGAGER
 			{
 				var[count[2]]->string = ft_itoa(va_arg(liste, int));
-				attrib_alpha(str, var, count);
+				attrib_c(str, var, count);
 			}
-			else if (str[count[0]][ft_strlen(str[count[0]]) - 1] == 's')
+			else if ((str[count[0]][ft_strlen(str[count[0]]) - 1] == 's' ||
+					str[count[0]][ft_strlen(str[count[0]]) - 1] == 'S') &&
+					str[count[0]][ft_strlen(str[count[0]]) - 2] != 'h') /////// A DEGAGER
 			{
 				var[count[2]]->string = va_arg(liste, char *);
-				attrib_alpha(str, var, count);
+				ft_putstr(var[count[2]]->string);
+				attrib_s(str, var, count);
 			}
-			else if (str[count[0]][ft_strlen(str[count[0]]) - 1] == 'p')
+			else if (str[count[0]][ft_strlen(str[count[0]]) - 1] == 'p' &&
+					str[count[0]][ft_strlen(str[count[0]]) - 2] != 'h')
 			{
 				var[count[2]]->entier = va_arg(liste, int);
-				attrib_alpha(str, var, count);
+				attrib_p(str, var, count);
 			}
-			else if (str[count[0]][ft_strlen(str[count[0]]) - 1] == 'x')
+			else if (str[count[0]][ft_strlen(str[count[0]]) - 1] == 'x' &&
+					str[count[0]][ft_strlen(str[count[0]]) - 2] != 'h')
 			{
 				var[count[2]]->entier = va_arg(liste, int);
-				attrib_alpha(str, var, count);
+				attrib_x(str, var, count);
 			}
-			else if (str[count[0]][ft_strlen(str[count[0]]) - 1] == 'X')
+			else if (str[count[0]][ft_strlen(str[count[0]]) - 1] == 'X' &&
+					str[count[0]][ft_strlen(str[count[0]]) - 2] != 'h')
 			{
 				var[count[2]]->entier = va_arg(liste, int);
-				attrib_alpha(str, var, count);
+				attrib_x_maj(str, var, count);
 			}
-			else if (str[count[0]][ft_strlen(str[count[0]]) - 1] == 'o')
+			else if (str[count[0]][ft_strlen(str[count[0]]) - 1] == 'o' &&
+					str[count[0]][ft_strlen(str[count[0]]) - 2] != 'h')
 			{
 				var[count[2]]->entier = va_arg(liste, int);
-				attrib_alpha(str, var, count);
+				attrib_o(str, var, count);
 			}
+			else if (str[count[0]][ft_strlen(str[count[0]]) - 2] == 'h' &&
+				str[count[0]][ft_strlen(str[count[0]]) - 3] != 'h')
+			{
+				var[count[2]]->entier = va_arg(liste, int);
+				attrib_h_h(str, var, count);
+			}
+			else if (str[count[0]][ft_strlen(str[count[0]]) - 2] == 'h' &&
+				str[count[0]][ft_strlen(str[count[0]]) - 3] == 'h')
+			{
+				var[count[2]]->entier = va_arg(liste, int);
+				attrib_h_h(str, var, count);
+			}
+			else if (str[count[0]][ft_strlen(str[count[0]]) - 2] == 'l' &&
+				str[count[0]][ft_strlen(str[count[0]]) - 3] != 'l')
+			{
+				var[count[2]]->entier = va_arg(liste, int);
+				attrib_h_h(str, var, count);
+			}
+			else if (str[count[0]][ft_strlen(str[count[0]]) - 2] == 'l' &&
+				str[count[0]][ft_strlen(str[count[0]]) - 3] == 'l')
+			{
+				var[count[2]]->entier = va_arg(liste, int);
+				attrib_h_h(str, var, count);
+			}
+			else if (str[count[0]][ft_strlen(str[count[0]]) - 2] == 'j')
+			{
+				var[count[2]]->entier = va_arg(liste, int);
+				attrib_h_h(str, var, count);
+			}
+			else if (str[count[0]][ft_strlen(str[count[0]]) - 2] == 'z')
+			{
+				var[count[2]]->entier = va_arg(liste, int);
+				attrib_h_h(str, var, count);
+			}
+//			else if (str[count[0]][ft_strlen(str[count[0]]) - 1] == 'S')
+//			{
+//				var[count[2]]->string = va_arg(liste, char *);
+//				attrib_alpha(str, var, count);
+//			}
 		}
 		count[0]++;
 	}
@@ -118,7 +166,7 @@ void	ft_printf(char *format ,...)
 		i++;
 	}
 }
-
+/*
 int		main(void)
 {
 	int i;
@@ -126,8 +174,9 @@ int		main(void)
 	int i3;
 	int i4;
 	int i7;
+	int *sO;
+	long long c5;
 	char c;
-	char c5;
 	char c2;
 	char *s2;
 	char *s4;
@@ -137,11 +186,13 @@ int		main(void)
 	i2 = 29;
 	i3 = 34;
 	s4 = "test22";
-	i7 = 84;
+	i7 = 69;
 	s2 = "TEST";
+	sO = &i3;
 	c = 'a';
-	c5 = 'T';
+	c5 = 'Z';
 	c2 = 'F';
-	ft_printf("var c = %-3c\ni3 = %+d\ns2 = %-3p\ni7 = %-6d\ns4 = %-.4s\ni2 = %3X\n", c, i3, &i7, i7, s4, i2);
-	printf("c5 = %hhd\n", c5);
-}
+	ft_printf("YOLO\n");
+	ft_printf("i3 = %+d\n&i7 = %-3p\ni7 = %-6d\ns = %S\ni2 = %#o\nc5 = %-.3ld\n", i3, &i7, i7, L"LOLOLOL", i2, c5);
+	printf("s = %ls\n", L"LOLOL");
+}*/

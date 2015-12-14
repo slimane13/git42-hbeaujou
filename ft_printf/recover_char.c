@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/12 11:58:53 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/13 16:51:17 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/14 13:45:11 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,11 @@ int		check_conver(char *format, int var[3])
 	int i;
 
 	i = 1;
-	while (i < 5 && (format[var[0] + i] == '.' || format[var[0] + i] == '-' ||
+	while (i < 6 && (format[var[0] + i] == '.' || format[var[0] + i] == '-' ||
 				format[var[0] + i] == '+' || format[var[0] + i] == ' ' ||
 				format[var[0] + i] == '#' || ft_isdigit(format[var[0] + i]) ||
 				format[var[0] + i] == 'j' || format[var[0] + i] == 'z' ||
-				format[var[0] + i] == 't' || format[var[0] + i] == 'h' ||
-				format[var[0] + i] == 'l'))
+				format[var[0] + i] == 'h' || format[var[0] + i] == 'l'))
 	{
 		i++;
 	}
@@ -41,6 +40,8 @@ void	choix_add_flag(char *format, char *str, int var[3])
 		add_flag_four(format, str, var);
 	else if (var[2] == 5)
 		add_flag_five(format, str, var);
+	else if (var[2] == 6)
+		add_flag_six(format, str, var);
 	else
 	{
 		ft_putstr("ERREUR");
@@ -68,4 +69,12 @@ void	recover_percent(char *format, char *str, int len)
 		var[1]++;
 	}
 	str[var[1]] = '\0';
+}
+
+int		ft_wtomb(char *s, wchar_t wchar)
+{
+	if (!s)
+		return (0);
+	*s = wchar;
+	return (1);
 }
