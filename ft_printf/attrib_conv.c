@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/12 15:20:45 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/14 17:42:51 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/15 12:27:02 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,11 @@ int		check_flag(char **str, int count[3], int *nbr, char *c)
 	{
 		*nbr = *nbr + 1;
 		return (2000);
+	}
+	else if (str[count[0]][0] == '*')
+	{
+		*nbr = *nbr + 1;
+		return (3000);
 	}
 	else if (str[count[0]][0] == '#')
 	{
@@ -62,8 +67,27 @@ void	attrib_d(char **str, t_var **var, int count[3])
 		str[count[0]] = ft_strjoin(" ", str[count[0]]);
 	else if (flag == 2000 && var[count[2]]->entier >= 0)
 		str[count[0]] = ft_strjoin(" ", str[count[0]]);
-	else if (flag != 1 && flag != 1000 &&
-			flag != 2000 && flag != 5000)
+	else if (flag == 3000)
+	{
+		if (var[count[2]]->stars < 0)
+		{
+			while (k > var[count[2]]->stars + nbr - 1)
+			{
+				str[count[0]] = ft_strjoin(str[count[0]], " ");
+				k--;
+			}
+		}
+		else
+		{
+			while (k < var[count[2]]->stars - nbr + 1)
+			{
+				str[count[0]] = ft_strjoin(" ", str[count[0]]);
+				k++;
+			}
+		}
+	}
+	else if (flag != 1 && flag != 1000 && flag != 2000 &&
+			flag != 3000 && flag != 5000)
 	{
 		if (flag < -1 && c != '0')
 		{
@@ -123,6 +147,25 @@ void	attrib_c(char **str, t_var **var, int count[3])
 		str[count[0]] = ft_strjoin("+", str[count[0]]);
 	else if (flag == 2000 && var[count[2]]->entier >= 0)
 		str[count[0]] = ft_strjoin(" ", str[count[0]]);
+	else if (flag == 3000)
+	{
+		if (var[count[2]]->stars < 0)
+		{
+			while (k > var[count[2]]->stars + nbr)
+			{
+				str[count[0]] = ft_strjoin(str[count[0]], " ");
+				k--;
+			}
+		}
+		else
+		{
+			while (k < var[count[2]]->stars - nbr)
+			{
+				str[count[0]] = ft_strjoin(" ", str[count[0]]);
+				k++;
+			}
+		}
+	}
 	else if (flag != -1 && flag != 1000 && flag != 2000 &&
 			flag != 3000 && flag != 4000 && flag != 5000)
 	{

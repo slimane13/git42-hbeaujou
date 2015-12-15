@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/11 15:28:05 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/14 15:33:22 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/15 15:01:52 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 typedef struct		s_var
 {
 	int				entier;
+	int				stars;
 	char			carac;
 	char			*string;
 }					t_var;
@@ -28,6 +29,7 @@ typedef struct		s_var
 int		check_conver(char *format, int var[3]);
 int		check_flag(char **str, int count[3], int *nbr, char *c);
 int		check_flag_number(char **str, int count[3], int *nbr, char *c);
+int		is_indice(int nb, int *tab);
 int		run_var(char *str, char c);
 int		ft_wtomb(char *s, wchar_t wchar);
 
@@ -50,6 +52,6 @@ void	attrib_s(char **str, t_var **var, int count[3]);
 void	attrib_x(char **str, t_var **var, int count[3]);
 void	attrib_x_maj(char **str, t_var **var, int count[3]);
 void	choix_add_flag(char *format, char *str, int var[3]);
-void	recover_percent(char *format, char *str, int len);
+void	recover_percent(char *format, char *str, int len, int *tab);
 void	recup_var(t_var **tab, int nbr_var, va_list liste);
-void	replace_char(char **str, t_var **var, va_list liste);
+void	replace_char(char **str, t_var **var, va_list liste, int *tab);

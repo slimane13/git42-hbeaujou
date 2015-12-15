@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/14 15:28:04 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/14 16:18:45 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/15 17:17:58 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,9 @@ int		main()
   ft_printf("16chiffre 1 %.6d chiffre 2 %.6d\n", 42, -42);
   printf("16chiffre 1 %.6d chiffre 2 %.6d\n\n", 42, -42);
 
-  /* Memes tests avec les %c */
+  ft_putstr(" -----  Memes tests avec les c ------ ");
+  ft_putchar('\n');
+  ft_putchar('\n');
 
   ft_printf("1caractere 1 %c caractere 2 %c\n", 'a', 'c');
   printf("1caractere 1 %c caractere 2 %c\n\n", 'a', 'c');
@@ -100,10 +102,12 @@ int		main()
   ft_printf("15caractere 1 %.c caractere 2 %.c\n", 'a', 'c');
   printf("15caractere 1 %.c caractere 2 %.c\n\n", 'a', 'c');
 
-  /* Memes tests avec les %o */
+  ft_putstr(" -----  Memes tests avec les o ------ ");
+  ft_putchar('\n');
+  ft_putchar('\n');
 
-  ft_printf("1octal 1 %o octal 2 %o\n", 42, -42);
-  printf("1octal 1 %o octal 2 %o\n\n", 42, -42);
+  ft_printf("1octal 1 %o octal 2 %o\n", 42, -31);
+  printf("1octal 1 %o octal 2 %o\n\n", 42, -31);
 
   ft_printf("4octal 1 %12o octal 2 %12o\n", 42, -42);
   printf("4octal 1 %12o octal 2 %12o\n\n", 42, -42);
@@ -122,8 +126,6 @@ int		main()
 
   ft_printf("16octal 1 %.6o octal 2 %.6o\n", 42, -42);
   printf("16octal 1 %.6o octal 2 %.6o\n\n", 42, -42);
-
-  /* Memes tests avec les %o */
   
   ft_printf("1octal 1 %o octal 2 %o\n", 42, -42);
   printf("1octal 1 %o octal 2 %o\n\n", 42, -42);
@@ -149,7 +151,9 @@ int		main()
   ft_printf("16octal 1 %.6o octal 2 %.6o\n", 42, -42);
   printf("16octal 1 %.6o octal 2 %.6o\n\n", 42, -42);
 
-  /* Memes tests avec les %x */
+  ft_putstr(" -----  Memes tests avec les x ------ ");
+  ft_putchar('\n');
+  ft_putchar('\n');
 
   ft_printf("1hexa 1 %x hexa 2 %x\n", 42, -42);
   printf("1hexa 1 %x hexa 2 %x\n\n", 42, -42);
@@ -175,7 +179,9 @@ int		main()
   ft_printf("16hexa 1 %.6x hexa 2 %.6x\n", 42, -42);
   printf("16hexa 1 %.6x hexa 2 %.6x\n\n", 42, -42);
 
-  /* Memes tests avec les %X */
+  ft_putstr(" -----  Memes tests avec les X ------ ");
+  ft_putchar('\n');
+  ft_putchar('\n');
 
   ft_printf("1hexa-maj 1 %X hexa-maj 2 %X\n", 42, -42);
   printf("1hexa-maj 1 %X hexa-maj 2 %X\n\n", 42, -42);
@@ -202,6 +208,9 @@ int		main()
   printf("16hexa-maj 1 %.6X hexa-maj 2 %.6X\n\n", 42, -42);
 
   /* Memes tests avec les %p */
+  ft_putstr(" -----  Memes tests avec les P ------ ");
+  ft_putchar('\n');
+  ft_putchar('\n');
 
   ft_printf("1pointeur 1 %p pointeur 2 %p\n", &c, &c);
   printf("1pointeur 1 %p pointeur 2 %p\n\n", &c, &c);
@@ -216,6 +225,9 @@ int		main()
   printf("15pointeur 1 %.p pointeur 2 %.p\n\n", &c, &c);
 
   /* Memes tests avec les %u */
+  ft_putstr(" -----  Memes tests avec les U ------ ");
+  ft_putchar('\n');
+  ft_putchar('\n');
 
   ft_printf("1unsigned 1 %u unsigned 2 %u\n", 42, -42);
   printf("1unsigned 1 %u unsigned 2 %u\n\n", 42, -42);
@@ -242,18 +254,27 @@ int		main()
   printf("16unsigned 1 %.6u unsigned 2 %.6u\n\n", 42, -42);
 
 
-  /* Tests avec une chaine NULLe */
+  /* Tests avec une chaine NULLe 
+  ft_putstr(" -----  Memes tests avec str NULLe ------ ");
+  ft_putchar('\n');
+  ft_putchar('\n');
 
   ft_printf("%s", NULL);
-  printf("%s", NULL);
+  printf("%s", NULL); */
 
   /* Test du %% . Attention, les justifications aussi doivent etre gerees ! */
+  ft_putstr(" -----  Memes tests avec %% ------ ");
+  ft_putchar('\n');
+  ft_putchar('\n');
 
   ft_printf("%%\n");
-  printf("%%\n");  
+  printf("%%\n");   
 
   
   /* Et le dieZ ? */
+  ft_putstr(" -----  Memes tests avec les # ------ ");
+  ft_putchar('\n');
+  ft_putchar('\n');
 
   ft_printf("%#o\n", 42);
   printf("%#o\n", 42);
@@ -269,15 +290,13 @@ int		main()
   
   /* Le %n n'est pas obigatoire. Il consiste a mettre le nombre de caracteres affiches jusqu'a celui ci dans un pointeur sur int */
 
-  ft_printf("J'affiche des %ncaracteres.", n);
-
   printf("%-.12u\n", -20000000);
   ft_printf("%-.12u\n", -20000000);
 
   printf("%-.12i\n", -20000000);
   ft_printf("%-.12i\n", -20000000);
 
-  ft_printf("truc");
+//  ft_printf("truc");
 
   ft_printf("truc %d\n", 42);
   printf("truc %d\n", 42);

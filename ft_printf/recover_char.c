@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/12 11:58:53 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/14 13:45:11 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/15 16:17:15 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ int		check_conver(char *format, int var[3])
 				format[var[0] + i] == '+' || format[var[0] + i] == ' ' ||
 				format[var[0] + i] == '#' || ft_isdigit(format[var[0] + i]) ||
 				format[var[0] + i] == 'j' || format[var[0] + i] == 'z' ||
-				format[var[0] + i] == 'h' || format[var[0] + i] == 'l'))
+				format[var[0] + i] == 'h' || format[var[0] + i] == 'l' ||
+				format[var[0] + i] == '*'))
 	{
 		i++;
 	}
@@ -49,19 +50,40 @@ void	choix_add_flag(char *format, char *str, int var[3])
 	}
 }
 
-void	recover_percent(char *format, char *str, int len)
+void	recover_percent(char *format, char *str, int len, int *tab)
 {
 	int var[3];
+	int indice;
+	int flag;
+	int k;
 
 	var[0] = 0;
 	var[1] = 0;
 	var[2] = 0;
+	indice = 1;
+	tab[0] = 0;
+	flag = 0;
+	if (format[0] == '%' && format[1] != '%')
+		k = -1;
+	else
+		k = 0;
 	while (var[0] < len)
 	{
-		if (format[var[0]] == '%' && format[var[0] + 1] != '%')
+		if ((format[var[0]] == '%' && format[var[0] + 1] != '%') || (format[var[0]] == '%' && flag == 1))
 		{
+			k++;
+			tab[indice] = k;
+			tab[0]++;
+			flag = 1;
+			indice++;
 			var[2] = check_conver(format, var);
 			choix_add_flag(format, str, var);
+		}
+		else if (format[var[0]] != '%' && flag == 1)
+		{
+			k++;
+			flag = 0;
+			str[var[1]] = format[var[0]];
 		}
 		else
 			str[var[1]] = format[var[0]];
@@ -69,6 +91,20 @@ void	recover_percent(char *format, char *str, int len)
 		var[1]++;
 	}
 	str[var[1]] = '\0';
+}
+
+int		is_indice(int nb, int *tab)
+{
+	int i;
+
+	i = 0;
+	while (i <= tab[0])
+	{
+		if (nb == tab[i])
+			return (1);
+		i++;
+	}
+	return (0);
 }
 
 int		ft_wtomb(char *s, wchar_t wchar)
