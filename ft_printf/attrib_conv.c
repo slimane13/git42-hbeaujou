@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/12 15:20:45 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/15 12:27:02 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/15 18:20:06 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	attrib_d(char **str, t_var **var, int count[3])
 	str[count[0]] = (char *)malloc(sizeof(char) * nbr);
 	str[count[0]] = ft_itoa(var[count[2]]->entier);
 	if (var[count[2]]->entier < 0 && str[count[0]][0] != '0')
-		neg = 2;
+		neg = 1;
 	if (flag == 1000 && var[count[2]]->entier >= 0)
 	{
 		neg = 1;

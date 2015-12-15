@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/14 15:28:04 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/15 17:17:58 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/15 18:30:41 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -296,7 +296,7 @@ int		main()
   printf("%-.12i\n", -20000000);
   ft_printf("%-.12i\n", -20000000);
 
-//  ft_printf("truc");
+//  ft_printf("truc");   ALLLLLLLLLLLLLLLOOOOOOOOOOOOOOOOOOO
 
   ft_printf("truc %d\n", 42);
   printf("truc %d\n", 42);
