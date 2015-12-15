@@ -1,0 +1,5 @@
+Last updated: November 18, 2014
+
+This test suite was created by Teo Fleming (tfleming) at Ecole 42 for the purpose of testing the project get_next_line.
+
+To use, place the unit-tests in your project folder. To run, call sh run.sh
