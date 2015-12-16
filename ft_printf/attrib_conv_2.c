@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/12 15:32:56 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/15 18:30:39 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/16 18:59:21 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int		check_flag_number(char **str, int count[3], int *nbr, char *c)
 				str[count[0]][1] == '.'))
 	{
 		*c = '.';
+		if (ft_isalpha(str[count[0]][1]) != 0)
+			return (0);
 		flag = ft_atoi_spec(str[count[0]]);
 	}
 	else if (str[count[0]][0] == '-' && str[count[0]][1] == '.')
@@ -83,8 +85,18 @@ void	attrib_x(char **str, t_var **var, int count[3])
 	if (var[count[2]]->entier < 0)
 		nbr++;
 	flag = check_flag(str, count, &nbr, &c);
-	str[count[0]] = (char *)malloc(sizeof(char) * nbr);
-	str[count[0]] = ft_itoa_base(var[count[2]]->entier, 16);
+	if (var[count[2]]->entier >= 0)
+	{
+		str[count[0]] = (char *)malloc(sizeof(char) * nbr * 2);
+		str[count[0]] = ft_itoa_base(var[count[2]]->entier, 16);
+	}
+	else if (var[count[2]]->entier < 0)
+	{
+		str[count[0]] = (char *)malloc(sizeof(char) * nbr * 16);
+		ft_ulltstr_base((unsigned long long)var[count[2]]->entier,
+				"0123456789abcdef", str[count[0]]);
+		nbr = ft_strlen(str[count[0]]);
+	}
 	if (flag == 1000 && var[count[2]]->entier >= 0)
 		str[count[0]] = ft_strjoin("+", str[count[0]]);
 	else if (flag == 2000 && var[count[2]]->entier >= 0)
@@ -166,8 +178,18 @@ void	attrib_x_maj(char **str, t_var **var, int count[3])
 	if (var[count[2]]->entier < 0)
 		nbr++;
 	flag = check_flag(str, count, &nbr, &c);
-	str[count[0]] = (char *)malloc(sizeof(char) * nbr);
-	str[count[0]] = ft_itoa_base_maj(var[count[2]]->entier, 16);
+	if (var[count[2]]->entier >= 0)
+	{
+		str[count[0]] = (char *)malloc(sizeof(char) * nbr * 2);
+		str[count[0]] = ft_itoa_base_maj(var[count[2]]->entier, 16);
+	}
+	else if (var[count[2]]->entier < 0)
+	{
+		str[count[0]] = (char *)malloc(sizeof(char) * nbr * 16);
+		ft_ulltstr_base((unsigned long long)var[count[2]]->entier,
+				"0123456789ABCDEF", str[count[0]]);
+		nbr = ft_strlen(str[count[0]]);
+	}
 	if (flag == 1000 && var[count[2]]->entier >= 0)
 		str[count[0]] = ft_strjoin("+", str[count[0]]);
 	else if (flag == 2000 && var[count[2]]->entier >= 0)
@@ -247,8 +269,17 @@ void	attrib_o(char **str, t_var **var, int count[3])
 		nbr++;
 	flag = check_flag(str, count, &nbr, &c);
 	l = ft_atoi_spec_o(str[count[0]]);
-	str[count[0]] = (char *)malloc(sizeof(char) * nbr * 2);
-	str[count[0]] = ft_itoa_base(var[count[2]]->entier, 8);
+	if (var[count[2]]->entier >= 0)
+	{
+		str[count[0]] = (char *)malloc(sizeof(char) * nbr * 2);
+		str[count[0]] = ft_itoa_base(var[count[2]]->entier, 8);
+	}
+	else if (var[count[2]]->entier < 0)
+	{
+		str[count[0]] = (char *)malloc(sizeof(char) * nbr * 8);
+		ft_ulltstr_base((unsigned long long)var[count[2]]->entier, "01234567", str[count[0]]);
+		nbr = ft_strlen(str[count[0]]);
+	}
 	if (flag == 1000 && var[count[2]]->entier >= 0)
 		str[count[0]] = ft_strjoin("+", str[count[0]]);
 	else if (flag == 2000 && var[count[2]]->entier >= 0)

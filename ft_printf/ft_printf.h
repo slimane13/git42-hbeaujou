@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/11 15:28:05 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/15 15:01:52 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/16 19:06:04 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,9 @@ typedef struct		s_var
 {
 	int				entier;
 	int				stars;
+	unsigned int	u_entier;
+	long			v_long;
+	long long		v_l_long;
 	char			carac;
 	char			*string;
 }					t_var;

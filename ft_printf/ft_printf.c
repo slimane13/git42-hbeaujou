@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/12 13:34:50 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/15 17:21:51 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/16 18:25:07 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -219,6 +219,7 @@ int		main(void)
 	long long c5;
 	char c;
 	char c2;
+	char *s1;
 	char *s2;
 	char *s4;
 	char *s7;
@@ -228,12 +229,14 @@ int		main(void)
 	i3 = 34;
 	s4 = "test22";
 	i7 = 69;
+	s1 = "mdrk";
 	s2 = "TEST";
 	sO = &i3;
 	c = 'a';
 	c5 = 'Z';
 	c2 = 'F';
-	ft_printf("i3 = %*d\n&i7 = %-3p\ni7 = %-6d\ns2 = %S\ni2 = %o\nc5 = %-.3ld\n", 10, i3, &i7, i7, s2, i2, c5);
+	ft_printf("s1 = %.s s2 = %.s\n\n", "bonjour", "toto");
+	ft_printf("i3 = %*d\n&i7 = %-3p\ni7 = %-6d\ns2 = %.s\ni2 = %o\nc5 = %-.3ld\n", 10, i3, &i7, i7, s2, i2, c5);
 	ft_printf("%s\n", "LOLOL");
 	printf("\ns = %ls\n", L"LOLOL");
 }*/

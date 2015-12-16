@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/12 15:20:45 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/15 18:20:06 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/16 18:37:59 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,13 @@
 
 int		check_flag(char **str, int count[3], int *nbr, char *c)
 {
-	if (str[count[0]][0] == '+' || (str[count[0]][0] == '-' && str[count[0]][1] == '+'))
+	if ((str[count[0]][0] == '-' && str[count[0]][1] == '+') ||
+			(str[count[0]][0] == '+' && str[count[0]][1] == '-'))
+	{
+		*nbr = *nbr + 1;
+		return (4000);
+	}
+	else if (str[count[0]][0] == '+')
 	{
 		*nbr = *nbr + 1;
 		return (1000);
@@ -45,6 +51,7 @@ void	attrib_d(char **str, t_var **var, int count[3])
 	int flag;
 	char c;
 	int k;
+	int check;
 	int neg;
 
 	k = 0;
@@ -52,6 +59,7 @@ void	attrib_d(char **str, t_var **var, int count[3])
 	neg = 0;
 	nbr = ft_nbrlen(var[count[2]]->entier);
 	flag = check_flag(str, count, &nbr, &c);
+	check = ft_atoi_ultra(str[count[0]]);
 	if (str[count[0]][0] == '.' && var[count[2]]->entier < 0)
 		nbr--;
 	str[count[0]] = (char *)malloc(sizeof(char) * nbr);
@@ -67,6 +75,16 @@ void	attrib_d(char **str, t_var **var, int count[3])
 		str[count[0]] = ft_strjoin(" ", str[count[0]]);
 	else if (flag == 2000 && var[count[2]]->entier >= 0)
 		str[count[0]] = ft_strjoin(" ", str[count[0]]);
+	else if (flag == 4000)
+	{
+		if (var[count[2]]->entier >= 0)
+			str[count[0]] = ft_strjoin("+", str[count[0]]);
+		while (k < check - nbr)
+		{
+			str[count[0]] = ft_strjoin(str[count[0]], " ");
+			k++;
+		}
+	}
 	else if (flag == 3000)
 	{
 		if (var[count[2]]->stars < 0)
@@ -213,6 +231,8 @@ void	attrib_s(char **str, t_var **var, int count[3])
 				k--;
 			}
 		}
+		else if (flag == 0 && c == '.')
+			str[count[0]][0] = '\0';
 		else if (flag > 0 && c == '.')
 		{
 			if (flag < 0)

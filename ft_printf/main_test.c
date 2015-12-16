@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/14 15:28:04 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/15 18:30:41 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/16 19:08:14 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,8 +106,8 @@ int		main()
   ft_putchar('\n');
   ft_putchar('\n');
 
-  ft_printf("1octal 1 %o octal 2 %o\n", 42, -31);
-  printf("1octal 1 %o octal 2 %o\n\n", 42, -31);
+  ft_printf("1octal 1 %o octal 2 %o\n", 42, -42);
+  printf("1octal 1 %o octal 2 %o\n\n", 42, -42);
 
   ft_printf("4octal 1 %12o octal 2 %12o\n", 42, -42);
   printf("4octal 1 %12o octal 2 %12o\n\n", 42, -42);
