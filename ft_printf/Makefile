@@ -6,7 +6,7 @@
 #    By: aemebiku <aemebiku@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/06/26 15:32:35 by aemebiku          #+#    #+#              #
-#    Updated: 2015/12/16 16:01:39 by hbeaujou         ###   ########.fr        #
+#    Updated: 2015/12/17 14:23:06 by hbeaujou         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -35,6 +35,7 @@ SOURCES =	libft/ft_memset.c				\
 			libft/ft_strcmp.c				\
 			libft/ft_strncmp.c				\
 			libft/ft_atoi.c					\
+			libft/ft_atoi_double.c			\
 			libft/ft_atoi_ultra.c			\
 			libft/ft_atoi_spec.c			\
 			libft/ft_atoi_spec_o.c			\

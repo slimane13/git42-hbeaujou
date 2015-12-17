@@ -6,7 +6,7 @@
 /*   By: ebouther <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 15:08:57 by ebouther          #+#    #+#             */
-/*   Updated: 2015/12/16 16:06:14 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/17 14:25:26 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,11 @@ char				*ft_strrchr(const char *s, int c);
 char				*ft_strnstr(const char *haystack, const char *needle,
 		size_t n);
 char				*ft_strstr(const char *haystack, const char *needle);
-char				*ft_ulltstr_base(unsigned long long n, char *base_str, char *buf);
+void				ft_ulltstr_base(unsigned long long n, char *base_str, char *buf);
 int					ft_strcmp(const char *s1, const char *s2);
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
 int					ft_atoi_ultra(const char *str);
+int					ft_atoi_double(const char *str);
 int					ft_atoi(const char *str);
 int					ft_atoi_spec(const char *str);
 int					ft_atoi_spec_o(const char *str);

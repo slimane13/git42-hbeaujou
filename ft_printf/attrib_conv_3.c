@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/14 10:46:56 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/14 13:56:08 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/17 14:38:54 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,99 @@ void	attrib_c_maj(char **str, t_var **var, int count[3])
 		else
 		{
 			while (k < flag - 1)
+			{
+				str[count[0]] = ft_strjoin(" ", str[count[0]]);
+				k++;
+			}
+		}
+	}
+	count[2]++;
+}
+
+void	attrib_u(char **str, t_var **var, int count[3])
+{
+	int nbr;
+	int flag;
+	char c;
+	int k;
+	int check;
+	int neg;
+
+	k = 0;
+	c = 't';
+	neg = 0;
+	nbr = ft_nbrlen(var[count[2]]->u_entier);
+	flag = check_flag(str, count, &nbr, &c);
+	check = ft_atoi_ultra(str[count[0]]);
+	if (str[count[0]][0] == '.')
+		nbr--;
+	str[count[0]] = (char *)malloc(sizeof(char) * (nbr * 5));
+	ft_ulltstr_base((unsigned long long)var[count[2]]->u_entier, "0123456789", str[count[0]]);
+	if (flag == 1000)
+	{
+		neg = 1;
+		str[count[0]] = ft_strjoin("+", str[count[0]]);
+	}
+	else if (flag == 2000)
+		str[count[0]] = ft_strjoin(" ", str[count[0]]);
+	else if (flag == 4000)
+	{
+		str[count[0]] = ft_strjoin("+", str[count[0]]);
+		while (k < check - nbr)
+		{
+			str[count[0]] = ft_strjoin(str[count[0]], " ");
+			k++;
+		}
+	}
+	else if (flag == 3000)
+	{
+		if (var[count[2]]->stars < 0)
+		{
+			while (k > var[count[2]]->stars + nbr - 1)
+			{
+				str[count[0]] = ft_strjoin(str[count[0]], " ");
+				k--;
+			}
+		}
+		else
+		{
+			while (k < var[count[2]]->stars - nbr + 1)
+			{
+				str[count[0]] = ft_strjoin(" ", str[count[0]]);
+				k++;
+			}
+		}
+	}
+	else if (flag != 1 && flag != 1000 && flag != 2000 &&
+			flag != 3000 && flag != 5000)
+	{
+		if (flag < -1 && c != '0')
+		{
+			while (k > flag + nbr + neg)
+			{
+				str[count[0]] = ft_strjoin(str[count[0]], " ");
+				k--;
+			}
+		}
+		else if (flag > 0 && (c == '0' || c == '.'))
+		{
+			while (k < flag - nbr - neg)
+			{
+				str[count[0]] = ft_strjoin("0", str[count[0]]);
+				k++;
+			}
+		}
+		else if (flag < -1 && c == '0')
+		{
+			while (k > flag)
+			{
+				str[count[0]] = ft_strjoin("0", str[count[0]]);
+				k--;
+			}
+		}
+		else
+		{
+			while (k < flag - nbr - neg)
 			{
 				str[count[0]] = ft_strjoin(" ", str[count[0]]);
 				k++;

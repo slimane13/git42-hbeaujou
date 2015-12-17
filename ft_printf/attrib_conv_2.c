@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/12 15:32:56 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/16 18:59:21 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/17 14:41:27 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -277,7 +277,8 @@ void	attrib_o(char **str, t_var **var, int count[3])
 	else if (var[count[2]]->entier < 0)
 	{
 		str[count[0]] = (char *)malloc(sizeof(char) * nbr * 8);
-		ft_ulltstr_base((unsigned long long)var[count[2]]->entier, "01234567", str[count[0]]);
+//		ft_ulltstr_base((unsigned long long)var[count[2]]->entier, "01234567", str[count[0]]);
+		ft_ulltstr_base((unsigned long long)var[count[2]]->u_short, "01234567", str[count[0]]);
 		nbr = ft_strlen(str[count[0]]);
 	}
 	if (flag == 1000 && var[count[2]]->entier >= 0)

@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/12 13:34:50 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/16 18:25:07 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/17 14:42:03 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,7 @@ void	replace_char(char **str, t_var **var, va_list liste, int *tab)
 		if (is_indice(count[0], tab))
 		{
 			if ((str[count[0]][ft_strlen(str[count[0]]) - 1] == 'd' ||
-					str[count[0]][ft_strlen(str[count[0]]) - 1] == 'i' ||
-					str[count[0]][ft_strlen(str[count[0]]) - 1] == 'u') && //// A VERIFIER
+					str[count[0]][ft_strlen(str[count[0]]) - 1] == 'i') &&
 					str[count[0]][ft_strlen(str[count[0]]) - 2] != 'h')
 			{
 				if (str[count[0]][ft_strlen(str[count[0]]) - 2] == '*')
@@ -54,6 +53,20 @@ void	replace_char(char **str, t_var **var, va_list liste, int *tab)
 				{
 					var[count[2]]->entier = va_arg(liste, int);
 					attrib_d(str, var, count);
+				}
+			}
+			else if	(str[count[0]][ft_strlen(str[count[0]]) - 1] == 'u')
+			{
+				if (str[count[0]][ft_strlen(str[count[0]]) - 2] == '*')
+				{
+					var[count[2]]->stars = va_arg(liste, int);
+					var[count[2]]->u_entier = (unsigned int)va_arg(liste, int);
+					attrib_u(str, var, count);
+				}
+				else
+				{
+					var[count[2]]->u_entier = (unsigned int)va_arg(liste, int);
+					attrib_u(str, var, count);
 				}
 			}
 			else if (str[count[0]][ft_strlen(str[count[0]]) - 1] == 'c' &&
@@ -91,6 +104,7 @@ void	replace_char(char **str, t_var **var, va_list liste, int *tab)
 				{
 					var[count[2]]->stars = va_arg(liste, int);
 					var[count[2]]->entier = va_arg(liste, int);
+					var[count[2]]->u_short = (unsigned short)var[count[2]]->entier;
 					attrib_x(str, var, count);
 				}
 				else
@@ -106,6 +120,7 @@ void	replace_char(char **str, t_var **var, va_list liste, int *tab)
 				{
 					var[count[2]]->stars = va_arg(liste, int);
 					var[count[2]]->entier = va_arg(liste, int);
+					var[count[2]]->u_short = (unsigned short)var[count[2]]->entier;
 					attrib_x_maj(str, var, count);
 				}
 				else
@@ -121,11 +136,13 @@ void	replace_char(char **str, t_var **var, va_list liste, int *tab)
 				{
 					var[count[2]]->stars = va_arg(liste, int);
 					var[count[2]]->entier = va_arg(liste, int);
+					var[count[2]]->u_short = (unsigned short)var[count[2]]->entier;
 					attrib_o(str, var, count);
 				}
 				else
 				{
 					var[count[2]]->entier = va_arg(liste, int);
+					var[count[2]]->u_short = (unsigned short)var[count[2]]->entier;
 					attrib_o(str, var, count);
 				}
 			}
@@ -207,7 +224,7 @@ void	ft_printf(char *format ,...)
 		i++;
 	}
 }
-/*
+
 int		main(void)
 {
 	int i;
@@ -224,7 +241,7 @@ int		main(void)
 	char *s4;
 	char *s7;
 
-	i = 144;
+	i = -144;
 	i2 = -40;
 	i3 = 34;
 	s4 = "test22";
@@ -236,7 +253,10 @@ int		main(void)
 	c5 = 'Z';
 	c2 = 'F';
 	ft_printf("s1 = %.s s2 = %.s\n\n", "bonjour", "toto");
-	ft_printf("i3 = %*d\n&i7 = %-3p\ni7 = %-6d\ns2 = %.s\ni2 = %o\nc5 = %-.3ld\n", 10, i3, &i7, i7, s2, i2, c5);
+	ft_printf("i3 = %*d\n&i7 = %-3p\ni7 = %9.6d\ns2 = %.s\ni2 = %o\nc5 = %-.3ld\n", 10, i3, &i7, -i7, s2, i2, c5);
+	printf("i2 offi = %o\n", i2);
+	ft_printf("i = %u\n", i);
+	printf("i offi = %u\n", i);
 	ft_printf("%s\n", "LOLOL");
 	printf("\ns = %ls\n", L"LOLOL");
-}*/
+}
