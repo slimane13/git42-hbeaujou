@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/14 10:46:56 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/17 14:38:54 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/17 15:26:40 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,6 +135,7 @@ void	attrib_c_maj(char **str, t_var **var, int count[3])
 void	attrib_u(char **str, t_var **var, int count[3])
 {
 	int nbr;
+	int s_nbr;
 	int flag;
 	char c;
 	int k;
@@ -151,6 +152,7 @@ void	attrib_u(char **str, t_var **var, int count[3])
 		nbr--;
 	str[count[0]] = (char *)malloc(sizeof(char) * (nbr * 5));
 	ft_ulltstr_base((unsigned long long)var[count[2]]->u_entier, "0123456789", str[count[0]]);
+	s_nbr = ft_strlen(str[count[0]]);
 	if (flag == 1000)
 	{
 		neg = 1;
@@ -161,7 +163,7 @@ void	attrib_u(char **str, t_var **var, int count[3])
 	else if (flag == 4000)
 	{
 		str[count[0]] = ft_strjoin("+", str[count[0]]);
-		while (k < check - nbr)
+		while (k < check - s_nbr)
 		{
 			str[count[0]] = ft_strjoin(str[count[0]], " ");
 			k++;
@@ -191,7 +193,7 @@ void	attrib_u(char **str, t_var **var, int count[3])
 	{
 		if (flag < -1 && c != '0')
 		{
-			while (k > flag + nbr + neg)
+			while (k > flag + s_nbr + neg)
 			{
 				str[count[0]] = ft_strjoin(str[count[0]], " ");
 				k--;
@@ -199,7 +201,7 @@ void	attrib_u(char **str, t_var **var, int count[3])
 		}
 		else if (flag > 0 && (c == '0' || c == '.'))
 		{
-			while (k < flag - nbr - neg)
+			while (k < flag - s_nbr - neg)
 			{
 				str[count[0]] = ft_strjoin("0", str[count[0]]);
 				k++;
@@ -215,7 +217,7 @@ void	attrib_u(char **str, t_var **var, int count[3])
 		}
 		else
 		{
-			while (k < flag - nbr - neg)
+			while (k < flag - s_nbr - neg)
 			{
 				str[count[0]] = ft_strjoin(" ", str[count[0]]);
 				k++;

@@ -6,13 +6,19 @@
 #    By: aemebiku <aemebiku@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/06/26 15:32:35 by aemebiku          #+#    #+#              #
-#    Updated: 2015/12/17 14:23:06 by hbeaujou         ###   ########.fr        #
+#    Updated: 2015/12/17 15:15:25 by hbeaujou         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
 NAME = libftprintf.a
 
 SOURCES =	libft/ft_memset.c				\
+			libft/add_flag.c				\
+			libft/attrib_conv.c				\
+			libft/attrib_conv_2.c			\
+			libft/attrib_conv_3.c			\
+			libft/ft_printf.c				\
+			libft/recover_char.c			\
 			libft/ft_bzero.c				\
 			libft/ft_nbrlen.c				\
 			libft/ft_memcpy.c				\

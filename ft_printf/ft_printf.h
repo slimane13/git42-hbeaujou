@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/11 15:28:05 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/17 12:46:31 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/17 15:29:24 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ typedef struct		s_var
 	char			*string;
 }					t_var;
 
+extern int retour;
+
 int		check_conver(char *format, int var[3]);
 int		check_flag(char **str, int count[3], int *nbr, char *c);
 int		check_flag_number(char **str, int count[3], int *nbr, char *c);
@@ -37,7 +39,7 @@ int		is_indice(int nb, int *tab);
 int		run_var(char *str, char c);
 int		ft_wtomb(char *s, wchar_t wchar);
 
-void	ft_printf(char *format, ...);
+int		ft_printf(char *format, ...);
 
 void	add_flag_one(char *format, char *str, int var[3]);
 void	add_flag_two(char *format, char *str, int var[3]);

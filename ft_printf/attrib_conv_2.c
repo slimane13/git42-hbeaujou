@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/12 15:32:56 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/17 14:41:27 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/17 18:13:37 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,15 +58,24 @@ void	attrib_p(char **str, t_var **var, int count[3])
 
 	k = 0;
 	c = 't';
-	nbr = ft_nbrlen(var[count[2]]->entier);
-	nbr = nbr + 2;
-	flag = check_flag(str, count, &nbr, &c);
-	str[count[0]] = (char *)malloc(sizeof(char) * nbr);
-	str[count[0]] = ft_itoa_base(var[count[2]]->entier, 16);
-	nbr = ft_strlen(str[count[0]]);
-	str[count[0]] = ft_strsub(str[count[0]], 2, nbr - 2);
-	str[count[0]] = ft_strjoin("0x7fff", str[count[0]]);
-	nbr = ft_strlen(str[count[0]]) + 2;
+	nbr = 4;
+	if (var[count[2]]->entier != 0)
+	{
+		nbr = ft_nbrlen(var[count[2]]->entier);
+		nbr = nbr + 2;
+		flag = check_flag(str, count, &nbr, &c);
+		str[count[0]] = (char *)malloc(sizeof(char) * nbr);
+		str[count[0]] = ft_itoa_base(var[count[2]]->entier, 16);
+		nbr = ft_strlen(str[count[0]]);
+		str[count[0]] = ft_strsub(str[count[0]], 2, nbr - 2);
+		str[count[0]] = ft_strjoin("0x7fff", str[count[0]]);
+		nbr = ft_strlen(str[count[0]]) + 2;
+	}
+	else
+	{
+		str[count[0]] = (char *)malloc(sizeof(char) * nbr);
+		str[count[0]] = ft_strdup("0x0");
+	}
 	count[2]++;
 }
 
@@ -162,6 +171,11 @@ void	attrib_x(char **str, t_var **var, int count[3])
 			}
 		}
 	}
+	if (c != '.' && c != '0')
+	{
+		while (str[count[0]][0] == '0' && str[count[0]][1] != '\0')
+			str[count[0]] = ft_strsub(str[count[0]], 1, ft_strlen(str[count[0]]));
+	}
 	count[2]++;
 }
 
@@ -250,6 +264,11 @@ void	attrib_x_maj(char **str, t_var **var, int count[3])
 				k++;
 			}
 		}
+	}
+	if (c != '.' && c != '0')
+	{
+		while (str[count[0]][0] == '0' && str[count[0]][1] != '\0')
+			str[count[0]] = ft_strsub(str[count[0]], 1, ft_strlen(str[count[0]]));
 	}
 	count[2]++;
 }

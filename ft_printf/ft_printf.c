@@ -6,11 +6,13 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/12 13:34:50 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/17 14:42:03 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/17 19:08:28 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+int		retour;
 
 int		run_var(char *str, char c)
 {
@@ -55,7 +57,8 @@ void	replace_char(char **str, t_var **var, va_list liste, int *tab)
 					attrib_d(str, var, count);
 				}
 			}
-			else if	(str[count[0]][ft_strlen(str[count[0]]) - 1] == 'u')
+			else if	(str[count[0]][ft_strlen(str[count[0]]) - 1] == 'u' ||
+					str[count[0]][ft_strlen(str[count[0]]) - 1] == 'U')
 			{
 				if (str[count[0]][ft_strlen(str[count[0]]) - 2] == '*')
 				{
@@ -129,7 +132,8 @@ void	replace_char(char **str, t_var **var, va_list liste, int *tab)
 					attrib_x_maj(str, var, count);
 				}
 			}
-			else if (str[count[0]][ft_strlen(str[count[0]]) - 1] == 'o' &&
+			else if ((str[count[0]][ft_strlen(str[count[0]]) - 1] == 'o' ||
+					str[count[0]][ft_strlen(str[count[0]]) - 1] == 'O') &&
 					str[count[0]][ft_strlen(str[count[0]]) - 2] != 'h')
 			{
 				if (str[count[0]][ft_strlen(str[count[0]]) - 2] == '*')
@@ -185,7 +189,7 @@ void	replace_char(char **str, t_var **var, va_list liste, int *tab)
 	}
 }
 
-void	ft_printf(char *format ,...)
+int		ft_printf(char *format ,...)
 {
 	va_list		liste;
 	char		**str_split;
@@ -196,6 +200,7 @@ void	ft_printf(char *format ,...)
 	int			i;
 	int			*tab;
 
+	retour = 0;
 	size = 0;
 	i = 0;
 	
@@ -219,12 +224,14 @@ void	ft_printf(char *format ,...)
 
 	i = 0;
 	while (str_split[i])
-	{	
+	{
+		retour += ft_strlen(str_split[i]);
 		ft_putstr(str_split[i]);
 		i++;
 	}
+	return (retour);
 }
-
+/*
 int		main(void)
 {
 	int i;
@@ -259,4 +266,4 @@ int		main(void)
 	printf("i offi = %u\n", i);
 	ft_printf("%s\n", "LOLOL");
 	printf("\ns = %ls\n", L"LOLOL");
-}
+}*/
