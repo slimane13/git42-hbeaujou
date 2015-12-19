@@ -6,7 +6,7 @@
 /*   By: ebouther <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 15:08:57 by ebouther          #+#    #+#             */
-/*   Updated: 2015/12/17 14:25:26 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/19 18:25:46 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ char				*ft_strstr(const char *haystack, const char *needle);
 void				ft_ulltstr_base(unsigned long long n, char *base_str, char *buf);
 int					ft_strcmp(const char *s1, const char *s2);
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
+char				*ft_ntoa_base(long long n, char *base);
+char				*ft_ntoa_base_un(unsigned long long n, char *base);
 int					ft_atoi_ultra(const char *str);
 int					ft_atoi_double(const char *str);
 int					ft_atoi(const char *str);
@@ -60,6 +62,8 @@ int					ft_isupper(int c);
 int					ft_toupper(int c);
 int					ft_tolower(int c);
 int					ft_nbrlen(int nb);
+int					ft_nbrlen_ll(long long nb);
+int					ft_nbrlen_llun(unsigned long long nb);
 void				*ft_memalloc(size_t size);
 void				ft_memdel(void **ap);
 char				*ft_strnew(size_t size);
