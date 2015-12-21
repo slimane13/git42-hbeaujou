@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/12 13:34:50 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/21 15:29:44 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/21 16:28:22 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -538,7 +538,8 @@ int		ft_printf(char *format ,...)
 	retour = 0;
 	size = 0;
 	i = 0;
-	
+	rajout = 0;
+
 	size = ft_strlen(format);
 	nbr_var_percent = run_var(format, '%');
 	size++;
@@ -567,39 +568,3 @@ int		ft_printf(char *format ,...)
 	retour += rajout;
 	return (retour);
 }
-/*
-int		main(void)
-{
-	int i;
-	int i2;
-	int i3;
-	int i4;
-	int i7;
-	int *sO;
-	long long c5;
-	char c;
-	char c2;
-	char *s1;
-	char *s2;
-	char *s4;
-	char *s7;
-
-	i = -144;
-	i2 = -40;
-	i3 = 34;
-	s4 = "test22";
-	i7 = 69;
-	s1 = "mdrk";
-	s2 = "TEST";
-	sO = &i3;
-	c = 'a';
-	c5 = 'Z';
-	c2 = 'F';
-	ft_printf("s1 = %.s s2 = %.s\n\n", "bonjour", "toto");
-	ft_printf("i3 = %*d\n&i7 = %-3p\ni7 = %9.6d\ns2 = %.s\ni2 = %o\nc5 = %-.3ld\n", 10, i3, &i7, -i7, s2, i2, c5);
-	printf("i2 offi = %o\n", i2);
-	ft_printf("i = %u\n", i);
-	printf("i offi = %u\n", i);
-	ft_printf("%s\n", "LOLOL");
-	printf("\ns = %ls\n", L"LOLOL");
-}*/

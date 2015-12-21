@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/12 15:32:56 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/19 19:33:37 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/21 17:00:54 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,8 @@ void	attrib_x(char **str, t_var **var, int count[3])
 		str[count[0]] = ft_strjoin(" ", str[count[0]]);
 	else if (flag == 5000)
 	{
-		str[count[0]] = ft_strjoin("0x", str[count[0]]);
+		if (var[count[2]]->u_long != 0)
+			str[count[0]] = ft_strjoin("0x", str[count[0]]);
 		flag = l;
 		nbr++;
 	}
@@ -158,11 +159,6 @@ void	attrib_x(char **str, t_var **var, int count[3])
 			}
 		}
 	}
-	if (c != '.' && c != '0')
-	{
-		while (str[count[0]][0] == '0' && str[count[0]][1] != '\0')
-			str[count[0]] = ft_strsub(str[count[0]], 1, ft_strlen(str[count[0]]));
-	}
 	count[2]++;
 }
 
@@ -184,7 +180,10 @@ void	attrib_x_maj(char **str, t_var **var, int count[3])
 	else if (flag == 2000)
 		str[count[0]] = ft_strjoin(" ", str[count[0]]);
 	else if (flag == 5000)
-		str[count[0]] = ft_strjoin("0x", str[count[0]]);
+	{
+		if (var[count[2]]->u_long != 0)
+			str[count[0]] = ft_strjoin("0x", str[count[0]]);
+	}
 	else if (flag == 3000)
 	{
 		if (var[count[2]]->stars < 0)
@@ -240,11 +239,6 @@ void	attrib_x_maj(char **str, t_var **var, int count[3])
 			}
 		}
 	}
-	if (c != '.' && c != '0')
-	{
-		while (str[count[0]][0] == '0' && str[count[0]][1] != '\0')
-			str[count[0]] = ft_strsub(str[count[0]], 1, ft_strlen(str[count[0]]));
-	}
 	count[2]++;
 }
 
@@ -263,24 +257,16 @@ void	attrib_o(char **str, t_var **var, int count[3])
 		nbr++;
 	flag = check_flag(str, count, &nbr, &c);
 	l = ft_atoi_spec_o(str[count[0]]);
-	if (var[count[2]]->entier >= 0)
-	{
-		str[count[0]] = (char *)malloc(sizeof(char) * (nbr * 2));
-		ft_ulltstr_base((unsigned long long)var[count[2]]->entier, "01234567", str[count[0]]);
-	}
-	else if (var[count[2]]->entier < 0)
-	{
-		str[count[0]] = (char *)malloc(sizeof(char) * nbr * 8);
-		ft_ulltstr_base((unsigned long long)var[count[2]]->u_short, "01234567", str[count[0]]);
-		nbr = ft_strlen(str[count[0]]);
-	}
+	str[count[0]] = ft_ntoa_base(var[count[2]]->entier, "01234567");
+	nbr = ft_strlen(str[count[0]]);
 	if (flag == 1000 && var[count[2]]->entier >= 0)
 		str[count[0]] = ft_strjoin("+", str[count[0]]);
 	else if (flag == 2000 && var[count[2]]->entier >= 0)
 		str[count[0]] = ft_strjoin(" ", str[count[0]]);
 	else if (flag == 5000 && var[count[2]]->entier >= 0)
 	{
-		str[count[0]] = ft_strjoin("0", str[count[0]]);
+		if (var[count[2]]->entier != 0)
+			str[count[0]] = ft_strjoin("0", str[count[0]]);
 		flag = l;
 	}
 	else if (flag == 3000)

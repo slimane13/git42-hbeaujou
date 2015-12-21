@@ -6,7 +6,7 @@
 #    By: aemebiku <aemebiku@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/06/26 15:32:35 by aemebiku          #+#    #+#              #
-#    Updated: 2015/12/21 15:13:38 by hbeaujou         ###   ########.fr        #
+#    Updated: 2015/12/21 16:26:44 by hbeaujou         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -89,10 +89,6 @@ SOURCES =	libft/ft_memset.c				\
 			libft/ft_putnbrf.c				\
 			libft/ft_puttab.c				\
 			libft/ft_free_tab.c				\
-			libft/ft_dlist_create.c			\
-			libft/ft_dlist_del.c			\
-			libft/ft_dlist_fct.c			\
-			libft/ft_dlist_fct2.c			\
 			libft/ft_math.c
 
 
