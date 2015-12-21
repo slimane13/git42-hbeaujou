@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/12 15:20:45 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/21 18:11:03 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/21 18:44:12 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,18 @@ int		check_flag(char **str, int count[3], int *nbr, char *c)
 			(ft_isdigit(str[count[0]][0]) && ft_isdigit(str[count[0]][1]) &&
 			 str[count[0]][2] == '.'))
 		return (3500);
-	else if (str[count[0]][0] == '+')
+	else if ((str[count[0]][0] == '+' && str[count[0]][1] != '0') ||
+			(str[count[0]][0] == ' ' && str[count[0]][1] == '+'))
 	{
 		*nbr = *nbr + 1;
 		return (1000);
 	}
-	else if (str[count[0]][0] == ' ')
+	else if (str[count[0]][0] == '+' && str[count[0]][1] == '0')
+	{
+		*nbr = *nbr + 1;
+		return (1500);
+	}
+	else if (str[count[0]][0] == ' ' && str[count[0]][1] != '+')
 	{
 		*nbr = *nbr + 1;
 		return (2000);
@@ -78,6 +84,12 @@ void	attrib_d(char **str, t_var **var, int count[3])
 		neg = 1;
 		str[count[0]] = ft_strjoin("+", str[count[0]]);
 	}
+	else if (flag == 1500)
+	{
+		neg = 1;
+		str[count[0]] = ft_strjoin("0", str[count[0]]);
+		str[count[0]] = ft_strjoin("+", str[count[0]]);
+	}
 	else if (flag == 3500)
 	{
 		if (var[count[2]]->entier < 0)
@@ -111,8 +123,6 @@ void	attrib_d(char **str, t_var **var, int count[3])
 			}
 		}
 	}
-	else if (flag == 2000 && var[count[2]]->entier >= 0)
-		str[count[0]] = ft_strjoin(" ", str[count[0]]);
 	else if (flag == 2000 && var[count[2]]->entier >= 0)
 		str[count[0]] = ft_strjoin(" ", str[count[0]]);
 	else if (flag == 4000)

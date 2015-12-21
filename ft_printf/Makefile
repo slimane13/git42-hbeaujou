@@ -6,7 +6,7 @@
 #    By: aemebiku <aemebiku@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/06/26 15:32:35 by aemebiku          #+#    #+#              #
-#    Updated: 2015/12/21 16:26:44 by hbeaujou         ###   ########.fr        #
+#    Updated: 2015/12/21 19:20:53 by hbeaujou         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -33,7 +33,6 @@ SOURCES =	libft/ft_memset.c				\
 			libft/ft_memcmp.c				\
 			libft/ft_strlen.c				\
 			libft/ft_strdup.c				\
-			libft/ft_strndup.c				\
 			libft/ft_strcpy.c				\
 			libft/ft_strncpy.c				\
 			libft/ft_strcat.c				\
@@ -51,10 +50,7 @@ SOURCES =	libft/ft_memset.c				\
 			libft/ft_atoi_spec.c			\
 			libft/ft_atoi_spec_o.c			\
 			libft/ft_atoi_length.c			\
-			libft/ft_atof.c					\
 			libft/ft_ulltstr_base.c			\
-			libft/ft_islower.c				\
-			libft/ft_isupper.c				\
 			libft/ft_isalpha.c				\
 			libft/ft_isalnum.c				\
 			libft/ft_isascii.c				\
@@ -79,17 +75,11 @@ SOURCES =	libft/ft_memset.c				\
 			libft/ft_itoa_base_maj.c		\
 			libft/ft_strsplit.c				\
 			libft/ft_strsplit_esc.c			\
-			libft/ft_strsplit_mult.c		\
 			libft/ft_strjoin.c				\
 			libft/ft_strtrim.c				\
-			libft/ft_strtrim_carac.c		\
 			libft/ft_putchar.c				\
 			libft/ft_putstr.c				\
 			libft/ft_putnbr.c				\
-			libft/ft_putnbrf.c				\
-			libft/ft_puttab.c				\
-			libft/ft_free_tab.c				\
-			libft/ft_math.c
 
 
 HEADERS	= -I/libft/includes/
