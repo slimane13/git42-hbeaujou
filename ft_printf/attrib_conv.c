@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/12 15:20:45 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/21 18:44:12 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/21 19:28:03 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,11 @@ int		check_flag(char **str, int count[3], int *nbr, char *c)
 	{
 		*nbr = *nbr + 1;
 		return (1500);
+	}
+	else if (str[count[0]][0] == ' ' && str[count[0]][1] == '0')
+	{
+		*nbr = *nbr + 1;
+		return (2500);
 	}
 	else if (str[count[0]][0] == ' ' && str[count[0]][1] != '+')
 	{
@@ -83,6 +88,11 @@ void	attrib_d(char **str, t_var **var, int count[3])
 	{
 		neg = 1;
 		str[count[0]] = ft_strjoin("+", str[count[0]]);
+	}
+	else if (flag == 2500)
+	{
+		str[count[0]] = ft_strjoin("0", str[count[0]]);
+		str[count[0]] = ft_strjoin(" ", str[count[0]]);
 	}
 	else if (flag == 1500)
 	{
