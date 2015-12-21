@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/12 13:34:50 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/21 16:28:22 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/21 17:55:18 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -287,19 +287,20 @@ void	replace_char(char **str, t_var **var, va_list liste, int *tab)
 					attrib_c(str, var, count);
 				}
 			}
-			else if (str[count[0]][ft_strlen(str[count[0]]) - 1] == 'c' &&
-					str[count[0]][ft_strlen(str[count[0]]) - 2] == 'l')
+			else if ((str[count[0]][ft_strlen(str[count[0]]) - 1] == 'c' &&
+					str[count[0]][ft_strlen(str[count[0]]) - 2] == 'l') ||
+					str[count[0]][ft_strlen(str[count[0]]) - 1] == 'C')
 			{
 				if (str[count[0]][ft_strlen(str[count[0]]) - 3] == '*')
 				{
 					var[count[2]]->stars = va_arg(liste, int);
-					var[count[2]]->string = ft_itoa(va_arg(liste, wint_t));
-					attrib_c(str, var, count);
+					var[count[2]]->entier = va_arg(liste, wint_t);
+					attrib_c_maj(str, var, count);
 				}
 				else
 				{
-					var[count[2]]->string = ft_itoa(va_arg(liste, wint_t));
-					attrib_c(str, var, count);
+					var[count[2]]->entier = va_arg(liste, wint_t);
+					attrib_c_maj(str, var, count);
 				}
 			}
 			else if (str[count[0]][ft_strlen(str[count[0]]) - 1] == 's' &&

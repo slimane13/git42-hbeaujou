@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/14 10:46:56 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/19 19:31:03 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/21 18:08:32 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	attrib_h_h(char **str, t_var **var, int count[3])
 		str[count[0]] = ft_itoa_base_maj(var[count[2]]->entier, 16);
 	}
 	nbr = ft_strlen(str[count[0]]);
-	if (flag == 1000 && var[count[2]]->entier >= 0)
+	if (flag == 1000 && var[count[2]]->entier > 0)
 		str[count[0]] = ft_strjoin("+", str[count[0]]);
 	else if (flag == 2000 && var[count[2]]->entier >= 0)
 		str[count[0]] = ft_strjoin(" ", str[count[0]]);
@@ -102,10 +102,12 @@ void	attrib_c_maj(char **str, t_var **var, int count[3])
 	nbr = 0;
 	c = 't';
 	flag = check_flag(str, count, &nbr, &c);
+	if (var[count[2]]->entier == 0)
+		rajout = 1;
 	str[count[0]] = (char *)malloc(sizeof(char) * 2);
-	str[count[0]][0] = ft_atoi(var[count[2]]->string);
+	str[count[0]][0] = var[count[2]]->entier;
 	str[count[0]][1] = '\0';
-	if (flag == 1000 && var[count[2]]->entier >= 0)
+	if (flag == 1000 && var[count[2]]->entier > 0)
 		str[count[0]] = ft_strjoin("+", str[count[0]]);
 	else if (flag == 2000 && var[count[2]]->entier >= 0)
 		str[count[0]] = ft_strjoin(" ", str[count[0]]);
@@ -159,7 +161,9 @@ void	attrib_u(char **str, t_var **var, int count[3])
 		str[count[0]] = ft_strjoin("+", str[count[0]]);
 	}
 	else if (flag == 2000)
-		str[count[0]] = ft_strjoin(" ", str[count[0]]);
+	{
+	}
+//	str[count[0]] = ft_strjoin(" ", str[count[0]]);
 	else if (flag == 4000)
 	{
 		str[count[0]] = ft_strjoin("+", str[count[0]]);
@@ -243,7 +247,8 @@ void	attrib_o_maj(char **str, t_var **var, int count[3])
 	str[count[0]] = ft_ntoa_base_un(var[count[2]]->u_long, "01234567");
 	nbr = ft_strlen(str[count[0]]);
 	if (flag == 1000)
-		str[count[0]] = ft_strjoin("+", str[count[0]]);
+	{
+	}
 	else if (flag == 2000)
 		str[count[0]] = ft_strjoin(" ", str[count[0]]);
 	else if (flag == 5000)
