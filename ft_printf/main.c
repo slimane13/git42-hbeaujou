@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/19 16:22:20 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/19 19:30:25 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/21 15:25:04 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,14 @@ int main(void)
 //	printf("s: %s, p: %p, d:%d\n", "a string", &test_simple_mix, 42);
 //	ft_printf("%ld\n", ((long)INT_MAX) + 1);
 //	printf("%ld\n", ((long)INT_MAX) + 1);
+	printf("{%-15ZZ}", 123);
+	printf("\n");
+	ft_printf("{%-15ZZ}", 123);
+	printf("\n");
 	ft_printf("%lo, %lo", 0, ULONG_MAX);
 	printf("\n");
-	printf("%lo, %lo", 0, ULONG_MAX);
+	printf("%d", ft_printf("%.c", 0));
+	printf("\n");
+	printf("%d", printf("%.c", 0));
 	return (0);
 }

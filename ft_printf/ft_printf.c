@@ -6,13 +6,14 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/12 13:34:50 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/19 20:45:23 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/21 15:29:44 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
 int		retour;
+int		rajout;
 
 int		run_var(char *str, char c)
 {
@@ -43,8 +44,27 @@ void	replace_char(char **str, t_var **var, va_list liste, int *tab)
 		{
 			if ((str[count[0]][ft_strlen(str[count[0]]) - 1] == 'd' ||
 					str[count[0]][ft_strlen(str[count[0]]) - 1] == 'i') &&
+					str[count[0]][ft_strlen(str[count[0]]) - 2] == 'h' &&
+					str[count[0]][ft_strlen(str[count[0]]) - 3] != 'h')
+			{
+				if (str[count[0]][ft_strlen(str[count[0]]) - 2] == '*')
+				{
+					var[count[2]]->stars = va_arg(liste, int);
+					var[count[2]]->v_short = (short)va_arg(liste, unsigned int);
+					attrib_d_short(str, var, count);
+				}
+				else
+				{
+					var[count[2]]->v_short = (short)va_arg(liste, unsigned int);
+					attrib_d_short(str, var, count);
+				}
+			}
+			else if ((str[count[0]][ft_strlen(str[count[0]]) - 1] == 'd' ||
+					str[count[0]][ft_strlen(str[count[0]]) - 1] == 'i') &&
 					str[count[0]][ft_strlen(str[count[0]]) - 2] != 'h' &&
-					str[count[0]][ft_strlen(str[count[0]]) - 2] != 'l')
+					str[count[0]][ft_strlen(str[count[0]]) - 2] != 'l' &&
+					str[count[0]][ft_strlen(str[count[0]]) - 2] != 'j' &&
+					str[count[0]][ft_strlen(str[count[0]]) - 2] != 'z')
 			{
 				if (str[count[0]][ft_strlen(str[count[0]]) - 2] == '*')
 				{
@@ -75,6 +95,22 @@ void	replace_char(char **str, t_var **var, va_list liste, int *tab)
 					attrib_d_char(str, var, count);
 				}
 			}
+			else if ((str[count[0]][ft_strlen(str[count[0]]) - 1] == 'd' ||
+					str[count[0]][ft_strlen(str[count[0]]) - 1] == 'i') &&
+					str[count[0]][ft_strlen(str[count[0]]) - 2] == 'z')
+			{
+				if (str[count[0]][ft_strlen(str[count[0]]) - 3] == '*')
+				{
+					var[count[2]]->stars = va_arg(liste, int);
+					var[count[2]]->v_l_long	= va_arg(liste, size_t);
+					attrib_d_z(str, var, count);
+				}
+				else
+				{
+					var[count[2]]->v_l_long = va_arg(liste, size_t);
+					attrib_d_z(str, var, count);
+				}
+			}
 			else if (str[count[0]][ft_strlen(str[count[0]]) - 1] == 'D' &&
 					 str[count[0]][ft_strlen(str[count[0]]) - 2] == 'l')
 			{
@@ -92,18 +128,18 @@ void	replace_char(char **str, t_var **var, va_list liste, int *tab)
 			}
 			else if ((str[count[0]][ft_strlen(str[count[0]]) - 1] == 'd' ||
 					str[count[0]][ft_strlen(str[count[0]]) - 1] == 'i') &&
-					str[count[0]][ft_strlen(str[count[0]]) - 2] == 'h')
+					str[count[0]][ft_strlen(str[count[0]]) - 2] == 'j')
 			{
-				if (str[count[0]][ft_strlen(str[count[0]]) - 2] == '*')
+				if (str[count[0]][ft_strlen(str[count[0]]) - 3] == '*')
 				{
 					var[count[2]]->stars = va_arg(liste, int);
-					var[count[2]]->v_short = (short)va_arg(liste, unsigned int);
-					attrib_d_short(str, var, count);
+					var[count[2]]->u_l_long	= va_arg(liste, uintmax_t);
+					attrib_d_j(str, var, count);
 				}
 				else
 				{
-					var[count[2]]->v_short = (short)va_arg(liste, unsigned int);
-					attrib_d_short(str, var, count);
+					var[count[2]]->u_l_long = va_arg(liste, uintmax_t);
+					attrib_d_j(str, var, count);
 				}
 			}
 			else if ((str[count[0]][ft_strlen(str[count[0]]) - 1] == 'D' &&
@@ -126,8 +162,10 @@ void	replace_char(char **str, t_var **var, va_list liste, int *tab)
 				}
 			}
 			else if	(str[count[0]][ft_strlen(str[count[0]]) - 1] == 'u' &&
-					str[count[0]][ft_strlen(str[count[0]]) - 2] != 'h' && 
-					str[count[0]][ft_strlen(str[count[0]]) - 2] != 'l') 
+					str[count[0]][ft_strlen(str[count[0]]) - 2] != 'h' &&
+					str[count[0]][ft_strlen(str[count[0]]) - 2] != 'j' &&
+					str[count[0]][ft_strlen(str[count[0]]) - 2] != 'l' &&
+					str[count[0]][ft_strlen(str[count[0]]) - 2] != 'z') 
 			{
 				if (str[count[0]][ft_strlen(str[count[0]]) - 2] == '*')
 				{
@@ -139,6 +177,36 @@ void	replace_char(char **str, t_var **var, va_list liste, int *tab)
 				{
 					var[count[2]]->u_entier = (unsigned int)va_arg(liste, int);
 					attrib_u(str, var, count);
+				}
+			}
+			else if	(str[count[0]][ft_strlen(str[count[0]]) - 1] == 'u' &&
+					str[count[0]][ft_strlen(str[count[0]]) - 2] == 'z') 
+			{
+				if (str[count[0]][ft_strlen(str[count[0]]) - 3] == '*')
+				{
+					var[count[2]]->stars = va_arg(liste, int);
+					var[count[2]]->u_l_long = va_arg(liste, size_t);
+					attrib_u_z(str, var, count);
+				}
+				else
+				{
+					var[count[2]]->u_l_long = va_arg(liste, size_t);
+					attrib_u_z(str, var, count);
+				}
+			}
+			else if	(str[count[0]][ft_strlen(str[count[0]]) - 1] == 'u' &&
+					str[count[0]][ft_strlen(str[count[0]]) - 2] == 'j') 
+			{
+				if (str[count[0]][ft_strlen(str[count[0]]) - 3] == '*')
+				{
+					var[count[2]]->stars = va_arg(liste, int);
+					var[count[2]]->u_l_long = va_arg(liste, uintmax_t);
+					attrib_u_j(str, var, count);
+				}
+				else
+				{
+					var[count[2]]->u_l_long = va_arg(liste, uintmax_t);
+					attrib_u_j(str, var, count);
 				}
 			}
 			else if	(str[count[0]][ft_strlen(str[count[0]]) - 1] == 'u' &&
@@ -219,11 +287,32 @@ void	replace_char(char **str, t_var **var, va_list liste, int *tab)
 					attrib_c(str, var, count);
 				}
 			}
-			else if ((str[count[0]][ft_strlen(str[count[0]]) - 1] == 's' ||
-					str[count[0]][ft_strlen(str[count[0]]) - 1] == 'S') &&
+			else if (str[count[0]][ft_strlen(str[count[0]]) - 1] == 'c' &&
+					str[count[0]][ft_strlen(str[count[0]]) - 2] == 'l')
+			{
+				if (str[count[0]][ft_strlen(str[count[0]]) - 3] == '*')
+				{
+					var[count[2]]->stars = va_arg(liste, int);
+					var[count[2]]->string = ft_itoa(va_arg(liste, wint_t));
+					attrib_c(str, var, count);
+				}
+				else
+				{
+					var[count[2]]->string = ft_itoa(va_arg(liste, wint_t));
+					attrib_c(str, var, count);
+				}
+			}
+			else if (str[count[0]][ft_strlen(str[count[0]]) - 1] == 's' &&
 					str[count[0]][ft_strlen(str[count[0]]) - 2] != 'h')
 			{
 				var[count[2]]->string = va_arg(liste, char *);
+				attrib_s(str, var, count);
+			}
+			else if ((str[count[0]][ft_strlen(str[count[0]]) - 1] == 's' &&
+					str[count[0]][ft_strlen(str[count[0]]) - 2] == 'l') ||
+					str[count[0]][ft_strlen(str[count[0]]) - 1] == 'S')
+			{
+				var[count[2]]->w_string = va_arg(liste, wchar_t *);
 				attrib_s(str, var, count);
 			}
 			else if (str[count[0]][ft_strlen(str[count[0]]) - 1] == 'p' &&
@@ -327,7 +416,9 @@ void	replace_char(char **str, t_var **var, va_list liste, int *tab)
 			}
 			else if (str[count[0]][ft_strlen(str[count[0]]) - 1] == 'o' &&
 					str[count[0]][ft_strlen(str[count[0]]) - 2] != 'h' &&
-					str[count[0]][ft_strlen(str[count[0]]) - 2] != 'l')
+					str[count[0]][ft_strlen(str[count[0]]) - 2] != 'l' &&
+					str[count[0]][ft_strlen(str[count[0]]) - 2] != 'j' &&
+					str[count[0]][ft_strlen(str[count[0]]) - 2] != 'z')
 			{
 				if (str[count[0]][ft_strlen(str[count[0]]) - 2] == '*')
 				{
@@ -341,6 +432,36 @@ void	replace_char(char **str, t_var **var, va_list liste, int *tab)
 					var[count[2]]->entier = va_arg(liste, int);
 					var[count[2]]->u_short = (unsigned short)var[count[2]]->entier;
 					attrib_o(str, var, count);
+				}
+			}
+			else if	(str[count[0]][ft_strlen(str[count[0]]) - 1] == 'o' &&
+					str[count[0]][ft_strlen(str[count[0]]) - 2] == 'z') 
+			{
+				if (str[count[0]][ft_strlen(str[count[0]]) - 3] == '*')
+				{
+					var[count[2]]->stars = va_arg(liste, int);
+					var[count[2]]->u_l_long = va_arg(liste, size_t);
+					attrib_o_z(str, var, count);
+				}
+				else
+				{
+					var[count[2]]->u_l_long = va_arg(liste, size_t);
+					attrib_o_z(str, var, count);
+				}
+			}
+			else if	(str[count[0]][ft_strlen(str[count[0]]) - 1] == 'o' &&
+					str[count[0]][ft_strlen(str[count[0]]) - 2] == 'j') 
+			{
+				if (str[count[0]][ft_strlen(str[count[0]]) - 3] == '*')
+				{
+					var[count[2]]->stars = va_arg(liste, int);
+					var[count[2]]->u_l_long = va_arg(liste, uintmax_t);
+					attrib_o_j(str, var, count);
+				}
+				else
+				{
+					var[count[2]]->u_l_long = va_arg(liste, uintmax_t);
+					attrib_o_j(str, var, count);
 				}
 			}
 			else if (str[count[0]][ft_strlen(str[count[0]]) - 1] == 'o' &&
@@ -392,6 +513,12 @@ void	replace_char(char **str, t_var **var, va_list liste, int *tab)
 					attrib_o_maj(str, var, count);
 				}
 			}
+			else
+			{
+				if (ft_strlen(str[count[0]]) == 4)
+					attrib_erreur_conv(str, count);
+				/// RENV ERROR DE CONV
+			}
 		}
 		count[0]++;
 	}
@@ -437,6 +564,7 @@ int		ft_printf(char *format ,...)
 		ft_putstr(str_split[i]);
 		i++;
 	}
+	retour += rajout;
 	return (retour);
 }
 /*

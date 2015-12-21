@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/11 15:28:05 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/19 20:41:25 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/21 15:14:00 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 
 typedef struct		s_var
 {
+	intmax_t		im_t;
 	int				entier;
 	int				stars;
 	unsigned char	u_carac;
@@ -32,9 +33,11 @@ typedef struct		s_var
 	short			v_short;
 	char			carac;
 	char			*string;
+	wchar_t			*w_string;
 }					t_var;
 
 extern int retour;
+extern int rajout;
 
 int		check_conver(char *format, int var[3]);
 int		check_flag(char **str, int count[3], int *nbr, char *c);
@@ -45,6 +48,7 @@ int		ft_wtomb(char *s, wchar_t wchar);
 
 int		ft_printf(char *format, ...);
 
+void	attrib_erreur_conv(char **str, int count[3]);
 void	add_flag_one(char *format, char *str, int var[3]);
 void	add_flag_two(char *format, char *str, int var[3]);
 void	add_flag_three(char *format, char *str, int var[3]);
@@ -56,21 +60,28 @@ void	attrib_c_maj(char **str, t_var **var, int count[3]);
 void	attrib_convers(char **str, t_var **var, int count[3]);
 void	attrib_d(char **str, t_var **var, int count[3]);
 void	attrib_d_char(char **str, t_var **var, int count[3]);
+void	attrib_d_j(char **str, t_var **var, int count[3]);
 void	attrib_d_ll(char **str, t_var **var, int count[3]);
 void	attrib_d_maj(char **str, t_var **var, int count[3]);
 void	attrib_d_short(char **str, t_var **var, int count[3]);
+void	attrib_d_z(char **str, t_var **var, int count[3]);
 void	attrib_h_h(char **str, t_var **var, int count[3]);
 void	attrib_o(char **str, t_var **var, int count[3]);
 void	attrib_o_char(char **str, t_var **var, int count[3]);
+void	attrib_o_j(char **str, t_var **var, int count[3]);
 void	attrib_o_maj(char **str, t_var **var, int count[3]);
 void	attrib_o_short(char **str, t_var **var, int count[3]);
+void	attrib_o_z(char **str, t_var **var, int count[3]);
 void	attrib_p(char **str, t_var **var, int count[3]);
 void	attrib_s(char **str, t_var **var, int count[3]);
+void	attrib_s_maj(char **str, t_var **var, int count[3]);
 void	attrib_u(char **str, t_var **var, int count[3]);
 void	attrib_u_char(char **str, t_var **var, int count[3]);
+void	attrib_u_j(char **str, t_var **var, int count[3]);
 void	attrib_u_ll(char **str, t_var **var, int count[3]);
 void	attrib_u_maj(char **str, t_var **var, int count[3]);
 void	attrib_u_short(char **str, t_var **var, int count[3]);
+void	attrib_u_z(char **str, t_var **var, int count[3]);
 void	attrib_x(char **str, t_var **var, int count[3]);
 void	attrib_x_char(char **str, t_var **var, int count[3]);
 void	attrib_x_maj(char **str, t_var **var, int count[3]);
