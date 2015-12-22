@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/12 15:20:45 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/22 17:15:40 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/22 18:33:41 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ void	attrib_d(char **str, t_var **var, int count[3])
 	int flag;
 	char c;
 	int k;
+	int p;
 	int diff;
 	int check;
 	int check_double;
@@ -82,6 +83,7 @@ void	attrib_d(char **str, t_var **var, int count[3])
 	c = 't';
 	diff = 0;
 	neg = 0;
+	p = 1;
 	nbr = ft_nbrlen(var[count[2]]->entier);
 	flag = check_flag(str, count, &nbr, &c);
 	check = ft_atoi_ultra(str[count[0]]);
@@ -140,17 +142,19 @@ void	attrib_d(char **str, t_var **var, int count[3])
 		if (var[count[2]]->entier < 0)
 		{
 			str[count[0]] = ft_strsub(str[count[0]], 1, ft_nbrlen(var[count[2]]->entier) + 1);
+			if (check < check_double)
+				k = -1;
 			while (k < check_double - nbr - 1)
 			{
 				str[count[0]] = ft_strjoin("0", str[count[0]]);
 				k++;
+				p = 0;
 			}
-			k = 0;
 			str[count[0]] = ft_strjoin("-", str[count[0]]);
-			while (k < check - diff - 1)
+			while (p < check - diff)
 			{
 				str[count[0]] = ft_strjoin(" ", str[count[0]]);
-				k++;
+				p++;
 			}
 		}
 		else
@@ -199,6 +203,8 @@ void	attrib_d(char **str, t_var **var, int count[3])
 			}
 		}
 	}
+	else if (flag == 0 && c == '.')
+		str[count[0]][0] = '\0';
 	else if (flag != 1 && flag != 1000 && flag != 2000 &&
 			flag != 3000 && flag != 4000 && flag != 3500 && flag != 5000)
 	{

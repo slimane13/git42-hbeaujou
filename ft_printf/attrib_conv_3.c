@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/14 10:46:56 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/22 16:58:36 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/22 18:33:07 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,17 +139,23 @@ void	attrib_u(char **str, t_var **var, int count[3])
 	int nbr;
 	int s_nbr;
 	int flag;
+	int check_double;
 	char c;
 	int k;
+	int diff;
+	int p;
 	int check;
 	int neg;
 
 	k = 0;
 	c = 't';
 	neg = 0;
+	p = 1;
+	diff = 0;
 	nbr = ft_nbrlen(var[count[2]]->u_entier);
 	flag = check_flag(str, count, &nbr, &c);
 	check = ft_atoi_ultra(str[count[0]]);
+	check_double = ft_atoi_double(str[count[0]]);
 	if (str[count[0]][0] == '.')
 		nbr--;
 	str[count[0]] = (char *)malloc(sizeof(char) * (nbr * 5));
@@ -189,6 +195,47 @@ void	attrib_u(char **str, t_var **var, int count[3])
 			}
 		}
 	}
+	else if (flag == 3500)
+	{
+		if (check_double >= nbr)
+			diff = check_double;
+		else
+			diff = nbr;
+		if (var[count[2]]->entier < 0)
+		{
+			str[count[0]] = ft_strsub(str[count[0]], 1, ft_nbrlen(var[count[2]]->entier) + 1);
+			if (check < check_double)
+				k = -1;
+			while (k < check_double - nbr - 1)
+			{
+				str[count[0]] = ft_strjoin("0", str[count[0]]);
+				k++;
+				p = 0;
+			}
+			str[count[0]] = ft_strjoin("-", str[count[0]]);
+			while (p < check - diff)
+			{
+				str[count[0]] = ft_strjoin(" ", str[count[0]]);
+				p++;
+			}
+		}
+		else
+		{
+			while (k < check_double - nbr)
+			{
+				str[count[0]] = ft_strjoin("0", str[count[0]]);
+				k++;
+			}
+			k = 0;
+			while (k < check - diff)
+			{
+				str[count[0]] = ft_strjoin(" ", str[count[0]]);
+				k++;
+			}
+		}
+	}
+	else if (flag == 0 && c == '.')
+		str[count[0]][0] = '\0';
 	else if (flag != 1 && flag != 1000 && flag != 2000 &&
 			flag != 3000 && flag != 5000)
 	{
