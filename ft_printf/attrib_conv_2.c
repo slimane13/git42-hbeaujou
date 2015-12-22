@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/12 15:32:56 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/22 19:23:46 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/22 20:01:58 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,22 +58,29 @@ void	attrib_p(char **str, t_var **var, int count[3])
 
 	k = 0;
 	c = 't';
-	nbr = 4;
+	nbr = 3;
+	nbr = ft_nbrlen(var[count[2]]->entier);
+	nbr = nbr + 2;
+	flag = check_flag(str, count, &nbr, &c);
+	str[count[0]] = (char *)malloc(sizeof(char) * nbr);
 	if (var[count[2]]->u_long != 0)
 	{
-		nbr = ft_nbrlen(var[count[2]]->entier);
-		nbr = nbr + 2;
-		flag = check_flag(str, count, &nbr, &c);
-		str[count[0]] = (char *)malloc(sizeof(char) * nbr);
 		str[count[0]] = ft_ntoa_base_un(var[count[2]]->u_long, "0123456789abcdef");
 		nbr = ft_strlen(str[count[0]]);
 		str[count[0]] = ft_strjoin("0x", str[count[0]]);
 		nbr = ft_strlen(str[count[0]]) + 2;
 	}
-	else
-	{
-		str[count[0]] = (char *)malloc(sizeof(char) * nbr);
+	else if (c != '.')
 		str[count[0]] = ft_strdup("0x0");
+	else
+		str[count[0]] = ft_strdup("0x");
+	if (flag != 0)
+	{
+		while (k < flag && flag < 1000)
+		{
+			str[count[0]] = ft_strjoin(str[count[0]], "0");
+			k++;
+		}
 	}
 	count[2]++;
 }
