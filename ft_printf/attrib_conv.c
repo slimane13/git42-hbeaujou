@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/12 15:20:45 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/22 16:56:16 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/22 17:15:40 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,20 +75,24 @@ void	attrib_d(char **str, t_var **var, int count[3])
 	int k;
 	int diff;
 	int check;
-	int check_double;  //// A FAIRE
+	int check_double;
 	int neg;
 
 	k = 0;
 	c = 't';
+	diff = 0;
 	neg = 0;
 	nbr = ft_nbrlen(var[count[2]]->entier);
 	flag = check_flag(str, count, &nbr, &c);
 	check = ft_atoi_ultra(str[count[0]]);
 	check_double = ft_atoi_double(str[count[0]]);
-	if (flag == 3500)
-		check_double = ft_atoi_double(str[count[0]]);
 	if (str[count[0]][0] == '.' && var[count[2]]->entier < 0)
 		nbr--;
+	if (str[count[0]][2] == '.' && var[count[2]]->entier < 0)
+	{
+		nbr--;
+		check--;
+	}
 	str[count[0]] = (char *)malloc(sizeof(char) * nbr);
 	str[count[0]] = ft_itoa(var[count[2]]->entier);
 	if (var[count[2]]->entier < 0 && str[count[0]][0] != '0')
@@ -104,7 +108,7 @@ void	attrib_d(char **str, t_var **var, int count[3])
 			check = -check;
 		while (k < check - 1)
 		{
-			str[count[0]] = ft_strjoin(str[count[0]], " "); /////////////
+			str[count[0]] = ft_strjoin(str[count[0]], " ");
 			k++;
 		}
 	}
@@ -129,6 +133,10 @@ void	attrib_d(char **str, t_var **var, int count[3])
 	}
 	else if (flag == 3500)
 	{
+		if (check_double >= nbr)
+			diff = check_double;
+		else
+			diff = nbr;
 		if (var[count[2]]->entier < 0)
 		{
 			str[count[0]] = ft_strsub(str[count[0]], 1, ft_nbrlen(var[count[2]]->entier) + 1);
@@ -139,7 +147,7 @@ void	attrib_d(char **str, t_var **var, int count[3])
 			}
 			k = 0;
 			str[count[0]] = ft_strjoin("-", str[count[0]]);
-			while (k < check - check_double)
+			while (k < check - diff - 1)
 			{
 				str[count[0]] = ft_strjoin(" ", str[count[0]]);
 				k++;
@@ -153,10 +161,6 @@ void	attrib_d(char **str, t_var **var, int count[3])
 				k++;
 			}
 			k = 0;
-			if (check_double >= nbr)
-				diff = check_double;
-			else
-				diff = nbr;
 			while (k < check - diff)
 			{
 				str[count[0]] = ft_strjoin(" ", str[count[0]]);
