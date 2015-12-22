@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/12 15:32:56 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/21 18:03:56 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/22 16:47:24 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -266,7 +266,7 @@ void	attrib_o(char **str, t_var **var, int count[3])
 		str[count[0]] = ft_strjoin(" ", str[count[0]]);
 	else if (flag == 5000 && var[count[2]]->entier >= 0)
 	{
-		if (var[count[2]]->entier != 0)
+		if (var[count[2]]->entier != 0)// && c != '.')
 			str[count[0]] = ft_strjoin("0", str[count[0]]);
 		flag = l;
 	}

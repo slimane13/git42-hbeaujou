@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/12 15:20:45 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/21 19:28:03 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/22 16:47:58 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,11 @@ int		check_flag(char **str, int count[3], int *nbr, char *c)
 	{
 		*nbr = *nbr + 1;
 		return (4000);
+	}
+	else if (str[count[0]][0] == '0' && str[count[0]][1] == '-')
+	{
+		*nbr = *nbr + 1;
+		return (4500);
 	}
 	else if ((ft_isdigit(str[count[0]][0]) && str[count[0]][1] == '.') ||
 			(ft_isdigit(str[count[0]][0]) && ft_isdigit(str[count[0]][1]) &&
@@ -52,6 +57,8 @@ int		check_flag(char **str, int count[3], int *nbr, char *c)
 	}
 	else if (str[count[0]][0] == '#')
 	{
+		if (str[count[0]][1] == '.')
+			*c = '.';
 		*nbr = *nbr + 1;
 		return (5000);
 	}
@@ -67,7 +74,7 @@ void	attrib_d(char **str, t_var **var, int count[3])
 	char c;
 	int k;
 	int check;
-	int check_double;
+	int check_double;  //// A FAIRE
 	int neg;
 
 	k = 0;
@@ -76,6 +83,7 @@ void	attrib_d(char **str, t_var **var, int count[3])
 	nbr = ft_nbrlen(var[count[2]]->entier);
 	flag = check_flag(str, count, &nbr, &c);
 	check = ft_atoi_ultra(str[count[0]]);
+	check_double = ft_atoi_double(str[count[0]]);
 	if (flag == 3500)
 		check_double = ft_atoi_double(str[count[0]]);
 	if (str[count[0]][0] == '.' && var[count[2]]->entier < 0)
@@ -89,6 +97,16 @@ void	attrib_d(char **str, t_var **var, int count[3])
 		neg = 1;
 		str[count[0]] = ft_strjoin("+", str[count[0]]);
 	}
+	else if (flag == 4500)
+	{
+		if (check < 0)
+			check = -check;
+		while (k < check - 1)
+		{
+			str[count[0]] = ft_strjoin(str[count[0]], " "); /////////////
+			k++;
+		}
+	}
 	else if (flag == 2500)
 	{
 		str[count[0]] = ft_strjoin("0", str[count[0]]);
@@ -97,7 +115,15 @@ void	attrib_d(char **str, t_var **var, int count[3])
 	else if (flag == 1500)
 	{
 		neg = 1;
-		str[count[0]] = ft_strjoin("0", str[count[0]]);
+		if (var[count[2]]->entier == 0)
+			nbr = 2;
+		else
+			nbr = ft_nbrlen(var[count[2]]->entier) + 1;
+		while (nbr < check)
+		{
+			str[count[0]] = ft_strjoin("0", str[count[0]]);
+			nbr++;
+		}
 		str[count[0]] = ft_strjoin("+", str[count[0]]);
 	}
 	else if (flag == 3500)
