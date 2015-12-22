@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/12 15:32:56 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/22 17:00:39 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/22 18:43:05 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -248,11 +248,19 @@ void	attrib_o(char **str, t_var **var, int count[3])
 	int flag;
 	int k;
 	int l;
+	int check;
+	int diff;
+	int check_double;
+	int p;
 	char c;
 
 	k = 0;
+	p = 1;
+	diff = 0;
 	c = 't';
 	nbr = ft_nbrlen(var[count[2]]->entier);
+	check_double = ft_atoi_double(str[count[0]]);
+	check = ft_atoi_ultra(str[count[0]]);
 	if (var[count[2]]->entier < 0)
 		nbr++;
 	flag = check_flag(str, count, &nbr, &c);
@@ -266,7 +274,7 @@ void	attrib_o(char **str, t_var **var, int count[3])
 		str[count[0]] = ft_strjoin(" ", str[count[0]]);
 	else if (flag == 5000 && var[count[2]]->entier >= 0)
 	{
-		if (var[count[2]]->entier != 0)// && c != '.')
+		if (var[count[2]]->entier != 0)
 			str[count[0]] = ft_strjoin("0", str[count[0]]);
 		flag = l;
 	}
@@ -289,7 +297,46 @@ void	attrib_o(char **str, t_var **var, int count[3])
 			}
 		}
 	}
-	if (flag != -1 && flag != 1000 &&
+	else if (flag == 3500)
+	{
+		if (check_double >= nbr)
+			diff = check_double;
+		else
+			diff = nbr;
+		if (var[count[2]]->entier < 0)
+		{
+			str[count[0]] = ft_strsub(str[count[0]], 1, ft_nbrlen(var[count[2]]->entier) + 1);
+			if (check < check_double)
+				k = -1;
+			while (k < check_double - nbr - 1)
+			{
+				str[count[0]] = ft_strjoin("0", str[count[0]]);
+				k++;
+				p = 0;
+			}
+			str[count[0]] = ft_strjoin("-", str[count[0]]);
+			while (p < check - diff)
+			{
+				str[count[0]] = ft_strjoin(" ", str[count[0]]);
+				p++;
+			}
+		}
+		else
+		{
+			while (k < check_double - nbr)
+			{
+				str[count[0]] = ft_strjoin("0", str[count[0]]);
+				k++;
+			}
+			k = 0;
+			while (k < check - diff)
+			{
+				str[count[0]] = ft_strjoin(" ", str[count[0]]);
+				k++;
+			}
+		}
+	}
+	if (flag != -1 && flag != 1000 && flag != 3500 &&
 			flag != 2000 && flag != 3000 && flag != 5000)
 	{
 		if (flag < -1 && c != '0')
