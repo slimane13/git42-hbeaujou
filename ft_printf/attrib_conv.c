@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/12 15:20:45 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/22 18:33:41 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/22 19:35:07 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -269,7 +269,6 @@ void	attrib_c(char **str, t_var **var, int count[3])
 	else if (flag == 2000 && var[count[2]]->entier >= 0)
 	{
 	}
-//	str[count[0]] = ft_strjoin(" ", str[count[0]]);
 	else if (flag == 3000)
 	{
 		if (var[count[2]]->stars < 0)
@@ -320,11 +319,17 @@ void	attrib_s(char **str, t_var **var, int count[3])
 	int str_len;
 	int flag;
 	int k;
+	int diff;
+	int check;
+	int check_double;
 	char c;
 
 	k = 0;
+	diff = 0;
 	c = 't';
 	str_len = 7;
+	check = ft_atoi_ultra(str[count[0]]);
+	check_double = ft_atoi_double(str[count[0]]);
 	if (var[count[2]]->string != NULL)
 		flag = check_flag(str, count, &str_len, &c);
 	else
@@ -336,8 +341,29 @@ void	attrib_s(char **str, t_var **var, int count[3])
 		str[count[0]] = ft_strcpy(str[count[0]], var[count[2]]->string);
 	if (flag == -1)
 		str[count[0]] = ft_strcpy(str[count[0]], "(null)");
-	else if (flag != -1 && flag != 1000 && flag != 2000 &&
-			flag != 3000 && flag != 4000 && flag != 5000)
+	else if (flag == 3500)
+	{
+		if (check_double < str_len)
+			str[count[0]] = ft_strsub(str[count[0]], 0, check_double);
+		str_len = ft_strlen(str[count[0]]);
+		if (check_double >= str_len)
+			diff = check_double;
+		else
+			diff = str_len;
+		while (k < check_double - str_len)
+		{
+			str[count[0]] = ft_strjoin(" ", str[count[0]]);
+			k++;
+		}
+		k = 0;
+		while (k < check - diff)
+		{
+			str[count[0]] = ft_strjoin(" ", str[count[0]]);
+			k++;
+		}
+	}
+	else if (flag != 0 && flag != -1 && flag != 1000 && flag != 2000 &&
+			flag != 3000 && flag != 4000 && flag != 5000 && flag != 3500)
 	{
 		if (flag < -1 && c != '0')
 		{
