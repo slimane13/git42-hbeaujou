@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/14 10:46:56 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/22 16:41:53 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/22 16:58:36 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,8 +157,6 @@ void	attrib_u(char **str, t_var **var, int count[3])
 	s_nbr = ft_strlen(str[count[0]]);
 	if (flag == 1000)
 	{
-		neg = 1;
-		str[count[0]] = ft_strjoin("+", str[count[0]]);
 	}
 	else if (flag == 2000)
 	{
