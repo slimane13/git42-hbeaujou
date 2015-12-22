@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/12 15:20:45 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/22 19:35:07 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/22 19:40:20 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -350,6 +350,8 @@ void	attrib_s(char **str, t_var **var, int count[3])
 			diff = check_double;
 		else
 			diff = str_len;
+		if (check < check_double)
+			check_double = check;
 		while (k < check_double - str_len)
 		{
 			str[count[0]] = ft_strjoin(" ", str[count[0]]);
