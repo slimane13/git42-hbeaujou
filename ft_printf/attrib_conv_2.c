@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/12 15:32:56 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/22 18:43:05 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/22 18:54:21 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -336,7 +336,7 @@ void	attrib_o(char **str, t_var **var, int count[3])
 			}
 		}
 	}
-	if (flag != -1 && flag != 1000 && flag != 3500 &&
+	if (flag != 0 && flag != -1 && flag != 1000 && flag != 3500 &&
 			flag != 2000 && flag != 3000 && flag != 5000)
 	{
 		if (flag < -1 && c != '0')
@@ -372,5 +372,7 @@ void	attrib_o(char **str, t_var **var, int count[3])
 			}
 		}
 	}
+	else if (flag == 0 && c == '.')
+		str[count[0]][0] = '\0';
 	count[2]++;
 }

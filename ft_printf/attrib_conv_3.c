@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/14 10:46:56 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/22 18:33:07 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/22 19:17:38 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -279,15 +279,25 @@ void	attrib_o_maj(char **str, t_var **var, int count[3])
 {
 	int nbr;
 	int flag;
+	int spec;
 	int k;
 	int l;
+	int check;
+	int check_double;
+	int p;
+	int diff;
 	char c;
 
 	k = 0;
+	spec = 0;
+	p = 1;
+	diff = 0;
 	c = 't';
 	nbr = ft_nbrlen(var[count[2]]->u_long);
 	flag = check_flag(str, count, &nbr, &c);
 	l = ft_atoi_spec_o(str[count[0]]);
+	check = ft_atoi(str[count[0]]);
+	check_double = ft_atoi_double(str[count[0]]);
 	str[count[0]] = ft_ntoa_base_un(var[count[2]]->u_long, "01234567");
 	nbr = ft_strlen(str[count[0]]);
 	if (flag == 1000)
@@ -300,6 +310,7 @@ void	attrib_o_maj(char **str, t_var **var, int count[3])
 		if (c != '.')
 			str[count[0]] = ft_strjoin("0", str[count[0]]);
 		flag = l;
+		spec = 1;
 	}
 	else if (flag == 3000)
 	{
@@ -320,7 +331,46 @@ void	attrib_o_maj(char **str, t_var **var, int count[3])
 			}
 		}
 	}
-	if (flag != -1 && flag != 1000 &&
+	else if (flag == 3500)
+	{
+		if (check_double >= nbr)
+			diff = check_double;
+		else
+			diff = nbr;
+		if (var[count[2]]->entier < 0)
+		{
+			str[count[0]] = ft_strsub(str[count[0]], 1, ft_nbrlen(var[count[2]]->entier) + 1);
+			if (check < check_double)
+				k = -1;
+			while (k < check_double - nbr - 1)
+			{
+				str[count[0]] = ft_strjoin("0", str[count[0]]);
+				k++;
+				p = 0;
+			}
+			str[count[0]] = ft_strjoin("-", str[count[0]]);
+			while (p < check - diff)
+			{
+				str[count[0]] = ft_strjoin(" ", str[count[0]]);
+				p++;
+			}
+		}
+		else
+		{
+			while (k < check_double - nbr)
+			{
+				str[count[0]] = ft_strjoin("0", str[count[0]]);
+				k++;
+			}
+			k = 0;
+			while (k < check - diff)
+			{
+				str[count[0]] = ft_strjoin(" ", str[count[0]]);
+				k++;
+			}
+		}
+	}
+	if (flag != 0 && flag != -1 && flag != 1000 && flag != 3500 &&
 			flag != 2000 && flag != 3000 && flag != 5000)
 	{
 		if (flag < -1 && c != '0')
@@ -356,6 +406,8 @@ void	attrib_o_maj(char **str, t_var **var, int count[3])
 			}
 		}
 	}
+	else if (flag == 0 && c == '.' && spec == 0)
+		str[count[0]][0] = '\0';
 	count[2]++;
 }
 
