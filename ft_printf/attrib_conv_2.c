@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/12 15:32:56 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/22 16:47:24 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/22 17:00:39 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -182,7 +182,7 @@ void	attrib_x_maj(char **str, t_var **var, int count[3])
 	else if (flag == 5000)
 	{
 		if (var[count[2]]->u_long != 0)
-			str[count[0]] = ft_strjoin("0x", str[count[0]]);
+			str[count[0]] = ft_strjoin("0X", str[count[0]]);
 	}
 	else if (flag == 3000)
 	{
