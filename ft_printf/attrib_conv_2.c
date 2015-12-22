@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/12 15:32:56 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/22 20:01:58 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/22 20:22:38 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,29 +54,76 @@ void	attrib_p(char **str, t_var **var, int count[3])
 	int nbr;
 	int flag;
 	int k;
+	int diff;
+	int p;
+	int check;
+	int check_double;
 	char c;
 
 	k = 0;
+	diff = 0;
+	p = 0;
 	c = 't';
 	nbr = 3;
-	nbr = ft_nbrlen(var[count[2]]->entier);
-	nbr = nbr + 2;
+	check_double = ft_atoi_double(str[count[0]]);
+	check = ft_atoi_ultra(str[count[0]]);
 	flag = check_flag(str, count, &nbr, &c);
-	str[count[0]] = (char *)malloc(sizeof(char) * nbr);
-	if (var[count[2]]->u_long != 0)
+	if (var[count[2]]->u_long != 0 && flag != 3500)
 	{
 		str[count[0]] = ft_ntoa_base_un(var[count[2]]->u_long, "0123456789abcdef");
 		nbr = ft_strlen(str[count[0]]);
 		str[count[0]] = ft_strjoin("0x", str[count[0]]);
 		nbr = ft_strlen(str[count[0]]) + 2;
 	}
-	else if (c != '.')
-		str[count[0]] = ft_strdup("0x0");
-	else
-		str[count[0]] = ft_strdup("0x");
-	if (flag != 0)
+	if (flag == 3500)
 	{
-		while (k < flag && flag < 1000)
+		str[count[0]] = ft_ntoa_base_un(var[count[2]]->u_long, "0123456789abcdef");
+		str[count[0]] = ft_strjoin("0x", str[count[0]]);
+		nbr = ft_strlen(str[count[0]]);
+		if (check_double >= nbr)
+			diff = check_double;
+		else
+			diff = nbr;
+		if (var[count[2]]->entier < 0)
+		{
+			str[count[0]] = ft_strsub(str[count[0]], 1, ft_nbrlen(var[count[2]]->entier) + 1);
+			if (check < check_double)
+				k = -1;
+			while (k < check_double - nbr - 1)
+			{
+				str[count[0]] = ft_strjoin("0", str[count[0]]);
+				k++;
+				p = 0;
+			}
+			str[count[0]] = ft_strjoin("-", str[count[0]]);
+			while (p < check - diff)
+			{
+				str[count[0]] = ft_strjoin(" ", str[count[0]]);
+				p++;
+			}
+		}
+		else
+		{
+			while (k < check_double - nbr)
+			{
+				str[count[0]] = ft_strjoin("0", str[count[0]]);
+				k++;
+			}
+			k = 0;
+			while (k < check - diff)
+			{
+				str[count[0]] = ft_strjoin(" ", str[count[0]]);
+				k++;
+			}
+		}
+	}
+	else if (var[count[2]]->u_long == 0)
+		str[count[0]] = ft_strdup("0x0");
+	else if (flag != 3500 && flag != 0 && var[count[2]]->u_long == 0)
+		str[count[0]] = ft_strdup("0x");
+	if (flag != 0 && flag < 1000)
+	{
+		while (k < flag)
 		{
 			str[count[0]] = ft_strjoin(str[count[0]], "0");
 			k++;
