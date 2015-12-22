@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/12 15:32:56 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/22 20:22:38 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/22 20:25:28 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,9 +117,9 @@ void	attrib_p(char **str, t_var **var, int count[3])
 			}
 		}
 	}
-	else if (var[count[2]]->u_long == 0)
+	else if (var[count[2]]->u_long == 0 && c != '.')
 		str[count[0]] = ft_strdup("0x0");
-	else if (flag != 3500 && flag != 0 && var[count[2]]->u_long == 0)
+	else if (flag != 3500 && var[count[2]]->u_long == 0)
 		str[count[0]] = ft_strdup("0x");
 	if (flag != 0 && flag < 1000)
 	{
