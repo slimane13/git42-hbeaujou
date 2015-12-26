@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/12 15:32:56 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/26 18:05:53 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/26 18:23:15 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,11 +160,7 @@ void	attrib_x(char **str, t_var **var, int count[3])
 	flag = check_flag(str, count, &nbr, &c);
 	str[count[0]] = ft_ntoa_base_un(var[count[2]]->u_long, "0123456789abcdef");
 	nbr = ft_strlen(str[count[0]]);
-	if (flag == 1000)
-		str[count[0]] = ft_strjoin("+", str[count[0]]);
-	else if (flag == 2000)
-		str[count[0]] = ft_strjoin(" ", str[count[0]]);
-	else if (flag == 5000)
+	if (flag == 5000)
 	{
 		if (var[count[2]]->u_long != 0)
 			str[count[0]] = ft_strjoin("0x", str[count[0]]);
@@ -292,11 +288,7 @@ void	attrib_x_maj(char **str, t_var **var, int count[3])
 	flag = check_flag(str, count, &nbr, &c);
 	str[count[0]] = ft_ntoa_base_un(var[count[2]]->u_long, "0123456789ABCDEF");
 	nbr = ft_strlen(str[count[0]]);
-	if (flag == 1000)
-		str[count[0]] = ft_strjoin("+", str[count[0]]);
-	else if (flag == 2000)
-		str[count[0]] = ft_strjoin(" ", str[count[0]]);
-	else if (flag == 5000)
+	if (flag == 5000)
 	{
 		if (var[count[2]]->u_long != 0)
 			str[count[0]] = ft_strjoin("0X", str[count[0]]);
@@ -404,6 +396,7 @@ void	attrib_o(char **str, t_var **var, int count[3])
 {
 	int nbr;
 	int flag;
+	int flag_save;
 	int k;
 	int l;
 	int check;
@@ -425,20 +418,19 @@ void	attrib_o(char **str, t_var **var, int count[3])
 		nbr++;
 	flag = check_flag(str, count, &nbr, &c);
 	l = ft_atoi_spec_o(str[count[0]]);
-	str[count[0]] = ft_ntoa_base(var[count[2]]->entier, "01234567");
+	var[count[2]]->u_entier = (unsigned int)var[count[2]]->entier;
+	str[count[0]] = ft_ntoa_base_un(var[count[2]]->u_entier, "01234567");
 	nbr = ft_strlen(str[count[0]]);
 	if (flag == 1000 && var[count[2]]->entier > 0)
 	{
 	}
-	else if (flag == 2000 && var[count[2]]->entier >= 0)
-		str[count[0]] = ft_strjoin(" ", str[count[0]]);
 	else if (flag == 5000 && var[count[2]]->entier >= 0)
 	{
 		if (var[count[2]]->entier != 0)
 			str[count[0]] = ft_strjoin("0", str[count[0]]);
 		else if (var[count[2]]->entier == 0)
 			spec = 0;
-//			str[count[0]] = ft_strdup("0");
+		flag_save = flag;
 		flag = l;
 	}
 	else if (flag == 3000)
@@ -535,7 +527,7 @@ void	attrib_o(char **str, t_var **var, int count[3])
 			}
 		}
 	}
-	else if (flag == 0 && c == '.' && spec == 1)
+	else if (flag_save == 0 && c == '.' && spec == 1)
 		str[count[0]][0] = '\0';
 	count[2]++;
 }
