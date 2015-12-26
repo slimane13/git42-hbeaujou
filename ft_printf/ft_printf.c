@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/12 13:34:50 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/21 17:55:18 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/26 17:52:15 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -562,6 +562,8 @@ int		ft_printf(char *format ,...)
 	i = 0;
 	while (str_split[i])
 	{
+		if (str_split[i][0] == '.' && ft_isdigit(str_split[i][1]) == 1)
+			str_split[i] = ft_strdup("%\0");
 		retour += ft_strlen(str_split[i]);
 		ft_putstr(str_split[i]);
 		i++;

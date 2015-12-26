@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/12 15:32:56 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/22 20:25:28 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/26 18:05:53 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,8 @@ void	attrib_p(char **str, t_var **var, int count[3])
 	if (flag == 3500)
 	{
 		str[count[0]] = ft_ntoa_base_un(var[count[2]]->u_long, "0123456789abcdef");
-		str[count[0]] = ft_strjoin("0x", str[count[0]]);
+		if (check > check_double)
+			str[count[0]] = ft_strjoin("0x", str[count[0]]);
 		nbr = ft_strlen(str[count[0]]);
 		if (check_double >= nbr)
 			diff = check_double;
@@ -116,6 +117,8 @@ void	attrib_p(char **str, t_var **var, int count[3])
 				k++;
 			}
 		}
+		if (check <= check_double)
+			str[count[0]] = ft_strjoin("0x", str[count[0]]);
 	}
 	else if (var[count[2]]->u_long == 0 && c != '.')
 		str[count[0]] = ft_strdup("0x0");
@@ -407,10 +410,12 @@ void	attrib_o(char **str, t_var **var, int count[3])
 	int diff;
 	int check_double;
 	int p;
+	int spec;
 	char c;
 
 	k = 0;
 	p = 1;
+	spec = 1;
 	diff = 0;
 	c = 't';
 	nbr = ft_nbrlen(var[count[2]]->entier);
@@ -431,6 +436,9 @@ void	attrib_o(char **str, t_var **var, int count[3])
 	{
 		if (var[count[2]]->entier != 0)
 			str[count[0]] = ft_strjoin("0", str[count[0]]);
+		else if (var[count[2]]->entier == 0)
+			spec = 0;
+//			str[count[0]] = ft_strdup("0");
 		flag = l;
 	}
 	else if (flag == 3000)
@@ -527,7 +535,7 @@ void	attrib_o(char **str, t_var **var, int count[3])
 			}
 		}
 	}
-	else if (flag == 0 && c == '.')
+	else if (flag == 0 && c == '.' && spec == 1)
 		str[count[0]][0] = '\0';
 	count[2]++;
 }

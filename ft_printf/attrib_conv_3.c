@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/14 10:46:56 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/22 19:17:38 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/26 17:33:02 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,7 @@ void	attrib_c_maj(char **str, t_var **var, int count[3])
 				k--;
 			}
 		}
-		else
+		else if (c != '.')
 		{
 			while (k < flag - 1)
 			{
@@ -131,6 +131,8 @@ void	attrib_c_maj(char **str, t_var **var, int count[3])
 			}
 		}
 	}
+	if (var[count[2]]->entier == 0 && c == '.')
+		str[count[0]][0] = '\0';
 	count[2]++;
 }
 
