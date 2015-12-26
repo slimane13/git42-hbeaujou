@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/12 13:34:50 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/26 17:52:15 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/26 19:30:56 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int		retour;
 int		rajout;
+int		char_nul;
 
 int		run_var(char *str, char c)
 {
@@ -539,6 +540,7 @@ int		ft_printf(char *format ,...)
 	retour = 0;
 	size = 0;
 	i = 0;
+	char_nul = -10;
 	rajout = 0;
 
 	size = ft_strlen(format);
@@ -564,8 +566,11 @@ int		ft_printf(char *format ,...)
 	{
 		if (str_split[i][0] == '.' && ft_isdigit(str_split[i][1]) == 1)
 			str_split[i] = ft_strdup("%\0");
+		if (i == char_nul)
+			ft_putstr_spec(str_split[i]);
+		else
+			ft_putstr(str_split[i]);
 		retour += ft_strlen(str_split[i]);
-		ft_putstr(str_split[i]);
 		i++;
 	}
 	retour += rajout;

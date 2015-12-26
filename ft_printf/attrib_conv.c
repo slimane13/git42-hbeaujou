@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/12 15:20:45 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/22 19:55:11 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/26 19:29:41 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -264,6 +264,8 @@ void	attrib_c(char **str, t_var **var, int count[3])
 	str[count[0]] = (char *)malloc(sizeof(char) * 2);
 	str[count[0]][0] = ft_atoi(var[count[2]]->string);
 	str[count[0]][1] = '\0';
+	if (ft_atoi(var[count[2]]->string) == 0)
+		char_nul = count[0];
 	if (flag == 1000 && ft_atoi(var[count[2]]->string) > 0)
 		str[count[0]] = ft_strjoin("+", str[count[0]]);
 	else if (flag == 2000 && var[count[2]]->entier >= 0)

@@ -6,7 +6,7 @@
 #    By: aemebiku <aemebiku@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/06/26 15:32:35 by aemebiku          #+#    #+#              #
-#    Updated: 2015/12/21 19:20:53 by hbeaujou         ###   ########.fr        #
+#    Updated: 2015/12/26 19:18:09 by hbeaujou         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -79,6 +79,7 @@ SOURCES =	libft/ft_memset.c				\
 			libft/ft_strtrim.c				\
 			libft/ft_putchar.c				\
 			libft/ft_putstr.c				\
+			libft/ft_putstr_spec.c			\
 			libft/ft_putnbr.c				\
 
 

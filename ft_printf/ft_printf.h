@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/11 15:28:05 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/21 15:14:00 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/26 19:25:14 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ typedef struct		s_var
 
 extern int retour;
 extern int rajout;
+extern int char_nul;
 
 int		check_conver(char *format, int var[3]);
 int		check_flag(char **str, int count[3], int *nbr, char *c);

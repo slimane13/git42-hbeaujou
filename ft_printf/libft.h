@@ -6,7 +6,7 @@
 /*   By: ebouther <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 15:08:57 by ebouther          #+#    #+#             */
-/*   Updated: 2015/12/19 18:25:46 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/26 19:14:38 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ char				*ft_itoa_base(int value, int bas);
 char				*ft_itoa_base_maj(int value, int bas);
 void				ft_putchar(char c);
 void				ft_putstr(char const *s);
+void				ft_putstr_spec(char const *s);
 void				ft_putendl(char const *s);
 void				ft_putnbr(int n);
 void				ft_putchar_fd(char c, int fd);
