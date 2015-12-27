@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/12 13:34:50 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/26 19:30:56 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/27 14:19:37 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -518,6 +518,9 @@ void	replace_char(char **str, t_var **var, va_list liste, int *tab)
 			else
 			{
 				if (ft_strlen(str[count[0]]) == 4)
+					attrib_erreur_conv(str, count);
+				else if (ft_strlen(str[count[0]]) == 3 &&
+						ft_isalpha(str[count[0]][ft_strlen(str[count[0]]) - 1]) == 1)
 					attrib_erreur_conv(str, count);
 				/// RENV ERROR DE CONV
 			}

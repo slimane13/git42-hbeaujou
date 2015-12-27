@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/12 15:20:45 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/26 19:29:41 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/27 14:23:24 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -389,6 +389,14 @@ void	attrib_s(char **str, t_var **var, int count[3])
 			if (flag < 0)
 				flag = -flag;
 			str[count[0]] = ft_strsub(str[count[0]], 0, flag);
+		}
+		else if (c == '0')
+		{
+			while (k < flag - str_len)
+			{
+				str[count[0]] = ft_strjoin("0", str[count[0]]);
+				k++;
+			}
 		}
 		else
 		{

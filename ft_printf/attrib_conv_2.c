@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/12 15:32:56 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/26 18:23:15 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/27 14:12:39 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,10 +126,34 @@ void	attrib_p(char **str, t_var **var, int count[3])
 		str[count[0]] = ft_strdup("0x");
 	if (flag != 0 && flag < 1000)
 	{
-		while (k < flag)
+		if (var[count[2]]->u_long != 0 || c == '.')
 		{
-			str[count[0]] = ft_strjoin(str[count[0]], "0");
-			k++;
+			while (k < flag)
+			{
+				str[count[0]] = ft_strjoin(str[count[0]], "0");
+				k++;
+			}
+		}
+		else
+		{
+			if (flag > 0)
+			{
+				k = 3;
+				while (k < flag)
+				{
+					str[count[0]] = ft_strjoin(" ", str[count[0]]);
+					k++;
+				}
+			}
+			else
+			{
+				k = -3;
+				while (k > flag)
+				{
+					str[count[0]] = ft_strjoin(str[count[0]], " ");
+					k--;
+				}
+			}
 		}
 	}
 	count[2]++;
