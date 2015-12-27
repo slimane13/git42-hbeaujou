@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/12 15:20:45 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/27 14:51:06 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/27 16:59:07 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -327,11 +327,6 @@ void	attrib_c(char **str, t_var **var, int count[3])
 		}
 		else
 		{
-/*			while (k < check_double - nbr)
-			{
-				str[count[0]] = ft_strjoin("0", str[count[0]]);
-				k++;
-			}*/
 			k = 0;
 			while (k < check - diff - 1)
 			{
@@ -392,10 +387,6 @@ void	attrib_s(char **str, t_var **var, int count[3])
 		c = '.';
 	if (str[count[0]][0] == '0')
 		z = '0';
-//	if (var[count[2]]->string != NULL)
-//		flag = check_flag(str, count, &str_len, &c);
-//	else
-//		
 	if (var[count[2]]->string == NULL && c != '.')
 		flag = -1;
 	if (var[count[2]]->string != NULL)

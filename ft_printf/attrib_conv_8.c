@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/21 15:00:07 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/27 15:01:29 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/27 15:48:57 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,14 @@ void	attrib_erreur_conv(char **str, int count[3])
 	int nbrlen;
 	char c;
 	char z;
+	char last;
 
 	k = 0;
 	diff = 0;
 	p = 1;
 	c = 't';
-	z = '0';
+	z = 'y';
+	last = 'u';
 	str_len = ft_strlen(str[count[0]]);
 	check = ft_atoi(str[count[0]]);
 	check_double = ft_atoi_double(str[count[0]]);
@@ -43,6 +45,8 @@ void	attrib_erreur_conv(char **str, int count[3])
 		nbr = -flag;
 	if (str[count[0]][0] == '0')
 		z = '0';
+	if (ft_strlen(str[count[0]]) == 4)
+		last = str[count[0]][3];
 	str[count[0]] = ft_strsub(str[count[0]], nbrlen, str_len);
 	str_len = str_len - nbrlen;
 	if (flag == -1)
@@ -62,7 +66,10 @@ void	attrib_erreur_conv(char **str, int count[3])
 				str[count[0]] = ft_strjoin(" ", str[count[0]]);
 			k++;
 		}
-		str[count[0]] = ft_strjoin(str[count[0]], "%");
+		if (last == 'u')
+			str[count[0]] = ft_strjoin(str[count[0]], "%");
+		else
+			str[count[0]] = ft_charjoin(str[count[0]], last);
 	}
 	else if (flag != -1 && flag != 1000 && flag != 2000 && flag != 3500 &&
 			flag != 3000 && flag != 4000 && flag != 5000)

@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/12 13:34:50 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/27 14:52:46 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/27 17:01:04 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int		retour;
 int		rajout;
 int		char_nul;
+int		s_maj;
 
 int		run_var(char *str, char c)
 {
@@ -315,7 +316,7 @@ void	replace_char(char **str, t_var **var, va_list liste, int *tab)
 					str[count[0]][ft_strlen(str[count[0]]) - 1] == 'S')
 			{
 				var[count[2]]->w_string = va_arg(liste, wchar_t *);
-				attrib_s(str, var, count);
+				attrib_s_maj(str, var, count);
 			}
 			else if (str[count[0]][ft_strlen(str[count[0]]) - 1] == 'p' &&
 					str[count[0]][ft_strlen(str[count[0]]) - 2] != 'h')
@@ -548,12 +549,13 @@ int		ft_printf(char *format ,...)
 	i = 0;
 	char_nul = -10;
 	rajout = 0;
+	s_maj = 0;
 
 	size = ft_strlen(format);
 	nbr_var_percent = run_var(format, '%');
 	size++;
 
-	tab = (int *)malloc(sizeof(int) * 20);
+	tab = (int *)malloc(sizeof(int) * 110);
 	new_str = (char *)malloc(sizeof(char) * (ft_strlen(format) + nbr_var_percent * 4));
 	var = (t_var **)malloc(sizeof(t_var) * nbr_var_percent);
 	while (i < nbr_var_percent)
@@ -570,12 +572,20 @@ int		ft_printf(char *format ,...)
 	i = 0;
 	while (str_split[i])
 	{
-		if (str_split[i][0] == '.' && ft_isdigit(str_split[i][1]) == 1)
-			str_split[i] = ft_strdup("%\0");
-		if (i == char_nul)
-			ft_putstr_spec(str_split[i]);
-		else
-			ft_putstr(str_split[i]);
+//		if (char_nul == 200)
+//		{
+//			str_split[i] = ft_strdup("\0");
+//			ft_putstr(str_split[i]);
+//		}
+//		else
+//		{
+			if (str_split[i][0] == '.' && ft_isdigit(str_split[i][1]) == 1 && s_maj != 1)
+				str_split[i] = ft_strdup("%\0");
+			if (i == char_nul)
+				ft_putstr_spec(str_split[i]);
+			else
+				ft_putstr(str_split[i]);
+//		}
 		retour += ft_strlen(str_split[i]);
 		i++;
 	}

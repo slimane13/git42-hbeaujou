@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/12 15:32:56 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/27 14:12:39 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/27 15:40:17 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -186,10 +186,18 @@ void	attrib_x(char **str, t_var **var, int count[3])
 	nbr = ft_strlen(str[count[0]]);
 	if (flag == 5000)
 	{
+		while (k < check_double - nbr)
+		{
+			str[count[0]] = ft_strjoin("0", str[count[0]]);
+			k++;
+		}
 		if (var[count[2]]->u_long != 0)
 			str[count[0]] = ft_strjoin("0x", str[count[0]]);
 		flag = l;
-		spec = 1;
+		if (var[count[2]]->u_long == 0)
+			spec = 0;
+		else
+			spec = 1;
 		nbr++;
 	}
 	else if (flag == 3000)
@@ -251,7 +259,7 @@ void	attrib_x(char **str, t_var **var, int count[3])
 		}
 	}
 	if (flag != 0 && flag != -1 && flag != 1000 && flag != 2000 &&
-			flag != 3500 && flag != 3000 && flag != 5000)
+			flag != 3500 && flag != 3000 && flag != 5000 && spec == 0)
 	{
 		if (flag < -1 && c != '0')
 		{
@@ -286,7 +294,7 @@ void	attrib_x(char **str, t_var **var, int count[3])
 			}
 		}
 	}
-	else if (flag == 0 && c == '.')
+	else if (flag == 0 && c == '.' && spec == 0)
 		str[count[0]][0] = '\0';
 	count[2]++;
 }
@@ -451,7 +459,15 @@ void	attrib_o(char **str, t_var **var, int count[3])
 	else if (flag == 5000 && var[count[2]]->entier >= 0)
 	{
 		if (var[count[2]]->entier != 0)
-			str[count[0]] = ft_strjoin("0", str[count[0]]);
+		{
+			if (check == 0 && check_double == 0)
+				str[count[0]] = ft_strjoin("0", str[count[0]]);
+			while (k < check_double - nbr)
+			{
+				str[count[0]] = ft_strjoin("0", str[count[0]]);
+				k++;
+			}
+		}
 		else if (var[count[2]]->entier == 0)
 			spec = 0;
 		flag_save = flag;

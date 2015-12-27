@@ -6,10 +6,11 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/19 20:35:31 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/21 14:12:51 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/27 18:29:52 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+//#include <wchar.h>
 #include "ft_printf.h"
 
 void	attrib_o_char(char **str, t_var **var, int count[3])
@@ -386,24 +387,66 @@ void	attrib_s_maj(char **str, t_var **var, int count[3])
 	int str_len;
 	int flag;
 	int k;
+	int diff;
+	int check;
+	int check_double;
 	char c;
+	char z;
 
 	k = 0;
+	diff = 0;
 	c = 't';
+	z = 'o';
 	str_len = 7;
-	if (var[count[2]]->w_string != NULL)
-		flag = check_flag(str, count, &str_len, &c);
-	else
+	check = ft_atoi_ultra(str[count[0]]);
+	check_double = ft_atoi_double(str[count[0]]);
+	flag = check_flag(str, count, &str_len, &c);
+	printf("flag %d\ncheck %d\ncheck_double %d\nchar %c\n", flag, check, check_double, c);
+	printf("var %d\n", var[count[2]]->w_string == NULL);
+	if (str[count[0]][0] == '.' || str[count[0]][1] == '.' ||
+			str[count[0]][2] == '.')
+		c = '.';
+	if (str[count[0]][0] == '0')
+		z = '0';
+	if (var[count[2]]->w_string == NULL && c != '.')
 		flag = -1;
 	if (var[count[2]]->w_string != NULL)
-		str_len = ft_strlen((char *)var[count[2]]->w_string);
-	str[count[0]] = (char *)malloc(sizeof(char) * str_len);
+	{
+//		wprintf(L"%s\n", var[count[2]]->w_string);
+		wcstombs(str[count[0]], var[count[2]]->w_string, sizeof(str[count[2]])); // A FAIRE A LA MAIN
+	}
 	if (var[count[2]]->w_string != NULL)
-		str[count[0]] = ft_strcpy(str[count[0]], (char *)var[count[2]]->w_string);
+		str_len = ft_strlen((char *)var[count[2]]->w_string);
 	if (flag == -1)
 		str[count[0]] = ft_strcpy(str[count[0]], "(null)");
-	else if (flag != -1 && flag != 1000 && flag != 2000 &&
-			flag != 3000 && flag != 4000 && flag != 5000)
+	else if (flag == 3500)
+	{
+		if (check_double < str_len)
+			str[count[0]] = ft_strsub(str[count[0]], 0, check_double);
+		str_len = ft_strlen(str[count[0]]);
+		if (check_double >= str_len)
+			diff = check_double;
+		else
+			diff = str_len;
+		if (check < check_double)
+			check_double = check;
+		while (k < check_double - str_len)
+		{
+			str[count[0]] = ft_strjoin(" ", str[count[0]]);
+			k++;
+		}
+		k = 0;
+		while (k < check - diff)
+		{
+			if (z == '0')
+				str[count[0]] = ft_strjoin("0", str[count[0]]);
+			else
+				str[count[0]] = ft_strjoin(" ", str[count[0]]);
+			k++;
+		}
+	}
+	else if (flag != 0 && flag != -1 && flag != 1000 && flag != 2000 &&
+			flag != 3000 && flag != 4000 && flag != 5000 && flag != 3500)
 	{
 		if (flag < -1 && c != '0')
 		{
@@ -421,6 +464,14 @@ void	attrib_s_maj(char **str, t_var **var, int count[3])
 				flag = -flag;
 			str[count[0]] = ft_strsub(str[count[0]], 0, flag);
 		}
+		else if (c == '0')
+		{
+			while (k < flag - str_len)
+			{
+				str[count[0]] = ft_strjoin("0", str[count[0]]);
+				k++;
+			}
+		}
 		else
 		{
 			while (k < flag - str_len)
@@ -430,5 +481,9 @@ void	attrib_s_maj(char **str, t_var **var, int count[3])
 			}
 		}
 	}
+//	str[count[0]] = ft_strdup("\0");
+//	char_nul = 200;
+//	rajout = -1;
+	s_maj = 1;
 	count[2]++;
 }

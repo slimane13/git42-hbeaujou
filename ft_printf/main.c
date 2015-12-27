@@ -6,11 +6,11 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/19 16:22:20 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/27 15:00:57 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/27 18:43:31 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <limits.h>
+#include <wchar.h>
 #include "ft_printf.h"
 
 int main(void)
@@ -24,9 +24,12 @@ int main(void)
 //	printf("s: %s, p: %p, d:%d\n", "a string", &test_simple_mix, 42);
 //	ft_printf("%ld\n", ((long)INT_MAX) + 1);
 //	printf("%ld\n", ((long)INT_MAX) + 1);
-	printf("%d", printf("{%05.%}", 0));
+	printf("%d", printf("%S", L"我是一只猫。"));
 	printf("\n");
-	printf("%d", ft_printf("{%05.%}", 0));
+	printf("%d", ft_printf("%S", L"我是一只猫。"));
 	printf("\n");
+	wchar_t j = L'が';
+	wprintf (L"This is the hiragana: %lc", j);
+	printf("%C", j);
 	return (0);
 }

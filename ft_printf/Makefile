@@ -6,7 +6,7 @@
 #    By: aemebiku <aemebiku@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/06/26 15:32:35 by aemebiku          #+#    #+#              #
-#    Updated: 2015/12/26 19:18:09 by hbeaujou         ###   ########.fr        #
+#    Updated: 2015/12/27 16:28:57 by hbeaujou         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -76,6 +76,7 @@ SOURCES =	libft/ft_memset.c				\
 			libft/ft_strsplit.c				\
 			libft/ft_strsplit_esc.c			\
 			libft/ft_strjoin.c				\
+			libft/ft_charjoin.c				\
 			libft/ft_strtrim.c				\
 			libft/ft_putchar.c				\
 			libft/ft_putstr.c				\
