@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/19 20:35:31 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/28 12:48:20 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/28 14:38:50 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -415,7 +415,12 @@ void	attrib_s_maj(char **str, t_var **var, int count[3])
 		while (var[count[2]]->w_string[i])
 		{
 			utf8encode(str_2, var[count[2]]->w_string[i]);
-			str[count[0]] = ft_strjoin(str[count[0]], str_2);
+//			printf("%d\n", str_2[0]);
+//			printf("%s\n", str_2);
+			if (str_2[0] < 0)
+				str[count[0]] = ft_strjoin(str[count[0]], str_2);
+			else if (str_2[0] == 32)
+				str[count[0]] = ft_strjoin(str[count[0]], " ");
 			i++;
 			compteur++;
 		}
