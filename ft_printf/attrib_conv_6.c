@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/19 20:35:31 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/28 11:11:55 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/28 12:44:24 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -388,13 +388,23 @@ void	attrib_s_maj(char **str, t_var **var, int count[3])
 	int k;
 	int i;
 	int nbr;
+	int p;
+	int check;
+	int diff;
+	int compteur;
+	int check_double;
 	char *str_2;
 	char c;
 
 	k = 0;
+	compteur = 0;
 	i = 0;
+	diff = 0;
+	p = 1;
 	nbr = 0;
 	c = 't';
+	check = ft_atoi(str[count[0]]);
+	check_double = ft_atoi_double(str[count[0]]);
 	flag = check_flag(str, count, &nbr, &c);
 	if (var[count[2]]->w_string == NULL)
 		rajout = 1;
@@ -405,6 +415,7 @@ void	attrib_s_maj(char **str, t_var **var, int count[3])
 		utf8encode(str_2, var[count[2]]->w_string[i]);
 		str[count[0]] = ft_strjoin(str[count[0]], str_2);
 		i++;
+		compteur++;
 	}
 	if (var[count[2]]->w_string == NULL)
 		char_nul = count[0];
@@ -432,15 +443,28 @@ void	attrib_s_maj(char **str, t_var **var, int count[3])
 			}
 		}
 	}
-	else if (c == '.')
+	else if (flag == 3500)
 	{
+		if (check_double >= compteur)
+			diff = check_double;
+		else
+			diff = compteur;
+		k = 0;
+		str[count[0]] = ft_strdup("\0");
+		while (k < check)
+		{
+			str[count[0]] = ft_strjoin("0", str[count[0]]);
+			compteur++;
+			k++;
+		}
 	}
-	else if (flag != -1 && flag != 1000 && flag != 2000 &&
+	else if (flag != -1 && flag != 1000 && flag != 2000 && flag != 3500 &&
 			flag != 3000 && flag != 4000 && flag != 5000 && c != '.')
 	{
+		nbr = ft_strlen(str[count[0]]);
 		if (flag < -1 && c != '0')
 		{
-			while (k > flag + 1)
+			while (k > flag + nbr)
 			{
 				str[count[0]] = ft_strjoin(str[count[0]], " ");
 				k--;
@@ -448,7 +472,7 @@ void	attrib_s_maj(char **str, t_var **var, int count[3])
 		}
 		else
 		{
-			while (k < flag - 1)
+			while (k < flag - nbr)
 			{
 				if (c == '0')
 					str[count[0]] = ft_strjoin("0", str[count[0]]);
@@ -458,8 +482,12 @@ void	attrib_s_maj(char **str, t_var **var, int count[3])
 			}
 		}
 	}
-	if (var[count[2]]->w_entier == 0 && c == '.')
+	if (var[count[2]]->w_string == NULL && c == '.')
 		str[count[0]][0] = '\0';
+	else if (var[count[2]]->w_string == NULL && c != '.')
+		str[count[0]] = ft_strdup("(null)");
+	else if (flag > 0 && c == '.')
+		str[count[0]] = ft_strsub(str[count[0]], 0, flag); // A CHECKER PK MARCHE PAS
 	s_maj = 1;
 	count[2]++;
 }

@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/12 15:32:56 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/27 15:40:17 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/28 12:41:32 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,7 +136,7 @@ void	attrib_p(char **str, t_var **var, int count[3])
 		}
 		else
 		{
-			if (flag > 0)
+			if (flag > 0 && c != '0')
 			{
 				k = 3;
 				while (k < flag)
@@ -147,11 +147,16 @@ void	attrib_p(char **str, t_var **var, int count[3])
 			}
 			else
 			{
-				k = -3;
-				while (k > flag)
+				if (flag < 0)
+					flag = -flag;
+				k = 3;
+				while (k < flag)
 				{
-					str[count[0]] = ft_strjoin(str[count[0]], " ");
-					k--;
+					if (c == '0')
+						str[count[0]] = ft_strjoin(str[count[0]], "0");
+					else
+						str[count[0]] = ft_strjoin(str[count[0]], " ");
+					k++;
 				}
 			}
 		}
@@ -568,6 +573,8 @@ void	attrib_o(char **str, t_var **var, int count[3])
 		}
 	}
 	else if (flag_save == 0 && c == '.' && spec == 1)
+		str[count[0]][0] = '\0';
+	else if (var[count[2]]->entier == 0 && c == '.' && spec == 1)
 		str[count[0]][0] = '\0';
 	count[2]++;
 }

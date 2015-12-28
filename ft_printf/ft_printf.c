@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/12 13:34:50 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/28 11:12:08 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/28 12:37:10 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -307,9 +307,21 @@ void	replace_char(char **str, t_var **var, va_list liste, int *tab)
 				}
 			}
 			else if (str[count[0]][ft_strlen(str[count[0]]) - 1] == 's' &&
-					str[count[0]][ft_strlen(str[count[0]]) - 2] != 'h')
+					str[count[0]][ft_strlen(str[count[0]]) - 2] != 'h' &&
+					str[count[0]][ft_strlen(str[count[0]]) - 2] != 'l')
 			{
 				var[count[2]]->string = va_arg(liste, char *);
+				attrib_s(str, var, count);
+			}
+			else if (str[count[0]][ft_strlen(str[count[0]]) - 1] == 'S' &&
+					str[count[0]][ft_strlen(str[count[0]]) - 2] == 'h' &&
+					str[count[0]][ft_strlen(str[count[0]]) - 3] == 'h')
+			{
+				var[count[2]]->string = va_arg(liste, char *);
+				if (var[count[2]]->string == NULL)
+					var[count[2]]->string = "(null)";
+				else
+					var[count[2]]->string = "\0";
 				attrib_s(str, var, count);
 			}
 			else if ((str[count[0]][ft_strlen(str[count[0]]) - 1] == 's' &&
