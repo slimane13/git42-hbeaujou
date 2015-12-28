@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/19 20:35:31 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/28 12:44:24 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/28 12:48:20 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -410,12 +410,15 @@ void	attrib_s_maj(char **str, t_var **var, int count[3])
 		rajout = 1;
 	str[count[0]] = (char *)malloc(sizeof(char) * 20);
 	str_2 = (char *)malloc(sizeof(char) * 20);
-	while (var[count[2]]->w_string[i])
+	if (var[count[2]]->w_string != 0)
 	{
-		utf8encode(str_2, var[count[2]]->w_string[i]);
-		str[count[0]] = ft_strjoin(str[count[0]], str_2);
-		i++;
-		compteur++;
+		while (var[count[2]]->w_string[i])
+		{
+			utf8encode(str_2, var[count[2]]->w_string[i]);
+			str[count[0]] = ft_strjoin(str[count[0]], str_2);
+			i++;
+			compteur++;
+		}
 	}
 	if (var[count[2]]->w_string == NULL)
 		char_nul = count[0];

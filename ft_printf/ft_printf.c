@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/12 13:34:50 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/28 12:37:10 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/28 14:01:37 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -529,6 +529,8 @@ void	replace_char(char **str, t_var **var, va_list liste, int *tab)
 					attrib_o_maj(str, var, count);
 				}
 			}
+			else if (ft_strlen(str[count[0]]) == 1 && str[count[0]][0] == 'P')
+				str[count[0]][0] = '%';
 			else
 			{
 				if (ft_strlen(str[count[0]]) == 4)

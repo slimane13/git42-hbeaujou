@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/11 15:28:05 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/28 10:53:13 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/28 14:09:10 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ int		ft_wtomb(char *s, wchar_t wchar);
 int		ft_printf(char *format, ...);
 
 void	attrib_erreur_conv(char **str, int count[3]);
+void    add_flag_zero(char *str, int var[3]);
 void	add_flag_one(char *format, char *str, int var[3]);
 void	add_flag_two(char *format, char *str, int var[3]);
 void	add_flag_three(char *format, char *str, int var[3]);
