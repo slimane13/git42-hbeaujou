@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/19 20:35:31 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/28 14:38:50 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/28 15:14:30 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -406,8 +406,6 @@ void	attrib_s_maj(char **str, t_var **var, int count[3])
 	check = ft_atoi(str[count[0]]);
 	check_double = ft_atoi_double(str[count[0]]);
 	flag = check_flag(str, count, &nbr, &c);
-	if (var[count[2]]->w_string == NULL)
-		rajout = 1;
 	str[count[0]] = (char *)malloc(sizeof(char) * 20);
 	str_2 = (char *)malloc(sizeof(char) * 20);
 	if (var[count[2]]->w_string != 0)
@@ -415,18 +413,14 @@ void	attrib_s_maj(char **str, t_var **var, int count[3])
 		while (var[count[2]]->w_string[i])
 		{
 			utf8encode(str_2, var[count[2]]->w_string[i]);
-//			printf("%d\n", str_2[0]);
-//			printf("%s\n", str_2);
-			if (str_2[0] < 0)
-				str[count[0]] = ft_strjoin(str[count[0]], str_2);
-			else if (str_2[0] == 32)
+			if (str_2[0] == 32)
 				str[count[0]] = ft_strjoin(str[count[0]], " ");
+			else
+				str[count[0]] = ft_strjoin(str[count[0]], str_2);
 			i++;
 			compteur++;
 		}
 	}
-	if (var[count[2]]->w_string == NULL)
-		char_nul = count[0];
 	if (flag == 1000 && var[count[2]]->w_string != NULL)
 		str[count[0]] = ft_strjoin("+", str[count[0]]);
 	else if (flag == 2000 && var[count[2]]->w_string != NULL)
