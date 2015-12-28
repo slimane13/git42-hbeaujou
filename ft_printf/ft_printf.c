@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/12 13:34:50 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/28 15:19:55 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/28 17:17:15 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -432,6 +432,10 @@ void	replace_char(char **str, t_var **var, va_list liste, int *tab)
 					attrib_x_maj_short(str, var, count);
 				}
 			}
+			else if (str[count[0]][0] == 'o' &&
+					ft_strlen(str[count[0]]) != 1)
+			{
+			}
 			else if (str[count[0]][ft_strlen(str[count[0]]) - 1] == 'o' &&
 					str[count[0]][ft_strlen(str[count[0]]) - 2] != 'h' &&
 					str[count[0]][ft_strlen(str[count[0]]) - 2] != 'l' &&
@@ -442,13 +446,11 @@ void	replace_char(char **str, t_var **var, va_list liste, int *tab)
 				{
 					var[count[2]]->stars = va_arg(liste, int);
 					var[count[2]]->entier = va_arg(liste, int);
-					var[count[2]]->u_short = (unsigned short)var[count[2]]->entier;
 					attrib_o(str, var, count);
 				}
 				else
 				{
 					var[count[2]]->entier = va_arg(liste, int);
-					var[count[2]]->u_short = (unsigned short)var[count[2]]->entier;
 					attrib_o(str, var, count);
 				}
 			}
@@ -543,7 +545,11 @@ void	replace_char(char **str, t_var **var, va_list liste, int *tab)
 				else if (ft_strlen(str[count[0]]) == 3 &&
 						ft_isalpha(str[count[0]][ft_strlen(str[count[0]]) - 1]) == 1)
 					attrib_erreur_conv(str, count);
-				/// RENV ERROR DE CONV
+				else
+				{
+					if (str[count[0]][0] == ' ')
+						str[count[0]] = ft_strsub(str[count[0]], 1, 2);
+				}
 			}
 		}
 		count[0]++;
@@ -589,20 +595,12 @@ int		ft_printf(char *format ,...)
 	i = 0;
 	while (str_split[i])
 	{
-//		if (char_nul == 200)
-//		{
-//			str_split[i] = ft_strdup("\0");
-//			ft_putstr(str_split[i]);
-//		}
-//		else
-//		{
-			if (str_split[i][0] == '.' && ft_isdigit(str_split[i][1]) == 1 && s_maj != 1)
-				str_split[i] = ft_strdup("%\0");
-			if (i == char_nul)
-				ft_putstr_spec(str_split[i]);
-			else
-				ft_putstr(str_split[i]);
-//		}
+		if (str_split[i][0] == '.' && ft_isdigit(str_split[i][1]) == 1 && s_maj != 1)
+			str_split[i] = ft_strdup("%\0");
+		if (i == char_nul)
+			ft_putstr_spec(str_split[i]);
+		else
+			ft_putstr(str_split[i]);
 		retour += ft_strlen(str_split[i]);
 		i++;
 	}

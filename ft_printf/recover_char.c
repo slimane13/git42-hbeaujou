@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/12 11:58:53 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/28 14:13:51 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/28 16:40:00 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,9 @@ void	recover_percent(char *format, char *str, int len, int *tab)
 	var[2] = 0;
 	indice = 1;
 	tab[0] = 0;
+	tab[1] = -1;
+	tab[2] = -1;
+	tab[3] = -1;
 	flag = 0;
 	if (format[0] == '%' && format[1] != '%')
 		k = -1;
@@ -78,6 +81,16 @@ void	recover_percent(char *format, char *str, int len, int *tab)
 			flag = 1;
 			indice++;
 			add_flag_zero(str, var);
+		}
+		else if (format[var[0]] == '%' && format[var[0] + 1] == ' ' && format[var[0] + 2] == '%')
+		{
+			if (var[0] != 0)
+				k++;
+			tab[indice] = k;
+			tab[0]++;
+			flag = 1;
+			indice++;
+			add_flag_special(str, var);
 		}
 		else if ((format[var[0]] == '%' && format[var[0] + 1] != '%') || (format[var[0]] == '%' && flag == 1))
 		{
@@ -101,6 +114,7 @@ void	recover_percent(char *format, char *str, int len, int *tab)
 		var[1]++;
 	}
 	str[var[1]] = '\0';
+//	printf("indice %d\nflag %d\ntab[0] %d\ntab[1] %d\ntab[2] %d\n", indice, flag, tab[0], tab[1], tab[2]);
 }
 
 int		is_indice(int nb, int *tab)
@@ -115,12 +129,4 @@ int		is_indice(int nb, int *tab)
 		i++;
 	}
 	return (0);
-}
-
-int		ft_wtomb(char *s, wchar_t wchar)
-{
-	if (!s)
-		return (0);
-	*s = wchar;
-	return (1);
 }

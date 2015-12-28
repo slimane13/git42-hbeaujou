@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/19 16:22:20 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/28 15:33:00 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/28 18:10:49 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,12 @@ int main(void)
 	free = 1;
 	test_simple_mix = 4;
 	c = 'c';
-//	printf("%d", printf("%s %d %p %x %S", "bonjour ", 42, &free, 42, L"لحم خنزير"));
-//	printf("% Zoooo");
-	printf("%.5p", 0);
+//	printf("%d", printf("%s %d %p %x %% %S", "bonjour ", 42, &free, 42, L"لحم خنزير"));
+	printf("%s%d%p%%%S%D%i%o%O%u%U%x%X%c%C","bonjour", 42, &c, L"暖炉", LONG_MAX, 42, 42, 42, 100000, ULONG_MAX, 42, 42, 'c', L'플');
+//	printf("%d", printf("%.4S", L"我是一只猫。"));
 	printf("\n");
-//	printf("%d", ft_printf("%s %d %p %x %S", "bonjour ", 42, &free, 42, L"لحم خنزير"));
-//	ft_printf("%d et %% et %s%o %c", 12, "LOL", 12, 'd');
-	ft_printf("%.5p", 0);
+//	printf("%d", ft_printf("%s %d %p %x %% %S", "bonjour ", 42, &free, 42, L"لحم خنزير"));
+	ft_printf("%s%d%p%%%S%D%i%o%O%u%U%x%X%c%C","bonjour", 42, &c, L"暖炉", LONG_MAX, 42, 42, 42, 100000, ULONG_MAX, 42, 42, 'c', L'플');
 	printf("\n");
 	return (0);
 }
