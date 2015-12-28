@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/12 15:32:56 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/28 12:41:32 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/28 15:33:18 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,7 +128,7 @@ void	attrib_p(char **str, t_var **var, int count[3])
 	{
 		if (var[count[2]]->u_long != 0 || c == '.')
 		{
-			while (k < flag)
+			while (k < flag - nbr + 3)
 			{
 				str[count[0]] = ft_strjoin(str[count[0]], "0");
 				k++;
