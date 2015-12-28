@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/19 20:35:31 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/27 18:29:52 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/28 11:11:55 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -384,106 +384,82 @@ void	attrib_d_j(char **str, t_var **var, int count[3])
 
 void	attrib_s_maj(char **str, t_var **var, int count[3])
 {
-	int str_len;
 	int flag;
 	int k;
-	int diff;
-	int check;
-	int check_double;
+	int i;
+	int nbr;
+	char *str_2;
 	char c;
-	char z;
 
 	k = 0;
-	diff = 0;
+	i = 0;
+	nbr = 0;
 	c = 't';
-	z = 'o';
-	str_len = 7;
-	check = ft_atoi_ultra(str[count[0]]);
-	check_double = ft_atoi_double(str[count[0]]);
-	flag = check_flag(str, count, &str_len, &c);
-	printf("flag %d\ncheck %d\ncheck_double %d\nchar %c\n", flag, check, check_double, c);
-	printf("var %d\n", var[count[2]]->w_string == NULL);
-	if (str[count[0]][0] == '.' || str[count[0]][1] == '.' ||
-			str[count[0]][2] == '.')
-		c = '.';
-	if (str[count[0]][0] == '0')
-		z = '0';
-	if (var[count[2]]->w_string == NULL && c != '.')
-		flag = -1;
-	if (var[count[2]]->w_string != NULL)
+	flag = check_flag(str, count, &nbr, &c);
+	if (var[count[2]]->w_string == NULL)
+		rajout = 1;
+	str[count[0]] = (char *)malloc(sizeof(char) * 20);
+	str_2 = (char *)malloc(sizeof(char) * 20);
+	while (var[count[2]]->w_string[i])
 	{
-//		wprintf(L"%s\n", var[count[2]]->w_string);
-		wcstombs(str[count[0]], var[count[2]]->w_string, sizeof(str[count[2]])); // A FAIRE A LA MAIN
+		utf8encode(str_2, var[count[2]]->w_string[i]);
+		str[count[0]] = ft_strjoin(str[count[0]], str_2);
+		i++;
 	}
-	if (var[count[2]]->w_string != NULL)
-		str_len = ft_strlen((char *)var[count[2]]->w_string);
-	if (flag == -1)
-		str[count[0]] = ft_strcpy(str[count[0]], "(null)");
-	else if (flag == 3500)
+	if (var[count[2]]->w_string == NULL)
+		char_nul = count[0];
+	if (flag == 1000 && var[count[2]]->w_string != NULL)
+		str[count[0]] = ft_strjoin("+", str[count[0]]);
+	else if (flag == 2000 && var[count[2]]->w_string != NULL)
 	{
-		if (check_double < str_len)
-			str[count[0]] = ft_strsub(str[count[0]], 0, check_double);
-		str_len = ft_strlen(str[count[0]]);
-		if (check_double >= str_len)
-			diff = check_double;
-		else
-			diff = str_len;
-		if (check < check_double)
-			check_double = check;
-		while (k < check_double - str_len)
-		{
-			str[count[0]] = ft_strjoin(" ", str[count[0]]);
-			k++;
-		}
-		k = 0;
-		while (k < check - diff)
-		{
-			if (z == '0')
-				str[count[0]] = ft_strjoin("0", str[count[0]]);
-			else
-				str[count[0]] = ft_strjoin(" ", str[count[0]]);
-			k++;
-		}
 	}
-	else if (flag != 0 && flag != -1 && flag != 1000 && flag != 2000 &&
-			flag != 3000 && flag != 4000 && flag != 5000 && flag != 3500)
+	else if (flag == 3000)
 	{
-		if (flag < -1 && c != '0')
+		if (var[count[2]]->stars < 0)
 		{
-			while (k > flag + str_len)
+			while (k > var[count[2]]->stars + nbr)
 			{
 				str[count[0]] = ft_strjoin(str[count[0]], " ");
 				k--;
 			}
 		}
-		else if (flag == 0 && c == '.')
-			str[count[0]][0] = '\0';
-		else if (flag > 0 && c == '.')
-		{
-			if (flag < 0)
-				flag = -flag;
-			str[count[0]] = ft_strsub(str[count[0]], 0, flag);
-		}
-		else if (c == '0')
-		{
-			while (k < flag - str_len)
-			{
-				str[count[0]] = ft_strjoin("0", str[count[0]]);
-				k++;
-			}
-		}
 		else
 		{
-			while (k < flag - str_len)
+			while (k < var[count[2]]->stars - nbr)
 			{
 				str[count[0]] = ft_strjoin(" ", str[count[0]]);
 				k++;
 			}
 		}
 	}
-//	str[count[0]] = ft_strdup("\0");
-//	char_nul = 200;
-//	rajout = -1;
+	else if (c == '.')
+	{
+	}
+	else if (flag != -1 && flag != 1000 && flag != 2000 &&
+			flag != 3000 && flag != 4000 && flag != 5000 && c != '.')
+	{
+		if (flag < -1 && c != '0')
+		{
+			while (k > flag + 1)
+			{
+				str[count[0]] = ft_strjoin(str[count[0]], " ");
+				k--;
+			}
+		}
+		else
+		{
+			while (k < flag - 1)
+			{
+				if (c == '0')
+					str[count[0]] = ft_strjoin("0", str[count[0]]);
+				else
+					str[count[0]] = ft_strjoin(" ", str[count[0]]);
+				k++;
+			}
+		}
+	}
+	if (var[count[2]]->w_entier == 0 && c == '.')
+		str[count[0]][0] = '\0';
 	s_maj = 1;
 	count[2]++;
 }

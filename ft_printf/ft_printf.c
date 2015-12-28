@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/12 13:34:50 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/27 17:01:04 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/28 11:12:08 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -275,7 +275,8 @@ void	replace_char(char **str, t_var **var, va_list liste, int *tab)
 				}
 			}
 			else if (str[count[0]][ft_strlen(str[count[0]]) - 1] == 'c' &&
-					str[count[0]][ft_strlen(str[count[0]]) - 2] != 'h')
+					str[count[0]][ft_strlen(str[count[0]]) - 2] != 'h' &&
+					str[count[0]][ft_strlen(str[count[0]]) - 2] != 'l')
 			{
 				if (str[count[0]][ft_strlen(str[count[0]]) - 2] == '*')
 				{
@@ -296,12 +297,12 @@ void	replace_char(char **str, t_var **var, va_list liste, int *tab)
 				if (str[count[0]][ft_strlen(str[count[0]]) - 3] == '*')
 				{
 					var[count[2]]->stars = va_arg(liste, int);
-					var[count[2]]->entier = va_arg(liste, wint_t);
+					var[count[2]]->w_entier = va_arg(liste, wint_t);
 					attrib_c_maj(str, var, count);
 				}
 				else
 				{
-					var[count[2]]->entier = va_arg(liste, wint_t);
+					var[count[2]]->w_entier = va_arg(liste, wint_t);
 					attrib_c_maj(str, var, count);
 				}
 			}

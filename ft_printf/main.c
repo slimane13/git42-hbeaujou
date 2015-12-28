@@ -6,30 +6,40 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/19 16:22:20 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/27 18:43:31 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/28 11:09:25 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <wchar.h>
 #include "ft_printf.h"
+
+
+void test(wint_t c, int *b)
+{
+	if (c<0x80) *b++=c;
+	else if (c<0x800) *b++=192+c/64, *b++=128+c%64;
+	else if (c-0xd800u<0x800) {}
+	else if (c<0x10000) *b++=224+c/4096, *b++=128+c/64%64, *b++=128+c%64;
+	else if (c<0x110000) *b++=240+c/262144, *b++=128+c/4096%64, *b++=128+c/64%64, *b++=128+c%64;
+	else return;
+}
 
 int main(void)
 {
 	int i;
+	int d;
+	char c;
+	char b;
+	char *str;
 	int test_simple_mix;
 
+	str = (char *)malloc(sizeof(char) * 30);
 	i = 2;
 	test_simple_mix = 4;
-//	ft_printf("s: %s, p: %p, d:%d\n", "a string", &test_simple_mix, 42);
-//	printf("s: %s, p: %p, d:%d\n", "a string", &test_simple_mix, 42);
-//	ft_printf("%ld\n", ((long)INT_MAX) + 1);
-//	printf("%ld\n", ((long)INT_MAX) + 1);
-	printf("%d", printf("%S", L"我是一只猫。"));
+	//	printf("%d", printf("%S", L"我是一只猫。"));
+	printf("%S, %lc", L"暖", L'ح');
 	printf("\n");
-	printf("%d", ft_printf("%S", L"我是一只猫。"));
+	ft_printf("%S, %lc", L"暖", L'ح');
+	//	printf("%d", ft_printf("%S", L"我是一只猫。"));
 	printf("\n");
-	wchar_t j = L'が';
-	wprintf (L"This is the hiragana: %lc", j);
-	printf("%C", j);
 	return (0);
 }

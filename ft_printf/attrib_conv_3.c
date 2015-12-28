@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/14 10:46:56 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/27 14:27:13 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/28 10:53:33 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,16 +102,15 @@ void	attrib_c_maj(char **str, t_var **var, int count[3])
 	nbr = 0;
 	c = 't';
 	flag = check_flag(str, count, &nbr, &c);
-	if (var[count[2]]->entier == 0)
+	if (var[count[2]]->w_entier == 0)
 		rajout = 1;
-	str[count[0]] = (char *)malloc(sizeof(char) * 2);
-	str[count[0]][0] = var[count[2]]->entier;
-	str[count[0]][1] = '\0';
-	if (var[count[2]]->entier == 0)
+	str[count[0]] = (char *)malloc(sizeof(char) * 10);
+	utf8encode(str[count[0]], var[count[2]]->w_entier);
+	if (var[count[2]]->w_entier == 0)
 		char_nul = count[0];
-	if (flag == 1000 && var[count[2]]->entier > 0)
+	if (flag == 1000 && var[count[2]]->w_entier > 0)
 		str[count[0]] = ft_strjoin("+", str[count[0]]);
-	else if (flag == 2000 && var[count[2]]->entier >= 0)
+	else if (flag == 2000 && var[count[2]]->w_entier >= 0)
 	{
 	}
 	else if (flag == 3000)
@@ -159,51 +158,9 @@ void	attrib_c_maj(char **str, t_var **var, int count[3])
 			}
 		}
 	}
-	if (var[count[2]]->entier == 0 && c == '.')
+	if (var[count[2]]->w_entier == 0 && c == '.')
 		str[count[0]][0] = '\0';
 	count[2]++;
-/*
-	int flag;
-	int k;
-	int nbr;
-	char c;
-
-	k = 0;
-	nbr = 0;
-	c = 't';
-	flag = check_flag(str, count, &nbr, &c);
-	if (var[count[2]]->entier == 0)
-		rajout = 1;
-	str[count[0]] = (char *)malloc(sizeof(char) * 2);
-	str[count[0]][0] = var[count[2]]->entier;
-	str[count[0]][1] = '\0';
-	if (flag == 1000 && var[count[2]]->entier > 0)
-		str[count[0]] = ft_strjoin("+", str[count[0]]);
-	else if (flag == 2000 && var[count[2]]->entier >= 0)
-		str[count[0]] = ft_strjoin(" ", str[count[0]]);
-	else if (flag != -1 && flag != 1000 && flag != 2000 &&
-			flag != 3000 && flag != 4000 && flag != 5000)
-	{
-		if (flag < -1 && c != '0')
-		{
-			while (k > flag + 1)
-			{
-				str[count[0]] = ft_strjoin(str[count[0]], " ");
-				k--;
-			}
-		}
-		else if (c != '.')
-		{
-			while (k < flag - 1)
-			{
-				str[count[0]] = ft_strjoin(" ", str[count[0]]);
-				k++;
-			}
-		}
-	}
-	if (var[count[2]]->entier == 0 && c == '.')
-		str[count[0]][0] = '\0';
-	count[2]++;*/
 }
 
 void	attrib_u(char **str, t_var **var, int count[3])

@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/11 15:28:05 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/27 16:48:11 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/28 10:53:13 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct		s_var
 	char			carac;
 	char			*string;
 	wchar_t			*w_string;
+	wint_t			w_entier;
 }					t_var;
 
 extern int retour;
@@ -41,6 +42,8 @@ extern int rajout;
 extern int char_nul;
 extern int s_maj;
 
+int		utf8encode(char* buf, int codepoint);
+int		is_ascii_code_point(int val);
 int		check_conver(char *format, int var[3]);
 int		check_flag(char **str, int count[3], int *nbr, char *c);
 int		check_flag_number(char **str, int count[3], int *nbr, char *c);
