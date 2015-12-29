@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/11 15:28:05 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/29 11:33:45 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/29 11:48:06 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,9 @@ typedef struct		s_cut
 	int				check;
 	int				c_d;
 	int				neg;
+	int				str_len;
 	char			c;
+	char			z;
 }					t_cut;
 
 extern int retour;
@@ -65,6 +67,12 @@ int		run_var(char *str, char c);
 int		ft_wtomb(char *s, wchar_t wchar);
 
 int		ft_printf(char *format, ...);
+
+void	ft_cut_init_s(t_cut *t_v, t_var **var, char **str, int count[3]);
+void    ft_cut_flag_s1(t_cut *t_v, char **str, int count[3]);
+void    ft_cut_flag_s2(t_cut *t_v, char **str, int count[3]);
+void    ft_cut_flag_s2_1(t_cut *t_v, char **str, int count[3]);
+void    ft_cut_flag_s2_2(t_cut *t_v, char **str, int count[3]);
 
 void	ft_cut_init_c(t_cut *t_v, t_var **var, char **str, int count[3]);
 void    ft_cut_flag_c1(t_cut *t_v, t_var **var, char **str, int count[3]);
