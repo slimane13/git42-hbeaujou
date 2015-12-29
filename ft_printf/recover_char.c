@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/12 11:58:53 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/28 16:40:00 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/29 16:56:43 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,6 @@ void	recover_percent(char *format, char *str, int len, int *tab)
 		var[1]++;
 	}
 	str[var[1]] = '\0';
-//	printf("indice %d\nflag %d\ntab[0] %d\ntab[1] %d\ntab[2] %d\n", indice, flag, tab[0], tab[1], tab[2]);
 }
 
 int		is_indice(int nb, int *tab)

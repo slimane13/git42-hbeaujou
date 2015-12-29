@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/21 15:00:07 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/28 16:29:55 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/29 16:57:08 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,6 @@ void	attrib_erreur_conv(char **str, int count[3])
 	check_double = ft_atoi_double(str[count[0]]);
 	flag = check_flag(str, count, &str_len, &c);
 	nbrlen = ft_nbrlen(flag);
-//	printf("check %d\ncheck_double %d\nflag %d\nnbrlen %d\n");
 	if (flag < 0)
 		nbrlen++;
 	if (flag < 0)

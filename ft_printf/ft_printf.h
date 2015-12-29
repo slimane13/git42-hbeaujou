@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/11 15:28:05 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/29 16:53:21 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/29 17:13:03 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,48 +18,48 @@
 #include <stdarg.h>
 #include <limits.h>
 
-typedef struct		s_var
+typedef struct			s_var
 {
-	intmax_t		im_t;
-	int				entier;
-	int				stars;
-	unsigned char	u_carac;
-	unsigned int	u_entier;
-	unsigned short	u_short;
-	unsigned long	u_long;
+	intmax_t			im_t;
+	int					entier;
+	int					stars;
+	unsigned char		u_carac;
+	unsigned int		u_entier;
+	unsigned short		u_short;
+	unsigned long		u_long;
 	unsigned long long	u_l_long;
-	long			v_long;
-	long long		v_l_long;
-	short			v_short;
-	char			carac;
-	char			*string;
-	wchar_t			*w_string;
-	wint_t			w_entier;
-}					t_var;
+	long				v_long;
+	long long			v_l_long;
+	short				v_short;
+	char				carac;
+	char				*string;
+	wchar_t				*w_string;
+	wint_t				w_entier;
+}						t_var;
 
-typedef struct		s_cut
+typedef struct			s_cut
 {
-	int				nbr;
-	int				s_nbr;
-	int				spec;
-	int				l;
-	int				flag;
-	int				flag_save;
-	int				k;
-	int				p;
-	int				diff;
-	int				check;
-	int				c_d;
-	int				neg;
-	int				str_len;
-	char			c;
-	char			z;
-}					t_cut;
+	int					nbr;
+	int					s_nbr;
+	int					spec;
+	int					l;
+	int					flag;
+	int					flag_save;
+	int					k;
+	int					p;
+	int					diff;
+	int					check;
+	int					c_d;
+	int					neg;
+	int					str_len;
+	char				c;
+	char				z;
+}						t_cut;
 
-extern int retour;
-extern int rajout;
-extern int char_nul;
-extern int s_maj;
+extern int				retour;
+extern int				rajout;
+extern int				char_nul;
+extern int				s_maj;
 
 int		utf8encode(char* buf, int codepoint);
 int		is_ascii_code_point(int val);
@@ -71,6 +71,15 @@ int		run_var(char *str, char c);
 int		ft_wtomb(char *s, wchar_t wchar);
 
 int		ft_printf(char *format, ...);
+
+void	ft_cut_init_d_ll(t_cut *t_v, t_var **var, char **str, int count[3]);
+void    ft_cut_flag_d1_ll(t_cut *t_v, char **str, int count[3]);
+void    ft_cut_flag_d2_ll(t_cut *t_v, char **str, int count[3]);
+void    ft_cut_flag_d3_ll(t_cut *t_v, t_var **var, char **str, int count[3]);
+void    ft_cut_flag_d3_1ll(t_cut *t_v, t_var **var, char **str, int count[3]);
+void    ft_cut_flag_d4_ll(t_cut *t_v, char **str, int count[3]);
+void    ft_cut_flag_d4_1ll(t_cut *t_v, char **str, int count[3]);
+void    ft_cut_flag_d4_2ll(t_cut *t_v, char **str, int count[3]);
 
 void	ft_cut_init_u_llong(t_cut *t_v, t_var **var, char **str, int count[3]);
 void    ft_cut_flag_u1_llong(t_cut *t_v, char **str, int count[3]);
