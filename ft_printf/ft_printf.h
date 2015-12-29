@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/11 15:28:05 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/29 10:58:46 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/29 11:12:48 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,11 @@ void    ft_cut_flag_d1(t_cut *t_v, t_var **var, char **str, int count[3]);
 void    ft_cut_flag_d2(t_cut *t_v, t_var **var, char **str, int count[3]);
 void    ft_cut_flag_d3(t_cut *t_v, t_var **var, char **str, int count[3]);
 void    ft_cut_cut_d3_1(t_cut *t_v, t_var **var, char **str, int count[3]);
+void    ft_cut_flag_d4(t_cut *t_v, t_var **var, char **str, int count[3]);
+void    ft_cut_flag_d5(t_cut *t_v, t_var **var, char **str, int count[3]);
+void    ft_cut_flag_d6(t_cut *t_v, t_var **var, char **str, int count[3]);
+void    ft_cut_flag_d6_1(t_cut *t_v, t_var **var, char **str, int count[3]);
+void    ft_cut_flag_d6_2(t_cut *t_v, char **str, int count[3]);
 
 void	attrib_erreur_conv(char **str, int count[3]);
 void    add_flag_special(char *str, int var[3]);
