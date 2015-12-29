@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/11 15:28:05 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/29 16:01:35 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/29 16:17:36 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,15 @@ int		run_var(char *str, char c);
 int		ft_wtomb(char *s, wchar_t wchar);
 
 int		ft_printf(char *format, ...);
+
+void	ft_cut_init_d_short(t_cut *t_v, t_var **var, char **str, int count[3]);
+void    ft_cut_flag_d1_short(t_cut *t_v, t_var **var, char **str, int count[3]);
+void    ft_cut_flag_d1_1short(t_cut *t_v, t_var **var, char **str, int count[3]);
+void    ft_cut_flag_d2_short(t_cut *t_v, t_var **var, char **str, int count[3]);
+void    ft_cut_flag_d3_short(t_cut *t_v, t_var **var, char **str, int count[3]);
+void    ft_cut_flag_d4_short(t_cut *t_v, t_var **var, char **str, int count[3]);
+void    ft_cut_flag_d4_1short(t_cut *t_v, t_var **var, char **str, int count[3]);
+void    ft_cut_flag_d4_2short(t_cut *t_v, char **str, int count[3]);
 
 void	ft_cut_init_u_maj(t_cut *t_v, t_var **var, char **str, int count[3]);
 void    ft_cut_flag_u1_maj(t_cut *t_v, char **str, int count[3]);
