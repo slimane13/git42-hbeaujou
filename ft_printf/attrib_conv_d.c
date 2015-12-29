@@ -6,13 +6,13 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/29 09:20:08 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/29 11:01:47 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/29 11:15:16 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_cut_init(t_cut *t_v, t_var **var, char **str, int count[3])
+void	ft_cut_init_d(t_cut *t_v, t_var **var, char **str, int count[3])
 {
 	(*t_v).k = 0;
 	(*t_v).c = 't';

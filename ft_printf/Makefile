@@ -6,7 +6,7 @@
 #    By: aemebiku <aemebiku@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/06/26 15:32:35 by aemebiku          #+#    #+#              #
-#    Updated: 2015/12/29 11:10:03 by hbeaujou         ###   ########.fr        #
+#    Updated: 2015/12/29 11:31:29 by hbeaujou         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -14,9 +14,10 @@ NAME = libftprintf.a
 
 SOURCES =	libft/ft_memset.c				\
 			libft/add_flag.c				\
-			libft/attrib_conv.c				\
+			libft/attrib_conv_c.c			\
 			libft/attrib_conv_d.c			\
 			libft/attrib_conv_d2.c			\
+			libft/attrib_conv.c				\
 			libft/attrib_conv_2.c			\
 			libft/attrib_conv_3.c			\
 			libft/attrib_conv_4.c			\

@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/12 15:20:45 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/29 11:07:59 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/29 11:33:35 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	attrib_d(char **str, t_var **var, int count[3])
 {
 	t_cut t_v;
 
-	ft_cut_init(&t_v, var, str, count);
+	ft_cut_init_d(&t_v, var, str, count);
 	if (t_v.flag == 1000 || t_v.flag == 4500 || t_v.flag == 2500)
 		ft_cut_flag_d1(&t_v, var, str, count);
 	else if (t_v.flag == 1500)
@@ -94,115 +94,25 @@ void	attrib_d(char **str, t_var **var, int count[3])
 
 void	attrib_c(char **str, t_var **var, int count[3])
 {
-	int flag;
-	int k;
-	int nbr;
-	int check;
-	int check_double;
-	int p;
-	int diff;
-	char c;
+	t_cut t_v;
 
-	k = 0;
-	nbr = 0;
-	c = 't';
-	diff = 0;
-	p = 1;
-	check = ft_atoi(str[count[0]]);
-	check_double = ft_atoi_double(str[count[0]]);
-	flag = check_flag(str, count, &nbr, &c);
-	if (ft_atoi(var[count[2]]->string) == 0)
-		rajout = 1;
-	str[count[0]] = (char *)malloc(sizeof(char) * 2);
-	str[count[0]][0] = ft_atoi(var[count[2]]->string);
-	str[count[0]][1] = '\0';
-	if (ft_atoi(var[count[2]]->string) == 0)
-		char_nul = count[0];
-	if (flag == 1000 && ft_atoi(var[count[2]]->string) > 0)
+	ft_cut_init_c(&t_v, var, str, count);
+	if (t_v.flag == 1000 && ft_atoi(var[count[2]]->string) > 0)
 		str[count[0]] = ft_strjoin("+", str[count[0]]);
-	else if (flag == 2000 && var[count[2]]->entier >= 0)
+	else if (t_v.flag == 2000 && var[count[2]]->entier >= 0)
 	{
 	}
-	else if (flag == 3000)
-	{
-		if (var[count[2]]->stars < 0)
-		{
-			while (k > var[count[2]]->stars + nbr)
-			{
-				str[count[0]] = ft_strjoin(str[count[0]], " ");
-				k--;
-			}
-		}
-		else
-		{
-			while (k < var[count[2]]->stars - nbr)
-			{
-				str[count[0]] = ft_strjoin(" ", str[count[0]]);
-				k++;
-			}
-		}
-	}
-	else if (c == '.')
+	else if (t_v.flag == 3000)
+		ft_cut_flag_c1(&t_v, var, str, count);
+	else if (t_v.c == '.')
 	{
 	}
-	else if (flag == 3500)
-	{
-		if (check_double >= nbr)
-			diff = check_double;
-		else
-			diff = nbr;
-		if (var[count[2]]->entier < 0)
-		{
-			str[count[0]] = ft_strsub(str[count[0]], 1, ft_nbrlen(var[count[2]]->entier) + 1);
-			if (check < check_double)
-				k = -1;
-			while (k < check_double - nbr - 1)
-			{
-				str[count[0]] = ft_strjoin("0", str[count[0]]);
-				k++;
-				p = 0;
-			}
-			str[count[0]] = ft_strjoin("-", str[count[0]]);
-			while (p < check - diff)
-			{
-				str[count[0]] = ft_strjoin(" ", str[count[0]]);
-				p++;
-			}
-		}
-		else
-		{
-			k = 0;
-			while (k < check - diff - 1)
-			{
-				str[count[0]] = ft_strjoin("0", str[count[0]]);
-				k++;
-			}
-		}
-	}
-	else if (flag != -1 && flag != 1000 && flag != 2000 && flag != 3500 &&
-			flag != 3000 && flag != 4000 && flag != 5000 && c != '.')
-	{
-		if (flag < -1 && c != '0')
-		{
-			while (k > flag + 1)
-			{
-				str[count[0]] = ft_strjoin(str[count[0]], " ");
-				k--;
-			}
-		}
-		else
-		{
-			while (k < flag - 1)
-			{
-				if (c == '0')
-					str[count[0]] = ft_strjoin("0", str[count[0]]);
-				else
-					str[count[0]] = ft_strjoin(" ", str[count[0]]);
-				k++;
-			}
-		}
-	}
-	if (ft_atoi(var[count[2]]->string) == 0 && c == '.')
+	else if (t_v.flag == 3500)
+		ft_cut_flag_c2(&t_v, var, str, count);
+	else if (t_v.flag != -1 && t_v.flag != 1000 && t_v.flag != 2000 && t_v.flag != 3500 &&
+			t_v.flag != 3000 && t_v.flag != 4000 && t_v.flag != 5000 && t_v.c != '.')
+		ft_cut_flag_c3(&t_v, str, count);
+	if (ft_atoi(var[count[2]]->string) == 0 && t_v.c == '.')
 		str[count[0]][0] = '\0';
 	count[2]++;
 }
