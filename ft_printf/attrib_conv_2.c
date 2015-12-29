@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/12 15:32:56 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/29 12:21:06 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/29 13:16:00 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,49 +77,16 @@ void	attrib_x(char **str, t_var **var, int count[3])
 	t_cut t_v;
 
 	ft_cut_init_x(&t_v, var, str, count);
-	if (flag == 5000)
+	if (t_v.flag == 5000)
 		ft_cut_flag_x1(&t_v, var, str, count);
-	else if (flag == 3000)
+	else if (t_v.flag == 3000)
 		ft_cut_flag_x2(&t_v, var, str, count);
-	else if (flag == 3500)
+	else if (t_v.flag == 3500)
 		ft_cut_flag_x3(&t_v, var, str, count);
-	if (flag != 0 && flag != -1 && flag != 1000 && flag != 2000 &&
-			flag != 3500 && flag != 3000 && flag != 5000 && spec == 0)
-	{
-		if (flag < -1 && c != '0')
-		{
-			while (k > flag + nbr)
-			{
-				str[count[0]] = ft_strjoin(str[count[0]], " ");
-				k--;
-			}
-		}
-		else if (flag > 0 && (c == '0' || c == '.'))
-		{
-			while (k < flag - nbr)
-			{
-				str[count[0]] = ft_strjoin("0", str[count[0]]);
-				k++;
-			}
-		}
-		else if (flag < -1 && c == '0')
-		{
-			while (k > flag)
-			{
-				str[count[0]] = ft_strjoin("0", str[count[0]]);
-				k--;
-			}
-		}
-		else
-		{
-			while (k < flag - nbr)
-			{
-				str[count[0]] = ft_strjoin(" ", str[count[0]]);
-				k++;
-			}
-		}
-	}
-	else if (flag == 0 && c == '.' && spec == 0)
+	if (t_v.flag != 0 && t_v.flag != -1 && t_v.flag != 1000 && t_v.flag != 2000 &&
+			t_v.flag != 3500 && t_v.flag != 3000 && t_v.flag != 5000 && t_v.spec == 0)
+		ft_cut_flag_x4(&t_v, str, count);
+	else if (t_v.flag == 0 && t_v.c == '.' && t_v.spec == 0)
 		str[count[0]][0] = '\0';
 	count[2]++;
 }
