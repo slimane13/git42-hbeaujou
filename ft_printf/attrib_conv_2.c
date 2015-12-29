@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/12 15:32:56 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/29 12:09:07 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/29 12:21:06 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,103 +74,15 @@ void	attrib_p(char **str, t_var **var, int count[3])
 
 void	attrib_x(char **str, t_var **var, int count[3])
 {
-	int nbr;
-	int flag;
-	int k;
-	int l;
-	int check;
-	int check_double;
-	int diff;
-	int p;
-	int spec;
-	char c;
+	t_cut t_v;
 
-	k = 0;
-	p = 1;
-	diff = 0;
-	spec = 0;
-	c = 't';
-	nbr = ft_nbrlen(var[count[2]]->u_long);
-	l = ft_atoi_spec_o(str[count[0]]);
-	check_double = ft_atoi_double(str[count[0]]);
-	check = ft_atoi_ultra(str[count[0]]);
-	flag = check_flag(str, count, &nbr, &c);
-	str[count[0]] = ft_ntoa_base_un(var[count[2]]->u_long, "0123456789abcdef");
-	nbr = ft_strlen(str[count[0]]);
+	ft_cut_init_x(&t_v, var, str, count);
 	if (flag == 5000)
-	{
-		while (k < check_double - nbr)
-		{
-			str[count[0]] = ft_strjoin("0", str[count[0]]);
-			k++;
-		}
-		if (var[count[2]]->u_long != 0)
-			str[count[0]] = ft_strjoin("0x", str[count[0]]);
-		flag = l;
-		if (var[count[2]]->u_long == 0)
-			spec = 0;
-		else
-			spec = 1;
-		nbr++;
-	}
+		ft_cut_flag_x1(&t_v, var, str, count);
 	else if (flag == 3000)
-	{
-		if (var[count[2]]->stars < 0)
-		{
-			while (k > var[count[2]]->stars + nbr - 1)
-			{
-				str[count[0]] = ft_strjoin(str[count[0]], " ");
-				k--;
-			}
-		}
-		else
-		{
-			while (k < var[count[2]]->stars - nbr + 1)
-			{
-				str[count[0]] = ft_strjoin(" ", str[count[0]]);
-				k++;
-			}
-		}
-	}
+		ft_cut_flag_x2(&t_v, var, str, count);
 	else if (flag == 3500)
-	{
-		if (check_double >= nbr)
-			diff = check_double;
-		else
-			diff = nbr;
-		if (var[count[2]]->entier < 0)
-		{
-			str[count[0]] = ft_strsub(str[count[0]], 1, ft_nbrlen(var[count[2]]->entier) + 1);
-			if (check < check_double)
-				k = -1;
-			while (k < check_double - nbr - 1)
-			{
-				str[count[0]] = ft_strjoin("0", str[count[0]]);
-				k++;
-				p = 0;
-			}
-			str[count[0]] = ft_strjoin("-", str[count[0]]);
-			while (p < check - diff)
-			{
-				str[count[0]] = ft_strjoin(" ", str[count[0]]);
-				p++;
-			}
-		}
-		else
-		{
-			while (k < check_double - nbr)
-			{
-				str[count[0]] = ft_strjoin("0", str[count[0]]);
-				k++;
-			}
-			k = 0;
-			while (k < check - diff)
-			{
-				str[count[0]] = ft_strjoin(" ", str[count[0]]);
-				k++;
-			}
-		}
-	}
+		ft_cut_flag_x3(&t_v, var, str, count);
 	if (flag != 0 && flag != -1 && flag != 1000 && flag != 2000 &&
 			flag != 3500 && flag != 3000 && flag != 5000 && spec == 0)
 	{
