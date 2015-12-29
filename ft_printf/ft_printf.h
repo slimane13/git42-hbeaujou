@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/11 15:28:05 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/28 16:40:51 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/29 10:58:46 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,19 @@ typedef struct		s_var
 	wint_t			w_entier;
 }					t_var;
 
+typedef struct		s_cut
+{
+	int				nbr;
+	int				flag;
+	int				k;
+	int				p;
+	int				diff;
+	int				check;
+	int				c_d;
+	int				neg;
+	char			c;
+}					t_cut;
+
 extern int retour;
 extern int rajout;
 extern int char_nul;
@@ -52,6 +65,12 @@ int		run_var(char *str, char c);
 int		ft_wtomb(char *s, wchar_t wchar);
 
 int		ft_printf(char *format, ...);
+
+void	ft_cut_init(t_cut *t_v, t_var **var, char **str, int count[3]);
+void    ft_cut_flag_d1(t_cut *t_v, t_var **var, char **str, int count[3]);
+void    ft_cut_flag_d2(t_cut *t_v, t_var **var, char **str, int count[3]);
+void    ft_cut_flag_d3(t_cut *t_v, t_var **var, char **str, int count[3]);
+void    ft_cut_cut_d3_1(t_cut *t_v, t_var **var, char **str, int count[3]);
 
 void	attrib_erreur_conv(char **str, int count[3]);
 void    add_flag_special(char *str, int var[3]);
