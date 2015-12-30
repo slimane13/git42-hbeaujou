@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/11 15:28:05 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/30 15:45:03 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/30 16:00:12 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,14 @@ int		run_var(char *str, char c);
 int		ft_wtomb(char *s, wchar_t wchar);
 
 int		ft_printf(char *format, ...);
+
+void	ft_cut_init_d_j(t_cut *t_v, t_var **var, char **str, int count[3]);
+void    ft_cut_flag_d1_j(t_cut *t_v, char **str, int count[3]);
+void    ft_cut_flag_d2_j(t_cut *t_v, t_var **var, char **str, int count[3]);
+void    ft_cut_flag_d3_j(t_cut *t_v, char **str, int count[3]);
+void    ft_cut_flag_d3_1j(t_cut *t_v, char **str, int count[3]);
+void    ft_cut_flag_d3_2j(t_cut *t_v, char **str, int count[3]);
+void    ft_cut_flag_d4_j(t_cut *t_v, char **str, int count[3]);
 
 void	ft_cut_init_x_mchr(t_cut *t_v, t_var **var, char **str, int count[3]);
 void    ft_cut_flag_x1_mchr(t_cut *t_v, t_var **var, char **str, int count[3]);
