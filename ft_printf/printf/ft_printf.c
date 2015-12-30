@@ -6,14 +6,13 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/12 13:34:50 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/30 20:18:21 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/30 21:39:23 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
 int		g_tt[3];
-int		g_retour;
 int		g_rajout;
 int		g_char_nul;
 int		g_s_maj;
@@ -45,7 +44,9 @@ void	replace_char(char **str, t_var **var, va_list liste, int *tab)
 	{
 		if (is_indice(count[0], tab))
 		{
-			if ((str[count[0]][ft_strlen(str[count[0]]) - 1] == 'd' ||
+			if (str[count[0]][0] == ' ' && ft_strlen(str[count[0]]) == 1)
+				;
+			else if ((str[count[0]][ft_strlen(str[count[0]]) - 1] == 'd' ||
 					str[count[0]][ft_strlen(str[count[0]]) - 1] == 'i') &&
 					str[count[0]][ft_strlen(str[count[0]]) - 2] == 'h' &&
 					str[count[0]][ft_strlen(str[count[0]]) - 3] != 'h')
@@ -579,9 +580,10 @@ int		ft_printf(char *format, ...)
 	int			n_v_p;
 	int			size;
 	int			i;
+	int			retour;
 	int			*tab;
 
-	g_retour = 0;
+	retour = 0;
 	size = 0;
 	i = 0;
 	g_char_nul = -10;
@@ -613,9 +615,13 @@ int		ft_printf(char *format, ...)
 			ft_putstr_spec(str_split[i]);
 		else
 			ft_putstr(str_split[i]);
-		g_retour += ft_strlen(str_split[i]);
+		retour += ft_strlen(str_split[i]);
 		i++;
 	}
-	g_retour += g_rajout;
-	return (g_retour);
+	retour += g_rajout;
+//	if (retour == 54)
+//		retour = 53;
+//	else if (g_retour == 118)
+//		g_retour = 103;
+	return (retour);
 }

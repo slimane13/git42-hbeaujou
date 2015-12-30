@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/30 17:46:52 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/30 20:27:12 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/30 21:35:37 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ typedef struct			s_cut
 }						t_cut;
 
 extern int				g_tt[3];
-extern int				g_retour;
 extern int				g_rajout;
 extern int				g_char_nul;
 extern int				g_s_maj;
