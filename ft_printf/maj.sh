@@ -1,3 +1,3 @@
-cp ft_printf.h libft/includes
-cp ft_printf.h libft
-cp *.c libft
+cp ft_printf.h printf
+cp libft.h printf
+mv *.c printf
