@@ -6,18 +6,18 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/21 15:00:07 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/30 18:24:27 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/30 18:47:44 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int is_ascii_code_point(int val)
+int		is_ascii_code_point(int val)
 {
-	return val >= 0x0000 && val <= 0x007F;
+	return (val >= 0x0000 && val <= 0x007F);
 }
 
-int utf8encode(char* buf, int codepoint)
+int		utf8encode(char *buf, int codepoint)
 {
 	int count;
 	int offset;
@@ -29,7 +29,7 @@ int utf8encode(char* buf, int codepoint)
 	if (is_ascii_code_point(codepoint))
 	{
 		buf[0] = (char)codepoint;
-		return 1;
+		return (1);
 	}
 	if (codepoint >= 0x0080 && codepoint <= 0x07FF)
 	{
