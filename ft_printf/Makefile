@@ -6,13 +6,14 @@
 #    By: aemebiku <aemebiku@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/06/26 15:32:35 by aemebiku          #+#    #+#              #
-#    Updated: 2015/12/30 18:19:54 by hbeaujou         ###   ########.fr        #
+#    Updated: 2015/12/30 18:46:47 by hbeaujou         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
 NAME = libftprintf.a
 
 SOURCES =	printf/add_flag.c				\
+			printf/add_flag2.c				\
 			printf/attrib_conv_erreur.c		\
 			printf/attrib_conv_c.c			\
 			printf/attrib_conv_p.c			\
