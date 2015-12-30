@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/30 17:46:52 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/30 19:27:29 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/30 19:54:44 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -483,6 +483,19 @@ int						cut_flag_number(char **str, int count[3],
 		int *flag, char *c);
 int						cut_flag_number_2(char **str, int count[3],
 		int *flag, char *c);
+int						cut_utf8_1(char *buf, int code);
+void					cut_utf8_2(int *count, int *offset);
+void					cut_utf8_3(int *count, int *offset);
+void					cut_utf8_4(int *count, int *offset);
+
+int						cut_flag_check(char **str, int count[3], int *nbr);
+int						cut_flag_check2(int *nbr);
+int						cut_flag_check3(int *nbr);
+int						cut_flag_check4(int *nbr);
+int						cut_flag_check5(int *nbr);
+int						cut_flag_check6(int *nbr);
+int						cut_flag_check7(int *nbr, char *c, char **str,
+		int count[3]);
 
 void					attrib_erreur_conv(char **str, int count[3]);
 void					add_flag_special(char *str, int var[3]);

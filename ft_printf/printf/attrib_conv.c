@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/12 15:20:45 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/30 17:47:36 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/30 19:54:51 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,52 +16,24 @@ int		check_flag(char **str, int count[3], int *nbr, char *c)
 {
 	if ((str[count[0]][0] == '-' && str[count[0]][1] == '+') ||
 			(str[count[0]][0] == '+' && str[count[0]][1] == '-'))
-	{
-		*nbr = *nbr + 1;
-		return (4000);
-	}
+		return (cut_flag_check2(nbr));
 	else if (str[count[0]][0] == '0' && str[count[0]][1] == '-')
-	{
-		*nbr = *nbr + 1;
-		return (4500);
-	}
+		return (cut_flag_check3(nbr));
 	else if ((ft_isdigit(str[count[0]][0]) && str[count[0]][1] == '.') ||
 			(ft_isdigit(str[count[0]][0]) && ft_isdigit(str[count[0]][1]) &&
 			str[count[0]][2] == '.'))
 		return (3500);
 	else if ((str[count[0]][0] == '+' && str[count[0]][1] != '0') ||
 			(str[count[0]][0] == ' ' && str[count[0]][1] == '+'))
-	{
-		*nbr = *nbr + 1;
-		return (1000);
-	}
+		return (cut_flag_check4(nbr));
 	else if (str[count[0]][0] == '+' && str[count[0]][1] == '0')
-	{
-		*nbr = *nbr + 1;
-		return (1500);
-	}
-	else if (str[count[0]][0] == ' ' && str[count[0]][1] == '0')
-	{
-		*nbr = *nbr + 1;
-		return (2500);
-	}
-	else if (str[count[0]][0] == ' ' && str[count[0]][1] != '+')
-	{
-		*nbr = *nbr + 1;
-		return (2000);
-	}
+		return (cut_flag_check5(nbr));
+	else if (str[count[0]][0] == ' ')
+		return (cut_flag_check(str, count, nbr));
 	else if (str[count[0]][0] == '*')
-	{
-		*nbr = *nbr + 1;
-		return (3000);
-	}
+		return (cut_flag_check6(nbr));
 	else if (str[count[0]][0] == '#')
-	{
-		if (str[count[0]][1] == '.')
-			*c = '.';
-		*nbr = *nbr + 1;
-		return (5000);
-	}
+		return (cut_flag_check7(nbr, c, str, count));
 	else
 		return (check_flag_number(str, count, nbr, c));
 	return (-1);

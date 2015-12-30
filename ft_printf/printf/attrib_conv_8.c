@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/21 15:00:07 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/30 18:47:44 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/30 19:43:09 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,33 +27,21 @@ int		utf8encode(char *buf, int codepoint)
 	count = 0;
 	offset = 0;
 	if (is_ascii_code_point(codepoint))
-	{
-		buf[0] = (char)codepoint;
-		return (1);
-	}
+		return (cut_utf8_1(buf, codepoint));
 	if (codepoint >= 0x0080 && codepoint <= 0x07FF)
-	{
-		count = 1;
-		offset = 0xC0;
-	}
+		cut_utf8_2(&count, &offset);
 	else if (codepoint >= 0x0800 && codepoint <= 0xFFFF)
-	{
-		count = 2;
-		offset = 0xE0;
-	}
+		cut_utf8_3(&count, &offset);
 	else if (codepoint >= 0x10000 && codepoint <= 0x10FFFF)
-	{
-		count = 3;
-		offset = 0xF0;
-	}
+		cut_utf8_4(&count, &offset);
 	i = 0;
 	buf[i] = (codepoint >> (6 * count)) + offset;
 	i++;
-	while (count > 0)
+	count++;
+	while (--count > 0)
 	{
 		temp = codepoint >> (6 * (count - 1));
 		buf[i++] = 0x80 | (temp & 0x3f);
-		count--;
 	}
 	return (i);
 }

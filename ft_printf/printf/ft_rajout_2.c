@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/30 19:21:38 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/30 19:28:27 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/30 19:50:46 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,31 @@ int	cut_flag_number_2(char **str, int count[3], int *flag, char *c)
 		*flag = ft_atoi_spec(str[count[0]]);
 	*c = '.';
 	return (*flag);
+}
+
+int	cut_flag_check(char **str, int count[3], int *nbr)
+{
+	if (str[count[0]][0] == ' ' && str[count[0]][1] == '0')
+	{
+		*nbr = *nbr + 1;
+		return (2500);
+	}
+	else if (str[count[0]][0] == ' ' && str[count[0]][1] != '+')
+	{
+		*nbr = *nbr + 1;
+		return (2000);
+	}
+	return (-1);
+}
+
+int	cut_flag_check2(int *nbr)
+{
+	*nbr = *nbr + 1;
+	return (4000);
+}
+
+int	cut_flag_check3(int *nbr)
+{
+	*nbr = *nbr + 1;
+	return (4500);
 }
