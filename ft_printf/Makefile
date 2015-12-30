@@ -6,7 +6,7 @@
 #    By: aemebiku <aemebiku@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/06/26 15:32:35 by aemebiku          #+#    #+#              #
-#    Updated: 2015/12/30 16:24:22 by hbeaujou         ###   ########.fr        #
+#    Updated: 2015/12/30 16:37:53 by hbeaujou         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -41,6 +41,7 @@ SOURCES =	libft/ft_memset.c				\
 			libft/attrib_conv_u2_llong.c	\
 			libft/attrib_conv_u.c			\
 			libft/attrib_conv_u2.c			\
+			libft/attrib_conv_u_j.c			\
 			libft/attrib_conv_c_maj.c		\
 			libft/attrib_conv_x_char.c		\
 			libft/attrib_conv_x_mchr.c		\

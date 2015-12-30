@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/11 15:28:05 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/30 16:26:57 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/30 16:38:45 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,13 @@ int		run_var(char *str, char c);
 int		ft_wtomb(char *s, wchar_t wchar);
 
 int		ft_printf(char *format, ...);
+
+void	ft_cut_init_u_j(t_cut *t_v, t_var **var, char **str, int count[3]);
+void    ft_cut_flag_u1_j(t_cut *t_v, char **str, int count[3]);
+void    ft_cut_flag_u2_j(t_cut *t_v, t_var **var, char **str, int count[3]);
+void    ft_cut_flag_u3_j(t_cut *t_v, char **str, int count[3]);
+void    ft_cut_flag_u3_1j(t_cut *t_v, char **str, int count[3]);
+void    ft_cut_flag_u3_2j(t_cut *t_v, char **str, int count[3]);
 
 void	ft_cut_init_s_maj(t_cut *t_v, t_var **var, char **str, int count[3]);
 void	ft_cut_init_s2_maj(t_cut *t_v, t_var **var, char **str, int count[3]);
