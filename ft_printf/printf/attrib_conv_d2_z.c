@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/30 16:55:47 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/30 16:56:49 by hbeaujou         ###   ########.fr       */
+/*   Created: 2015/12/30 17:23:10 by hbeaujou          #+#    #+#             */
+/*   Updated: 2015/12/30 17:23:11 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void    ft_cut_flag_d4_z(t_cut *t_v, char **str, int count[3])
+void	ft_cut_flag_d4_z(t_cut *t_v, char **str, int count[3])
 {
 	if ((*t_v).flag < -1 && (*t_v).c != '0')
 		ft_cut_flag_d4_1z(t_v, str, count);
@@ -36,7 +36,7 @@ void    ft_cut_flag_d4_z(t_cut *t_v, char **str, int count[3])
 	}
 }
 
-void    ft_cut_flag_d4_1z(t_cut *t_v, char **str, int count[3])
+void	ft_cut_flag_d4_1z(t_cut *t_v, char **str, int count[3])
 {
 	while ((*t_v).k > (*t_v).flag + (*t_v).nbr + (*t_v).neg)
 	{
@@ -45,7 +45,7 @@ void    ft_cut_flag_d4_1z(t_cut *t_v, char **str, int count[3])
 	}
 }
 
-void    ft_cut_flag_d4_2z(t_cut *t_v, char **str, int count[3])
+void	ft_cut_flag_d4_2z(t_cut *t_v, char **str, int count[3])
 {
 	while ((*t_v).k < (*t_v).flag - (*t_v).nbr - (*t_v).neg)
 	{

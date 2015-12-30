@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/14 10:46:56 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/29 15:44:07 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/30 17:33:04 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ void	attrib_o_maj(char **str, t_var **var, int count[3])
 void	attrib_d_maj(char **str, t_var **var, int count[3])
 {
 	t_cut t_v;
-	
+
 	ft_cut_init_d_maj(&t_v, var, str, count);
 	if (t_v.flag == 1000 && var[count[2]]->v_long >= 0)
 	{

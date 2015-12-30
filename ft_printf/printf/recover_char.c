@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/12 11:58:53 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/29 16:56:43 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/30 17:53:30 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,8 @@ void	recover_percent(char *format, char *str, int len, int *tab)
 			indice++;
 			add_flag_zero(str, var);
 		}
-		else if (format[var[0]] == '%' && format[var[0] + 1] == ' ' && format[var[0] + 2] == '%')
+		else if (format[var[0]] == '%' && format[var[0] + 1] == ' ' &&
+				format[var[0] + 2] == '%')
 		{
 			if (var[0] != 0)
 				k++;
@@ -92,7 +93,9 @@ void	recover_percent(char *format, char *str, int len, int *tab)
 			indice++;
 			add_flag_special(str, var);
 		}
-		else if ((format[var[0]] == '%' && format[var[0] + 1] != '%') || (format[var[0]] == '%' && flag == 1))
+		else if ((format[var[0]] == '%' &&
+					format[var[0] + 1] != '%') ||
+				(format[var[0]] == '%' && flag == 1))
 		{
 			k++;
 			tab[indice] = k;

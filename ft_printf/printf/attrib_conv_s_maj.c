@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/30 16:11:25 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/30 16:26:43 by hbeaujou         ###   ########.fr       */
+/*   Created: 2015/12/30 17:26:21 by hbeaujou          #+#    #+#             */
+/*   Updated: 2015/12/30 17:26:22 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void    ft_cut_init_s_maj(t_cut *t_v, t_var **var, char **str, int count[3])
+void	ft_cut_init_s_maj(t_cut *t_v, t_var **var, char **str, int count[3])
 {
 	(*t_v).k = 0;
 	(*t_v).compteur = 0;
@@ -34,7 +34,7 @@ void    ft_cut_init_s_maj(t_cut *t_v, t_var **var, char **str, int count[3])
 		ft_cut_init_s2_maj(t_v, var, str, count);
 }
 
-void    ft_cut_init_s2_maj(t_cut *t_v, t_var **var, char **str, int count[3])
+void	ft_cut_init_s2_maj(t_cut *t_v, t_var **var, char **str, int count[3])
 {
 	while (var[count[2]]->w_string[(*t_v).i])
 	{
@@ -48,7 +48,7 @@ void    ft_cut_init_s2_maj(t_cut *t_v, t_var **var, char **str, int count[3])
 	}
 }
 
-void    ft_cut_flag_s1_maj(t_cut *t_v, t_var **var, char **str, int count[3])
+void	ft_cut_flag_s1_maj(t_cut *t_v, t_var **var, char **str, int count[3])
 {
 	if (var[count[2]]->stars < 0)
 	{
@@ -68,7 +68,7 @@ void    ft_cut_flag_s1_maj(t_cut *t_v, t_var **var, char **str, int count[3])
 	}
 }
 
-void    ft_cut_flag_s2_maj(t_cut *t_v, char **str, int count[3])
+void	ft_cut_flag_s2_maj(t_cut *t_v, char **str, int count[3])
 {
 	if ((*t_v).c_d >= (*t_v).compteur)
 		(*t_v).diff = (*t_v).c_d;
@@ -87,7 +87,7 @@ void    ft_cut_flag_s2_maj(t_cut *t_v, char **str, int count[3])
 		(*t_v).p = 0;
 }
 
-void    ft_cut_flag_s3_maj(t_cut *t_v, char **str, int count[3])
+void	ft_cut_flag_s3_maj(t_cut *t_v, char **str, int count[3])
 {
 	(*t_v).nbr = ft_strlen(str[count[0]]);
 	if ((*t_v).flag < -1 && (*t_v).c != '0')

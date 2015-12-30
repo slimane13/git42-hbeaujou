@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/29 09:20:08 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/29 11:15:16 by hbeaujou         ###   ########.fr       */
+/*   Created: 2015/12/30 17:21:35 by hbeaujou          #+#    #+#             */
+/*   Updated: 2015/12/30 17:48:41 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,8 @@ void	ft_cut_flag_d3(t_cut *t_v, t_var **var, char **str, int count[3])
 
 void	ft_cut_cut_d3_1(t_cut *t_v, t_var **var, char **str, int count[3])
 {
-	str[count[0]] = ft_strsub(str[count[0]], 1, ft_nbrlen(var[count[2]]->entier) + 1);
+	str[count[0]] = ft_strsub(str[count[0]], 1,
+			ft_nbrlen(var[count[2]]->entier) + 1);
 	if ((*t_v).check < (*t_v).c_d)
 		(*t_v).k = -1;
 	while ((*t_v).k < (*t_v).c_d - (*t_v).nbr - 1)

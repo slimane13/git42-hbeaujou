@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/30 17:08:35 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/30 17:14:01 by hbeaujou         ###   ########.fr       */
+/*   Created: 2015/12/30 17:25:25 by hbeaujou          #+#    #+#             */
+/*   Updated: 2015/12/30 17:25:26 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void    ft_cut_init_o_z(t_cut *t_v, t_var **var, char **str, int count[3])
+void	ft_cut_init_o_z(t_cut *t_v, t_var **var, char **str, int count[3])
 {
 	(*t_v).k = 0;
 	(*t_v).c = 't';
@@ -23,7 +23,7 @@ void    ft_cut_init_o_z(t_cut *t_v, t_var **var, char **str, int count[3])
 	(*t_v).nbr = ft_strlen(str[count[0]]);
 }
 
-void    ft_cut_flag_o1_z(t_cut *t_v, t_var **var, char **str, int count[3])
+void	ft_cut_flag_o1_z(t_cut *t_v, t_var **var, char **str, int count[3])
 {
 	if (var[count[2]]->stars < 0)
 	{
@@ -43,7 +43,7 @@ void    ft_cut_flag_o1_z(t_cut *t_v, t_var **var, char **str, int count[3])
 	}
 }
 
-void    ft_cut_flag_o2_z(t_cut *t_v, char **str, int count[3])
+void	ft_cut_flag_o2_z(t_cut *t_v, char **str, int count[3])
 {
 	if ((*t_v).flag < -1 && (*t_v).c != '0')
 		ft_cut_flag_o2_1z(t_v, str, count);
@@ -67,7 +67,7 @@ void    ft_cut_flag_o2_z(t_cut *t_v, char **str, int count[3])
 	}
 }
 
-void    ft_cut_flag_o2_1z(t_cut *t_v, char **str, int count[3])
+void	ft_cut_flag_o2_1z(t_cut *t_v, char **str, int count[3])
 {
 	while ((*t_v).k > (*t_v).flag + (*t_v).nbr)
 	{
@@ -76,7 +76,7 @@ void    ft_cut_flag_o2_1z(t_cut *t_v, char **str, int count[3])
 	}
 }
 
-void    ft_cut_flag_o2_2z(t_cut *t_v, char **str, int count[3])
+void	ft_cut_flag_o2_2z(t_cut *t_v, char **str, int count[3])
 {
 	while ((*t_v).k < (*t_v).flag - (*t_v).nbr)
 	{

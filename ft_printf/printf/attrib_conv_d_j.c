@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/30 15:54:04 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/30 16:05:12 by hbeaujou         ###   ########.fr       */
+/*   Created: 2015/12/30 17:23:29 by hbeaujou          #+#    #+#             */
+/*   Updated: 2015/12/30 17:23:30 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void    ft_cut_init_d_j(t_cut *t_v, t_var **var, char **str, int count[3])
+void	ft_cut_init_d_j(t_cut *t_v, t_var **var, char **str, int count[3])
 {
 	(*t_v).k = 0;
 	(*t_v).c = 't';
@@ -29,7 +29,7 @@ void    ft_cut_init_d_j(t_cut *t_v, t_var **var, char **str, int count[3])
 		(*t_v).neg = 1;
 }
 
-void    ft_cut_flag_d1_j(t_cut *t_v, char **str, int count[3])
+void	ft_cut_flag_d1_j(t_cut *t_v, char **str, int count[3])
 {
 	while ((*t_v).k < (*t_v).c_d - (*t_v).nbr)
 	{
@@ -44,7 +44,7 @@ void    ft_cut_flag_d1_j(t_cut *t_v, char **str, int count[3])
 	}
 }
 
-void    ft_cut_flag_d2_j(t_cut *t_v, t_var **var, char **str, int count[3])
+void	ft_cut_flag_d2_j(t_cut *t_v, t_var **var, char **str, int count[3])
 {
 	if (var[count[2]]->stars < 0)
 	{
@@ -64,7 +64,7 @@ void    ft_cut_flag_d2_j(t_cut *t_v, t_var **var, char **str, int count[3])
 	}
 }
 
-void    ft_cut_flag_d3_j(t_cut *t_v, char **str, int count[3])
+void	ft_cut_flag_d3_j(t_cut *t_v, char **str, int count[3])
 {
 	if ((*t_v).flag < -1 && (*t_v).c != '0')
 		ft_cut_flag_d3_1j(t_v, str, count);

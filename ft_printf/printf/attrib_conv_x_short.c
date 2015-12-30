@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/30 14:34:35 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/30 14:34:38 by hbeaujou         ###   ########.fr       */
+/*   Created: 2015/12/30 17:29:41 by hbeaujou          #+#    #+#             */
+/*   Updated: 2015/12/30 17:29:42 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	ft_cut_init_x_short(t_cut *t_v, t_var **var, char **str, int count[3])
 	(*t_v).nbr = ft_strlen(str[count[0]]);
 }
 
-void    ft_cut_flag_x1_short(t_cut *t_v, t_var **var, char **str, int count[3])
+void	ft_cut_flag_x1_short(t_cut *t_v, t_var **var, char **str, int count[3])
 {
 	if (var[count[2]]->stars < 0)
 	{
@@ -43,7 +43,7 @@ void    ft_cut_flag_x1_short(t_cut *t_v, t_var **var, char **str, int count[3])
 	}
 }
 
-void    ft_cut_flag_x2_short(t_cut *t_v, char **str, int count[3])
+void	ft_cut_flag_x2_short(t_cut *t_v, char **str, int count[3])
 {
 	if ((*t_v).flag < -1 && (*t_v).c != '0')
 		ft_cut_flag_x2_1short(t_v, str, count);
@@ -67,7 +67,7 @@ void    ft_cut_flag_x2_short(t_cut *t_v, char **str, int count[3])
 	}
 }
 
-void    ft_cut_flag_x2_1short(t_cut *t_v, char **str, int count[3])
+void	ft_cut_flag_x2_1short(t_cut *t_v, char **str, int count[3])
 {
 	while ((*t_v).k > (*t_v).flag + (*t_v).nbr)
 	{
@@ -76,7 +76,7 @@ void    ft_cut_flag_x2_1short(t_cut *t_v, char **str, int count[3])
 	}
 }
 
-void    ft_cut_flag_x2_2short(t_cut *t_v, char **str, int count[3])
+void	ft_cut_flag_x2_2short(t_cut *t_v, char **str, int count[3])
 {
 	while ((*t_v).k < (*t_v).flag - (*t_v).nbr)
 	{

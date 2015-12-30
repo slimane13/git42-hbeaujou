@@ -6,11 +6,10 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/19 20:35:31 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/30 16:28:33 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/30 17:36:37 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include <wchar.h>
 #include "ft_printf.h"
 
 void	attrib_o_char(char **str, t_var **var, int count[3])
@@ -37,7 +36,7 @@ void	attrib_o_char(char **str, t_var **var, int count[3])
 
 void	attrib_x_char(char **str, t_var **var, int count[3])
 {
-	t_cut t_v ;
+	t_cut t_v;
 
 	ft_cut_init_x_char(&t_v, var, str, count);
 	if (t_v.flag == 1000)
@@ -58,14 +57,15 @@ void	attrib_x_char(char **str, t_var **var, int count[3])
 	if (t_v.c != '.' && t_v.c != '0')
 	{
 		while (str[count[0]][0] == '0' && str[count[0]][1] != '\0')
-			str[count[0]] = ft_strsub(str[count[0]], 1, ft_strlen(str[count[0]]));
+			str[count[0]] = ft_strsub(str[count[0]],
+					1, ft_strlen(str[count[0]]));
 	}
 	count[2]++;
 }
 
 void	attrib_x_maj_char(char **str, t_var **var, int count[3])
 {
-	t_cut t_v ;
+	t_cut t_v;
 
 	ft_cut_init_x_mchr(&t_v, var, str, count);
 	if (t_v.flag == 1000)
@@ -86,7 +86,8 @@ void	attrib_x_maj_char(char **str, t_var **var, int count[3])
 	if (t_v.c != '.' && t_v.c != '0')
 	{
 		while (str[count[0]][0] == '0' && str[count[0]][1] != '\0')
-			str[count[0]] = ft_strsub(str[count[0]], 1, ft_strlen(str[count[0]]));
+			str[count[0]] = ft_strsub(str[count[0]],
+					1, ft_strlen(str[count[0]]));
 	}
 	count[2]++;
 }
@@ -110,7 +111,8 @@ void	attrib_d_j(char **str, t_var **var, int count[3])
 	else if (t_v.flag == 3000)
 		ft_cut_flag_d2_j(&t_v, var, str, count);
 	else if (t_v.flag != 1 && t_v.flag != 1000 && t_v.flag != 2000 &&
-			t_v.flag != 3000 && t_v.flag != 4000 && t_v.flag != 3500 && t_v.flag != 5000)
+			t_v.flag != 3000 && t_v.flag != 4000 &&
+			t_v.flag != 3500 && t_v.flag != 5000)
 		ft_cut_flag_d3_j(&t_v, str, count);
 	count[2]++;
 }
@@ -126,8 +128,9 @@ void	attrib_s_maj(char **str, t_var **var, int count[3])
 		ft_cut_flag_s1_maj(&t_v, var, str, count);
 	else if (t_v.flag == 3500)
 		ft_cut_flag_s2_maj(&t_v, str, count);
-	else if (t_v.flag != -1 && t_v.flag != 1000 && t_v.flag != 2000 && t_v.flag != 3500 &&
-			t_v.flag != 3000 && t_v.flag != 4000 && t_v.flag != 5000 && t_v.c != '.')
+	else if (t_v.flag != -1 && t_v.flag != 1000 && t_v.flag != 2000 &&
+			t_v.flag != 3500 && t_v.flag != 3000 &&
+			t_v.flag != 4000 && t_v.flag != 5000 && t_v.c != '.')
 		ft_cut_flag_s3_maj(&t_v, str, count);
 	if (var[count[2]]->w_string == NULL && t_v.c == '.')
 		str[count[0]][0] = '\0';

@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/29 14:53:31 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/29 15:08:34 by hbeaujou         ###   ########.fr       */
+/*   Created: 2015/12/30 17:26:48 by hbeaujou          #+#    #+#             */
+/*   Updated: 2015/12/30 17:52:09 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void    ft_cut_init_u(t_cut *t_v, t_var **var, char **str, int count[3])
+void	ft_cut_init_u(t_cut *t_v, t_var **var, char **str, int count[3])
 {
 	(*t_v).k = 0;
 	(*t_v).c = 't';
@@ -26,11 +26,12 @@ void    ft_cut_init_u(t_cut *t_v, t_var **var, char **str, int count[3])
 	if (str[count[0]][0] == '.')
 		(*t_v).nbr--;
 	str[count[0]] = (char *)malloc(sizeof(char) * ((*t_v).nbr * 5));
-	ft_ulltstr_base((unsigned long long)var[count[2]]->u_entier, "0123456789", str[count[0]]);
+	ft_ulltstr_base((unsigned long long)var[count[2]]->u_entier,
+			"0123456789", str[count[0]]);
 	(*t_v).s_nbr = ft_strlen(str[count[0]]);
 }
 
-void    ft_cut_flag_u1(t_cut *t_v, char **str, int count[3])
+void	ft_cut_flag_u1(t_cut *t_v, char **str, int count[3])
 {
 	str[count[0]] = ft_strjoin("+", str[count[0]]);
 	while ((*t_v).k < (*t_v).check - (*t_v).s_nbr)
@@ -40,7 +41,7 @@ void    ft_cut_flag_u1(t_cut *t_v, char **str, int count[3])
 	}
 }
 
-void    ft_cut_flag_u2(t_cut *t_v, t_var **var, char **str, int count[3])
+void	ft_cut_flag_u2(t_cut *t_v, t_var **var, char **str, int count[3])
 {
 	if (var[count[2]]->stars < 0)
 	{
@@ -60,7 +61,7 @@ void    ft_cut_flag_u2(t_cut *t_v, t_var **var, char **str, int count[3])
 	}
 }
 
-void    ft_cut_flag_u3(t_cut *t_v, t_var **var, char **str, int count[3])
+void	ft_cut_flag_u3(t_cut *t_v, t_var **var, char **str, int count[3])
 {
 	if ((*t_v).c_d >= (*t_v).nbr)
 		(*t_v).diff = (*t_v).c_d;
@@ -84,9 +85,10 @@ void    ft_cut_flag_u3(t_cut *t_v, t_var **var, char **str, int count[3])
 	}
 }
 
-void    ft_cut_flag_u3_1(t_cut *t_v, t_var **var, char **str, int count[3])
+void	ft_cut_flag_u3_1(t_cut *t_v, t_var **var, char **str, int count[3])
 {
-	str[count[0]] = ft_strsub(str[count[0]], 1, ft_nbrlen(var[count[2]]->entier) + 1);
+	str[count[0]] = ft_strsub(str[count[0]], 1,
+			ft_nbrlen(var[count[2]]->entier) + 1);
 	if ((*t_v).check < (*t_v).c_d)
 		(*t_v).k = -1;
 	while ((*t_v).k < (*t_v).c_d - (*t_v).nbr - 1)

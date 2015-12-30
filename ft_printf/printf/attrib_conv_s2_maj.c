@@ -5,20 +5,20 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/30 16:17:42 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/30 16:25:40 by hbeaujou         ###   ########.fr       */
+/*   Created: 2015/12/30 17:26:13 by hbeaujou          #+#    #+#             */
+/*   Updated: 2015/12/30 17:26:14 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void    ft_cut_flag_s4_maj(t_cut *t_v, char **str, int count[3])
+void	ft_cut_flag_s4_maj(t_cut *t_v, char **str, int count[3])
 {
 	(*t_v).flag = (*t_v).flag - (*t_v).flag % 3;
 	str[count[0]][(*t_v).flag] = '\0';
 }
 
-void    ft_cut_flag_s5_maj(t_cut *t_v, char **str, int count[3])
+void	ft_cut_flag_s5_maj(t_cut *t_v, char **str, int count[3])
 {
 	if ((*t_v).c_d < 3)
 		(*t_v).c_d = (*t_v).c_d % 3;
@@ -34,7 +34,7 @@ void    ft_cut_flag_s5_maj(t_cut *t_v, char **str, int count[3])
 	}
 }
 
-void    ft_cut_flag_s6_maj(t_cut *t_v, char **str, int count[3])
+void	ft_cut_flag_s6_maj(t_cut *t_v, char **str, int count[3])
 {
 	(*t_v).k = 0;
 	str[count[0]][0] = '\0';

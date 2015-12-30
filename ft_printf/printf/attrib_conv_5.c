@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/19 19:56:13 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/30 15:03:27 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/30 17:34:41 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,8 @@ void	attrib_x_short(char **str, t_var **var, int count[3])
 	if (t_v.c != '.' && t_v.c != '0')
 	{
 		while (str[count[0]][0] == '0' && str[count[0]][1] != '\0')
-			str[count[0]] = ft_strsub(str[count[0]], 1, ft_strlen(str[count[0]]));
+			str[count[0]] = ft_strsub(str[count[0]],
+					1, ft_strlen(str[count[0]]));
 	}
 	count[2]++;
 }
@@ -88,7 +89,8 @@ void	attrib_x_maj_short(char **str, t_var **var, int count[3])
 	if (t_v.c != '.' && t_v.c != '0')
 	{
 		while (str[count[0]][0] == '0' && str[count[0]][1] != '\0')
-			str[count[0]] = ft_strsub(str[count[0]], 1, ft_strlen(str[count[0]]));
+			str[count[0]] = ft_strsub(str[count[0]],
+					1, ft_strlen(str[count[0]]));
 	}
 	count[2]++;
 }
@@ -111,8 +113,9 @@ void	attrib_d_char(char **str, t_var **var, int count[3])
 		ft_cut_flag_d1_char(&t_v, var, str, count);
 	else if (t_v.flag == 3000)
 		ft_cut_flag_d2_char(&t_v, var, str, count);
-	else if (t_v.flag != 1 && t_v.flag != 1000 && t_v.flag != 2000 &&
-			t_v.flag != 3000 && t_v.flag != 4000 && t_v.flag != 3500 && t_v.flag != 5000)
+	else if (t_v.flag != 1 && t_v.flag != 1000 && t_v.flag != 2000
+			&& t_v.flag != 3000 && t_v.flag != 4000
+			&& t_v.flag != 3500 && t_v.flag != 5000)
 		ft_cut_flag_d4_char(&t_v, var, str, count);
 	count[2]++;
 }

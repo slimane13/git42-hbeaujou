@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/29 15:29:55 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/29 15:46:35 by hbeaujou         ###   ########.fr       */
+/*   Created: 2015/12/30 17:23:45 by hbeaujou          #+#    #+#             */
+/*   Updated: 2015/12/30 17:49:49 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void    ft_cut_init_d_maj(t_cut *t_v, t_var **var, char **str, int count[3])
+void	ft_cut_init_d_maj(t_cut *t_v, t_var **var, char **str, int count[3])
 {
 	(*t_v).k = 0;
 	(*t_v).c = 't';
@@ -30,7 +30,7 @@ void    ft_cut_init_d_maj(t_cut *t_v, t_var **var, char **str, int count[3])
 		(*t_v).neg = 1;
 }
 
-void    ft_cut_flag_d1_maj(t_cut *t_v, t_var **var, char **str, int count[3])
+void	ft_cut_flag_d1_maj(t_cut *t_v, t_var **var, char **str, int count[3])
 {
 	if (var[count[2]]->v_long < 0)
 		ft_cut_flag_d1_1maj(t_v, var, str, count);
@@ -50,9 +50,10 @@ void    ft_cut_flag_d1_maj(t_cut *t_v, t_var **var, char **str, int count[3])
 	}
 }
 
-void    ft_cut_flag_d1_1maj(t_cut *t_v, t_var **var, char **str, int count[3])
+void	ft_cut_flag_d1_1maj(t_cut *t_v, t_var **var, char **str, int count[3])
 {
-	str[count[0]] = ft_strsub(str[count[0]], 1, ft_nbrlen(var[count[2]]->v_long) + 1);
+	str[count[0]] = ft_strsub(str[count[0]], 1,
+			ft_nbrlen(var[count[2]]->v_long) + 1);
 	while ((*t_v).k < (*t_v).c_d - (*t_v).nbr - 1)
 	{
 		str[count[0]] = ft_strjoin("0", str[count[0]]);
@@ -67,7 +68,7 @@ void    ft_cut_flag_d1_1maj(t_cut *t_v, t_var **var, char **str, int count[3])
 	}
 }
 
-void    ft_cut_flag_d2_maj(t_cut *t_v, t_var **var, char **str, int count[3])
+void	ft_cut_flag_d2_maj(t_cut *t_v, t_var **var, char **str, int count[3])
 {
 	if (var[count[2]]->v_long >= 0)
 		str[count[0]] = ft_strjoin("+", str[count[0]]);
@@ -78,7 +79,7 @@ void    ft_cut_flag_d2_maj(t_cut *t_v, t_var **var, char **str, int count[3])
 	}
 }
 
-void    ft_cut_flag_d3_maj(t_cut *t_v, t_var **var, char **str, int count[3])
+void	ft_cut_flag_d3_maj(t_cut *t_v, t_var **var, char **str, int count[3])
 {
 	if (var[count[2]]->stars < 0)
 	{

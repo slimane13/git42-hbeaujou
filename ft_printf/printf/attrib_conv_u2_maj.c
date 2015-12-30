@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/29 15:56:01 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/29 16:00:10 by hbeaujou         ###   ########.fr       */
+/*   Created: 2015/12/30 17:27:18 by hbeaujou          #+#    #+#             */
+/*   Updated: 2015/12/30 17:27:19 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void    ft_cut_flag_u3_1maj(t_cut *t_v, char **str, int count[3])
+void	ft_cut_flag_u3_1maj(t_cut *t_v, char **str, int count[3])
 {
 	while ((*t_v).k > (*t_v).flag + (*t_v).s_nbr + (*t_v).neg)
 	{
@@ -21,7 +21,7 @@ void    ft_cut_flag_u3_1maj(t_cut *t_v, char **str, int count[3])
 	}
 }
 
-void    ft_cut_flag_u3_2maj(t_cut *t_v, char **str, int count[3])
+void	ft_cut_flag_u3_2maj(t_cut *t_v, char **str, int count[3])
 {
 	while ((*t_v).k < (*t_v).flag - (*t_v).s_nbr - (*t_v).neg)
 	{

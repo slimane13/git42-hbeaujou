@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/29 11:15:38 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/29 11:33:27 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/30 17:48:22 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	ft_cut_init_c(t_cut *t_v, t_var **var, char **str, int count[3])
 		char_nul = count[0];
 }
 
-void    ft_cut_flag_c1(t_cut *t_v, t_var **var, char **str, int count[3])
+void	ft_cut_flag_c1(t_cut *t_v, t_var **var, char **str, int count[3])
 {
 	if (var[count[2]]->stars < 0)
 	{
@@ -51,7 +51,7 @@ void    ft_cut_flag_c1(t_cut *t_v, t_var **var, char **str, int count[3])
 	}
 }
 
-void    ft_cut_flag_c2(t_cut *t_v, t_var **var, char **str, int count[3])
+void	ft_cut_flag_c2(t_cut *t_v, t_var **var, char **str, int count[3])
 {
 	if ((*t_v).c_d >= (*t_v).nbr)
 		(*t_v).diff = (*t_v).c_d;
@@ -70,12 +70,13 @@ void    ft_cut_flag_c2(t_cut *t_v, t_var **var, char **str, int count[3])
 	}
 }
 
-void    ft_cut_flag_c2_1(t_cut *t_v, t_var **var, char **str, int count[3])
+void	ft_cut_flag_c2_1(t_cut *t_v, t_var **var, char **str, int count[3])
 {
-	str[count[0]] = ft_strsub(str[count[0]], 1, ft_nbrlen(var[count[2]]->entier) + 1);
+	str[count[0]] = ft_strsub(str[count[0]], 1,
+			ft_nbrlen(var[count[2]]->entier) + 1);
 	if ((*t_v).check < (*t_v).c_d)
 		(*t_v).k = -1;
-	while ((*t_v).k < (*t_v).c_d -(*t_v).nbr - 1)
+	while ((*t_v).k < (*t_v).c_d - (*t_v).nbr - 1)
 	{
 		str[count[0]] = ft_strjoin("0", str[count[0]]);
 		(*t_v).k++;
@@ -89,7 +90,7 @@ void    ft_cut_flag_c2_1(t_cut *t_v, t_var **var, char **str, int count[3])
 	}
 }
 
-void    ft_cut_flag_c3(t_cut *t_v, char **str, int count[3])
+void	ft_cut_flag_c3(t_cut *t_v, char **str, int count[3])
 {
 	if ((*t_v).flag < -1 && (*t_v).c != '0')
 	{

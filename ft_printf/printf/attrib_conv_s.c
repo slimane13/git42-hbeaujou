@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/29 11:34:56 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/29 11:47:58 by hbeaujou         ###   ########.fr       */
+/*   Created: 2015/12/30 17:25:56 by hbeaujou          #+#    #+#             */
+/*   Updated: 2015/12/30 17:25:57 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void    ft_cut_init_s(t_cut *t_v, t_var **var, char **str, int count[3])
+void	ft_cut_init_s(t_cut *t_v, t_var **var, char **str, int count[3])
 {
 	(*t_v).k = 0;
 	(*t_v).diff = 0;
@@ -36,7 +36,7 @@ void    ft_cut_init_s(t_cut *t_v, t_var **var, char **str, int count[3])
 		str[count[0]] = ft_strcpy(str[count[0]], var[count[2]]->string);
 }
 
-void    ft_cut_flag_s1(t_cut *t_v, char **str, int count[3])
+void	ft_cut_flag_s1(t_cut *t_v, char **str, int count[3])
 {
 	if ((*t_v).c_d < (*t_v).str_len)
 		str[count[0]] = ft_strsub(str[count[0]], 0, (*t_v).c_d);
@@ -63,7 +63,7 @@ void    ft_cut_flag_s1(t_cut *t_v, char **str, int count[3])
 	}
 }
 
-void    ft_cut_flag_s2(t_cut *t_v, char **str, int count[3])
+void	ft_cut_flag_s2(t_cut *t_v, char **str, int count[3])
 {
 	if ((*t_v).flag < -1 && (*t_v).c != '0')
 	{
@@ -87,7 +87,7 @@ void    ft_cut_flag_s2(t_cut *t_v, char **str, int count[3])
 		ft_cut_flag_s2_2(t_v, str, count);
 }
 
-void    ft_cut_flag_s2_1(t_cut *t_v, char **str, int count[3])
+void	ft_cut_flag_s2_1(t_cut *t_v, char **str, int count[3])
 {
 	while ((*t_v).k < (*t_v).flag - (*t_v).str_len)
 	{
@@ -96,7 +96,7 @@ void    ft_cut_flag_s2_1(t_cut *t_v, char **str, int count[3])
 	}
 }
 
-void    ft_cut_flag_s2_2(t_cut *t_v, char **str, int count[3])
+void	ft_cut_flag_s2_2(t_cut *t_v, char **str, int count[3])
 {
 	while ((*t_v).k < (*t_v).flag - (*t_v).str_len)
 	{

@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/12 15:20:45 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/29 11:48:12 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/30 17:47:36 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int		check_flag(char **str, int count[3], int *nbr, char *c)
 	}
 	else if ((ft_isdigit(str[count[0]][0]) && str[count[0]][1] == '.') ||
 			(ft_isdigit(str[count[0]][0]) && ft_isdigit(str[count[0]][1]) &&
-			 str[count[0]][2] == '.'))
+			str[count[0]][2] == '.'))
 		return (3500);
 	else if ((str[count[0]][0] == '+' && str[count[0]][1] != '0') ||
 			(str[count[0]][0] == ' ' && str[count[0]][1] == '+'))
@@ -87,7 +87,8 @@ void	attrib_d(char **str, t_var **var, int count[3])
 	else if (t_v.flag == 0 && t_v.c == '.')
 		str[count[0]][0] = '\0';
 	else if (t_v.flag != 1 && t_v.flag != 1000 && t_v.flag != 2000 &&
-			t_v.flag != 3000 && t_v.flag != 4000 && t_v.flag != 3500 && t_v.flag != 5000)
+			t_v.flag != 3000 && t_v.flag != 4000 &&
+			t_v.flag != 3500 && t_v.flag != 5000)
 		ft_cut_flag_d6(&t_v, var, str, count);
 	count[2]++;
 }
@@ -109,8 +110,9 @@ void	attrib_c(char **str, t_var **var, int count[3])
 	}
 	else if (t_v.flag == 3500)
 		ft_cut_flag_c2(&t_v, var, str, count);
-	else if (t_v.flag != -1 && t_v.flag != 1000 && t_v.flag != 2000 && t_v.flag != 3500 &&
-			t_v.flag != 3000 && t_v.flag != 4000 && t_v.flag != 5000 && t_v.c != '.')
+	else if (t_v.flag != -1 && t_v.flag != 1000 && t_v.flag != 2000 &&
+			t_v.flag != 3500 && t_v.flag != 3000 &&
+			t_v.flag != 4000 && t_v.flag != 5000 && t_v.c != '.')
 		ft_cut_flag_c3(&t_v, str, count);
 	if (ft_atoi(var[count[2]]->string) == 0 && t_v.c == '.')
 		str[count[0]][0] = '\0';
@@ -126,8 +128,9 @@ void	attrib_s(char **str, t_var **var, int count[3])
 		str[count[0]] = ft_strcpy(str[count[0]], "(null)");
 	else if (t_v.flag == 3500)
 		ft_cut_flag_s1(&t_v, str, count);
-	else if (t_v.flag != 0 && t_v.flag != -1 && t_v.flag != 1000 && t_v.flag != 2000 &&
-			t_v.flag != 3000 && t_v.flag != 4000 && t_v.flag != 5000 && t_v.flag != 3500)
+	else if (t_v.flag != 0 && t_v.flag != -1 && t_v.flag != 1000 &&
+			t_v.flag != 2000 && t_v.flag != 3000 &&
+			t_v.flag != 4000 && t_v.flag != 5000 && t_v.flag != 3500)
 		ft_cut_flag_s2(&t_v, str, count);
 	count[2]++;
 }

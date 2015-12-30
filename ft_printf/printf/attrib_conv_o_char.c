@@ -5,25 +5,25 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/30 15:07:59 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/30 15:13:37 by hbeaujou         ###   ########.fr       */
+/*   Created: 2015/12/30 17:24:41 by hbeaujou          #+#    #+#             */
+/*   Updated: 2015/12/30 17:50:27 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void    ft_cut_init_o_char(t_cut *t_v, t_var **var, char **str, int count[3])
+void	ft_cut_init_o_char(t_cut *t_v, t_var **var, char **str, int count[3])
 {
 	(*t_v).k = 0;
 	(*t_v).c = 't';
 	(*t_v).nbr = ft_nbrlen(var[count[2]]->u_carac);
 	(*t_v).flag = check_flag(str, count, &(*t_v).nbr, &(*t_v).c);
 	(*t_v).l = ft_atoi_spec_o(str[count[0]]);
-	str[count[0]] = ft_ntoa_base_un(var[count[2]]->u_carac, "01234567");	
+	str[count[0]] = ft_ntoa_base_un(var[count[2]]->u_carac, "01234567");
 	(*t_v).nbr = ft_strlen(str[count[0]]);
 }
 
-void    ft_cut_flag_o1_char(t_cut *t_v, t_var **var, char **str, int count[3])
+void	ft_cut_flag_o1_char(t_cut *t_v, t_var **var, char **str, int count[3])
 {
 	if (var[count[2]]->stars < 0)
 	{
@@ -43,7 +43,7 @@ void    ft_cut_flag_o1_char(t_cut *t_v, t_var **var, char **str, int count[3])
 	}
 }
 
-void    ft_cut_flag_o2_char(t_cut *t_v, char **str, int count[3])
+void	ft_cut_flag_o2_char(t_cut *t_v, char **str, int count[3])
 {
 	if ((*t_v).flag < -1 && (*t_v).c != '0')
 		ft_cut_flag_o2_1char(t_v, str, count);
@@ -67,7 +67,7 @@ void    ft_cut_flag_o2_char(t_cut *t_v, char **str, int count[3])
 	}
 }
 
-void    ft_cut_flag_o2_1char(t_cut *t_v, char **str, int count[3])
+void	ft_cut_flag_o2_1char(t_cut *t_v, char **str, int count[3])
 {
 	while ((*t_v).k > (*t_v).flag + (*t_v).nbr)
 	{
@@ -76,7 +76,7 @@ void    ft_cut_flag_o2_1char(t_cut *t_v, char **str, int count[3])
 	}
 }
 
-void    ft_cut_flag_o2_2char(t_cut *t_v, char **str, int count[3])
+void	ft_cut_flag_o2_2char(t_cut *t_v, char **str, int count[3])
 {
 	while ((*t_v).k < (*t_v).flag - (*t_v).nbr)
 	{

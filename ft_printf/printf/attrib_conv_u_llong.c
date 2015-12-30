@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/29 16:41:24 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/29 16:53:09 by hbeaujou         ###   ########.fr       */
+/*   Created: 2015/12/30 17:27:48 by hbeaujou          #+#    #+#             */
+/*   Updated: 2015/12/30 17:27:49 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void    ft_cut_init_u_llong(t_cut *t_v, t_var **var, char **str, int count[3])
+void	ft_cut_init_u_llong(t_cut *t_v, t_var **var, char **str, int count[3])
 {
 	(*t_v).k = 0;
 	(*t_v).c = 't';
@@ -26,7 +26,7 @@ void    ft_cut_init_u_llong(t_cut *t_v, t_var **var, char **str, int count[3])
 	(*t_v).s_nbr = ft_strlen(str[count[0]]);
 }
 
-void    ft_cut_flag_u1_llong(t_cut *t_v, char **str, int count[3])
+void	ft_cut_flag_u1_llong(t_cut *t_v, char **str, int count[3])
 {
 	str[count[0]] = ft_strjoin("+", str[count[0]]);
 	while ((*t_v).k < (*t_v).check - (*t_v).s_nbr)
@@ -36,7 +36,7 @@ void    ft_cut_flag_u1_llong(t_cut *t_v, char **str, int count[3])
 	}
 }
 
-void    ft_cut_flag_u2_llong(t_cut *t_v, t_var **var, char **str, int count[3])
+void	ft_cut_flag_u2_llong(t_cut *t_v, t_var **var, char **str, int count[3])
 {
 	if (var[count[2]]->stars < 0)
 		ft_cut_flag_u2_1llong(t_v, var, str, count);
@@ -50,7 +50,7 @@ void    ft_cut_flag_u2_llong(t_cut *t_v, t_var **var, char **str, int count[3])
 	}
 }
 
-void    ft_cut_flag_u2_1llong(t_cut *t_v, t_var **var, char **str, int count[3])
+void	ft_cut_flag_u2_1llong(t_cut *t_v, t_var **var, char **str, int count[3])
 {
 	while ((*t_v).k > var[count[2]]->stars + (*t_v).nbr - 1)
 	{
