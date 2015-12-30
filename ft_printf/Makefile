@@ -6,7 +6,7 @@
 #    By: aemebiku <aemebiku@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/06/26 15:32:35 by aemebiku          #+#    #+#              #
-#    Updated: 2015/12/30 18:46:47 by hbeaujou         ###   ########.fr        #
+#    Updated: 2015/12/30 19:25:30 by hbeaujou         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -71,6 +71,8 @@ SOURCES =	printf/add_flag.c				\
 			printf/attrib_conv_8.c			\
 			printf/ft_printf.c				\
 			printf/recover_char.c			\
+			printf/ft_rajout_1.c			\
+			printf/ft_rajout_2.c			\
 			libft/ft_memset.c				\
 			libft/ft_bzero.c				\
 			libft/ft_nbrlen.c				\
