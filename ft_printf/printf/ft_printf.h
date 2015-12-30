@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/30 17:46:52 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/30 17:54:37 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/30 18:24:35 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ typedef struct			s_var
 typedef struct			s_cut
 {
 	int					nbr;
+	int					nbrlen;
 	int					s_nbr;
 	int					spec;
 	int					l;
@@ -55,6 +56,8 @@ typedef struct			s_cut
 	int					i;
 	int					str_len;
 	char				c;
+	char				g;
+	char				last;
 	char				z;
 	char				m;
 	char				*str_2;
@@ -75,6 +78,12 @@ int						run_var(char *str, char c);
 int						ft_wtomb(char *s, wchar_t wchar);
 
 int						ft_printf(char *format, ...);
+
+void					ft_cut_init_erreur(t_cut *t_v, char **str, int count[3]);
+void					ft_cut_init_erreur2(t_cut *t_v, char **str, int count[3]);
+void					ft_cut_flag_erreur1(t_cut *t_v, char **str, int count[3]);
+void					ft_cut_flag_erreur2(t_cut *t_v, char **str, int count[3]);
+void					ft_cut_flag_erreur2_1(t_cut *t_v, char **str, int count[3]);
 
 void					ft_cut_init_o_z(t_cut *t_v, t_var **var, char **str, int count[3]);
 void					ft_cut_flag_o1_z(t_cut *t_v, t_var **var, char **str, int count[3]);
