@@ -6,70 +6,70 @@
 #    By: aemebiku <aemebiku@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/06/26 15:32:35 by aemebiku          #+#    #+#              #
-#    Updated: 2015/12/30 17:13:38 by hbeaujou         ###   ########.fr        #
+#    Updated: 2015/12/30 17:19:13 by hbeaujou         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
 NAME = libftprintf.a
 
-SOURCES =	libft/ft_memset.c				\
-			libft/add_flag.c				\
-			libft/attrib_conv_c.c			\
-			libft/attrib_conv_p.c			\
-			libft/attrib_conv_s.c			\
-			libft/attrib_conv_s_maj.c		\
-			libft/attrib_conv_s2_maj.c		\
-			libft/attrib_conv_d_char.c		\
-			libft/attrib_conv_d2_char.c		\
-			libft/attrib_conv_d_short.c		\
-			libft/attrib_conv_d2_short.c	\
-			libft/attrib_conv_d_z.c			\
-			libft/attrib_conv_d2_z.c		\
-			libft/attrib_conv_d_j.c			\
-			libft/attrib_conv_d2_j.c		\
-			libft/attrib_conv_d_ll.c		\
-			libft/attrib_conv_d2_ll.c		\
-			libft/attrib_conv_d_maj.c		\
-			libft/attrib_conv_d2_maj.c		\
-			libft/attrib_conv_u_z.c			\
-			libft/attrib_conv_u_char.c		\
-			libft/attrib_conv_u_short.c		\
-			libft/attrib_conv_u_maj.c		\
-			libft/attrib_conv_u2_maj.c		\
-			libft/attrib_conv_o_j.c			\
-			libft/attrib_conv_o_z.c			\
-			libft/attrib_conv_o_short.c		\
-			libft/attrib_conv_o_char.c		\
-			libft/attrib_conv_o_maj.c		\
-			libft/attrib_conv_o2_maj.c		\
-			libft/attrib_conv_u_llong.c		\
-			libft/attrib_conv_u2_llong.c	\
-			libft/attrib_conv_u.c			\
-			libft/attrib_conv_u2.c			\
-			libft/attrib_conv_u_j.c			\
-			libft/attrib_conv_c_maj.c		\
-			libft/attrib_conv_x_char.c		\
-			libft/attrib_conv_x_mchr.c		\
-			libft/attrib_conv_x_maj.c		\
-			libft/attrib_conv_x2_maj.c		\
-			libft/attrib_conv_x_short.c		\
-			libft/attrib_conv_x_mshrt.c		\
-			libft/attrib_conv_x.c			\
-			libft/attrib_conv_x2.c			\
-			libft/attrib_conv_o.c			\
-			libft/attrib_conv_o2.c			\
-			libft/attrib_conv_d.c			\
-			libft/attrib_conv_d2.c			\
-			libft/attrib_conv.c				\
-			libft/attrib_conv_2.c			\
-			libft/attrib_conv_3.c			\
-			libft/attrib_conv_4.c			\
-			libft/attrib_conv_5.c			\
-			libft/attrib_conv_6.c			\
-			libft/attrib_conv_7.c			\
-			libft/attrib_conv_8.c			\
-			libft/ft_printf.c				\
-			libft/recover_char.c			\
+SOURCES =	printf/add_flag.c				\
+			printf/attrib_conv_c.c			\
+			printf/attrib_conv_p.c			\
+			printf/attrib_conv_s.c			\
+			printf/attrib_conv_s_maj.c		\
+			printf/attrib_conv_s2_maj.c		\
+			printf/attrib_conv_d_char.c		\
+			printf/attrib_conv_d2_char.c	\
+			printf/attrib_conv_d_short.c	\
+			printf/attrib_conv_d2_short.c	\
+			printf/attrib_conv_d_z.c		\
+			printf/attrib_conv_d2_z.c		\
+			printf/attrib_conv_d_j.c		\
+			printf/attrib_conv_d2_j.c		\
+			printf/attrib_conv_d_ll.c		\
+			printf/attrib_conv_d2_ll.c		\
+			printf/attrib_conv_d_maj.c		\
+			printf/attrib_conv_d2_maj.c		\
+			printf/attrib_conv_u_z.c		\
+			printf/attrib_conv_u_char.c		\
+			printf/attrib_conv_u_short.c	\
+			printf/attrib_conv_u_maj.c		\
+			printf/attrib_conv_u2_maj.c		\
+			printf/attrib_conv_o_j.c		\
+			printf/attrib_conv_o_z.c		\
+			printf/attrib_conv_o_short.c	\
+			printf/attrib_conv_o_char.c		\
+			printf/attrib_conv_o_maj.c		\
+			printf/attrib_conv_o2_maj.c		\
+			printf/attrib_conv_u_llong.c	\
+			printf/attrib_conv_u2_llong.c	\
+			printf/attrib_conv_u.c			\
+			printf/attrib_conv_u2.c			\
+			printf/attrib_conv_u_j.c		\
+			printf/attrib_conv_c_maj.c		\
+			printf/attrib_conv_x_char.c		\
+			printf/attrib_conv_x_mchr.c		\
+			printf/attrib_conv_x_maj.c		\
+			printf/attrib_conv_x2_maj.c		\
+			printf/attrib_conv_x_short.c	\
+			printf/attrib_conv_x_mshrt.c	\
+			printf/attrib_conv_x.c			\
+			printf/attrib_conv_x2.c			\
+			printf/attrib_conv_o.c			\
+			printf/attrib_conv_o2.c			\
+			printf/attrib_conv_d.c			\
+			printf/attrib_conv_d2.c			\
+			printf/attrib_conv.c			\
+			printf/attrib_conv_2.c			\
+			printf/attrib_conv_3.c			\
+			printf/attrib_conv_4.c			\
+			printf/attrib_conv_5.c			\
+			printf/attrib_conv_6.c			\
+			printf/attrib_conv_7.c			\
+			printf/attrib_conv_8.c			\
+			printf/ft_printf.c				\
+			printf/recover_char.c			\
+			libft/ft_memset.c				\
 			libft/ft_bzero.c				\
 			libft/ft_nbrlen.c				\
 			libft/ft_memcpy.c				\
