@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/21 15:00:07 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/29 16:57:08 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/30 14:22:40 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,12 +68,14 @@ void	attrib_erreur_conv(char **str, int count[3])
 	int nbrlen;
 	char c;
 	char z;
+	char g;
 	char last;
 
 	k = 0;
 	diff = 0;
 	p = 1;
 	c = 't';
+	g = 'r';
 	z = 'y';
 	last = 'u';
 	str_len = ft_strlen(str[count[0]]);
@@ -81,6 +83,8 @@ void	attrib_erreur_conv(char **str, int count[3])
 	check_double = ft_atoi_double(str[count[0]]);
 	flag = check_flag(str, count, &str_len, &c);
 	nbrlen = ft_nbrlen(flag);
+	if (ft_isalpha(str[count[0]][ft_strlen(str[count[0]]) - 1]) != 1)
+		g = 'q';
 	if (flag < 0)
 		nbrlen++;
 	if (flag < 0)
@@ -89,12 +93,19 @@ void	attrib_erreur_conv(char **str, int count[3])
 		z = '0';
 	if (ft_strlen(str[count[0]]) == 4)
 		last = str[count[0]][3];
+	if (flag == 0 || g == 'q')
+		nbrlen = 0;
+	if (str[count[0]][0] == ' ')
+		nbrlen = str_len - 2;
 	str[count[0]] = ft_strsub(str[count[0]], nbrlen, str_len);
 	str_len = str_len - nbrlen;
 	if (flag == -1)
 		str[count[0]] = ft_strcpy(str[count[0]], "(null)");
 	else if (flag == 3500)
 	{
+		if (check_double == 0)
+			str[count[0]] = ft_strsub(str[count[0]], 0, 1);
+		str_len = ft_strlen(str[count[0]]);
 		if (check_double >= str_len)
 			diff = check_double;
 		else
