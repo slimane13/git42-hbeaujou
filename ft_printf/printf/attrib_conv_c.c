@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/29 11:15:38 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/30 17:48:22 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/30 19:12:50 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,12 @@ void	ft_cut_init_c(t_cut *t_v, t_var **var, char **str, int count[3])
 	(*t_v).c_d = ft_atoi_double(str[count[0]]);
 	(*t_v).flag = check_flag(str, count, &(*t_v).nbr, &(*t_v).c);
 	if (ft_atoi(var[count[2]]->string) == 0)
-		rajout = 1;
+		g_rajout = 1;
 	str[count[0]] = (char *)malloc(sizeof(char) * 2);
 	str[count[0]][0] = ft_atoi(var[count[2]]->string);
 	str[count[0]][1] = '\0';
 	if (ft_atoi(var[count[2]]->string) == 0)
-		char_nul = count[0];
+		g_char_nul = count[0];
 }
 
 void	ft_cut_flag_c1(t_cut *t_v, t_var **var, char **str, int count[3])

@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/30 17:27:28 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/30 17:27:29 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/30 19:08:17 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,14 +87,5 @@ void	ft_cut_flag_u3_1char(t_cut *t_v, char **str, int count[3])
 	{
 		str[count[0]] = ft_strjoin(str[count[0]], " ");
 		(*t_v).k--;
-	}
-}
-
-void	ft_cut_flag_u3_2char(t_cut *t_v, char **str, int count[3])
-{
-	while ((*t_v).k < (*t_v).flag - (*t_v).s_nbr - (*t_v).neg)
-	{
-		str[count[0]] = ft_strjoin("0", str[count[0]]);
-		(*t_v).k++;
 	}
 }

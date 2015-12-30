@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/29 14:21:06 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/30 17:21:22 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/30 19:13:08 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ void	ft_cut_init_c_maj(t_cut *t_v, t_var **var, char **str, int count[3])
 	(*t_v).c = 't';
 	(*t_v).flag = check_flag(str, count, &(*t_v).nbr, &(*t_v).c);
 	if (var[count[2]]->w_entier == 0)
-		rajout = 1;
+		g_rajout = 1;
 	str[count[0]] = (char *)malloc(sizeof(char) * 10);
 	utf8encode(str[count[0]], var[count[2]]->w_entier);
 	if (var[count[2]]->w_entier == 0)
-		char_nul = count[0];
+		g_char_nul = count[0];
 }
 
 void	ft_cut_flag_c1_maj(t_cut *t_v, t_var **var, char **str, int count[3])

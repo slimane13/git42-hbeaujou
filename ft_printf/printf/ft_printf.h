@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/30 17:46:52 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/30 18:42:22 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/30 19:27:29 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "libft.h"
 # include <string.h>
-# include <stdio.h>   //////////////////		///////
+# include <stdio.h>
 # include <stdlib.h>
 # include <ctype.h>
 # include <stdarg.h>
@@ -66,10 +66,10 @@ typedef struct			s_cut
 	char				*str_2;
 }						t_cut;
 
-extern int				retour;
-extern int				rajout;
-extern int				char_nul;
-extern int				s_maj;
+extern int				g_retour;
+extern int				g_rajout;
+extern int				g_char_nul;
+extern int				g_s_maj;
 
 int						utf8encode(char *buf, int codepoint);
 int						is_ascii_code_point(int val);
@@ -439,6 +439,7 @@ void					ft_cut_flag_p1_1(t_cut *t_v, t_var **var,
 void					ft_cut_flag_p1_2(t_cut *t_v, char **str, int count[3]);
 void					ft_cut_flag_p2(t_cut *t_v, t_var **var,
 		char **str, int count[3]);
+void					ft_cut_cut_p2(t_cut *t_v, char **str, int count[3]);
 
 void					ft_cut_init_s(t_cut *t_v, t_var **var,
 		char **str, int count[3]);
@@ -477,6 +478,11 @@ void					ft_cut_flag_d6_1(t_cut *t_v, t_var **var,
 		char **str, int count[3]);
 void					ft_cut_flag_d6_2(t_cut *t_v, char **str,
 		int count[3]);
+
+int						cut_flag_number(char **str, int count[3],
+		int *flag, char *c);
+int						cut_flag_number_2(char **str, int count[3],
+		int *flag, char *c);
 
 void					attrib_erreur_conv(char **str, int count[3]);
 void					add_flag_special(char *str, int var[3]);

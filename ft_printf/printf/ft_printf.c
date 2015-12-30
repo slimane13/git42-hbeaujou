@@ -6,16 +6,16 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/12 13:34:50 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/30 19:06:18 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/30 19:14:10 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		retour;
-int		rajout;
-int		char_nul;
-int		s_maj;
+int		g_retour;
+int		g_rajout;
+int		g_char_nul;
+int		g_s_maj;
 
 int		run_var(char *str, char c)
 {
@@ -580,12 +580,12 @@ int		ft_printf(char *format, ...)
 	int			i;
 	int			*tab;
 
-	retour = 0;
+	g_retour = 0;
 	size = 0;
 	i = 0;
-	char_nul = -10;
-	rajout = 0;
-	s_maj = 0;
+	g_char_nul = -10;
+	g_rajout = 0;
+	g_s_maj = 0;
 	size = ft_strlen(format);
 	n_v_p = run_var(format, '%');
 	size++;
@@ -602,20 +602,19 @@ int		ft_printf(char *format, ...)
 	va_start(liste, format);
 	replace_char(str_split, var, liste, tab);
 	va_end(liste);
-
 	i = 0;
 	while (str_split[i])
 	{
 		if (str_split[i][0] == '.' &&
-				ft_isdigit(str_split[i][1]) == 1 && s_maj != 1)
+				ft_isdigit(str_split[i][1]) == 1 && g_s_maj != 1)
 			str_split[i] = ft_strdup("%\0");
-		if (i == char_nul)
+		if (i == g_char_nul)
 			ft_putstr_spec(str_split[i]);
 		else
 			ft_putstr(str_split[i]);
-		retour += ft_strlen(str_split[i]);
+		g_retour += ft_strlen(str_split[i]);
 		i++;
 	}
-	retour += rajout;
-	return (retour);
+	g_retour += g_rajout;
+	return (g_retour);
 }

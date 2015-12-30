@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/19 20:35:31 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/30 17:36:37 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/30 19:13:49 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,6 +142,6 @@ void	attrib_s_maj(char **str, t_var **var, int count[3])
 		ft_cut_flag_s5_maj(&t_v, str, count);
 	else if (t_v.flag > 0 && t_v.c == '.' && t_v.c_d == 0 && t_v.p == 1)
 		ft_cut_flag_s6_maj(&t_v, str, count);
-	s_maj = 1;
+	g_s_maj = 1;
 	count[2]++;
 }
