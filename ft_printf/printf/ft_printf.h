@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/30 17:46:52 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/30 19:54:44 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/30 20:27:12 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ typedef struct			s_cut
 	char				*str_2;
 }						t_cut;
 
+extern int				g_tt[3];
 extern int				g_retour;
 extern int				g_rajout;
 extern int				g_char_nul;
@@ -496,6 +497,14 @@ int						cut_flag_check5(int *nbr);
 int						cut_flag_check6(int *nbr);
 int						cut_flag_check7(int *nbr, char *c, char **str,
 		int count[3]);
+
+void					cut_recover_1(char *format, int tab[3],
+		char *str, int var[3]);
+void					cut_recover_2(int tab[3], char *str, int var[3]);
+void					cut_recover_3(int tab[3], char *str, int var[3]);
+void					cut_recover_4(char *format, int tab[3],
+		char *str, int var[3]);
+void					cut_recover_5(char *format, char *str, int var[3]);
 
 void					attrib_erreur_conv(char **str, int count[3]);
 void					add_flag_special(char *str, int var[3]);

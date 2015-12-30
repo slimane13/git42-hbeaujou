@@ -6,7 +6,7 @@
 #    By: aemebiku <aemebiku@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/06/26 15:32:35 by aemebiku          #+#    #+#              #
-#    Updated: 2015/12/30 19:54:16 by hbeaujou         ###   ########.fr        #
+#    Updated: 2015/12/30 20:16:33 by hbeaujou         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -71,6 +71,7 @@ SOURCES =	printf/add_flag.c				\
 			printf/attrib_conv_8.c			\
 			printf/ft_printf.c				\
 			printf/recover_char.c			\
+			printf/cut_recover.c			\
 			printf/ft_rajout_1.c			\
 			printf/ft_rajout_2.c			\
 			printf/ft_rajout_3.c			\

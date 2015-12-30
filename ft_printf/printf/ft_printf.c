@@ -6,12 +6,13 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/12 13:34:50 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/30 19:14:10 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/30 20:18:21 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
+int		g_tt[3];
 int		g_retour;
 int		g_rajout;
 int		g_char_nul;
