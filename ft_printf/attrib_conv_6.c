@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/19 20:35:31 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/30 16:04:50 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/30 16:28:33 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,148 +117,28 @@ void	attrib_d_j(char **str, t_var **var, int count[3])
 
 void	attrib_s_maj(char **str, t_var **var, int count[3])
 {
-	int flag;
-	int k;
-	int i;
-	int nbr;
-	int p;
-	int check;
-	int diff;
-	int compteur;
-	int check_double;
-	char *str_2;
-	char c;
-	char m;;
+	t_cut t_v;
 
-	k = 0;
-	compteur = 0;
-	i = 0;
-	diff = 0;
-	p = 1;
-	nbr = 0;
-	c = 't';
-	check = ft_atoi(str[count[0]]);
-	check_double = ft_atoi_double(str[count[0]]);
-	flag = check_flag(str, count, &nbr, &c);
-	if (str[count[0]][1] == '.' || str[count[0]][2] == '.')
-		c = '.';
-	if (str[count[0]][0] == '0')
-		m = '0';
-	str[count[0]] = (char *)malloc(sizeof(char) * 20);
-	str_2 = (char *)malloc(sizeof(char) * 20);
-	if (var[count[2]]->w_string != 0)
-	{
-		while (var[count[2]]->w_string[i])
-		{
-			utf8encode(str_2, var[count[2]]->w_string[i]);
-			if (str_2[0] == 32)
-				str[count[0]] = ft_strjoin(str[count[0]], " ");
-			else
-				str[count[0]] = ft_strjoin(str[count[0]], str_2);
-			i++;
-			compteur++;
-		}
-	}
-	if (flag == 1000 && var[count[2]]->w_string != NULL)
+	ft_cut_init_s_maj(&t_v, var, str, count);
+	if (t_v.flag == 1000 && var[count[2]]->w_string != NULL)
 		str[count[0]] = ft_strjoin("+", str[count[0]]);
-	else if (flag == 2000 && var[count[2]]->w_string != NULL)
-	{
-	}
-	else if (flag == 3000)
-	{
-		if (var[count[2]]->stars < 0)
-		{
-			while (k > var[count[2]]->stars + nbr)
-			{
-				str[count[0]] = ft_strjoin(str[count[0]], " ");
-				k--;
-			}
-		}
-		else
-		{
-			while (k < var[count[2]]->stars - nbr)
-			{
-				str[count[0]] = ft_strjoin(" ", str[count[0]]);
-				k++;
-			}
-		}
-	}
-	else if (flag == 3500)
-	{
-		if (check_double >= compteur)
-			diff = check_double;
-		else
-			diff = compteur;
-		k = 0;
-		if (check_double == 0)
-			str[count[0]] = ft_strdup("\0");
-		while (k < check && check_double == 0)
-		{
-			str[count[0]] = ft_strjoin("0", str[count[0]]);
-			compteur++;
-			k++;
-		}
-		if (m == '0')
-			p = 0;
-	}
-	else if (flag != -1 && flag != 1000 && flag != 2000 && flag != 3500 &&
-			flag != 3000 && flag != 4000 && flag != 5000 && c != '.')
-	{
-		nbr = ft_strlen(str[count[0]]);
-		if (flag < -1 && c != '0')
-		{
-			while (k > flag + nbr)
-			{
-				str[count[0]] = ft_strjoin(str[count[0]], " ");
-				k--;
-			}
-		}
-		else
-		{
-			while (k < flag - nbr)
-			{
-				if (c == '0')
-					str[count[0]] = ft_strjoin("0", str[count[0]]);
-				else
-					str[count[0]] = ft_strjoin(" ", str[count[0]]);
-				k++;
-			}
-		}
-	}
-	if (var[count[2]]->w_string == NULL && c == '.')
+	else if (t_v.flag == 3000)
+		ft_cut_flag_s1_maj(&t_v, var, str, count);
+	else if (t_v.flag == 3500)
+		ft_cut_flag_s2_maj(&t_v, str, count);
+	else if (t_v.flag != -1 && t_v.flag != 1000 && t_v.flag != 2000 && t_v.flag != 3500 &&
+			t_v.flag != 3000 && t_v.flag != 4000 && t_v.flag != 5000 && t_v.c != '.')
+		ft_cut_flag_s3_maj(&t_v, str, count);
+	if (var[count[2]]->w_string == NULL && t_v.c == '.')
 		str[count[0]][0] = '\0';
-	else if (var[count[2]]->w_string == NULL && c != '.')
+	else if (var[count[2]]->w_string == NULL && t_v.c != '.')
 		str[count[0]] = ft_strdup("(null)");
-	else if (flag > 0 && c == '.' && check_double != 0 && check == 0)
-	{
-		flag = flag - flag % 3;
-		str[count[0]][flag] = '\0';
-	}
-	else if (flag > 0 && c == '.' && check_double != 0 && check != 0)
-	{
-		if (check_double < 3)
-			check_double = check_double % 3;
-		else
-			check_double = check_double - check_double % 3;
-		str[count[0]][check_double] = '\0';
-		k = 0;
-		nbr = ft_strlen(str[count[0]]);
-		while (k < check - nbr)
-		{
-			str[count[0]] = ft_strjoin(" ", str[count[0]]);
-			k++;
-		}
-	}
-	else if (flag > 0 && c == '.' && check_double == 0 && p == 1)
-	{
-		k = 0;
-		str[count[0]][0] = '\0';
-		while (k < check)
-		{
-			str[count[0]] = ft_strjoin(" ", str[count[0]]);
-			k++;
-		}
-	}
+	else if (t_v.flag > 0 && t_v.c == '.' && t_v.c_d != 0 && t_v.check == 0)
+		ft_cut_flag_s4_maj(&t_v, str, count);
+	else if (t_v.flag > 0 && t_v.c == '.' && t_v.c_d != 0 && t_v.check != 0)
+		ft_cut_flag_s5_maj(&t_v, str, count);
+	else if (t_v.flag > 0 && t_v.c == '.' && t_v.c_d == 0 && t_v.p == 1)
+		ft_cut_flag_s6_maj(&t_v, str, count);
 	s_maj = 1;
 	count[2]++;
 }

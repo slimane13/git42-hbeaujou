@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/11 15:28:05 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/30 16:00:12 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/30 16:26:57 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,13 @@ typedef struct			s_cut
 	int					check;
 	int					c_d;
 	int					neg;
+	int					compteur;
+	int					i;
 	int					str_len;
 	char				c;
 	char				z;
+	char				m;
+	char				*str_2;
 }						t_cut;
 
 extern int				retour;
@@ -71,6 +75,15 @@ int		run_var(char *str, char c);
 int		ft_wtomb(char *s, wchar_t wchar);
 
 int		ft_printf(char *format, ...);
+
+void	ft_cut_init_s_maj(t_cut *t_v, t_var **var, char **str, int count[3]);
+void	ft_cut_init_s2_maj(t_cut *t_v, t_var **var, char **str, int count[3]);
+void    ft_cut_flag_s1_maj(t_cut *t_v, t_var **var, char **str, int count[3]);
+void    ft_cut_flag_s2_maj(t_cut *t_v, char **str, int count[3]);
+void    ft_cut_flag_s3_maj(t_cut *t_v, char **str, int count[3]);
+void    ft_cut_flag_s4_maj(t_cut *t_v, char **str, int count[3]);
+void    ft_cut_flag_s5_maj(t_cut *t_v, char **str, int count[3]);
+void    ft_cut_flag_s6_maj(t_cut *t_v, char **str, int count[3]);
 
 void	ft_cut_init_d_j(t_cut *t_v, t_var **var, char **str, int count[3]);
 void    ft_cut_flag_d1_j(t_cut *t_v, char **str, int count[3]);
