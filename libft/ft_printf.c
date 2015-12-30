@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/12 13:34:50 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/21 17:55:18 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/28 17:17:15 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 int		retour;
 int		rajout;
+int		char_nul;
+int		s_maj;
 
 int		run_var(char *str, char c)
 {
@@ -273,7 +275,8 @@ void	replace_char(char **str, t_var **var, va_list liste, int *tab)
 				}
 			}
 			else if (str[count[0]][ft_strlen(str[count[0]]) - 1] == 'c' &&
-					str[count[0]][ft_strlen(str[count[0]]) - 2] != 'h')
+					str[count[0]][ft_strlen(str[count[0]]) - 2] != 'h' &&
+					str[count[0]][ft_strlen(str[count[0]]) - 2] != 'l')
 			{
 				if (str[count[0]][ft_strlen(str[count[0]]) - 2] == '*')
 				{
@@ -294,27 +297,41 @@ void	replace_char(char **str, t_var **var, va_list liste, int *tab)
 				if (str[count[0]][ft_strlen(str[count[0]]) - 3] == '*')
 				{
 					var[count[2]]->stars = va_arg(liste, int);
-					var[count[2]]->entier = va_arg(liste, wint_t);
+					var[count[2]]->w_entier = va_arg(liste, wint_t);
 					attrib_c_maj(str, var, count);
 				}
 				else
 				{
-					var[count[2]]->entier = va_arg(liste, wint_t);
+					var[count[2]]->w_entier = va_arg(liste, wint_t);
 					attrib_c_maj(str, var, count);
 				}
 			}
 			else if (str[count[0]][ft_strlen(str[count[0]]) - 1] == 's' &&
-					str[count[0]][ft_strlen(str[count[0]]) - 2] != 'h')
+					str[count[0]][ft_strlen(str[count[0]]) - 2] != 'h' &&
+					str[count[0]][ft_strlen(str[count[0]]) - 2] != 'l')
 			{
 				var[count[2]]->string = va_arg(liste, char *);
 				attrib_s(str, var, count);
+			}
+			else if (str[count[0]][ft_strlen(str[count[0]]) - 1] == 'S' &&
+					str[count[0]][ft_strlen(str[count[0]]) - 2] == 'h' &&
+					str[count[0]][ft_strlen(str[count[0]]) - 3] == 'h')
+			{
+				var[count[2]]->w_string = va_arg(liste, wchar_t *);
+				if (var[count[2]]->w_string == NULL)
+				{
+					var[count[2]]->string = "(null)";
+					attrib_s(str, var, count);
+				}
+				else
+					attrib_s_maj(str, var, count);
 			}
 			else if ((str[count[0]][ft_strlen(str[count[0]]) - 1] == 's' &&
 					str[count[0]][ft_strlen(str[count[0]]) - 2] == 'l') ||
 					str[count[0]][ft_strlen(str[count[0]]) - 1] == 'S')
 			{
 				var[count[2]]->w_string = va_arg(liste, wchar_t *);
-				attrib_s(str, var, count);
+				attrib_s_maj(str, var, count);
 			}
 			else if (str[count[0]][ft_strlen(str[count[0]]) - 1] == 'p' &&
 					str[count[0]][ft_strlen(str[count[0]]) - 2] != 'h')
@@ -415,6 +432,10 @@ void	replace_char(char **str, t_var **var, va_list liste, int *tab)
 					attrib_x_maj_short(str, var, count);
 				}
 			}
+			else if (str[count[0]][0] == 'o' &&
+					ft_strlen(str[count[0]]) != 1)
+			{
+			}
 			else if (str[count[0]][ft_strlen(str[count[0]]) - 1] == 'o' &&
 					str[count[0]][ft_strlen(str[count[0]]) - 2] != 'h' &&
 					str[count[0]][ft_strlen(str[count[0]]) - 2] != 'l' &&
@@ -425,13 +446,11 @@ void	replace_char(char **str, t_var **var, va_list liste, int *tab)
 				{
 					var[count[2]]->stars = va_arg(liste, int);
 					var[count[2]]->entier = va_arg(liste, int);
-					var[count[2]]->u_short = (unsigned short)var[count[2]]->entier;
 					attrib_o(str, var, count);
 				}
 				else
 				{
 					var[count[2]]->entier = va_arg(liste, int);
-					var[count[2]]->u_short = (unsigned short)var[count[2]]->entier;
 					attrib_o(str, var, count);
 				}
 			}
@@ -514,11 +533,23 @@ void	replace_char(char **str, t_var **var, va_list liste, int *tab)
 					attrib_o_maj(str, var, count);
 				}
 			}
+			else if (ft_strlen(str[count[0]]) == 1 && str[count[0]][0] == 'P')
+				str[count[0]][0] = '%';
 			else
 			{
 				if (ft_strlen(str[count[0]]) == 4)
 					attrib_erreur_conv(str, count);
-				/// RENV ERROR DE CONV
+				else if (ft_strlen(str[count[0]]) == 3 &&
+						str[count[0]][2] == '.')
+					attrib_erreur_conv(str, count);
+				else if (ft_strlen(str[count[0]]) == 3 &&
+						ft_isalpha(str[count[0]][ft_strlen(str[count[0]]) - 1]) == 1)
+					attrib_erreur_conv(str, count);
+				else
+				{
+					if (str[count[0]][0] == ' ')
+						str[count[0]] = ft_strsub(str[count[0]], 1, 2);
+				}
 			}
 		}
 		count[0]++;
@@ -539,13 +570,15 @@ int		ft_printf(char *format ,...)
 	retour = 0;
 	size = 0;
 	i = 0;
+	char_nul = -10;
 	rajout = 0;
+	s_maj = 0;
 
 	size = ft_strlen(format);
 	nbr_var_percent = run_var(format, '%');
 	size++;
 
-	tab = (int *)malloc(sizeof(int) * 20);
+	tab = (int *)malloc(sizeof(int) * 110);
 	new_str = (char *)malloc(sizeof(char) * (ft_strlen(format) + nbr_var_percent * 4));
 	var = (t_var **)malloc(sizeof(t_var) * nbr_var_percent);
 	while (i < nbr_var_percent)
@@ -562,8 +595,13 @@ int		ft_printf(char *format ,...)
 	i = 0;
 	while (str_split[i])
 	{
+		if (str_split[i][0] == '.' && ft_isdigit(str_split[i][1]) == 1 && s_maj != 1)
+			str_split[i] = ft_strdup("%\0");
+		if (i == char_nul)
+			ft_putstr_spec(str_split[i]);
+		else
+			ft_putstr(str_split[i]);
 		retour += ft_strlen(str_split[i]);
-		ft_putstr(str_split[i]);
 		i++;
 	}
 	retour += rajout;

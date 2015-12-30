@@ -6,446 +6,107 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/14 10:46:56 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/22 16:58:36 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/29 15:44:07 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	attrib_h_h(char **str, t_var **var, int count[3])
-{
-	int flag;
-	int k;
-	int nbr;
-	char c;
-
-	k = 0;
-	nbr = 0;
-	c = 'h';
-	nbr = ft_nbrlen(var[count[2]]->entier);
-	flag = check_flag(str, count, &nbr, &c);
-	if (str[count[0]][ft_strlen(str[count[0]]) - 1] == 'd')
-	{
-		str[count[0]] = (char *)malloc(sizeof(char) * nbr);
-		str[count[0]] = ft_itoa(var[count[2]]->entier);
-	}
-	else if (str[count[0]][ft_strlen(str[count[0]]) - 1] == 'o')
-	{
-		str[count[0]] = (char *)malloc(sizeof(char) * nbr);
-		str[count[0]] = ft_itoa_base(var[count[2]]->entier, 8); /////    BROKEN
-	}
-	else if (str[count[0]][ft_strlen(str[count[0]]) - 1] == 'x')
-	{
-		str[count[0]] = (char *)malloc(sizeof(char) * nbr);
-		str[count[0]] = ft_itoa_base(var[count[2]]->entier, 16);
-	}
-	else if (str[count[0]][ft_strlen(str[count[0]]) - 1] == 'X')
-	{
-		str[count[0]] = (char *)malloc(sizeof(char) * nbr);
-		str[count[0]] = ft_itoa_base_maj(var[count[2]]->entier, 16);
-	}
-	nbr = ft_strlen(str[count[0]]);
-	if (flag == 1000 && var[count[2]]->entier > 0)
-		str[count[0]] = ft_strjoin("+", str[count[0]]);
-	else if (flag == 2000 && var[count[2]]->entier >= 0)
-		str[count[0]] = ft_strjoin(" ", str[count[0]]);
-	else if (flag != -1 && flag != 1000 && flag != 2000 &&
-			flag != 3000 && flag != 4000 && flag != 5000)
-	{
-		if (flag < -1 && c != '0')
-		{
-			while (k > flag + nbr)
-			{
-				str[count[0]] = ft_strjoin(str[count[0]], " ");
-				k--;
-			}
-		}
-		else if (flag > 0 && (c == '0' || c == '.'))
-		{
-			while (k < flag - nbr)
-			{
-				if (c == '.')
-					str[count[0]] = ft_strjoin("0", str[count[0]]);
-				else
-					str[count[0]] = ft_strjoin(str[count[0]], "0");
-				k++;
-			}
-		}
-		else if (flag < -1 && c == '0')
-		{
-			while (k > flag)
-			{
-				str[count[0]] = ft_strjoin("0", str[count[0]]);
-				k--;
-			}
-		}
-		else
-		{
-			while (k < flag - nbr)
-			{
-				str[count[0]] = ft_strjoin(" ", str[count[0]]);
-				k++;
-			}
-		}
-	}
-	count[2]++;
-}
-
 void	attrib_c_maj(char **str, t_var **var, int count[3])
 {
-	int flag;
-	int k;
-	int nbr;
-	char c;
+	t_cut t_v;
 
-	k = 0;
-	nbr = 0;
-	c = 't';
-	flag = check_flag(str, count, &nbr, &c);
-	if (var[count[2]]->entier == 0)
-		rajout = 1;
-	str[count[0]] = (char *)malloc(sizeof(char) * 2);
-	str[count[0]][0] = var[count[2]]->entier;
-	str[count[0]][1] = '\0';
-	if (flag == 1000 && var[count[2]]->entier > 0)
+	ft_cut_init_c_maj(&t_v, var, str, count);
+	if (t_v.flag == 1000 && var[count[2]]->w_entier > 0)
 		str[count[0]] = ft_strjoin("+", str[count[0]]);
-	else if (flag == 2000 && var[count[2]]->entier >= 0)
-		str[count[0]] = ft_strjoin(" ", str[count[0]]);
-	else if (flag != -1 && flag != 1000 && flag != 2000 &&
-			flag != 3000 && flag != 4000 && flag != 5000)
+	else if (t_v.flag == 2000 && var[count[2]]->w_entier >= 0)
 	{
-		if (flag < -1 && c != '0')
-		{
-			while (k > flag + 1)
-			{
-				str[count[0]] = ft_strjoin(str[count[0]], " ");
-				k--;
-			}
-		}
-		else
-		{
-			while (k < flag - 1)
-			{
-				str[count[0]] = ft_strjoin(" ", str[count[0]]);
-				k++;
-			}
-		}
 	}
+	else if (t_v.flag == 3000)
+		ft_cut_flag_c1_maj(&t_v, var, str, count);
+	else if (t_v.c == '.')
+	{
+	}
+	else if (t_v.flag != -1 && t_v.flag != 1000 && t_v.flag != 2000 &&
+			t_v.flag != 3000 && t_v.flag != 4000
+			&& t_v.flag != 5000 && t_v.c != '.')
+		ft_cut_flag_c2_maj(&t_v, str, count);
+	if (var[count[2]]->w_entier == 0 && t_v.c == '.')
+		str[count[0]][0] = '\0';
 	count[2]++;
 }
 
 void	attrib_u(char **str, t_var **var, int count[3])
 {
-	int nbr;
-	int s_nbr;
-	int flag;
-	char c;
-	int k;
-	int check;
-	int neg;
+	t_cut t_v;
 
-	k = 0;
-	c = 't';
-	neg = 0;
-	nbr = ft_nbrlen(var[count[2]]->u_entier);
-	flag = check_flag(str, count, &nbr, &c);
-	check = ft_atoi_ultra(str[count[0]]);
-	if (str[count[0]][0] == '.')
-		nbr--;
-	str[count[0]] = (char *)malloc(sizeof(char) * (nbr * 5));
-	ft_ulltstr_base((unsigned long long)var[count[2]]->u_entier, "0123456789", str[count[0]]);
-	s_nbr = ft_strlen(str[count[0]]);
-	if (flag == 1000)
+	ft_cut_init_u(&t_v, var, str, count);
+	if (t_v.flag == 1000)
 	{
 	}
-	else if (flag == 2000)
+	else if (t_v.flag == 2000)
 	{
 	}
-	else if (flag == 4000)
-	{
-		str[count[0]] = ft_strjoin("+", str[count[0]]);
-		while (k < check - s_nbr)
-		{
-			str[count[0]] = ft_strjoin(str[count[0]], " ");
-			k++;
-		}
-	}
-	else if (flag == 3000)
-	{
-		if (var[count[2]]->stars < 0)
-		{
-			while (k > var[count[2]]->stars + nbr - 1)
-			{
-				str[count[0]] = ft_strjoin(str[count[0]], " ");
-				k--;
-			}
-		}
-		else
-		{
-			while (k < var[count[2]]->stars - nbr + 1)
-			{
-				str[count[0]] = ft_strjoin(" ", str[count[0]]);
-				k++;
-			}
-		}
-	}
-	else if (flag != 1 && flag != 1000 && flag != 2000 &&
-			flag != 3000 && flag != 5000)
-	{
-		if (flag < -1 && c != '0')
-		{
-			while (k > flag + s_nbr + neg)
-			{
-				str[count[0]] = ft_strjoin(str[count[0]], " ");
-				k--;
-			}
-		}
-		else if (flag > 0 && (c == '0' || c == '.'))
-		{
-			while (k < flag - s_nbr - neg)
-			{
-				str[count[0]] = ft_strjoin("0", str[count[0]]);
-				k++;
-			}
-		}
-		else if (flag < -1 && c == '0')
-		{
-			while (k > flag)
-			{
-				str[count[0]] = ft_strjoin("0", str[count[0]]);
-				k--;
-			}
-		}
-		else
-		{
-			while (k < flag - s_nbr - neg)
-			{
-				str[count[0]] = ft_strjoin(" ", str[count[0]]);
-				k++;
-			}
-		}
-	}
+	else if (t_v.flag == 4000)
+		ft_cut_flag_u1(&t_v, str, count);
+	else if (t_v.flag == 3000)
+		ft_cut_flag_u2(&t_v, var, str, count);
+	else if (t_v.flag == 3500)
+		ft_cut_flag_u3(&t_v, var, str, count);
+	else if (t_v.flag == 0 && t_v.c == '.')
+		str[count[0]][0] = '\0';
+	else if (t_v.flag != 1 && t_v.flag != 1000 && t_v.flag != 2000 &&
+			t_v.flag != 3000 && t_v.flag != 5000)
+		ft_cut_flag_u4(&t_v, str, count);
 	count[2]++;
 }
 
 void	attrib_o_maj(char **str, t_var **var, int count[3])
 {
-	int nbr;
-	int flag;
-	int k;
-	int l;
-	char c;
+	t_cut t_v;
 
-	k = 0;
-	c = 't';
-	nbr = ft_nbrlen(var[count[2]]->u_long);
-	flag = check_flag(str, count, &nbr, &c);
-	l = ft_atoi_spec_o(str[count[0]]);
-	str[count[0]] = ft_ntoa_base_un(var[count[2]]->u_long, "01234567");
-	nbr = ft_strlen(str[count[0]]);
-	if (flag == 1000)
+	ft_cut_init_o_maj(&t_v, var, str, count);
+	if (t_v.flag == 1000)
 	{
 	}
-	else if (flag == 2000)
+	else if (t_v.flag == 2000)
 		str[count[0]] = ft_strjoin(" ", str[count[0]]);
-	else if (flag == 5000)
-	{
-		if (c != '.')
-			str[count[0]] = ft_strjoin("0", str[count[0]]);
-		flag = l;
-	}
-	else if (flag == 3000)
-	{
-		if (var[count[2]]->stars < 0)
-		{
-			while (k > var[count[2]]->stars + nbr - 1)
-			{
-				str[count[0]] = ft_strjoin(str[count[0]], " ");
-				k--;
-			}
-		}
-		else
-		{
-			while (k < var[count[2]]->stars - nbr + 1)
-			{
-				str[count[0]] = ft_strjoin(" ", str[count[0]]);
-				k++;
-			}
-		}
-	}
-	if (flag != -1 && flag != 1000 &&
-			flag != 2000 && flag != 3000 && flag != 5000)
-	{
-		if (flag < -1 && c != '0')
-		{
-			while (k > flag + nbr)
-			{
-				str[count[0]] = ft_strjoin(str[count[0]], " ");
-				k--;
-			}
-		}
-		else if (flag > 0 && (c == '0' || c == '.'))
-		{
-			while (k < flag - nbr)
-			{
-				str[count[0]] = ft_strjoin("0", str[count[0]]);
-				k++;
-			}
-		}
-		else if (flag < -1 && c == '0')
-		{
-			while (k > flag)
-			{
-				str[count[0]] = ft_strjoin("0", str[count[0]]);
-				k--;
-			}
-		}
-		else
-		{
-			while (k < flag - nbr)
-			{
-				str[count[0]] = ft_strjoin(" ", str[count[0]]);
-				k++;
-			}
-		}
-	}
+	else if (t_v.flag == 5000)
+		ft_cut_flag_o4_maj(&t_v, str, count);
+	else if (t_v.flag == 3000)
+		ft_cut_flag_o1_maj(&t_v, var, str, count);
+	else if (t_v.flag == 3500)
+		ft_cut_flag_o2_maj(&t_v, var, str, count);
+	if (t_v.flag != 0 && t_v.flag != -1 && t_v.flag != 1000 &&
+			t_v.flag != 3500 && t_v.flag != 2000 &&
+			t_v.flag != 3000 && t_v.flag != 5000)
+		ft_cut_flag_o3_maj(&t_v, str, count);
+	else if (t_v.flag == 0 && t_v.c == '.' && t_v.spec == 0)
+		str[count[0]][0] = '\0';
 	count[2]++;
 }
 
 void	attrib_d_maj(char **str, t_var **var, int count[3])
 {
-	int nbr;
-	int flag;
-	char c;
-	int k;
-	int check;
-	int check_double;
-	int neg;
-
-	k = 0;
-	c = 't';
-	neg = 0;
-	nbr = ft_nbrlen(var[count[2]]->v_long);
-	flag = check_flag(str, count, &nbr, &c);
-	check = ft_atoi_ultra(str[count[0]]);
-	if (flag == 3500)
-		check_double = ft_atoi_double(str[count[0]]);
-	if (str[count[0]][0] == '.' && var[count[2]]->v_long < 0)
-		nbr--;
-	str[count[0]] = (char *)malloc(sizeof(char) * nbr);
-	str[count[0]] = ft_ntoa_base(var[count[2]]->v_long, "0123456789");
-	if (var[count[2]]->v_long < 0 && str[count[0]][0] != '0')
-		neg = 1;
-	if (flag == 1000 && var[count[2]]->v_long >= 0)
+	t_cut t_v;
+	
+	ft_cut_init_d_maj(&t_v, var, str, count);
+	if (t_v.flag == 1000 && var[count[2]]->v_long >= 0)
 	{
-		neg = 1;
+		t_v.neg = 1;
 		str[count[0]] = ft_strjoin("+", str[count[0]]);
 	}
-	else if (flag == 3500)
-	{
-		if (var[count[2]]->v_long < 0)
-		{
-			str[count[0]] = ft_strsub(str[count[0]], 1, ft_nbrlen(var[count[2]]->v_long) + 1);
-			while (k < check_double - nbr - 1)
-			{
-				str[count[0]] = ft_strjoin("0", str[count[0]]);
-				k++;
-			}
-			k = 0;
-			str[count[0]] = ft_strjoin("-", str[count[0]]);
-			while (k < check - check_double)
-			{
-				str[count[0]] = ft_strjoin(" ", str[count[0]]);
-				k++;
-			}
-		}
-		else
-		{
-			while (k < check_double - nbr)
-			{
-				str[count[0]] = ft_strjoin("0", str[count[0]]);
-				k++;
-			}
-			k = 0;
-			while (k < check - check_double)
-			{
-				str[count[0]] = ft_strjoin(" ", str[count[0]]);
-				k++;
-			}
-		}
-	}
-	else if (flag == 2000 && var[count[2]]->v_long >= 0)
+	else if (t_v.flag == 3500)
+		ft_cut_flag_d1_maj(&t_v, var, str, count);
+	else if (t_v.flag == 2000 && var[count[2]]->v_long >= 0)
 		str[count[0]] = ft_strjoin(" ", str[count[0]]);
-	else if (flag == 2000 && var[count[2]]->v_long >= 0)
-		str[count[0]] = ft_strjoin(" ", str[count[0]]);
-	else if (flag == 4000)
-	{
-		if (var[count[2]]->v_long >= 0)
-			str[count[0]] = ft_strjoin("+", str[count[0]]);
-		while (k < check - nbr)
-		{
-			str[count[0]] = ft_strjoin(str[count[0]], " ");
-			k++;
-		}
-	}
-	else if (flag == 3000)
-	{
-		if (var[count[2]]->stars < 0)
-		{
-			while (k > var[count[2]]->stars + nbr - 1)
-			{
-				str[count[0]] = ft_strjoin(str[count[0]], " ");
-				k--;
-			}
-		}
-		else
-		{
-			while (k < var[count[2]]->stars - nbr + 1)
-			{
-				str[count[0]] = ft_strjoin(" ", str[count[0]]);
-				k++;
-			}
-		}
-	}
-	else if (flag != 1 && flag != 1000 && flag != 2000 &&
-			flag != 3000 && flag != 4000 && flag != 3500 && flag != 5000)
-	{
-		if (flag < -1 && c != '0')
-		{
-			while (k > flag + nbr + neg)
-			{
-				str[count[0]] = ft_strjoin(str[count[0]], " ");
-				k--;
-			}
-		}
-		else if (flag > 0 && (c == '0' || c == '.'))
-		{
-			if (var[count[2]]->v_long < 0)
-				str[count[0]] = ft_strsub(str[count[0]], 1, ft_nbrlen(var[count[2]]->v_long) + 1);
-			while (k < flag - nbr - neg)
-			{
-				str[count[0]] = ft_strjoin("0", str[count[0]]);
-				k++;
-			}
-			if (var[count[2]]->v_long < 0)
-				str[count[0]] = ft_strjoin("-", str[count[0]]);
-		}
-		else if (flag < -1 && c == '0')
-		{
-			while (k > flag)
-			{
-				str[count[0]] = ft_strjoin("0", str[count[0]]);
-				k--;
-			}
-		}
-		else
-		{
-			while (k < flag - nbr - neg)
-			{
-				str[count[0]] = ft_strjoin(" ", str[count[0]]);
-				k++;
-			}
-		}
-	}
+	else if (t_v.flag == 4000)
+		ft_cut_flag_d2_maj(&t_v, var, str, count);
+	else if (t_v.flag == 3000)
+		ft_cut_flag_d3_maj(&t_v, var, str, count);
+	else if (t_v.flag != 1 && t_v.flag != 1000 && t_v.flag != 2000 &&
+			t_v.flag != 3000 && t_v.flag != 4000 &&
+			t_v.flag != 3500 && t_v.flag != 5000)
+		ft_cut_flag_d4_maj(&t_v, var, str, count);
 	count[2]++;
 }
