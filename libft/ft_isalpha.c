@@ -6,7 +6,7 @@
 /*   By: dbousque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 14:31:57 by dbousque          #+#    #+#             */
-/*   Updated: 2015/11/23 15:11:38 by dbousque         ###   ########.fr       */
+/*   Updated: 2015/12/31 15:44:30 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,13 @@
 int		ft_isalpha(int c)
 {
 	if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'))
+		return (1);
+	return (0);
+}
+
+int		ft_islower(int c)
+{
+	if (c >= 'a' && c <= 'z')
 		return (1);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: ebouther <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 15:08:57 by ebouther          #+#    #+#             */
-/*   Updated: 2015/12/30 14:26:38 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/31 15:39:57 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,9 @@ int					ft_atoi_spec_o(const char *str);
 int					ft_atoi_length(const char *str);
 int					ft_isalpha(int c);
 int					ft_isdigit(int c);
+int					ft_isalldigit(char *str);
+int					ft_isfirstdigit(char *str);
+int					ft_isallnull(char *str);
 int					ft_isalnum(int c);
 int					ft_isascii(int c);
 int					ft_isprint(int c);
