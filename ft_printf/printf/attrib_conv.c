@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/12 15:20:45 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/31 14:38:54 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/31 14:47:58 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int		check_flag(char **str, int count[3], int *nbr, char *c)
 		return (cut_flag_check(str, count, nbr));
 	else if (str[count[0]][0] == '*')
 		return (cut_flag_check6(nbr));
-	else if (str[count[0]][0] == '#')
+	else if (str[count[0]][0] == '#' || str[count[0]][1] == '#')
 		return (cut_flag_check7(nbr, c, str, count));
 	else
 		return (check_flag_number(str, count, nbr, c));
