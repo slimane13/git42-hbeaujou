@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/30 17:28:25 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/31 14:07:01 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/31 14:27:06 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,8 @@ void	ft_cut_flag_x3(t_cut *t_v, t_var **var, char **str, int count[3])
 		(*t_v).diff = (*t_v).c_d;
 	else
 		(*t_v).diff = (*t_v).nbr;
+	if (ft_strcmp(str[count[0]], "0") == 0 && (*t_v).c_d == 0)
+		str[count[0]] = ft_strdup(" ");
 	if (var[count[2]]->entier < 0)
 		ft_cut_flag_x3_1(t_v, var, str, count);
 	else

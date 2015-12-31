@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/30 17:25:56 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/30 17:25:57 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/31 14:40:37 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,15 @@ void	ft_cut_flag_s1(t_cut *t_v, char **str, int count[3])
 
 void	ft_cut_flag_s2(t_cut *t_v, char **str, int count[3])
 {
-	if ((*t_v).flag < -1 && (*t_v).c != '0')
+	if ((*t_v).check != 0 && (*t_v).c_d != 0)
+	{
+		if ((*t_v).c_d < (*t_v).str_len)
+		{
+			str[count[0]] = ft_strsub(str[count[0]], 0, (*t_v).c_d);
+			(*t_v).str_len = ft_strlen(str[count[0]]);
+		}
+	}
+	if ((*t_v).flag < -1)
 	{
 		while ((*t_v).k > (*t_v).flag + (*t_v).str_len)
 		{

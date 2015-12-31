@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/12 15:20:45 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/30 19:54:51 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/31 14:38:54 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,5 +104,7 @@ void	attrib_s(char **str, t_var **var, int count[3])
 			t_v.flag != 2000 && t_v.flag != 3000 &&
 			t_v.flag != 4000 && t_v.flag != 5000 && t_v.flag != 3500)
 		ft_cut_flag_s2(&t_v, str, count);
+	else if (t_v.check == 0 && t_v.c_d != 0 && t_v.flag == 0)
+		str[count[0]] = ft_strsub(str[count[0]], 0, t_v.c_d);
 	count[2]++;
 }

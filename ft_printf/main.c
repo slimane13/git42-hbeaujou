@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/19 16:22:20 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/31 14:12:01 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/31 14:38:21 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,12 @@ int main(void)
 	free = 1;
 	test_simple_mix = 4;
 	c = 'c';
+	int x = 1;
 //	printf("%d", printf("%s %C %d %p %x %% %S", "bonjour ", L'該', 42, &free, 42, L"لحم خنزير"));
 //	printf("%d", ft_printf("%s %C %d %p %x %% %S", "bonjour ", L'該', 42, &free, 42, L"لحم خنزير"));
 	printf("\n");
-	ft_printf("%10s is a string", "this");
+	ft_printf("%-5.2s is a string", "this");
 	printf("\n");
-	printf("%10s is a string", "this");
+	printf("%-5.2s is a string", "this");
 	return (0);
 }
