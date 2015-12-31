@@ -6,14 +6,14 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/30 17:46:52 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/31 11:29:12 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/31 12:02:36 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-# include "libft.h"
+# include "../libft/libft.h"
 # include <string.h>
 # include <stdio.h>
 # include <stdlib.h>
@@ -93,6 +93,8 @@ void					ft_cut_flag_erreur2(t_cut *t_v,
 		char **str, int count[3]);
 void					ft_cut_flag_erreur2_1(t_cut *t_v,
 		char **str, int count[3]);
+
+void    attrib_erreur_conv_spec(char **str, int count[3]);
 
 void					ft_cut_init_o_z(t_cut *t_v, t_var **var,
 		char **str, int count[3]);
