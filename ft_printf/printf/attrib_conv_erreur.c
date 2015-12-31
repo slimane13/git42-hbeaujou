@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/30 18:02:25 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/31 11:43:19 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/31 15:57:02 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,9 +85,19 @@ void	ft_cut_flag_erreur2(t_cut *t_v, char **str, int count[3])
 			(*t_v).flag = -(*t_v).flag;
 		str[count[0]] = ft_strsub(str[count[0]], 0, (*t_v).flag);
 	}
+	else if (ft_strlen(str[count[0]]) == 1 && (*t_v).flag > 0)
+	{
+		(*t_v).k = 0;
+		while ((*t_v).k < (*t_v).check - (*t_v).str_len)
+		{
+			str[count[0]] = ft_strjoin(" ", str[count[0]]);
+			(*t_v).k++;
+		}
+	}
 	else if (ft_isalldigit(str[count[0]]) != 1)
 	{
-		while ((*t_v).k < (*t_v).flag - (*t_v).str_len)
+		(*t_v).k = 0;
+		while ((*t_v).k < (*t_v).check - (*t_v).str_len)
 		{
 			str[count[0]] = ft_strjoin(" ", str[count[0]]);
 			(*t_v).k++;
