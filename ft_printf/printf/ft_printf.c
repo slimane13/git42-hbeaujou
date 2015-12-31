@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/12 13:34:50 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/31 12:40:03 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/31 14:15:14 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,25 @@ void	replace_char(char **str, t_var **var, va_list liste, int *tab)
 	{
 		if (is_indice(count[0], tab))
 		{
-			if (str[count[0]][0] == ' ' && ft_strlen(str[count[0]]) == 1 &&
+			if (!ft_strcmp(str[count[0]], "ll#x"))
+			{
+				if (str[count[0]][ft_strlen(str[count[0]]) - 3] == '*')
+				{
+					var[count[2]]->stars = va_arg(liste, int);
+					var[count[2]]->u_l_long = va_arg(liste,
+							unsigned long long);
+					attrib_x_l(str, var, count);
+					str[count[0]] = ft_strjoin("0x", str[count[0]]);
+				}
+				else
+				{
+					var[count[2]]->u_l_long = va_arg(liste,
+							unsigned long long);
+					attrib_x_l(str, var, count);
+					str[count[0]] = ft_strjoin("0x", str[count[0]]);
+				}
+			}
+			else if (str[count[0]][0] == ' ' && ft_strlen(str[count[0]]) == 1 &&
 					count[0] != 0)
 				;
 			else if (str[count[0]][0] == ' ' && ft_strlen(str[count[0]]) == 1 &&
@@ -669,7 +687,8 @@ void	replace_char(char **str, t_var **var, va_list liste, int *tab)
 							ft_islower(str[count[0]][1]) &&
 							str[count[0]][0] == ' ')
 						str[count[0]][0] = '\0';
-					else if (str[count[0]][0] == ' ')
+					else if (str[count[0]][0] == ' ' &&
+							ft_strlen(str[count[0]]) == 2)
 						str[count[0]] = ft_strsub(str[count[0]], 1, 2);
 				}
 			}
@@ -726,9 +745,5 @@ int		ft_printf(char *format, ...)
 		i++;
 	}
 	retour += g_rajout;
-//	if (retour == 54)
-//		retour = 53;
-//	else if (g_retour == 118)
-//		g_retour = 103;
 	return (retour);
 }

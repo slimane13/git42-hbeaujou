@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/30 17:28:25 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/30 17:52:37 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/31 14:07:01 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,19 +24,39 @@ void	ft_cut_init_x(t_cut *t_v, t_var **var, char **str, int count[3])
 	(*t_v).c_d = ft_atoi_double(str[count[0]]);
 	(*t_v).check = ft_atoi_ultra(str[count[0]]);
 	(*t_v).flag = check_flag(str, count, &(*t_v).nbr, &(*t_v).c);
+	if (str[count[0]][1] == '0' && (*t_v).c_d == 0 && (*t_v).check != 0)
+		(*t_v).c_d = (*t_v).check;
 	str[count[0]] = ft_ntoa_base_un(var[count[2]]->u_long, "0123456789abcdef");
 	(*t_v).nbr = ft_strlen(str[count[0]]);
 }
 
 void	ft_cut_flag_x1(t_cut *t_v, t_var **var, char **str, int count[3])
 {
-	while ((*t_v).k < (*t_v).c_d - (*t_v).nbr)
+	int a;
+	int b;
+
+	a = 2;
+	b = 0;
+	if (str[count[0]][0] == '1' && ft_strlen(str[count[0]]) == 1)
+		a = 0;
+	while ((*t_v).k < (*t_v).c_d - (*t_v).nbr - a)
 	{
 		str[count[0]] = ft_strjoin("0", str[count[0]]);
 		(*t_v).k++;
+		b = 1;
 	}
 	if (var[count[2]]->u_long != 0)
 		str[count[0]] = ft_strjoin("0x", str[count[0]]);
+	while ((*t_v).k < (*t_v).check - (*t_v).nbr - 2)
+	{
+		str[count[0]] = ft_strjoin(" ", str[count[0]]);
+		(*t_v).k++;
+	}
+	while ((*t_v).k > (*t_v).check + (*t_v).nbr + 2 && b != 1)
+	{
+		str[count[0]] = ft_strjoin(str[count[0]], " ");
+		(*t_v).k--;
+	}
 	(*t_v).flag = (*t_v).l;
 	if (var[count[2]]->u_long == 0)
 		(*t_v).spec = 0;

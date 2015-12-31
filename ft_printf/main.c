@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/19 16:22:20 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/31 12:32:33 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/31 14:12:01 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ int main(void)
 //	printf("%d", printf("%s %C %d %p %x %% %S", "bonjour ", L'該', 42, &free, 42, L"لحم خنزير"));
 //	printf("%d", ft_printf("%s %C %d %p %x %% %S", "bonjour ", L'該', 42, &free, 42, L"لحم خنزير"));
 	printf("\n");
-	ft_printf("% h");
+	ft_printf("%10s is a string", "this");
 	printf("\n");
-	printf("% h");
+	printf("%10s is a string", "this");
 	return (0);
 }
