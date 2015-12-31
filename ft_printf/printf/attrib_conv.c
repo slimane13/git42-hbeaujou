@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/12 15:20:45 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/31 16:31:53 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/31 16:54:29 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,9 @@ int		check_flag(char **str, int count[3], int *nbr, char *c)
 			str[count[0]][2] == '.'))
 		return (3500);
 	else if ((str[count[0]][0] == '+' && str[count[0]][1] != '0') ||
-			(str[count[0]][0] == ' ' && str[count[0]][1] == '+'))
+			(str[count[0]][0] == ' ' && str[count[0]][1] == '+') ||
+			(str[count[0]][0] == ' ' && str[count[0]][1] == ' ' &&
+			str[count[0]][2] == '+'))
 		return (cut_flag_check4(nbr));
 	else if (str[count[0]][0] == '+' && str[count[0]][1] == '0')
 		return (cut_flag_check5(nbr));
