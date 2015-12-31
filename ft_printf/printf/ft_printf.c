@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/12 13:34:50 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/31 11:59:16 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/31 12:15:54 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -639,6 +639,10 @@ void	replace_char(char **str, t_var **var, va_list liste, int *tab)
 				if (ft_strlen(str[count[0]]) == 1 &&
 						ft_isdigit(str[count[0]][0]))
 					attrib_erreur_conv_spec(str, count);
+				else if (ft_strlen(str[count[0]]) == 2 &&
+						str[count[0]][0] == '-' &&
+						ft_isdigit(str[count[0]][1]))
+					attrib_erreur_conv_spec(str, count);
 				else if (ft_strlen(str[count[0]]) == 4)
 					attrib_erreur_conv(str, count);
 				else if (ft_strlen(str[count[0]]) == 3 &&
@@ -649,7 +653,11 @@ void	replace_char(char **str, t_var **var, va_list liste, int *tab)
 					attrib_erreur_conv(str, count);
 				else
 				{
-					if (str[count[0]][0] == ' ')
+					if (ft_strlen(str[count[0]]) == 2 &&
+							ft_islower(str[count[0]][1]) &&
+							str[count[0]][0] == ' ')
+						str[count[0]][0] = '\0';
+					else if (str[count[0]][0] == ' ')
 						str[count[0]] = ft_strsub(str[count[0]], 1, 2);
 				}
 			}
