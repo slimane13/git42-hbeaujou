@@ -6,7 +6,7 @@
 /*   By: dbousque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 15:49:34 by dbousque          #+#    #+#             */
-/*   Updated: 2015/12/22 16:10:15 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/31 16:00:29 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ int			ft_atoi_ultra(const char *str) //// A FAIRE
 	i = 0;
 	res = 0;
 	signe = 1;
-	while (ft_is_valid(str[i]) || str[i] == ' ' || str[i] == '0')
+	while (ft_is_valid(str[i]) || str[i] == ' ' || str[i] == '0' ||
+			str[i] == '#')
 		i++;
 	if (str[i] == '-' || str[i] == '+')
 	{
