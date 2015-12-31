@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/30 17:46:52 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/30 21:35:37 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/31 11:29:12 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -417,6 +417,16 @@ void					ft_cut_flag_x4_1maj(t_cut *t_v,
 void					ft_cut_flag_x4_2maj(t_cut *t_v,
 		char **str, int count[3]);
 
+void					ft_cut_init_x_l(t_cut *t_v, t_var **var,
+		char **str, int count[3]);
+void					ft_cut_flag_x1_l(t_cut *t_v, t_var **var,
+		char **str, int count[3]);
+
+void					ft_cut_init_x_lmaj(t_cut *t_v, t_var **var,
+		char **str, int count[3]);
+void					ft_cut_flag_x1_lmaj(t_cut *t_v, t_var **var,
+		char **str, int count[3]);
+
 void					ft_cut_init_x(t_cut *t_v, t_var **var,
 		char **str, int count[3]);
 void					ft_cut_flag_x1(t_cut *t_v, t_var **var,
@@ -542,6 +552,8 @@ void					attrib_u_maj(char **str, t_var **var, int count[3]);
 void					attrib_u_short(char **str, t_var **var, int count[3]);
 void					attrib_u_z(char **str, t_var **var, int count[3]);
 void					attrib_x(char **str, t_var **var, int count[3]);
+void					attrib_x_l(char **str, t_var **var, int count[3]);
+void					attrib_x_lmaj(char **str, t_var **var, int count[3]);
 void					attrib_x_char(char **str, t_var **var, int count[3]);
 void					attrib_x_maj(char **str, t_var **var, int count[3]);
 void					attrib_x_maj_char(char **str, t_var **var,

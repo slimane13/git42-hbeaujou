@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/12 13:34:50 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/30 21:39:23 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/31 11:27:47 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,12 @@ void	replace_char(char **str, t_var **var, va_list liste, int *tab)
 	{
 		if (is_indice(count[0], tab))
 		{
-			if (str[count[0]][0] == ' ' && ft_strlen(str[count[0]]) == 1)
+			if (str[count[0]][0] == ' ' && ft_strlen(str[count[0]]) == 1 &&
+					count[0] != 0)
 				;
+			else if (str[count[0]][0] == ' ' && ft_strlen(str[count[0]]) == 1 &&
+					count[0] == 0)
+				str[count[0]][0] = '\0';
 			else if ((str[count[0]][ft_strlen(str[count[0]]) - 1] == 'd' ||
 					str[count[0]][ft_strlen(str[count[0]]) - 1] == 'i') &&
 					str[count[0]][ft_strlen(str[count[0]]) - 2] == 'h' &&
@@ -346,17 +350,57 @@ void	replace_char(char **str, t_var **var, va_list liste, int *tab)
 				attrib_p(str, var, count);
 			}
 			else if (str[count[0]][ft_strlen(str[count[0]]) - 1] == 'x' &&
-					str[count[0]][ft_strlen(str[count[0]]) - 2] != 'h')
+					str[count[0]][ft_strlen(str[count[0]]) - 2] != 'h' &&
+					str[count[0]][ft_strlen(str[count[0]]) - 2] != 'l' &&
+					str[count[0]][ft_strlen(str[count[0]]) - 2] != 'j' &&
+					str[count[0]][ft_strlen(str[count[0]]) - 2] != 'z')
 			{
 				if (str[count[0]][ft_strlen(str[count[0]]) - 2] == '*')
 				{
 					var[count[2]]->stars = va_arg(liste, int);
-					var[count[2]]->u_long = va_arg(liste, unsigned long);
+					var[count[2]]->u_long = va_arg(liste, unsigned int);
 					attrib_x(str, var, count);
 				}
 				else
 				{
-					var[count[2]]->u_long = va_arg(liste, unsigned long);
+					var[count[2]]->u_long = va_arg(liste, unsigned int);
+					attrib_x(str, var, count);
+				}
+			}
+			else if (str[count[0]][ft_strlen(str[count[0]]) - 1] == 'x' &&
+					((str[count[0]][ft_strlen(str[count[0]]) - 2] == 'l' &&
+					str[count[0]][ft_strlen(str[count[0]]) - 3] == 'l') ||
+					str[count[0]][ft_strlen(str[count[0]]) - 2] == 'z' ||
+					str[count[0]][ft_strlen(str[count[0]]) - 2] == 'j'))
+			{
+				if (str[count[0]][ft_strlen(str[count[0]]) - 3] == '*')
+				{
+					var[count[2]]->stars = va_arg(liste, int);
+					var[count[2]]->u_l_long = va_arg(liste,
+							unsigned long long);
+					attrib_x_l(str, var, count);
+				}
+				else
+				{
+					var[count[2]]->u_l_long = va_arg(liste,
+							unsigned long long);
+					attrib_x_l(str, var, count);
+				}
+			}
+			else if (str[count[0]][ft_strlen(str[count[0]]) - 1] == 'x' &&
+					str[count[0]][ft_strlen(str[count[0]]) - 2] == 'l')
+			{
+				if (str[count[0]][ft_strlen(str[count[0]]) - 3] == '*')
+				{
+					var[count[2]]->stars = va_arg(liste, int);
+					var[count[2]]->u_long = va_arg(liste,
+							unsigned long);
+					attrib_x(str, var, count);
+				}
+				else
+				{
+					var[count[2]]->u_long = va_arg(liste,
+							unsigned long);
 					attrib_x(str, var, count);
 				}
 			}
@@ -396,17 +440,57 @@ void	replace_char(char **str, t_var **var, va_list liste, int *tab)
 				}
 			}
 			else if (str[count[0]][ft_strlen(str[count[0]]) - 1] == 'X' &&
-					str[count[0]][ft_strlen(str[count[0]]) - 2] != 'h')
+					str[count[0]][ft_strlen(str[count[0]]) - 2] != 'h' &&
+					str[count[0]][ft_strlen(str[count[0]]) - 2] != 'l' &&
+					str[count[0]][ft_strlen(str[count[0]]) - 2] != 'j' &&
+					str[count[0]][ft_strlen(str[count[0]]) - 2] != 'z')
 			{
 				if (str[count[0]][ft_strlen(str[count[0]]) - 2] == '*')
 				{
 					var[count[2]]->stars = va_arg(liste, int);
-					var[count[2]]->u_long = va_arg(liste, unsigned long);
+					var[count[2]]->u_long = va_arg(liste, unsigned int);
 					attrib_x_maj(str, var, count);
 				}
 				else
 				{
-					var[count[2]]->u_long = va_arg(liste, unsigned long);
+					var[count[2]]->u_long = va_arg(liste, unsigned int);
+					attrib_x_maj(str, var, count);
+				}
+			}
+			else if (str[count[0]][ft_strlen(str[count[0]]) - 1] == 'X' &&
+					((str[count[0]][ft_strlen(str[count[0]]) - 2] == 'l' &&
+					str[count[0]][ft_strlen(str[count[0]]) - 3] == 'l') ||
+					str[count[0]][ft_strlen(str[count[0]]) - 2] == 'z' ||
+					str[count[0]][ft_strlen(str[count[0]]) - 2] == 'j'))
+			{
+				if (str[count[0]][ft_strlen(str[count[0]]) - 3] == '*')
+				{
+					var[count[2]]->stars = va_arg(liste, int);
+					var[count[2]]->u_l_long = va_arg(liste,
+							unsigned long long);
+					attrib_x_lmaj(str, var, count);
+				}
+				else
+				{
+					var[count[2]]->u_l_long = va_arg(liste,
+							unsigned long long);
+					attrib_x_lmaj(str, var, count);
+				}
+			}
+			else if (str[count[0]][ft_strlen(str[count[0]]) - 1] == 'X' &&
+					str[count[0]][ft_strlen(str[count[0]]) - 2] == 'l')
+			{
+				if (str[count[0]][ft_strlen(str[count[0]]) - 3] == '*')
+				{
+					var[count[2]]->stars = va_arg(liste, int);
+					var[count[2]]->u_long = va_arg(liste,
+							unsigned long);
+					attrib_x_maj(str, var, count);
+				}
+				else
+				{
+					var[count[2]]->u_long = va_arg(liste,
+							unsigned long);
 					attrib_x_maj(str, var, count);
 				}
 			}
