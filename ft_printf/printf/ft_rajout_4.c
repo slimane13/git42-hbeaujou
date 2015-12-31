@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/30 19:51:02 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/31 12:08:41 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/31 12:34:12 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,14 +42,20 @@ void	attrib_erreur_conv_spec(char **str, int count[3])
 {
 	int i;
 	int flagi;
+	int c;
 
+	if (str[count[0]][0] == '0')
+		c = '0';
 	flagi = ft_atoi(str[count[0]]);
 	i = 0;
 	str[count[0]][0] = '%';
 	str[count[0]][1] = '\0';
 	while (i < flagi - 1)
 	{
-		str[count[0]] = ft_strjoin(" ", str[count[0]]);
+		if (c == '0')
+			str[count[0]] = ft_strjoin("0", str[count[0]]);
+		else
+			str[count[0]] = ft_strjoin(" ", str[count[0]]);
 		i++;
 	}
 	while (i > flagi + 1)
