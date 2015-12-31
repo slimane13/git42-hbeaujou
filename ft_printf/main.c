@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/19 16:22:20 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/31 15:45:57 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/31 16:39:22 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,8 @@ int main(void)
 	int x = 1;
 //	printf("%d", printf("%s %C %d %p %x %% %S", "bonjour ", L'該', 42, &free, 42, L"لحم خنزير"));
 //	printf("%d", ft_printf("%s %C %d %p %x %% %S", "bonjour ", L'該', 42, &free, 42, L"لحم خنزير"));
-	printf("{%10R}");
+	printf("% 0d", -42);
 	printf("\n");
-	ft_printf("{%10R}");
-	printf("\n");
-	ft_printf("%-5.10o", 2500);
-	printf("\n");
-	printf("%-5.10o", 2500);
+	ft_printf("% 0d", -42);
 	return (0);
 }

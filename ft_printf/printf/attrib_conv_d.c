@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/30 17:21:35 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/30 17:48:41 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2015/12/31 16:39:00 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,16 @@ void	ft_cut_init_d(t_cut *t_v, t_var **var, char **str, int count[3])
 	(*t_v).flag = check_flag(str, count, &(*t_v).nbr, &(*t_v).c);
 	(*t_v).check = ft_atoi_ultra(str[count[0]]);
 	(*t_v).c_d = ft_atoi_double(str[count[0]]);
+	(*t_v).g = 'q';
+	if (((str[count[0]][0] == '0' && str[count[0]][1] == ' ') ||
+			(str[count[0]][0] == ' ' && str[count[0]][1] == '0')) &&
+			var[count[2]]->entier != 0)
+	{
+		if (var[count[2]]->entier < 0)
+			(*t_v).g = 'l';
+		else
+			(*t_v).g = ' ';
+	}
 	if (str[count[0]][0] == '.' && var[count[2]]->entier < 0)
 		(*t_v).nbr--;
 	if (str[count[0]][2] == '.' && var[count[2]]->entier < 0)
@@ -55,8 +65,10 @@ void	ft_cut_flag_d1(t_cut *t_v, t_var **var, char **str, int count[3])
 	}
 	else if ((*t_v).flag == 2500)
 	{
-		str[count[0]] = ft_strjoin("0", str[count[0]]);
-		str[count[0]] = ft_strjoin(" ", str[count[0]]);
+		if ((*t_v).g == 'q')
+			str[count[0]] = ft_strjoin("0", str[count[0]]);
+		if ((*t_v).g != 'l')
+			str[count[0]] = ft_strjoin(" ", str[count[0]]);
 	}
 }
 
