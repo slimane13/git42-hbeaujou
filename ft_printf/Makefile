@@ -6,7 +6,7 @@
 #    By: aemebiku <aemebiku@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/06/26 15:32:35 by aemebiku          #+#    #+#              #
-#    Updated: 2015/12/31 11:51:46 by hbeaujou         ###   ########.fr        #
+#    Updated: 2016/01/01 16:04:12 by hbeaujou         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -148,7 +148,6 @@ CC		= gcc
 
 .SILENT:
 
-all: $(NAME)
 
 $(NAME): $(OBJECTS)
 	ar rc $(NAME) $(OBJECTS)
@@ -157,6 +156,8 @@ $(NAME): $(OBJECTS)
 	printf "\e[32m[✔]\e[36m $@"
 	printf "\n\e[32m----------------------------------\e[36m"
 	printf "\033[0m\n"
+
+all: $(NAME)
 
 %.o: %.c
 	$(CC) $(WFLAGS) $(HEADERS) -c -o $@ $^

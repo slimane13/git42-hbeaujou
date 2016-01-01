@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/12 11:58:53 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/30 20:23:42 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/01 16:06:24 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int		check_conver(char *format, int var[3])
 	int i;
 
 	i = 1;
-	while (i < 6 && (format[var[0] + i] == '.' || format[var[0] + i] == '-' ||
+	while (i < 7 && (format[var[0] + i] == '.' || format[var[0] + i] == '-' ||
 				format[var[0] + i] == '+' || format[var[0] + i] == ' ' ||
 				format[var[0] + i] == '#' || ft_isdigit(format[var[0] + i]) ||
 				format[var[0] + i] == 'j' || format[var[0] + i] == 'z' ||
@@ -43,6 +43,8 @@ void	choix_add_flag(char *format, char *str, int var[3])
 		add_flag_five(format, str, var);
 	else if (var[2] == 6)
 		add_flag_six(format, str, var);
+	else if (var[2] == 7)
+		add_flag_seven(format, str, var);
 	else
 	{
 		ft_putstr("ERREUR");

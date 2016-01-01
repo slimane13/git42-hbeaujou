@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/30 17:46:52 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/01 15:13:31 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/01 16:07:35 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -526,6 +526,7 @@ void					add_flag_three(char *format, char *str, int var[3]);
 void					add_flag_four(char *format, char *str, int var[3]);
 void					add_flag_five(char *format, char *str, int var[3]);
 void					add_flag_six(char *format, char *str, int var[3]);
+void					add_flag_seven(char *format, char *str, int var[3]);
 void					attrib_c(char **str, t_var **var, int count[3]);
 void					attrib_c_maj(char **str, t_var **var, int count[3]);
 void					attrib_convers(char **str, t_var **var, int count[3]);
