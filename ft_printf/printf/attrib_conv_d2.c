@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/30 17:22:01 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/01 15:03:49 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/01 15:28:57 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,20 +47,26 @@ void	ft_cut_flag_d6(t_cut *t_v, t_var **var, char **str, int count[3])
 {
 	if ((*t_v).flag < -1 && (*t_v).c != '0')
 	{
-		if ((*t_v).z == '+')
+		while ((*t_v).k < (*t_v).c_d - (*t_v).nbr + (*t_v).neg)
+		{
+			str[count[0]] = ft_strjoin("0", str[count[0]]);
+			(*t_v).k++;
+		}
+		(*t_v).k = -(*t_v).k;
+		if ((*t_v).z == '+' && var[count[2]]->entier > 0)
 			(*t_v).nbr++;
 		while ((*t_v).k > (*t_v).flag + (*t_v).nbr + (*t_v).neg)
 		{
 			str[count[0]] = ft_strjoin(str[count[0]], " ");
 			(*t_v).k--;
 		}
-		if ((*t_v).z == '+')
+		if ((*t_v).z == '+' && var[count[2]]->entier > 0)
 			str[count[0]] = ft_strjoin("+", str[count[0]]);
 	}
 	else if ((*t_v).flag > 0 && ((*t_v).c == '0' || (*t_v).c == '.'))
 		ft_cut_flag_d6_1(t_v, var, str, count);
 	else if ((*t_v).flag < -1 && (*t_v).c == '0')
-		ft_cut_flag_d6_2(t_v, str, count);
+		ft_cut_flag_d6_2(t_v, var, str, count);
 	else
 	{
 		if ((*t_v).z == '+' && (*t_v).flag != 0 && var[count[2]]->entier > 0)
@@ -118,9 +124,9 @@ void	ft_cut_flag_d6_1(t_cut *t_v, t_var **var, char **str, int count[3])
 		str[count[0]] = ft_strjoin("-", str[count[0]]);
 }
 
-void	ft_cut_flag_d6_2(t_cut *t_v, char **str, int count[3])
+void	ft_cut_flag_d6_2(t_cut *t_v, t_var **var, char **str, int count[3])
 {
-	while ((*t_v).k > (*t_v).flag + (*t_v).nbr)
+	while ((*t_v).k > (*t_v).flag + (*t_v).nbr + (var[count[2]]->entier < 0))
 	{
 		str[count[0]] = ft_strjoin(str[count[0]], " ");
 		(*t_v).k--;

@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/30 17:46:52 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/31 12:02:36 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/01 15:13:31 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -488,7 +488,7 @@ void					ft_cut_flag_d6(t_cut *t_v, t_var **var,
 		char **str, int count[3]);
 void					ft_cut_flag_d6_1(t_cut *t_v, t_var **var,
 		char **str, int count[3]);
-void					ft_cut_flag_d6_2(t_cut *t_v, char **str,
+void					ft_cut_flag_d6_2(t_cut *t_v, t_var **var, char **str,
 		int count[3]);
 
 int						cut_flag_number(char **str, int count[3],
