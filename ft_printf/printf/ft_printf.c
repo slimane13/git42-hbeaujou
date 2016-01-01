@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/12 13:34:50 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/01 15:46:43 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/01 16:00:07 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	replace_char(char **str, t_var **var, va_list liste, int *tab)
 				}
 			}
 			else if (!ft_strcmp(str[count[0]], "lhl") ||
-					!ft_strcmp(str[count[0]], "ljlz") ||
+					!ft_strcmp(str[count[0]], "lhlz") ||
 					!ft_strcmp(str[count[0]], "zj") ||
 					!ft_strcmp(str[count[0]], "lhh"))
 				str[count[0]] = ft_strdup("\0");
@@ -76,7 +76,25 @@ void	replace_char(char **str, t_var **var, va_list liste, int *tab)
 			else if ((str[count[0]][ft_strlen(str[count[0]]) - 1] == 'd' ||
 					str[count[0]][ft_strlen(str[count[0]]) - 1] == 'i') &&
 					str[count[0]][ft_strlen(str[count[0]]) - 2] == 'h' &&
-					str[count[0]][ft_strlen(str[count[0]]) - 3] != 'h')
+					str[count[0]][ft_strlen(str[count[0]]) - 3] == 'j')
+			{
+				if (str[count[0]][ft_strlen(str[count[0]]) - 4] == '*')
+				{
+					var[count[2]]->stars = va_arg(liste, int);
+					var[count[2]]->u_l_long = va_arg(liste, unsigned long long);
+					attrib_d_ll(str, var, count);
+				}
+				else
+				{
+					var[count[2]]->u_l_long = va_arg(liste, unsigned long long);
+					attrib_d_ll(str, var, count);
+				}
+			}
+			else if ((str[count[0]][ft_strlen(str[count[0]]) - 1] == 'd' ||
+					str[count[0]][ft_strlen(str[count[0]]) - 1] == 'i') &&
+					str[count[0]][ft_strlen(str[count[0]]) - 2] == 'h' &&
+					str[count[0]][ft_strlen(str[count[0]]) - 3] != 'h' &&
+					str[count[0]][ft_strlen(str[count[0]]) - 3] != 'z')
 			{
 				if (str[count[0]][ft_strlen(str[count[0]]) - 2] == '*')
 				{
@@ -128,7 +146,9 @@ void	replace_char(char **str, t_var **var, va_list liste, int *tab)
 			}
 			else if ((str[count[0]][ft_strlen(str[count[0]]) - 1] == 'd' ||
 					str[count[0]][ft_strlen(str[count[0]]) - 1] == 'i') &&
-					str[count[0]][ft_strlen(str[count[0]]) - 2] == 'z')
+					((str[count[0]][ft_strlen(str[count[0]]) - 2] == 'z') ||
+					(str[count[0]][ft_strlen(str[count[0]]) - 2] == 'h' &&
+					 str[count[0]][ft_strlen(str[count[0]]) - 3] == 'z')))
 			{
 				if (str[count[0]][ft_strlen(str[count[0]]) - 3] == '*')
 				{
