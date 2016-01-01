@@ -6,7 +6,7 @@
 #    By: aemebiku <aemebiku@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/06/26 15:32:35 by aemebiku          #+#    #+#              #
-#    Updated: 2016/01/01 19:18:37 by hbeaujou         ###   ########.fr        #
+#    Updated: 2016/01/01 19:53:47 by hbeaujou         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -19,6 +19,11 @@ SOURCES =	printf/add_flag.c				\
 			printf/ft_cut_printf3.c			\
 			printf/ft_cut_printf4.c			\
 			printf/ft_cut_printf5.c			\
+			printf/ft_cut_printf6.c			\
+			printf/ft_cut_printf7.c			\
+			printf/ft_cut_printf8.c			\
+			printf/ft_cut_printf9.c			\
+			printf/ft_cut_printf10.c		\
 			printf/attrib_conv_erreur.c		\
 			printf/attrib_conv_erreur2.c	\
 			printf/attrib_conv_c.c			\

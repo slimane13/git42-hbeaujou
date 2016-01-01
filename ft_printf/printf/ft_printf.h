@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/30 17:46:52 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/01 19:29:01 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/01 19:54:27 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,50 @@ int						is_indice(int nb, int *tab);
 int						run_var(char *str, char c);
 int						ft_wtomb(char *s, wchar_t wchar);
 
+void					ft_cut_entiertx3_majl(char **str, t_var **var,
+		int count[3], va_list liste);
+void					ft_cut_entiertx3_majull(char **str, t_var **var,
+		int count[3], va_list liste);
+void					ft_cut_entiertx3_majul(char **str, t_var **var,
+		int count[3], va_list liste);
+void					ft_cut_entiertx3_mchar(char **str, t_var **var,
+		int count[3], va_list liste);
+void					ft_cut_entiertx3_mshort(char **str, t_var **var,
+		int count[3], va_list liste);
+void					ft_cut_entiertx3_n(char **str, t_var **var,
+		int count[3], va_list liste);
+void					ft_cut_entiertx3_ull(char **str, t_var **var,
+		int count[3], va_list liste);
+void					ft_cut_entiertx3_ul(char **str, t_var **var,
+		int count[3], va_list liste);
+void					ft_cut_entiertx3_char(char **str, t_var **var,
+		int count[3], va_list liste);
+void					ft_cut_entiertx3_short(char **str, t_var **var,
+		int count[3], va_list liste);
+void					ft_cut_entiertu3_ull(char **str, t_var **var,
+		int count[3], va_list liste);
+void					ft_cut_entiertu3_ul(char **str, t_var **var,
+		int count[3], va_list liste);
+void					ft_cut_entiertu3_short(char **str, t_var **var,
+		int count[3], va_list liste);
+void					ft_cut_entiertu3_uint(char **str, t_var **var,
+		int count[3], va_list liste);
+void					ft_cut_entiertu3_z(char **str, t_var **var,
+		int count[3], va_list liste);
+void					ft_cut_entiertu3_j(char **str, t_var **var,
+		int count[3], va_list liste);
+void					ft_cut_entiertu3_char(char **str, t_var **var,
+		int count[3], va_list liste);
+void					ft_cut_entiertd3_maj2(char **str, t_var **var,
+		int count[3], va_list liste);
+void					ft_cut_entiertd3_j(char **str, t_var **var,
+		int count[3], va_list liste);
+void					ft_cut_entiertd3_maj(char **str, t_var **var,
+		int count[3], va_list liste);
+void					ft_cut_entiertd3_vll(char **str, t_var **var,
+		int count[3], va_list liste);
+void					ft_cut_entiertd3_char(char **str, t_var **var,
+		int count[3], va_list liste);
 void					ft_cut_entiertd3_ll(char **str, t_var **var,
 		int count[3], va_list liste);
 void					ft_cut_entiertd3_int(char **str, t_var **var,
