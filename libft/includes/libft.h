@@ -6,7 +6,7 @@
 /*   By: ebouther <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 15:08:57 by ebouther          #+#    #+#             */
-/*   Updated: 2015/12/31 15:39:57 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/01 18:21:12 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ int					ft_isalldigit(char *str);
 int					ft_isfirstdigit(char *str);
 int					ft_isallnull(char *str);
 int					ft_isalnum(int c);
+int					ft_isalpha_spec(int c)
 int					ft_isascii(int c);
 int					ft_isprint(int c);
 int					ft_islower(int c);

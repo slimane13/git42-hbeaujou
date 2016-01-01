@@ -6,29 +6,12 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/30 17:46:52 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/01 19:29:01 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/01 17:40:55 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
-
-# define end_s str[count[0]][ft_strlen(str[count[0]]) - 1]
-# define cmp_s1 !ft_strcmp(str[count[0]], "ll#x")
-# define cmp_s2 !ft_strcmp(str[count[0]], "lhl")
-# define cmp_s3 !ft_strcmp(str[count[0]], "lhlz")
-# define cmp_s4 !ft_strcmp(str[count[0]], "zj")
-# define cmp_s5 !ft_strcmp(str[count[0]], "lhh")
-# define is_d0 ft_isdigit(str[count[0]][0])
-# define is_d1 ft_isdigit(str[count[0]][1])
-# define strc0 str[count[0]][0]
-# define strc1 str[count[0]][1]
-# define strc2 str[count[0]][2]
-# define strc3 str[count[0]][3]
-# define cl1 str[count[0]][ft_strlen(str[count[0]]) - 1]
-# define cl2 str[count[0]][ft_strlen(str[count[0]]) - 2]
-# define cl3 str[count[0]][ft_strlen(str[count[0]]) - 3]
-# define cl4 str[count[0]][ft_strlen(str[count[0]]) - 4]
 
 # include "../libft/libft.h"
 # include <string.h>
@@ -98,43 +81,7 @@ int						is_indice(int nb, int *tab);
 int						run_var(char *str, char c);
 int						ft_wtomb(char *s, wchar_t wchar);
 
-void					ft_cut_entiertd3_ll(char **str, t_var **var,
-		int count[3], va_list liste);
-void					ft_cut_entiertd3_int(char **str, t_var **var,
-		int count[3], va_list liste);
-void					ft_cut_entiertd3_short(char **str, t_var **var,
-		int count[3], va_list liste);
-void					ft_cut_entierto3_short(char **str, t_var **var,
-		int count[3], va_list liste);
-void					ft_cut_entierto3_maj(char **str, t_var **var,
-		int count[3], va_list liste);
-void					ft_cut_replace(char **str, int count[3]);
-void					ft_cut_replace2(char **str, t_var **var,
-		va_list liste, int count[3]);
-
-void					ft_c_c_f_d21(t_cut *t_v, t_var **var, char **str,
-		int count[3]);
-void					ft_c_c_f_d23(t_cut *t_v, t_var **var, char **str,
-		int count[3]);
-void					ft_c_c_f_d231(t_cut *t_v, t_var **var, char **str,
-		int count[3]);
-
 void					ft_cut_print_d1(t_var **var, char **str,
-		int count[3], va_list liste);
-void					ft_cut_print_u1(t_var **var, char **str,
-		int count[3], va_list liste);
-void					ft_cut_print_x1(t_var **var, char **str,
-		int count[3], va_list liste);
-void					ft_cut_print_o1(t_var **var, char **str,
-		int count[3], va_list liste);
-void					ft_cut_print_c1(t_var **var, char **str,
-		int count[3], va_list liste);
-void					ft_cut_print_s1(t_var **var, char **str,
-		int count[3], va_list liste);
-void					ft_cut_print_else(char **str, int count[3]);
-void					ft_cut_print_p1(t_var **var, char **str,
-		int count[3], va_list liste);
-void					ft_cut_print_spec(t_var **var, char **str,
 		int count[3], va_list liste);
 
 int						ft_printf(char *format, ...);

@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/12 15:20:45 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/01 16:34:46 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/01 18:33:39 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,8 @@ int		check_flag(char **str, int count[3], int *nbr, char *c)
 		return (cut_flag_check2(nbr));
 	else if (str[count[0]][0] == '0' && str[count[0]][1] == '-')
 		return (cut_flag_check3(nbr));
-	else if ((ft_isdigit(str[count[0]][0]) && str[count[0]][1] == '.') ||
-			(ft_isdigit(str[count[0]][0]) && ft_isdigit(str[count[0]][1]) &&
-			str[count[0]][2] == '.') || (str[count[0]][0] == ' ' &&
-				str[count[0]][3] == '.') || (str[count[0]][0] == '+' &&
-					str[count[0]][3] == '.'))
+	else if ((is_d0 && strc1 == '.') || (is_d0 && is_d1 && strc2 == '.') ||
+			(strc0 == ' ' && strc3 == '.') || (strc0 == '+' && strc3 == '.'))
 		return (3500);
 	else if ((str[count[0]][0] == '+' && str[count[0]][1] != '0') ||
 			(str[count[0]][0] == ' ' && str[count[0]][1] == '+') ||

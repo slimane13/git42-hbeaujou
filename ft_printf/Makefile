@@ -6,7 +6,7 @@
 #    By: aemebiku <aemebiku@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/06/26 15:32:35 by aemebiku          #+#    #+#              #
-#    Updated: 2016/01/01 17:30:33 by hbeaujou         ###   ########.fr        #
+#    Updated: 2016/01/01 19:18:37 by hbeaujou         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -14,6 +14,11 @@ NAME = libftprintf.a
 
 SOURCES =	printf/add_flag.c				\
 			printf/add_flag2.c				\
+			printf/ft_cut_printf1.c			\
+			printf/ft_cut_printf2.c			\
+			printf/ft_cut_printf3.c			\
+			printf/ft_cut_printf4.c			\
+			printf/ft_cut_printf5.c			\
 			printf/attrib_conv_erreur.c		\
 			printf/attrib_conv_erreur2.c	\
 			printf/attrib_conv_c.c			\
@@ -80,6 +85,7 @@ SOURCES =	printf/add_flag.c				\
 			printf/ft_rajout_2.c			\
 			printf/ft_rajout_3.c			\
 			printf/ft_rajout_4.c			\
+			printf/ft_rajout_5.c			\
 			libft/ft_memset.c				\
 			libft/ft_bzero.c				\
 			libft/ft_nbrlen.c				\
