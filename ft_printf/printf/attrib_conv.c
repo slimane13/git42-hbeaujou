@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/12 15:20:45 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/01 16:15:20 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/01 16:34:46 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ void	attrib_d(char **str, t_var **var, int count[3])
 	t_cut t_v;
 
 	ft_cut_init_d(&t_v, var, str, count);
-//	printf("%d\n%d\n%d\n%c\n%c\n", t_v.flag, t_v.check, t_v.c_d, t_v.z, t_v.c);
 	if (t_v.flag == 1000 || t_v.flag == 4500 || t_v.flag == 2500)
 		ft_cut_flag_d1(&t_v, var, str, count);
 	else if (t_v.flag == 1500)
@@ -61,7 +60,7 @@ void	attrib_d(char **str, t_var **var, int count[3])
 		ft_cut_flag_d4(&t_v, var, str, count);
 	else if (t_v.flag == 3000)
 		ft_cut_flag_d5(&t_v, var, str, count);
-	else if (t_v.flag == 0 && t_v.c == '.')
+	else if (t_v.flag == 0 && t_v.c == '.' && var[count[2]]->entier == 0)
 		str[count[0]][0] = '\0';
 	else if (t_v.flag != 1 && t_v.flag != 1000 && t_v.flag != 2000 &&
 			t_v.flag != 3000 && t_v.flag != 4000 &&
