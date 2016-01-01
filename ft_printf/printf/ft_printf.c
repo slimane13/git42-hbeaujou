@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/12 13:34:50 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/31 14:15:14 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/01 15:46:43 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,11 @@ void	replace_char(char **str, t_var **var, va_list liste, int *tab)
 					str[count[0]] = ft_strjoin("0x", str[count[0]]);
 				}
 			}
+			else if (!ft_strcmp(str[count[0]], "lhl") ||
+					!ft_strcmp(str[count[0]], "ljlz") ||
+					!ft_strcmp(str[count[0]], "zj") ||
+					!ft_strcmp(str[count[0]], "lhh"))
+				str[count[0]] = ft_strdup("\0");
 			else if (str[count[0]][0] == ' ' && ft_strlen(str[count[0]]) == 1 &&
 					count[0] != 0)
 				;
