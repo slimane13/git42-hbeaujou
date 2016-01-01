@@ -1,14 +1,14 @@
-#******************************************************************************#
+# **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aemebiku <aemebiku@student.42.fr>          +#+  +:+       +#+         #
+#    By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2014/06/26 15:32:35 by aemebiku          #+#    #+#              #
-#    Updated: 2016/01/01 19:53:47 by hbeaujou         ###   ########.fr        #
+#    Created: 2016/01/01 20:43:29 by hbeaujou          #+#    #+#              #
+#    Updated: 2016/01/01 20:48:32 by hbeaujou         ###   ########.fr        #
 #                                                                              #
-#******************************************************************************#
+# **************************************************************************** #
 
 NAME = libftprintf.a
 
@@ -93,7 +93,15 @@ SOURCES =	printf/add_flag.c				\
 			printf/ft_rajout_5.c			\
 			libft/ft_memset.c				\
 			libft/ft_bzero.c				\
+			libft/ft_lstadd.c				\
+			libft/ft_lstaddend.c			\
+			libft/ft_lstdel.c				\
+			libft/ft_lstdelone.c			\
+			libft/ft_lstiter.c				\
+			libft/ft_lstnew.c				\
+			libft/ft_lstmap.c				\
 			libft/ft_nbrlen.c				\
+			libft/ft_memalloc.c				\
 			libft/ft_memcpy.c				\
 			libft/ft_memccpy.c				\
 			libft/ft_memmove.c				\
@@ -147,9 +155,15 @@ SOURCES =	printf/add_flag.c				\
 			libft/ft_charjoin.c				\
 			libft/ft_strtrim.c				\
 			libft/ft_putchar.c				\
+			libft/ft_putchar_fd.c			\
+			libft/ft_putendl.c				\
+			libft/ft_putendl_fd.c			\
 			libft/ft_putstr.c				\
+			libft/ft_putstr_fd.c			\
+			libft/ft_putstrstr.c			\
 			libft/ft_putstr_spec.c			\
 			libft/ft_putnbr.c				\
+			libft/ft_putnbr_fd.c			\
 
 
 HEADERS	= -I/libft/includes/
@@ -161,7 +175,6 @@ WFLAGS	= -g -Wall -Werror -Wextra
 CC		= gcc
 
 .SILENT:
-
 
 $(NAME): $(OBJECTS)
 	ar rc $(NAME) $(OBJECTS)
