@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/12 15:20:45 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/01 14:39:42 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/01 15:01:59 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ void	attrib_d(char **str, t_var **var, int count[3])
 	t_cut t_v;
 
 	ft_cut_init_d(&t_v, var, str, count);
+//	printf("%d\n%d\n%d\n%c\n%c\n", t_v.flag, t_v.check, t_v.c_d, t_v.z, t_v.c);
 	if (t_v.flag == 1000 || t_v.flag == 4500 || t_v.flag == 2500)
 		ft_cut_flag_d1(&t_v, var, str, count);
 	else if (t_v.flag == 1500)

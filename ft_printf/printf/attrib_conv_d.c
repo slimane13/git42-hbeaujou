@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/30 17:21:35 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/31 16:57:48 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/01 15:01:09 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	ft_cut_init_d(t_cut *t_v, t_var **var, char **str, int count[3])
 		else
 			(*t_v).g = ' ';
 	}
-	if (str[count[0]][1] == '+')
+	if (str[count[0]][1] == '+' || str[count[0]][2] == '+')
 		(*t_v).z = '+';
 	if (str[count[0]][0] == '.' && var[count[2]]->entier < 0)
 		(*t_v).nbr--;
@@ -42,6 +42,8 @@ void	ft_cut_init_d(t_cut *t_v, t_var **var, char **str, int count[3])
 		(*t_v).nbr--;
 		(*t_v).check--;
 	}
+	if ((*t_v).z == '+' && str[count[0]][0] == '-' && (*t_v).c == '0')
+		(*t_v).c = '-';
 	str[count[0]] = (char *)malloc(sizeof(char) * (*t_v).nbr);
 	str[count[0]] = ft_itoa(var[count[2]]->entier);
 	if (var[count[2]]->entier < 0 && str[count[0]][0] != '0')
