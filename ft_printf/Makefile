@@ -6,7 +6,7 @@
 #    By: aemebiku <aemebiku@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/06/26 15:32:35 by aemebiku          #+#    #+#              #
-#    Updated: 2016/01/01 16:04:12 by hbeaujou         ###   ########.fr        #
+#    Updated: 2016/01/01 17:30:33 by hbeaujou         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -15,6 +15,7 @@ NAME = libftprintf.a
 SOURCES =	printf/add_flag.c				\
 			printf/add_flag2.c				\
 			printf/attrib_conv_erreur.c		\
+			printf/attrib_conv_erreur2.c	\
 			printf/attrib_conv_c.c			\
 			printf/attrib_conv_p.c			\
 			printf/attrib_conv_s.c			\
@@ -25,6 +26,7 @@ SOURCES =	printf/add_flag.c				\
 			printf/attrib_conv_d_short.c	\
 			printf/attrib_conv_d2_short.c	\
 			printf/attrib_conv_d_z.c		\
+			printf/attrib_conv_d_cc.c		\
 			printf/attrib_conv_d2_z.c		\
 			printf/attrib_conv_d_j.c		\
 			printf/attrib_conv_d2_j.c		\
@@ -49,6 +51,7 @@ SOURCES =	printf/add_flag.c				\
 			printf/attrib_conv_u2.c			\
 			printf/attrib_conv_u_j.c		\
 			printf/attrib_conv_c_maj.c		\
+			printf/attrib_conv_x_cc.c		\
 			printf/attrib_conv_x_char.c		\
 			printf/attrib_conv_x_mchr.c		\
 			printf/attrib_conv_x_maj.c		\

@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/30 17:28:25 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/31 16:00:11 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/01 17:32:03 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,18 +40,11 @@ void	ft_cut_flag_x1(t_cut *t_v, t_var **var, char **str, int count[3])
 	if (str[count[0]][0] == '1' && ft_strlen(str[count[0]]) == 1)
 		a = 0;
 	while ((*t_v).k < (*t_v).c_d - (*t_v).nbr - a)
-	{
-		str[count[0]] = ft_strjoin("0", str[count[0]]);
-		(*t_v).k++;
-		b = 1;
-	}
+		ft_c_c_flag_x1(t_v, str, count, &b);
 	if (var[count[2]]->u_long != 0)
 		str[count[0]] = ft_strjoin("0x", str[count[0]]);
 	while ((*t_v).k < (*t_v).check - (*t_v).nbr - 2)
-	{
-		str[count[0]] = ft_strjoin(" ", str[count[0]]);
-		(*t_v).k++;
-	}
+		ft_c_c_flag_x12(t_v, str, count);
 	while ((*t_v).k > (*t_v).check + (*t_v).nbr + 2 && b != 1)
 	{
 		str[count[0]] = ft_strjoin(str[count[0]], " ");

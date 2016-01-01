@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/30 17:46:52 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/01 16:07:35 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/01 17:31:37 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,18 @@ void					ft_cut_flag_erreur2(t_cut *t_v,
 void					ft_cut_flag_erreur2_1(t_cut *t_v,
 		char **str, int count[3]);
 
-void    attrib_erreur_conv_spec(char **str, int count[3]);
+void					attrib_erreur_conv_spec(char **str, int count[3]);
+void					ft_c_c_f_erreur2(t_cut *t_v, char **str, int count[3]);
+
+void					ft_c_c_init_d(t_cut *t_v, t_var **var, char **str,
+		int count[3]);
+void					ft_c_c_flag_d3(t_cut *t_v, char **str, int count[3]);
+void					ft_c_c_flag_o1(t_cut *t_v, char **str, int count[3]);
+void					ft_c_c_flag_o12(t_cut *t_v, char **str, int count[3]);
+void					ft_c_c_flag_s2(t_cut *t_v, char **str, int count[3]);
+void					ft_c_c_flag_x1(t_cut *t_v, char **str,
+		int count[3], int *b);
+void					ft_c_c_flag_x12(t_cut *t_v, char **str, int count[3]);
 
 void					ft_cut_init_o_z(t_cut *t_v, t_var **var,
 		char **str, int count[3]);

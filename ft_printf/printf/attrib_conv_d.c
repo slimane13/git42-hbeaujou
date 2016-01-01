@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/30 17:21:35 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/01 16:37:02 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/01 17:01:57 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,20 +24,7 @@ void	ft_cut_init_d(t_cut *t_v, t_var **var, char **str, int count[3])
 	(*t_v).check = ft_atoi_ultra(str[count[0]]);
 	(*t_v).c_d = ft_atoi_double(str[count[0]]);
 	(*t_v).g = 'q';
-	if (((str[count[0]][0] == '0' && str[count[0]][1] == ' ') ||
-			(str[count[0]][0] == ' ' && str[count[0]][1] == '0')) &&
-			var[count[2]]->entier != 0)
-	{
-		if (var[count[2]]->entier < 0)
-			(*t_v).g = 'l';
-		else
-			(*t_v).g = ' ';
-	}
-	if (str[count[0]][0] == '+' || str[count[0]][1] == '+' ||
-			str[count[0]][2] == '+')
-		(*t_v).z = '+';
-	if (str[count[0]][0] == '.' && var[count[2]]->entier < 0)
-		(*t_v).nbr--;
+	ft_c_c_init_d(t_v, var, str, count);
 	if (str[count[0]][2] == '.' && var[count[2]]->entier < 0)
 	{
 		(*t_v).nbr--;
@@ -110,11 +97,7 @@ void	ft_cut_flag_d3(t_cut *t_v, t_var **var, char **str, int count[3])
 			(*t_v).k++;
 		}
 		if ((*t_v).z == '+')
-		{
-			str[count[0]] = ft_strjoin("+", str[count[0]]);
-			(*t_v).nbr--;
-			(*t_v).check--;
-		}
+			ft_c_c_flag_d3(t_v, str, count);
 		(*t_v).k = 0;
 		while ((*t_v).k < (*t_v).check - (*t_v).diff)
 		{

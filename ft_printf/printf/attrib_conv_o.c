@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/30 17:24:16 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/31 16:06:02 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/01 17:23:35 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,21 +48,9 @@ void	ft_cut_flag_o1(t_cut *t_v, t_var **var, char **str, int count[3])
 			(*t_v).k++;
 		}
 		if ((*t_v).flag > 0 && (*t_v).diff != 3)
-		{
-			while ((*t_v).k < (*t_v).check - (*t_v).nbr - 1)
-			{
-				str[count[0]] = ft_strjoin(" ", str[count[0]]);
-				(*t_v).k++;
-			}
-		}
+			ft_c_c_flag_o1(t_v, str, count);
 		else if ((*t_v).diff == 3)
-		{
-			while ((*t_v).k < (*t_v).neg - (*t_v).nbr - 1)
-			{
-				str[count[0]] = ft_strjoin(str[count[0]], " ");
-				(*t_v).k++;
-			}
-		}
+			ft_c_c_flag_o12(t_v, str, count);
 	}
 	else if (var[count[2]]->entier == 0)
 		(*t_v).spec = 0;
