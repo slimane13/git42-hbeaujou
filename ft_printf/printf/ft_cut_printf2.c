@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/01 17:33:45 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/01 19:02:06 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/01 20:32:37 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,13 @@ void	ft_cut_print_else(char **str, int count[3])
 		str[count[0]][0] = '%';
 		str[count[0]][1] = '\0';
 	}
-	else if (ft_strlen(str[count[0]]) == 1 && is_d0)
+	else if (ft_strlen(str[count[0]]) == 1 && IS_D0)
 		attrib_erreur_conv_spec(str, count);
-	else if (ft_strlen(str[count[0]]) == 3 && strc0 == '-' && strc1 == '0' &&
+	else if (ft_strlen(str[count[0]]) == 3 && STRC0 == '-' && STRC1 == '0' &&
 			ft_isdigit(str[count[0]][2]))
 		attrib_erreur_conv_spec(str, count);
 	else if (ft_strlen(str[count[0]]) == 2 &&
-			((strc0 == '-' && is_d1) || (strc0 == '0' && is_d1)))
+			((STRC0 == '-' && IS_D1) || (STRC0 == '0' && IS_D1)))
 		attrib_erreur_conv_spec(str, count);
 	else if (ft_strlen(str[count[0]]) == 4)
 		attrib_erreur_conv(str, count);

@@ -6,25 +6,25 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/30 17:46:52 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/01 19:54:27 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/01 20:31:59 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-# define end_s str[count[0]][ft_strlen(str[count[0]]) - 1]
-# define cmp_s1 !ft_strcmp(str[count[0]], "ll#x")
-# define cmp_s2 !ft_strcmp(str[count[0]], "lhl")
-# define cmp_s3 !ft_strcmp(str[count[0]], "lhlz")
-# define cmp_s4 !ft_strcmp(str[count[0]], "zj")
-# define cmp_s5 !ft_strcmp(str[count[0]], "lhh")
-# define is_d0 ft_isdigit(str[count[0]][0])
-# define is_d1 ft_isdigit(str[count[0]][1])
-# define strc0 str[count[0]][0]
-# define strc1 str[count[0]][1]
-# define strc2 str[count[0]][2]
-# define strc3 str[count[0]][3]
+# define END_S str[count[0]][ft_strlen(str[count[0]]) - 1]
+# define CMP_S1 !ft_strcmp(str[count[0]], "ll#x")
+# define CMP_S2 !ft_strcmp(str[count[0]], "lhl")
+# define CMP_S3 !ft_strcmp(str[count[0]], "lhlz")
+# define CMP_S4 !ft_strcmp(str[count[0]], "zj")
+# define CMP_S5 !ft_strcmp(str[count[0]], "lhh")
+# define IS_D0 ft_isdigit(str[count[0]][0])
+# define IS_D1 ft_isdigit(str[count[0]][1])
+# define STRC0 str[count[0]][0]
+# define STRC1 str[count[0]][1]
+# define STRC2 str[count[0]][2]
+# define STRC3 str[count[0]][3]
 # define cl1 str[count[0]][ft_strlen(str[count[0]]) - 1]
 # define cl2 str[count[0]][ft_strlen(str[count[0]]) - 2]
 # define cl3 str[count[0]][ft_strlen(str[count[0]]) - 3]
@@ -56,6 +56,17 @@ typedef struct			s_var
 	wchar_t				*w_string;
 	wint_t				w_entier;
 }						t_var;
+
+typedef struct			s_main
+{
+	char				**str_split;
+	char				*new_str;
+	int					n_v_p;
+	int					size;
+	int					i;
+	int					retour;
+	int					*tab;
+}						t_main;
 
 typedef struct			s_cut
 {
@@ -97,6 +108,9 @@ int						check_flag_number(char **str,
 int						is_indice(int nb, int *tab);
 int						run_var(char *str, char c);
 int						ft_wtomb(char *s, wchar_t wchar);
+
+void					ft_cut_main(t_main *t_m, char *format);
+void					ft_affiche(t_main *t_m);
 
 void					ft_cut_entiertx3_majl(char **str, t_var **var,
 		int count[3], va_list liste);

@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/12 13:34:50 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/01 18:20:49 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/01 20:33:42 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,19 +45,19 @@ void	ft_cut_replace(char **str, int count[3])
 
 void	ft_cut_replace2(char **str, t_var **var, va_list liste, int count[3])
 {
-	if (end_s == 'd' || end_s == 'i' || end_s == 'D')
+	if (END_S == 'd' || END_S == 'i' || END_S == 'D')
 		ft_cut_print_d1(var, str, count, liste);
-	else if (end_s == 'u' || end_s == 'U')
+	else if (END_S == 'u' || END_S == 'U')
 		ft_cut_print_u1(var, str, count, liste);
-	else if (end_s == 'c' || end_s == 'C')
+	else if (END_S == 'c' || END_S == 'C')
 		ft_cut_print_c1(var, str, count, liste);
-	else if (end_s == 's' || end_s == 'S')
+	else if (END_S == 's' || END_S == 'S')
 		ft_cut_print_s1(var, str, count, liste);
-	else if (end_s == 'p')
+	else if (END_S == 'p')
 		ft_cut_print_p1(var, str, count, liste);
-	else if (end_s == 'x' || end_s == 'X')
+	else if (END_S == 'x' || END_S == 'X')
 		ft_cut_print_x1(var, str, count, liste);
-	else if (end_s == 'o' || end_s == 'O')
+	else if (END_S == 'o' || END_S == 'O')
 		ft_cut_print_o1(var, str, count, liste);
 }
 
@@ -72,13 +72,13 @@ void	replace_char(char **str, t_var **var, va_list liste, int *tab)
 	{
 		if (is_indice(count[0], tab))
 		{
-			if (cmp_s1)
+			if (CMP_S1)
 				ft_cut_print_spec(var, str, count, liste);
-			else if (cmp_s2 || cmp_s3 || cmp_s4 || cmp_s5)
+			else if (CMP_S2 || CMP_S3 || CMP_S4 || CMP_S5)
 				str[count[0]] = ft_strdup("\0");
 			else if (str[count[0]][0] == ' ' && ft_strlen(str[count[0]]) == 1)
 				ft_cut_replace(str, count);
-			else if (ft_isalpha_spec(end_s))
+			else if (ft_isalpha_spec(END_S))
 				ft_cut_replace2(str, var, liste, count);
 			else if (ft_strlen(str[count[0]]) == 1 && str[count[0]][0] == 'P')
 				str[count[0]][0] = '%';
@@ -92,50 +92,28 @@ void	replace_char(char **str, t_var **var, va_list liste, int *tab)
 int		ft_printf(char *format, ...)
 {
 	va_list		liste;
-	char		**str_split;
-	char		*new_str;
 	t_var		**var;
-	int			n_v_p;
-	int			size;
-	int			i;
-	int			retour;
-	int			*tab;
+	t_main		t_m;
 
-	retour = 0;
-	size = 0;
-	i = 0;
-	g_char_nul = -10;
-	g_rajout = 0;
-	g_s_maj = 0;
-	size = ft_strlen(format);
-	n_v_p = run_var(format, '%');
-	size++;
-	tab = (int *)malloc(sizeof(int) * 110);
-	new_str = (char *)malloc(sizeof(char) * (ft_strlen(format) + n_v_p * 4));
-	var = (t_var **)malloc(sizeof(t_var) * n_v_p);
-	while (i < n_v_p)
+	ft_cut_main(&t_m, format);
+	t_m.n_v_p = run_var(format, '%');
+	t_m.size++;
+	t_m.tab = (int *)malloc(sizeof(int) * 110);
+	t_m.new_str = (char *)malloc(sizeof(char) *
+			(ft_strlen(format) + t_m.n_v_p * 4));
+	var = (t_var **)malloc(sizeof(t_var) * t_m.n_v_p);
+	while (t_m.i < t_m.n_v_p)
 	{
-		var[i] = (t_var *)malloc(sizeof(t_var));
-		i++;
+		var[t_m.i] = (t_var *)malloc(sizeof(t_var));
+		t_m.i++;
 	}
-	recover_percent(format, new_str, size, tab);
-	str_split = ft_strsplit(new_str, '%');
+	recover_percent(format, t_m.new_str, t_m.size, t_m.tab);
+	t_m.str_split = ft_strsplit(t_m.new_str, '%');
 	va_start(liste, format);
-	replace_char(str_split, var, liste, tab);
+	replace_char(t_m.str_split, var, liste, t_m.tab);
 	va_end(liste);
-	i = 0;
-	while (str_split[i])
-	{
-		if (str_split[i][0] == '.' &&
-				ft_isdigit(str_split[i][1]) == 1 && g_s_maj != 1)
-			str_split[i] = ft_strdup("%\0");
-		if (i == g_char_nul)
-			ft_putstr_spec(str_split[i]);
-		else
-			ft_putstr(str_split[i]);
-		retour += ft_strlen(str_split[i]);
-		i++;
-	}
-	retour += g_rajout;
-	return (retour);
+	t_m.i = 0;
+	ft_affiche(&t_m);
+	t_m.retour += g_rajout;
+	return (t_m.retour);
 }
