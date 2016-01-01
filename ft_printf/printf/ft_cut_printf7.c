@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/01 17:33:45 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/01 19:39:09 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/01 20:36:48 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	ft_cut_entiertd3_maj2(char **str, t_var **var,
 		int count[3], va_list liste)
 {
-	if (cl3 == '*')
+	if (CL3 == '*')
 	{
 		var[count[2]]->stars = va_arg(liste, int);
 		var[count[2]]->v_long = va_arg(liste, long);
@@ -31,7 +31,7 @@ void	ft_cut_entiertd3_maj2(char **str, t_var **var,
 void	ft_cut_entiertu3_uint(char **str, t_var **var,
 		int count[3], va_list liste)
 {
-	if (cl2 == '*')
+	if (CL2 == '*')
 	{
 		var[count[2]]->stars = va_arg(liste, int);
 		var[count[2]]->u_entier = (unsigned int)va_arg(liste, int);
@@ -47,7 +47,7 @@ void	ft_cut_entiertu3_uint(char **str, t_var **var,
 void	ft_cut_entiertu3_z(char **str, t_var **var,
 		int count[3], va_list liste)
 {
-	if (cl3 == '*')
+	if (CL3 == '*')
 	{
 		var[count[2]]->stars = va_arg(liste, int);
 		var[count[2]]->u_l_long = va_arg(liste, size_t);
@@ -63,7 +63,7 @@ void	ft_cut_entiertu3_z(char **str, t_var **var,
 void	ft_cut_entiertu3_j(char **str, t_var **var,
 		int count[3], va_list liste)
 {
-	if (cl3 == '*')
+	if (CL3 == '*')
 	{
 		var[count[2]]->stars = va_arg(liste, int);
 		var[count[2]]->u_l_long = va_arg(liste, uintmax_t);
@@ -79,7 +79,7 @@ void	ft_cut_entiertu3_j(char **str, t_var **var,
 void	ft_cut_entiertu3_char(char **str, t_var **var,
 		int count[3], va_list liste)
 {
-	if (cl2 == '*')
+	if (CL2 == '*')
 	{
 		var[count[2]]->stars = va_arg(liste, int);
 		var[count[2]]->u_carac = (unsigned char)va_arg(liste,

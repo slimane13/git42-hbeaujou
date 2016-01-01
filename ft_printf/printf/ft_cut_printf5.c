@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/01 19:21:25 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/01 19:30:15 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/01 20:37:09 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	ft_cut_entierto3_maj(char **str, t_var **var,
 void	ft_cut_entiertd3_ll(char **str, t_var **var,
 		int count[3], va_list liste)
 {
-	if (cl4 == '*')
+	if (CL4 == '*')
 	{
 		var[count[2]]->stars = va_arg(liste, int);
 		var[count[2]]->u_l_long = va_arg(liste, unsigned long long);
@@ -65,7 +65,7 @@ void	ft_cut_entiertd3_ll(char **str, t_var **var,
 void	ft_cut_entiertd3_short(char **str, t_var **var,
 		int count[3], va_list liste)
 {
-	if (cl2 == '*')
+	if (CL2 == '*')
 	{
 		var[count[2]]->stars = va_arg(liste, int);
 		var[count[2]]->v_short = (short)va_arg(liste, unsigned int);
@@ -81,7 +81,7 @@ void	ft_cut_entiertd3_short(char **str, t_var **var,
 void	ft_cut_entiertd3_int(char **str, t_var **var,
 		int count[3], va_list liste)
 {
-	if (cl2 == '*')
+	if (CL2 == '*')
 	{
 		var[count[2]]->stars = va_arg(liste, int);
 		var[count[2]]->entier = va_arg(liste, int);

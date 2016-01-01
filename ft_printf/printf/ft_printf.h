@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/30 17:46:52 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/01 20:31:59 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/01 20:34:32 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@
 # define STRC1 str[count[0]][1]
 # define STRC2 str[count[0]][2]
 # define STRC3 str[count[0]][3]
-# define cl1 str[count[0]][ft_strlen(str[count[0]]) - 1]
-# define cl2 str[count[0]][ft_strlen(str[count[0]]) - 2]
-# define cl3 str[count[0]][ft_strlen(str[count[0]]) - 3]
-# define cl4 str[count[0]][ft_strlen(str[count[0]]) - 4]
+# define CL1 str[count[0]][ft_strlen(str[count[0]]) - 1]
+# define CL2 str[count[0]][ft_strlen(str[count[0]]) - 2]
+# define CL3 str[count[0]][ft_strlen(str[count[0]]) - 3]
+# define CL4 str[count[0]][ft_strlen(str[count[0]]) - 4]
 
 # include "../libft/libft.h"
 # include <string.h>

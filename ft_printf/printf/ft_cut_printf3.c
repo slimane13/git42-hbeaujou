@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/01 17:33:45 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/01 19:21:06 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/01 20:36:33 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,16 +81,16 @@ void	ft_cut_print_o1(t_var **var, char **str, int count[3], va_list liste)
 {
 	if (str[count[0]][0] == 'o' && ft_strlen(str[count[0]]) != 1)
 		;
-	else if (cl1 == 'o' && cl2 != 'h' && cl2 != 'l' && cl2 != 'j' && cl2 != 'z')
+	else if (CL1 == 'o' && CL2 != 'h' && CL2 != 'l' && CL2 != 'j' && CL2 != 'z')
 		ft_cut_entierto_o(str, var, count, liste);
-	else if (cl1 == 'o' && cl2 == 'z')
+	else if (CL1 == 'o' && CL2 == 'z')
 		ft_cut_entierto3_ll(str, var, count, liste);
-	else if (cl1 == 'o' && cl2 == 'j')
+	else if (CL1 == 'o' && CL2 == 'j')
 		ft_cut_entierto3_ull(str, var, count, liste);
-	else if (cl1 == 'o' && cl2 == 'h' && cl3 == 'h')
+	else if (CL1 == 'o' && CL2 == 'h' && CL3 == 'h')
 		ft_cut_entierto3_char(str, var, count, liste);
-	else if (cl1 == 'o' && cl2 == 'h')
+	else if (CL1 == 'o' && CL2 == 'h')
 		ft_cut_entierto3_short(str, var, count, liste);
-	else if (cl1 == 'O' || (cl1 == 'o' && cl2 == 'l'))
+	else if (CL1 == 'O' || (CL1 == 'o' && CL2 == 'l'))
 		ft_cut_entierto3_maj(str, var, count, liste);
 }
