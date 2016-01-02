@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/26 16:49:32 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/02 13:18:43 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/02 19:40:30 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,20 @@ int ft_is_valid(int *tab)
     while(tab[i + 1] != 0 && tab[i + 1] != '\0')
     {
         if (tab[i] > tab[i + 1])
+            return (0);
+		i++;
+    }
+    return (1);
+}
+
+int ft_is_unvalid(int *tab)
+{
+    int i;
+
+    i = 0;
+    while(tab[i + 1] != 0 && tab[i + 1] != '\0')
+    {
+        if (tab[i] < tab[i + 1])
             return (0);
 		i++;
     }
@@ -51,19 +65,6 @@ void put_blanks(int *tab, int nb)
     }
 }
 
-void resolve(int *l_a, int *l_b, int max)
-{
-    while(!ft_is_valid(l_a))
-    {
-        if (l_a[0] > l_a[1] && l_a[0] != max)
-        {
-            SA;
-            printf("sa ");
-        }
-        RA;
-        printf("ra ");
-    }
-}
 // A METTRE DANS LA LIBFTPRINTF avec _spec
 void ft_atoi_tab(int *l_a, char **tab, int len)
 {
@@ -96,7 +97,8 @@ int main(int argc, char **argv)
     put_blanks(l_b, nbr);
     affiche(l_a, nbr - 2);
 	printf("\n");
-    resolve_test(l_a, l_b, find_max(l_a));
+//	mergeSort(l_a, l_b, nbr - 2);
+	resolve_test(l_a, l_b, find_max(l_a), nbr);
     affiche(l_a, nbr - 2);
 
     return (0);

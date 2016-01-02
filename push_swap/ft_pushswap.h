@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/26 16:50:57 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/02 13:18:23 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/02 19:19:25 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,16 +38,22 @@ void 	ft_rotate_last(int *tab);
 void 	ft_both_rotate_last(int *tab, int *tab2);
 void 	ft_avance(int *tab);
 void 	ft_recule(int *tab);
-void	resolve_test(int *l_a, int *l_b, int max);
+void	resolve_test(int *l_a, int *l_b, int max, int nbr);
 void 	affiche(int *tab, int len);
 void 	put_blanks(int *tab, int nb);
 void	do_tests(int *tab, int *l_a, int *l_b);
+void	do_tests_onlya(int *tab, int *l_a);
 void	apply_test(int ret, int *l_a, int *l_b);
 void 	ft_atoi_tab(int *l_a, char **tab, int len);
+void	m_sort(int numbers[], int temp[], int left, int right);
+void	mergeSort(int numbers[], int temp[], int array_size);
 
 int		test_ra(int *l_a, int *l_b);
+int		test_ra_only(int *l_a);
 int		test_rra(int *l_a, int *l_b);
+int		test_rra_only(int *l_a);
 int		test_sa(int *l_a, int *l_b);
+int		test_sa_only(int *l_a);
 int		test_rb(int *l_a, int *l_b);
 int		test_rrb(int *l_a, int *l_b);
 int		test_sb(int *l_a, int *l_b);
@@ -55,13 +61,17 @@ int		test_ss(int *l_a, int *l_b);
 int		test_rr(int *l_a, int *l_b);
 int		test_rrr(int *l_a, int *l_b);
 int		attrib_tests(int *tab);
-int		attrib_tests(int *tab);
+int     attrib_tests_onlya(int *tab);
 int		tab_len(int *tab);
+int		find_max_iter(int *tab);
 int		find_min_iter(int *tab);
 int		find_min(int *tab);
 int		find_min_2(int *tab, int min);
 int		find_max(int *tab);
 int		nb_classed(int *tab);
+int		nb_classed_rev(int *tab);
+int 	is_min(int *l_a, int nbr);
 int 	ft_is_valid(int *tab);
+int 	ft_is_unvalid(int *tab);
 
 #endif

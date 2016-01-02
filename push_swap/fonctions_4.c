@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/01 22:08:37 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/02 13:29:16 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/02 19:29:54 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,16 +45,37 @@ int	test_sa(int *l_a, int *l_b)
 	return (ret);
 }
 
+int	find_max_iter(int *tab)
+{
+	int i;
+	int j;
+	int min;
+
+	min = 0;
+	i = 0;
+	j = 0;
+	while (i < 9)
+	{
+		if (tab[i] > min)
+		{
+			min = tab[i];
+			j = i;
+		}
+		i++;
+	}
+	return (j);
+}
+
 int	find_min_iter(int *tab)
 {
 	int i;
 	int j;
 	int min;
 
-	min = 10000;
+	min = 1000000;
 	i = 0;
 	j = 0;
-	while (i < 9)
+	while (tab[i] != 0)
 	{
 		if (tab[i] < min)
 		{
@@ -63,5 +84,5 @@ int	find_min_iter(int *tab)
 		}
 		i++;
 	}
-	return (j + 1);
+	return (j);
 }

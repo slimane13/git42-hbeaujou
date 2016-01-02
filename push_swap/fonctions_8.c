@@ -1,46 +1,56 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fonctions_5.c                                      :+:      :+:    :+:   */
+/*   fonctions_8.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/01 22:15:22 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/02 15:18:01 by hbeaujou         ###   ########.fr       */
+/*   Created: 2016/01/02 18:15:56 by hbeaujou          #+#    #+#             */
+/*   Updated: 2016/01/02 18:15:57 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_pushswap.h"
 
-int	test_rb(int *l_a, int *l_b)
+int	test_ra_only(int *l_a)
 {
 	int ret;
 
-	RB;
+	RA;
 	ret = nb_classed(l_a);
-	ret = ret + nb_classed_rev(l_b);
-	RRB;
+	RRA;
 	return (ret);
 }
 
-int	test_rrb(int *l_a, int *l_b)
+int	test_rra_only(int *l_a)
 {
 	int ret;
 
-	RRB;
+	RRA;
 	ret = nb_classed(l_a);
-	ret = ret + nb_classed_rev(l_b);
-	RB;
+	RA;
 	return (ret);
 }
 
-int	test_sb(int *l_a, int *l_b)
+int	test_sa_only(int *l_a)
 {
 	int ret;
 
-	SB;
+	SA;
 	ret = nb_classed(l_a);
-	ret = ret + nb_classed_rev(l_b);
-	SB;
+	SA;
 	return (ret);
+}
+
+int		attrib_tests_onlya(int *tab)
+{
+	if (find_max_iter(tab) == 0)
+		return (1);
+	else if (find_max_iter(tab) == 1)
+		return (2);
+	else if (find_max_iter(tab) == 4)
+		return (5);
+	else if (find_max_iter(tab) == 9)
+		return (10);
+	return (0);
 }
