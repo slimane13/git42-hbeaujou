@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/26 16:49:32 by hbeaujou          #+#    #+#             */
-/*   Updated: 2015/12/26 17:17:43 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/02 13:18:43 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,10 @@ void resolve(int *l_a, int *l_b, int max)
     {
         if (l_a[0] > l_a[1] && l_a[0] != max)
         {
-            sa;
+            SA;
             printf("sa ");
         }
-        ra;
+        RA;
         printf("ra ");
     }
 }
@@ -96,7 +96,7 @@ int main(int argc, char **argv)
     put_blanks(l_b, nbr);
     affiche(l_a, nbr - 2);
 	printf("\n");
-    resolve(l_a, l_b, 16);
+    resolve_test(l_a, l_b, find_max(l_a));
     affiche(l_a, nbr - 2);
 
     return (0);

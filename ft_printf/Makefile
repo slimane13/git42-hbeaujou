@@ -6,7 +6,7 @@
 #    By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/01 20:43:29 by hbeaujou          #+#    #+#              #
-#    Updated: 2016/01/01 20:48:32 by hbeaujou         ###   ########.fr        #
+#    Updated: 2016/01/01 20:56:40 by hbeaujou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -146,9 +146,7 @@ SOURCES =	printf/add_flag.c				\
 			libft/ft_strmap.c				\
 			libft/ft_strmapi.c				\
 			libft/ft_itoa.c					\
-			libft/ft_itoa_base.c			\
 			libft/ft_ntoa_base.c			\
-			libft/ft_itoa_base_maj.c		\
 			libft/ft_strsplit.c				\
 			libft/ft_strsplit_esc.c			\
 			libft/ft_strjoin.c				\

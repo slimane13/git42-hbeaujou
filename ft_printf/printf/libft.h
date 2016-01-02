@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ebouther <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/23 15:08:57 by ebouther          #+#    #+#             */
-/*   Updated: 2016/01/01 18:29:51 by hbeaujou         ###   ########.fr       */
+/*   Created: 2016/01/01 21:11:23 by hbeaujou          #+#    #+#             */
+/*   Updated: 2016/01/01 21:11:24 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ int					ft_tolower(int c);
 int					ft_nbrlen(int nb);
 int					ft_nbrlen_ll(long long nb);
 int					ft_nbrlen_llun(unsigned long long nb);
+void				cut_ntoa(char *res, int *limit);
 void				*ft_memalloc(size_t size);
 void				ft_memdel(void **ap);
 char				*ft_strnew(size_t size);
@@ -88,8 +89,6 @@ char				**ft_strsplit(char const *s, char c);
 char				**ft_strsplit_mult(char const *s, char *c);
 char				**ft_strsplit_printf(char const *s, char c);
 char				*ft_itoa(int n);
-char				*ft_itoa_base(int value, int bas);
-char				*ft_itoa_base_maj(int value, int bas);
 void				ft_putchar(char c);
 void				ft_putstr(char const *s);
 void				ft_putstr_spec(char const *s);
