@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/04 12:48:45 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/04 16:57:25 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/04 19:13:55 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,11 @@ int		read_line(char *line)
 			return (0);
 		return (6);
 	}
-	else 
+	else
 		return (0);
 }
 
-int		apply_line(char *line, t_room **map, int t_1)
+int		apply_line(char *line, t_map **map, int t_1)
 {
 	int t_3;
 
@@ -90,7 +90,7 @@ int		apply_line(char *line, t_room **map, int t_1)
 	return (1);
 }
 
-void	read_map(t_room **map)
+void	read_map(t_map **map)
 {
 	int		t_1;
 	int		t_2;
