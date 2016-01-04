@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/04 12:48:45 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/04 16:19:14 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/04 16:57:25 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int		g_after_start;
 int		g_begin_attrib_map;
 int		g_begin_tunnel;
 int		g_after_end;
+int		g_nb;
 
 int		read_line(char *line)
 {
@@ -96,6 +97,7 @@ void	read_map(t_room **map)
 	char	*line;
 
 	g_coups = 0;
+	g_nb = 0;
 	g_after_start = 0;
 	g_after_end = 0;
 	g_begin_attrib_map = 0;
