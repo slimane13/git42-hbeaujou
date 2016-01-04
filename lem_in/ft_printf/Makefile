@@ -6,7 +6,7 @@
 #    By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/01 20:43:29 by hbeaujou          #+#    #+#              #
-#    Updated: 2016/01/01 20:56:40 by hbeaujou         ###   ########.fr        #
+#    Updated: 2016/01/04 12:52:39 by hbeaujou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -162,6 +162,7 @@ SOURCES =	printf/add_flag.c				\
 			libft/ft_putstr_spec.c			\
 			libft/ft_putnbr.c				\
 			libft/ft_putnbr_fd.c			\
+			get_next_line/get_next_line.c	\
 
 
 HEADERS	= -I/libft/includes/
