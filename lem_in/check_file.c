@@ -1,0 +1,114 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_check_file.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/01/04 12:48:45 by hbeaujou          #+#    #+#             */
+/*   Updated: 2016/01/04 16:19:14 by hbeaujou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "lem_in.h"
+
+int		g_coups;
+int		g_after_start;
+int		g_begin_attrib_map;
+int		g_begin_tunnel;
+int		g_after_end;
+
+int		read_line(char *line)
+{
+	int test2;
+	int test3;
+
+	test2 = 0;
+	test3 = 0;
+	test2 = is_valid_coord(line);
+	test3 = is_valid_tunnel(line);
+	if (line[0] == '#' && line[1] != '#')
+		return (2);
+	else if (ft_strcmp(line, "##start") == 0 && g_after_start == 0)
+	{
+		g_after_start = 1;
+		return (3);
+	}
+	else if (ft_strcmp(line, "##end") == 0 && g_after_end == 0)
+	{
+		g_after_end = 1;
+		return (4);
+	}
+	else if (test2 == 1)
+	{
+		if (g_begin_attrib_map == 1)
+			return (0);
+		g_begin_tunnel = 1;
+		return (5);
+	}
+	else if (test3 == 1)
+	{
+		g_begin_attrib_map = 1;
+		if (g_begin_tunnel == 0)
+			return (0);
+		return (6);
+	}
+	else 
+		return (0);
+}
+
+int		apply_line(char *line, t_room **map, int t_1)
+{
+	int t_3;
+
+	t_3 = 0;
+	if (t_1 == 2)
+		;
+	else if (t_1 == 3)
+	{
+		get_next_line(0, &line);
+		t_3 = read_line(line);
+		if (t_3 != 5)
+			return (0);
+		else
+			return (apply_start(line, map));
+	}
+	else if (t_1 == 4)
+	{
+		get_next_line(0, &line);
+		t_3 = read_line(line);
+		if (t_3 != 5)
+			return (0);
+		else
+			return (apply_end(line, map));
+	}
+	else if (t_1 == 5)
+		return (apply_map(line, map));
+	else if (t_1 == 6)
+		return (apply_tunnel(line, map));
+	return (1);
+}
+
+void	read_map(t_room **map)
+{
+	int		t_1;
+	int		t_2;
+	char	*line;
+
+	g_coups = 0;
+	g_after_start = 0;
+	g_after_end = 0;
+	g_begin_attrib_map = 0;
+	g_begin_tunnel = 0;
+	while (1)
+	{
+		get_next_line(0, &line);
+		t_1 = read_line(line);
+		if (t_1 == 0)
+			return ;
+		else
+			t_2 = apply_line(line, map, t_1);
+		if (t_2 == 0)
+			return ;
+	}
+}
