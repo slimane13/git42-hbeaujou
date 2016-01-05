@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/04 16:26:46 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/05 12:28:17 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/05 14:34:24 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ t_tun	*new_tun(char *str)
 		return (NULL);
 	res->name = ft_strdup(str);
 	res->next = NULL;
-	res->map = NULL;
+	res->p_map = NULL;
 	return (res);
 }
 

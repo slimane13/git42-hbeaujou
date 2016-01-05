@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/04 14:13:18 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/05 13:51:47 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/05 13:52:57 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,9 @@ int	main(void)
 			}
 		}
 		if (tmp->room->start == 1)
-			ft_putstr(" et c'est le depart");
+			ft_putstr("et c'est le depart");
 		else if (tmp->room->end == 1)
-			ft_putstr(" et c'est l'arrivee");
+			ft_putstr("et c'est l'arrivee");
 		ft_putchar('\n');
 		tmp = tmp->next;
 		n++;

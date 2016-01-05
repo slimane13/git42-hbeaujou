@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/03 14:20:35 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/05 12:27:03 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/05 14:34:02 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ struct			s_tun
 {
 	char		*name;
 	t_tun		*next;
-	t_map		**map;
+	t_map		*p_map;
 };
 
 struct			s_room
