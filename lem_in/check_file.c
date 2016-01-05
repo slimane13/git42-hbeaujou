@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/04 12:48:45 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/05 08:59:09 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/05 11:56:57 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,8 @@ int		apply_line(char *line, t_map **map, int t_1)
 	}
 	else if (t_1 == 4)
 	{
-		get_next_line(0, &line);
-		t_3 = read_line(line);
+		get_next_line(0, &line2);
+		t_3 = read_line(line2);
 		if (t_3 != 5)
 			return (0);
 		else

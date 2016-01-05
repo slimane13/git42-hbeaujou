@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/04 15:29:29 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/05 09:36:32 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/05 11:57:14 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ int		apply_start(char *line, t_map **map)
 		return (0);
 	room->room->start = 1;
 	room->room->end = 0;
-	room->room->next = NULL;
 	if (g_nb == 0)
 	{
 		g_nb = 1;
@@ -39,11 +38,10 @@ int		apply_end(char *line, t_map **map)
 	char	**str;
 
 	str = ft_strsplit(line, ' ');
-	if (!(room = new_map(str[0], 2, 2)))//ft_atoi(str[1]), ft_atoi(str[2]))))
+	if (!(room = new_map(str[0], ft_atoi(str[1]), ft_atoi(str[2]))))
 		return (0);
 	room->room->start = 0;
 	room->room->end = 1;
-	room->room->next = NULL;
 	if (g_nb == 0)
 	{
 		g_nb = 1;
@@ -64,7 +62,6 @@ int		apply_map(char *line, t_map **map)
 		return (0);
 	room->room->start = 0;
 	room->room->end = 0;
-	room->room->next = NULL;
 	if (g_nb == 0)
 	{
 		g_nb = 1;

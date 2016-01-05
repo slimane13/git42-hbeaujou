@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/04 14:13:18 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/05 09:49:14 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/05 11:55:21 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ int	main(void)
 	ft_putnbr(n);
 	ft_putstr("eme element : ");
 	ft_putstr(tmp->room->name);
-	ft_putchar('\n');
 	if (tmp->room->start == 1)
 		ft_putstr(" et c'est le depart\n");
 	else if (tmp->room->end == 1)

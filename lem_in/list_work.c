@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/04 16:26:46 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/05 09:47:22 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/05 11:54:25 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ t_room	*new_room(char *str, int cx, int cy)
 {
 	t_room *res;
 
-	if (!(res = malloc(sizeof(t_room))))
+	if (!(res = (t_room *)malloc(sizeof(t_room))))
 		return (NULL);
 	res->name = ft_strdup(str);
 	res->x = cx;
@@ -44,7 +44,7 @@ t_map	*new_map(char *str, int cx, int cy)
 {
 	t_map *res;
 
-	if (!(res = malloc(sizeof(t_map))))
+	if (!(res = (t_map *)malloc(sizeof(t_map))))
 		return (NULL);
 	res->room = new_room(str, cx, cy);
 	res->next = NULL;
