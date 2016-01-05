@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/03 14:20:35 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/05 14:34:02 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/05 14:41:57 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ int				apply_tunnel(char *line, t_map **map);
 
 void			ft_lstaddend_room(t_map **alst, t_map *new_r);
 void			ft_lstaddend_tun(t_tun **alst, t_tun *new_r);
+void			apply_map_to_tun(t_map **map);
 void			read_map(t_map **map);
 
 t_room			*new_room(char *str, int cx, int cy);
