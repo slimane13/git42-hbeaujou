@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/04 14:13:18 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/05 09:41:00 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/05 09:49:14 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,23 +24,30 @@ int	main(void)
 	tmp = map;
 	while (tmp->next)
 	{
-		ft_printf("nom du %deme elemen : %s", tmp->room->name);
+		ft_putstr("nom du ");
+		ft_putnbr(n);
+		ft_putstr("eme element : ");
+		ft_putstr(tmp->room->name);
 		if (tmp->room->start == 1)
-			ft_printf(" et c'est le depart\n");
+			ft_putstr(" et c'est le depart\n");
 		else if (tmp->room->end == 1)
-			ft_printf(" et c'est l'arrivee\n");
+			ft_putstr(" et c'est l'arrivee\n");
 		else
 			ft_putchar('\n');
 		tmp = tmp->next;
 		n++;
 	}
-	ft_printf("nom du %deme elemen : %s", tmp->room->name);
+	ft_putstr("nom du ");
+	ft_putnbr(n);
+	ft_putstr("eme element : ");
+	ft_putstr(tmp->room->name);
+	ft_putchar('\n');
 	if (tmp->room->start == 1)
-		ft_printf(" et c'est le depart\n");
+		ft_putstr(" et c'est le depart\n");
 	else if (tmp->room->end == 1)
-		ft_printf(" et c'est l'arrivee\n");
+		ft_putstr(" et c'est l'arrivee\n");
 	else
-		ft_printf("\n");
+		ft_putchar('\n');
 	///////////////////// FIND DU CODE DE TEST /////////////////////////////
 	return (0);
 }
