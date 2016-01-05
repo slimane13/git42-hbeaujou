@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/04 15:29:29 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/05 11:57:14 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/05 12:36:42 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,32 @@ int		apply_map(char *line, t_map **map)
 	return (1);
 }
 
+int		apply_name(t_map *tmp, char *str, char *str2)
+{
+	t_tun	*tun;
+	
+	if (!(tun = new_tun(str2)))
+		return (0);
+	while (ft_strcmp(tmp->room->name, str) != 0)
+		tmp=tmp->next;
+	if (tmp->room->next == NULL)
+		tmp->room->next = tun;
+	else
+		ft_lstaddend_tun(&(tmp->room->next), tun);
+	return (1);
+}
+
 int		apply_tunnel(char *line, t_map **map)
 {
+	char	**str;
+	t_map	*tmp;
+	
+	str = ft_strsplit(line, '-');
+	tmp = *map;
+	if (apply_name(tmp, str[0], str[1]) == 0)
+		return (0);
+	tmp = *map;
+	if (apply_name(tmp, str[1], str[0]) == 0)
+		return (0);
 	return (1);
 }

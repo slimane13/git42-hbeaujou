@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/03 14:20:35 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/05 08:59:58 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/05 12:27:03 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ struct			s_room
 	int			from_end;
 	int			flag;
 	int			ant;
-	t_room		*next;
+	t_tun		*next;
 };
 
 struct			s_map
@@ -64,9 +64,11 @@ int				apply_map(char *line, t_map **map);
 int				apply_tunnel(char *line, t_map **map);
 
 void			ft_lstaddend_room(t_map **alst, t_map *new_r);
+void			ft_lstaddend_tun(t_tun **alst, t_tun *new_r);
 void			read_map(t_map **map);
 
 t_room			*new_room(char *str, int cx, int cy);
 t_map			*new_map(char *str, int cx, int cy);
+t_tun			*new_tun(char *str);
 
 #endif

@@ -6,11 +6,26 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/04 16:26:46 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/05 11:54:25 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/05 12:28:17 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
+
+void	ft_lstaddend_tun(t_tun **alst, t_tun *new_r)
+{
+	t_tun	*tmp;
+
+	tmp = *alst;
+	if (!tmp)
+		*alst = new_r;
+	else
+	{
+		while (tmp->next)
+			tmp = tmp->next;
+		tmp->next = new_r;
+	}
+}
 
 void	ft_lstaddend_room(t_map **alst, t_map *new_r)
 {
@@ -25,6 +40,18 @@ void	ft_lstaddend_room(t_map **alst, t_map *new_r)
 			tmp = tmp->next;
 		tmp->next = new_r;
 	}
+}
+
+t_tun	*new_tun(char *str)
+{
+	t_tun *res;
+
+	if (!(res = (t_tun *)malloc(sizeof(t_tun))))
+		return (NULL);
+	res->name = ft_strdup(str);
+	res->next = NULL;
+	res->map = NULL;
+	return (res);
 }
 
 t_room	*new_room(char *str, int cx, int cy)
