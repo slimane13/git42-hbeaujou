@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/03 14:20:35 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/04 19:08:52 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/05 08:59:58 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,14 @@
 
 typedef struct	s_room	t_room;
 typedef struct	s_map	t_map;
+typedef struct	s_tun	t_tun;
+
+struct			s_tun
+{
+	char		*name;
+	t_tun		*next;
+	t_map		**map;
+};
 
 struct			s_room
 {
