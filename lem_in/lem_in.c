@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/04 14:13:18 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/05 12:42:40 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/05 13:29:20 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int	main(void)
 {
 	t_map	*map;
 	t_map	*tmp;
+	t_tun	*tmp2;
 	int		n;
 
 	n = 1;
@@ -39,8 +40,14 @@ int	main(void)
 		}
 		if (tmp->room->next != NULL)
 		{
+			tmp2 = tmp->room->next;
 			ft_putstr(" et ses tunnels : ");
-			ft_putstr(tmp->room->next->name);
+			while (tmp2)
+			{
+				ft_putstr(tmp2->name);
+				ft_putchar(' ');
+				tmp2 = tmp2->next;
+			}
 			ft_putchar('\n');
 		}
 		tmp = tmp->next;
