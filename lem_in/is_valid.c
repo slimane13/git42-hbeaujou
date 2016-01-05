@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/04 14:41:46 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/04 15:24:00 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/05 13:38:44 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int		is_valid_tunnel(char *line)
 {
 	int		i;
 	int		nbr;
-	char 	**name;
+	char	**name;
 
 	i = 0;
 	while (line[i] != '\0')

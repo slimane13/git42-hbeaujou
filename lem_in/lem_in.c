@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/04 14:13:18 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/05 13:35:42 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/05 13:51:47 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,19 +25,10 @@ int	main(void)
 	tmp = map;
 	while (tmp->next)
 	{
-		ft_putstr("nom du ");
+		ft_putstr("nom de la ");
 		ft_putnbr(n);
-		ft_putstr("eme element : ");
+		ft_putstr("eme salle : ");
 		ft_putstr(tmp->room->name);
-		if (tmp->room->start == 1)
-			ft_putstr(" et c'est le depart");
-		else if (tmp->room->end == 1)
-			ft_putstr(" et c'est l'arrivee");
-		else
-		{
-			if (tmp->room->next == NULL)
-				ft_putchar('\n');
-		}
 		if (tmp->room->next != NULL)
 		{
 			tmp2 = tmp->room->next;
@@ -48,27 +39,28 @@ int	main(void)
 				ft_putchar(' ');
 				tmp2 = tmp2->next;
 			}
-			ft_putchar('\n');
 		}
+		if (tmp->room->start == 1)
+			ft_putstr(" et c'est le depart");
+		else if (tmp->room->end == 1)
+			ft_putstr(" et c'est l'arrivee");
+		ft_putchar('\n');
 		tmp = tmp->next;
 		n++;
 	}
-	ft_putstr("nom du ");
+	ft_putstr("nom de la ");
 	ft_putnbr(n);
-	ft_putstr("eme element : ");
+	ft_putstr("eme salle : ");
 	ft_putstr(tmp->room->name);
+	if (tmp->room->next != NULL)
+	{
+		ft_putstr(" et ses tunnels : ");
+		ft_putstr(tmp->room->next->name);
+	}
 	if (tmp->room->start == 1)
 		ft_putstr(" et c'est le depart ");
 	else if (tmp->room->end == 1)
 		ft_putstr(" et c'est l'arrivee ");
-	else
-		ft_putchar('\n');
-	if (tmp->room->next != NULL)
-	{
-		ft_putstr("et ses tunnels : ");
-		ft_putstr(tmp->room->next->name);
-		ft_putchar('\n');
-	}
 	///////////////////// FIND DU CODE DE TEST /////////////////////////////
 	return (0);
 }
