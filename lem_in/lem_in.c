@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/04 14:13:18 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/05 15:39:39 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/05 16:02:14 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	main(void)
 	apply_map_to_tun(&map);
 	///////////////////////// DEBUT DU CODE DE TEST ////////////////////////
 	tmp = map;
-	ft_printf("Il y a %d chemins exactement differents\n\n", nbr_path(&map));
+	ft_printf("Il y a maximum %d chemins exactement differents\n\n", nbr_path(&map));
 	while (tmp->next)
 	{
 		ft_putstr("nom de la ");
