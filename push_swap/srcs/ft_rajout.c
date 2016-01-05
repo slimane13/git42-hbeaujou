@@ -30,3 +30,18 @@ void	ft_cut_1(t_stack *l_a)
 	ft_printf("RA ");
 	g_coups++;
 }
+
+int	ft_lstlen(t_stack *l_a)
+{
+	int count;
+	t_stack *tmp;
+
+	count = 1;
+	tmp = l_a->next;
+	while (tmp != l_a)
+	{
+		count++;
+		tmp = tmp->next;
+	}
+	return (count);
+}

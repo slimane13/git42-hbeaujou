@@ -26,7 +26,8 @@ void	resolve(t_stack *l_a, t_stack *l_b)
 			g_coups++;
 		}
 		else if ((l_a->prev->nb < l_a->prev->prev->nb) &&
-				(l_a->prev->nb > l_a->prev->prev->prev->nb))
+				(l_a->prev->nb > l_a->prev->prev->prev->nb) &&
+				(ft_lstlen(l_a) > 3))
 			ft_cut_1(l_a);
 		if (l_b->nb_elem == 0 && ft_is_sort(l_a))
 			return ;

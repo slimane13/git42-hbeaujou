@@ -22,6 +22,7 @@ int		ft_check_1(int ac, t_stack *a)
 		ft_printf("SA ");
 		rev_rotate(&a);
 		ft_printf("RRA ");
+		g_coups = 2;
 	}
 	return (0);
 }

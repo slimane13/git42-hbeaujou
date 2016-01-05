@@ -38,6 +38,7 @@ int					initialize(t_stack **l_a, t_stack **l_b);
 int					ft_list_back(t_stack **stack, int nb);
 int					ft_list_front(t_stack **stack, int nb);
 int					ft_check_1(int ac, t_stack *l_a);
+int					ft_lstlen(t_stack *l_a);
 void				ft_cut_1(t_stack *l_a);
 void				resolve(t_stack *l_a, t_stack *l_b);
 void				affiche(t_stack *l_a);
