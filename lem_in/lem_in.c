@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/04 14:13:18 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/05 14:43:46 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/05 15:39:39 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int	main(void)
 	apply_map_to_tun(&map);
 	///////////////////////// DEBUT DU CODE DE TEST ////////////////////////
 	tmp = map;
+	ft_printf("Il y a %d chemins exactement differents\n\n", nbr_path(&map));
 	while (tmp->next)
 	{
 		ft_putstr("nom de la ");
@@ -55,13 +56,19 @@ int	main(void)
 	ft_putstr(tmp->room->name);
 	if (tmp->room->next != NULL)
 	{
-		ft_putstr(" et ses tunnels : ");
-		ft_putstr(tmp->room->next->name);
+			tmp2 = tmp->room->next;
+			ft_putstr(" et ses tunnels : ");
+			while (tmp2)
+			{
+				ft_putstr(tmp2->p_map->room->name);
+				ft_putchar(' ');
+				tmp2 = tmp2->next;
+			}
 	}
 	if (tmp->room->start == 1)
-		ft_putstr(" et c'est le depart ");
+		ft_putstr("et c'est le depart ");
 	else if (tmp->room->end == 1)
-		ft_putstr(" et c'est l'arrivee ");
+		ft_putstr("et c'est l'arrivee ");
 	///////////////////// FIND DU CODE DE TEST /////////////////////////////
 	return (0);
 }
