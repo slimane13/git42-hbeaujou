@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/04 14:13:18 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/05 16:02:14 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/05 17:05:42 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	main(void)
 	n = 1;
 	read_map(&map);
 	apply_map_to_tun(&map);
+	put_fromend(&map);
 	///////////////////////// DEBUT DU CODE DE TEST ////////////////////////
 	tmp = map;
 	ft_printf("Il y a maximum %d chemins exactement differents\n\n", nbr_path(&map));
@@ -69,6 +70,20 @@ int	main(void)
 		ft_putstr("et c'est le depart ");
 	else if (tmp->room->end == 1)
 		ft_putstr("et c'est l'arrivee ");
+	ft_printf("\n\n");
+	tmp = map;
+	while (tmp->room->start != 1)
+		tmp = tmp->next;
+	ft_printf("Salle de start : %s\n", tmp->room->name);
+	while (tmp->room->end != 1)
+	{
+		ft_printf("Coups de la fin : %d depuis la salle : %s\n", tmp->room->from_end, tmp->room->name);
+		if (tmp->room->next->p_map->room->from_end < tmp->room->from_end)
+			tmp = tmp->room->next->p_map;
+		else
+			tmp = tmp->room->next->next->p_map;
+	}
+	ft_printf("Arrivee a la salle : %s\n", tmp->room->name);
 	///////////////////// FIND DU CODE DE TEST /////////////////////////////
 	return (0);
 }

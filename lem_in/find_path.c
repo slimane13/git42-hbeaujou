@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/05 14:46:37 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/05 16:37:13 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/05 17:05:03 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,23 @@ int			nbr_path(t_map **map)
 }
 
 
-t_path		*find_path(t_map **tmp, t_path **res)
+void	put_fromend(t_map **map)
 {
-	t_path	*end;
-	return (end);
-}
+	t_map	*tmp;
+	int		coups;
 
+	tmp = *map;
+	while (tmp && tmp->room->end != 1)
+		tmp = tmp->next;
+	while (tmp && tmp->room->start != 1)
+	{
+		tmp->room->from_end = coups;
+		coups++;
+		tmp = tmp->room->next->p_map;
+	}
+	tmp->room->from_end = coups;
+}
+/*
 t_reseau	*build_reseau(t_map **map, t_reseau **reseau)
 {
 	t_map		*tmp;
@@ -47,13 +58,11 @@ t_reseau	*build_reseau(t_map **map, t_reseau **reseau)
 	t_reseau	*fin;
 	int			choix;
 
-	tmp = *map;
+	choix = 1;
 	fin = new_reseau(choix, NULL);
-	while (tmp && tmp->room->end != 1)
-		tmp = tmp->next;
 	res = new_path(tmp->room->name);
 	tmp = *map;
-	res = find_path(&tmp, &res);
+	put_fromend(&tmp, &res);
 	ft_lstaddend_reseau(&fin, new_reseau(choix, res));
 	return (fin);
-}
+}*/
