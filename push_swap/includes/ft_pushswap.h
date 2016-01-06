@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/03 11:10:11 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/03 16:15:56 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/06 12:14:31 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ int					ft_list_back(t_stack **stack, int nb);
 int					ft_list_front(t_stack **stack, int nb);
 int					ft_check_1(int ac, t_stack *l_a);
 int					ft_lstlen(t_stack *l_a);
+void				ft_c_c(t_stack *l_a);
 void				ft_cut_1(t_stack *l_a);
 void				resolve(t_stack *l_a, t_stack *l_b);
 void				affiche(t_stack *l_a);

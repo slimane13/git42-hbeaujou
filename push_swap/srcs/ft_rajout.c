@@ -6,11 +6,18 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/03 16:13:36 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/03 16:16:21 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/06 12:14:43 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_pushswap.h"
+
+void	ft_c_c(t_stack *l_a)
+{
+	swap(l_a);
+	ft_printf("SA ");
+	g_coups++;
+}
 
 void	ft_cut_1(t_stack *l_a)
 {
@@ -31,10 +38,10 @@ void	ft_cut_1(t_stack *l_a)
 	g_coups++;
 }
 
-int	ft_lstlen(t_stack *l_a)
+int		ft_lstlen(t_stack *l_a)
 {
-	int count;
-	t_stack *tmp;
+	int		count;
+	t_stack	*tmp;
 
 	count = 1;
 	tmp = l_a->next;

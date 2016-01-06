@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/03 10:59:08 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/03 16:28:35 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/06 12:13:44 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,7 @@ void	resolve(t_stack *l_a, t_stack *l_b)
 	{
 		if ((l_a->next->nb > l_a->next->next->nb) &&
 				(l_a->next->nb < l_a->next->next->next->nb))
-		{
-			swap(&l_a);
-			ft_printf("SA ");
-			g_coups++;
-		}
+			ft_c_c(&l_a);
 		else if ((l_a->prev->nb < l_a->prev->prev->nb) &&
 				(l_a->prev->nb > l_a->prev->prev->prev->nb) &&
 				(ft_lstlen(l_a) > 3))
