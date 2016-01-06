@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/05 14:46:37 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/06 18:18:46 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/06 18:52:02 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,19 +63,12 @@ t_path	*fromend_to_path(t_map **tmp)
 	return (path);
 }
 
-/*
-t_reseau	*build_reseau(t_map **map, t_reseau **reseau)
+t_reseau	*build_reseau(t_reseau **reseau)
 {
-	t_map		*tmp;
-	t_path		*res;
-	t_reseau	*fin;
-	int			choix;
-
-	choix = 1;
-	fin = new_reseau(choix, NULL);
-	res = new_path(tmp->room->name);
-	tmp = *map;
-	put_fromend(&tmp, &res);
-	ft_lstaddend_reseau(&fin, new_reseau(choix, res));
-	return (fin);
-}*/
+	t_reseau	*res;
+	t_path		*path;
+///////////// REMPLIR PATH //////////////
+	res = new_reseau(i, path);
+	ft_lstaddend_reseau(reseau, res);
+	return (res);
+}
