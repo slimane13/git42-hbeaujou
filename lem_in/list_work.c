@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/04 16:26:46 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/05 14:34:24 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/06 13:05:20 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ t_room	*new_room(char *str, int cx, int cy)
 	res->name = ft_strdup(str);
 	res->x = cx;
 	res->y = cy;
+	res->flag = 0;
 	res->next = NULL;
 	return (res);
 }

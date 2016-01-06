@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/04 12:48:45 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/05 13:43:05 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/06 13:47:59 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ int		read_line(char *line)
 		g_after_end = 1;
 		return (4);
 	}
+	else if (line[0] == '#' && line[1] == '#')
+		return (2);
 	else if (test2 == 1)
 	{
 		if (g_begin_attrib_map == 1)

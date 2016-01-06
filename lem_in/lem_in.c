@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/04 14:13:18 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/05 17:05:42 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/06 13:58:51 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,10 @@ int	main(void)
 	tmp = map;
 	while (tmp->room->start != 1)
 		tmp = tmp->next;
+	///////////////// CODE DE RESOLUTION ///////////////////////////////////
+//	/*
 	ft_printf("Salle de start : %s\n", tmp->room->name);
+	ft_printf("---------------------------------\n");
 	while (tmp->room->end != 1)
 	{
 		ft_printf("Coups de la fin : %d depuis la salle : %s\n", tmp->room->from_end, tmp->room->name);
@@ -83,7 +86,8 @@ int	main(void)
 		else
 			tmp = tmp->room->next->next->p_map;
 	}
-	ft_printf("Arrivee a la salle : %s\n", tmp->room->name);
+	ft_printf("Arrivee a la salle : %s\n\n", tmp->room->name);
+//	*/
 	///////////////////// FIND DU CODE DE TEST /////////////////////////////
 	return (0);
 }

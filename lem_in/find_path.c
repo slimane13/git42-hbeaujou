@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/05 14:46:37 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/05 17:05:03 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/06 14:27:08 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,32 @@ void	put_fromend(t_map **map)
 	tmp = *map;
 	while (tmp && tmp->room->end != 1)
 		tmp = tmp->next;
-	while (tmp && tmp->room->start != 1)
+	put_fromend_recur(&tmp, 0);
+}
+
+void	put_fromend_recur(t_map **tmp, int coups)
+{
+	t_tun	*tmp2;
+
+	tmp2 = (*tmp)->room->next;
+	(*tmp)->room->flag = 1;
+	(*tmp)->room->from_end = coups;
+	ft_printf("salle : %s\n", (*tmp)->room->name);
+	ft_printf("coups : %d\n", (*tmp)->room->from_end);
+	ft_printf("tunnel : %s\n", tmp2->p_map->room->name);
+	ft_printf("\n");
+	while (tmp2 && tmp2->p_map->room->start != 1)
 	{
-		tmp->room->from_end = coups;
-		coups++;
-		tmp = tmp->room->next->p_map;
+		if (tmp2->p_map->room->flag == 0)
+		{
+			(*tmp) = tmp2->p_map;
+			put_fromend_recur(tmp, coups + 1);
+		}
+		else
+			tmp2 = tmp2->next;
 	}
-	tmp->room->from_end = coups;
+	if ((*tmp)->room->start == 1)
+		(*tmp)->room->from_end = coups;
 }
 /*
 t_reseau	*build_reseau(t_map **map, t_reseau **reseau)
