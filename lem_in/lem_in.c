@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/04 14:13:18 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/06 18:11:11 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/06 18:22:14 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,13 @@ int	main(void)
 	t_path	*path;
 	t_path	*path2;
 	int		n;
+	int		nb_path;
 
 	n = 1;
 	read_map(&map);
 	apply_map_to_tun(&map);
 	put_fromend(&map);
+	nb_path = nbr_path(&map);
 	clean_flag(&map);
 	///////////////////////// DEBUT DU CODE DE TEST ////////////////////////
 	tmp = map;
@@ -36,7 +38,6 @@ int	main(void)
 	clean_flag(&map);
 	path_to_flag(&path, &map, 1);
 	//////////////////////// AJOUT DU DEUXIEME PATH ///////////////////////
-///*
 	tmp = map;
 	while (tmp->room->start != 1)
 		tmp = tmp->next;
@@ -51,10 +52,8 @@ int	main(void)
 	while (tmp->room->start != 1)
 		tmp = tmp->next;
 	path2 = fromend_to_path(&tmp);
-//	clean_flag(&map);
-//	path_to_flag(&path, &map, 1);
-//	path_to_flag(&path2, &map, 2);
-	ft_printf("Il y a maximum %d chemins exactement differents\n\n", nbr_path(&map));
+	///////////////////////////// FIN DES PATH ///////////////////////////
+	ft_printf("Il y a maximum %d chemins exactement differents\n\n", nb_path);
 	//////////////////// AFFICHAGE DE TOUTES LES SALLES ////////////////////
 	tmp = map;
 	while (tmp->next)

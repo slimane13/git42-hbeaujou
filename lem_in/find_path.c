@@ -6,33 +6,11 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/05 14:46:37 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/06 18:11:29 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/06 18:18:46 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
-
-int			nbr_path(t_map **map)
-{
-	int		count;
-	t_map	*tmp;
-	t_tun	*tmp_t;
-
-	tmp = *map;
-	count = 0;
-	while (tmp && tmp->room->end != 1)
-		tmp = tmp->next;
-	if (tmp->room->end != 1)
-		exit(0);
-	tmp_t = tmp->room->next;
-	while (tmp_t)
-	{
-		count++;
-		tmp_t = tmp_t->next;
-	}
-	return (count);
-}
-
 
 void	put_fromend(t_map **map)
 {
@@ -62,8 +40,6 @@ void	put_fromend_recur(t_map **tmp, int coups)
 		else
 			tmp2 = tmp2->next;
 	}
-//	if (tmp2->p_map->room->start == 1) CHANGER LE FROM_END SI PLUS PETIT
-//		tmp2->p_map->room->from_end = coups;
 }
 
 t_path	*fromend_to_path(t_map **tmp)
