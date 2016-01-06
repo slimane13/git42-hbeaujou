@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/05 14:46:37 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/06 16:23:14 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/06 18:11:29 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,6 @@ void	put_fromend_recur(t_map **tmp, int coups)
 	tmp2 = (*tmp)->room->next;
 	(*tmp)->room->flag = 1;
 	(*tmp)->room->from_end = coups;
-	ft_printf("salle : %s\n", (*tmp)->room->name);
-	ft_printf("coups : %d\n", (*tmp)->room->from_end);
-	ft_printf("tunnel : %s\n", tmp2->p_map->room->name);
-	ft_printf("\n");
 	while (tmp2 && tmp2->p_map->room->start != 1)
 	{
 		if (tmp2->p_map->room->flag == 0)
@@ -66,8 +62,8 @@ void	put_fromend_recur(t_map **tmp, int coups)
 		else
 			tmp2 = tmp2->next;
 	}
-	if ((*tmp)->room->start == 1)
-		(*tmp)->room->from_end = coups;
+//	if (tmp2->p_map->room->start == 1) CHANGER LE FROM_END SI PLUS PETIT
+//		tmp2->p_map->room->from_end = coups;
 }
 
 t_path	*fromend_to_path(t_map **tmp)
