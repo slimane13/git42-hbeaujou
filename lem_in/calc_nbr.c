@@ -6,13 +6,13 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 18:18:21 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/06 18:20:44 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/06 18:34:36 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-int			nbr_path_end(t_map **map)
+int		nbr_path_end(t_map **map)
 {
 	int		count;
 	t_map	*tmp;
@@ -33,7 +33,7 @@ int			nbr_path_end(t_map **map)
 	return (count);
 }
 
-int			nbr_path_start(t_map **map)
+int		nbr_path_start(t_map **map)
 {
 	int		count;
 	t_map	*tmp;
@@ -54,7 +54,7 @@ int			nbr_path_start(t_map **map)
 	return (count);
 }
 
-int			nbr_path(t_map **map)
+int		nbr_path(t_map **map)
 {
 	int start;
 	int end;
@@ -69,3 +69,13 @@ int			nbr_path(t_map **map)
 		res = end;
 	return (res);
 }
+//////////// A FAIRE ////////////////////
+/*
+void	first_path_finding(t_map **map)
+{
+}
+
+void	path_finding(t_map **map, int nb)
+{
+}
+*/

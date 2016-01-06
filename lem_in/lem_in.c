@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/04 14:13:18 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/06 18:22:14 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/06 18:27:06 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,14 @@ int	main(void)
 	int		nb_path;
 
 	n = 1;
+	///////////////////////// PARTIE OBLIGATOIRE ///////////////////////////
 	read_map(&map);
 	apply_map_to_tun(&map);
-	put_fromend(&map);
 	nb_path = nbr_path(&map);
-	clean_flag(&map);
-	///////////////////////// DEBUT DU CODE DE TEST ////////////////////////
-	tmp = map;
 	//////////////////////// AJOUT DU PREMIER PATH ////////////////////////
+	put_fromend(&map);
+	clean_flag(&map);
+	tmp = map;
 	while (tmp->room->start != 1)
 		tmp = tmp->next;
 	path = fromend_to_path(&tmp);
@@ -132,6 +132,5 @@ int	main(void)
 		tmp3 = tmp3->next;
 	}
 	ft_printf("\n");
-	///////////////////// FIND DU CODE DE TEST /////////////////////////////
 	return (0);
 }
