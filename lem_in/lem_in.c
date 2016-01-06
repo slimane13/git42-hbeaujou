@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/04 14:13:18 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/06 13:58:51 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/06 16:24:18 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int	main(void)
 	t_map	*map;
 	t_map	*tmp;
 	t_tun	*tmp2;
+	t_path	*tmp3;
+	t_path	*path;
 	int		n;
 
 	n = 1;
@@ -24,6 +26,10 @@ int	main(void)
 	apply_map_to_tun(&map);
 	put_fromend(&map);
 	///////////////////////// DEBUT DU CODE DE TEST ////////////////////////
+	tmp = map;
+	while (tmp->room->start != 1)
+		tmp = tmp->next;
+	path = fromend_to_path(&tmp);
 	tmp = map;
 	ft_printf("Il y a maximum %d chemins exactement differents\n\n", nbr_path(&map));
 	while (tmp->next)
@@ -74,20 +80,16 @@ int	main(void)
 	tmp = map;
 	while (tmp->room->start != 1)
 		tmp = tmp->next;
-	///////////////// CODE DE RESOLUTION ///////////////////////////////////
-//	/*
-	ft_printf("Salle de start : %s\n", tmp->room->name);
-	ft_printf("---------------------------------\n");
-	while (tmp->room->end != 1)
+	///////////////// AFFICHAGE RESOLUTION N1 ///////////////////////////////
+	tmp3 = path;
+	ft_printf("---------------------- \n Parcours :\n\n");
+	while (tmp3)
 	{
-		ft_printf("Coups de la fin : %d depuis la salle : %s\n", tmp->room->from_end, tmp->room->name);
-		if (tmp->room->next->p_map->room->from_end < tmp->room->from_end)
-			tmp = tmp->room->next->p_map;
-		else
-			tmp = tmp->room->next->next->p_map;
+		ft_printf("salle : %s\n", tmp3->name);
+		tmp3 = tmp3->next;
 	}
-	ft_printf("Arrivee a la salle : %s\n\n", tmp->room->name);
-//	*/
+//	ft_printf("salle :%s\n", tmp3->name);
+	ft_printf("\n");
 	///////////////////// FIND DU CODE DE TEST /////////////////////////////
 	return (0);
 }
