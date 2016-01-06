@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/03 14:20:35 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/06 13:45:51 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/06 14:56:01 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ int				nbr_path(t_map **map);
 
 void			ft_lstaddend_reseau(t_reseau **alst, t_reseau *new_r);
 void			ft_lstaddend_room(t_map **alst, t_map *new_r);
+void			ft_lstaddend_path(t_path **alst, t_path *new_r);
 void			ft_lstaddend_tun(t_tun **alst, t_tun *new_r);
 void			apply_map_to_tun(t_map **map);
 void			read_map(t_map **map);
@@ -90,6 +91,7 @@ void			put_fromend_recur(t_map **map, int coups);
 t_reseau		*build_reseau(t_map **map, t_reseau **reseau);
 t_reseau		*new_reseau(int choix, t_path *path);
 t_path			*new_path(char *str);
+t_path			*find_shortest(t_map **map);
 t_room			*new_room(char *str, int cx, int cy);
 t_map			*new_map(char *str, int cx, int cy);
 t_tun			*new_tun(char *str);

@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/05 14:46:37 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/06 14:27:08 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/06 14:53:59 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,22 @@ void	put_fromend_recur(t_map **tmp, int coups)
 	}
 	if ((*tmp)->room->start == 1)
 		(*tmp)->room->from_end = coups;
+}
+
+t_path	*fromend_to_path(t_map **tmp)
+{
+	t_map 	*tmp2;
+	t_path	*path;
+	t_path	*new;
+
+	path = NULL;
+	while (tmp->room->end != 1)
+	{
+		new = new_path(tmp->room->name);
+		ft_lstaddend_path(&path, new);
+		tmp2 = find_shortest(tmp);
+		tmp = tmp2;
+	}
 }
 /*
 t_reseau	*build_reseau(t_map **map, t_reseau **reseau)
