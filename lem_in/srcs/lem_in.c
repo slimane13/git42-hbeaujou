@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/04 14:13:18 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/07 17:24:51 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/07 17:59:30 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,9 +116,9 @@ int	main(void)
 	next_to_previous(&reseau);
 	int i = 1;
 	int n_path;
-	while (i <= g_lem)
+	while (g_end_affiche != 1)
 	{
-		avance_lem(&reseau, &i);
+		avance_lem(&reseau, &i, n_path);
 		n_path = 1;
 		while (n_path <= nb_path)
 		{
