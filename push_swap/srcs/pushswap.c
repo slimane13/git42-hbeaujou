@@ -6,13 +6,15 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/03 10:59:08 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/06 12:13:44 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/07 11:49:08 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_pushswap.h"
 
 int		g_coups;
+int		g_total;
+int		g_res;
 
 void	resolve(t_stack *l_a, t_stack *l_b)
 {
@@ -20,7 +22,7 @@ void	resolve(t_stack *l_a, t_stack *l_b)
 	{
 		if ((l_a->next->nb > l_a->next->next->nb) &&
 				(l_a->next->nb < l_a->next->next->next->nb))
-			ft_c_c(&l_a);
+			ft_c_c(l_a);
 		else if ((l_a->prev->nb < l_a->prev->prev->nb) &&
 				(l_a->prev->nb > l_a->prev->prev->prev->nb) &&
 				(ft_lstlen(l_a) > 3))
@@ -102,7 +104,8 @@ int		main(int ac, char **av)
 	t_stack *l_b;
 
 	g_coups = 0;
-	ft_printf("---------------------------------------------------------\n");
+	g_total = 0;
+	g_res = 0;
 	if (ac < 2)
 		return (0);
 	if (initialize(&l_a, &l_b) == -1)
@@ -116,8 +119,10 @@ int		main(int ac, char **av)
 		resolve(l_a, l_b);
 		resolve_stack_b(l_a, l_b);
 	}
-	ft_printf("\nNombre de coups : %d\n\n", g_coups);
-	affiche(l_a);
+	if (g_total == 1)
+		ft_printf("\nNombre de coups : %d\n\n", g_coups);
+	if (g_res == 1)
+		affiche(l_a);
 	ft_printf("\n\n");
 	return (0);
 }

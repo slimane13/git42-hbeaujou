@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/03 11:18:13 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/03 16:10:53 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/07 11:49:30 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,22 @@ void	ft_check_2(char **av, int ac, int *tab_nb, t_stack **a)
 	ft_check_1(ac, *a);
 }
 
+void	check_bonus(char **av, int *i)
+{
+	if (!ft_strcmp(av[1], "-nr") || !ft_strcmp(av[1], "-rn") ||
+			!ft_strcmp(av[1], "-r") || !ft_strcmp(av[1], "-n"))
+		*i = *i + 1;
+	if (!ft_strcmp(av[1], "-nr") || !ft_strcmp(av[1], "-rn"))
+	{
+		g_total = 1;
+		g_res = 1;
+	}
+	else if (!ft_strcmp(av[1], "-n"))
+		g_total = 1;
+	else if (!ft_strcmp(av[1], "-r"))
+		g_res = 1;
+}
+
 void	ft_check_3(char **av, int ac, t_stack **a)
 {
 	t_stack	*tmp;
@@ -61,6 +77,7 @@ void	ft_check_3(char **av, int ac, t_stack **a)
 	tmp = *a;
 	if (!(tab_nb = (int *)malloc(sizeof(int) * ac)))
 		return ;
+	check_bonus(av, &i);
 	while (av[i])
 	{
 		if (ft_is_int(av[i]))

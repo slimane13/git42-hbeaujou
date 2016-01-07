@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/03 11:10:11 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/06 12:14:31 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/07 11:45:38 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ typedef struct		s_stack
 }					t_stack;
 
 extern int			g_coups;
+extern int			g_res;
+extern int			g_total;
 
 t_stack				*ft_creat_element(int nb);
 int					find_min(t_stack *l_a);
