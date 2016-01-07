@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/05 14:46:37 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/06 18:52:02 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/07 14:47:19 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 void	put_fromend(t_map **map)
 {
 	t_map	*tmp;
-	int		coups;
 
 	tmp = *map;
 	while (tmp && tmp->room->end != 1)
@@ -51,6 +50,7 @@ t_path	*fromend_to_path(t_map **tmp)
 
 	path = NULL;
 	tmp3 = *tmp;
+	tmp2 = NULL;
 	while (tmp3->room->end != 1)
 	{
 		new = new_path(tmp3->room->name);
@@ -63,12 +63,45 @@ t_path	*fromend_to_path(t_map **tmp)
 	return (path);
 }
 
-t_reseau	*build_reseau(t_reseau **reseau)
+void	build_first_reseau(t_reseau **reseau, t_map **map)
 {
-	t_reseau	*res;
+	t_reseau	*tmp4;
+	t_map		*tmp;
 	t_path		*path;
-///////////// REMPLIR PATH //////////////
-	res = new_reseau(i, path);
-	ft_lstaddend_reseau(reseau, res);
-	return (res);
+
+	put_fromend(map);
+	clean_flag(map);
+	tmp = *map;
+	while (tmp->room->start != 1)
+		tmp = tmp->next;
+	path = fromend_to_path(&tmp);
+	tmp4 = new_reseau(1, path);
+	ft_lstaddend_reseau(reseau, tmp4);
+	clean_flag(map);
+	path_to_flag(&path, map, 1);
+}
+
+void	build_reseau(t_reseau **reseau, t_map **map, int count)
+{
+	t_reseau	*tmp4;
+	t_map		*tmp;
+	t_path		*path;
+
+	tmp = *map;
+	clean_from_end(map);
+	clean_flag(map);
+	reseau_to_flag(reseau, map);
+	put_fromend(map);
+	clean_flag(map);
+	reseau_to_flag(reseau, map);
+	tmp = *map;
+	while (tmp->room->end != 1)
+		tmp = tmp->next;
+	tmp->room->flag = 0;
+	tmp = *map;
+	while (tmp->room->start != 1)
+		tmp = tmp->next;
+	path = fromend_to_path(&tmp);
+	tmp4 = new_reseau(count, path);
+	ft_lstaddend_reseau(reseau, tmp4);
 }

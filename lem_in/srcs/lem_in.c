@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/04 14:13:18 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/06 18:52:57 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/07 14:17:28 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,44 +14,36 @@
 
 int	main(void)
 {
-	t_map	*map;
-	t_map	*tmp;
-	t_tun	*tmp2;
-	t_path	*tmp3;
-	t_path	*path;
-	t_path	*path2;
-	int		n;
-	int		nb_path;
+	t_map		*map;
+	t_map		*tmp;
+	t_tun		*tmp2;
+	t_path		*tmp3;
+	t_path		*path;
+	t_path		*path2;
+	t_reseau	*tmp4;
+	t_reseau	*reseau;
+	int			n;
+	int			count;
+	int			nb_path;
 
 	n = 1;
+	count = 2;
+	reseau = NULL;
+	path = NULL;
+	path2 = NULL;
 	///////////////////////// PARTIE OBLIGATOIRE ///////////////////////////
 	read_map(&map);
 	apply_map_to_tun(&map);
 	nb_path = nbr_path(&map);
 	//////////////////////// AJOUT DU PREMIER PATH ////////////////////////
-	put_fromend(&map);
-	clean_flag(&map);
+	build_first_reseau(&reseau, &map);
+	//////////////////////// AJOUT DES AUTRES PATH ///////////////////////
+	while (count <= nb_path)
+	{
+		build_reseau(&reseau, &map, count);
+		count++;
+	}
 	tmp = map;
-	while (tmp->room->start != 1)
-		tmp = tmp->next;
-	path = fromend_to_path(&tmp);
-	clean_flag(&map);
-	path_to_flag(&path, &map, 1);
-	//////////////////////// AJOUT DU DEUXIEME PATH ///////////////////////
-	tmp = map;
-	while (tmp->room->start != 1)
-		tmp = tmp->next;
-	put_fromend(&map);
-	clean_flag(&map);
-	path_to_flag(&path, &map, 1);
-	tmp = map;
-	while (tmp->room->end != 1)
-		tmp = tmp->next;
-	tmp->room->flag = 0;
-	tmp = map;
-	while (tmp->room->start != 1)
-		tmp = tmp->next;
-	path2 = fromend_to_path(&tmp);
 	///////////////////////////// FIN DES PATH ///////////////////////////
 	ft_printf("Il y a maximum %d chemins exactement differents\n\n", nb_path);
 	//////////////////// AFFICHAGE DE TOUTES LES SALLES ////////////////////
@@ -104,32 +96,19 @@ int	main(void)
 		tmp = tmp->next;
 	}
 	ft_printf("\n");
-	///////////////// AFFICHAGE RESOLUTION N1 ///////////////////////////////
-	tmp3 = path;
-	////////////////// TEST DES FLAGS /////////////////////////////////////
-	tmp = map;
-	ft_printf("--------------------\n Salles utilisees :\n\n");
-	while (tmp)
+	/////////////////////// TEST PARCOURS VIA RESEAU ///////////////////////
+	ft_printf("\n---------------------- \n Via reseau :\n\n");
+	tmp4 = reseau;
+	while (tmp4)
 	{
-		if (tmp->room->flag != 0)
-			ft_printf("salle : %s avec flag : %d\n", tmp->room->name, tmp->room->flag);
-		tmp = tmp->next;
-	}
-	/////////////////////// TEST PARCOURS VIA PATH ///////////////////////
-	ft_printf("\n---------------------- \n Parcours :\n\n");
-	while (tmp3)
-	{
-		ft_printf("salle : %s\n", tmp3->name);
-		tmp3 = tmp3->next;
-	}
-	ft_printf("\n");
-	/////////////////////// TEST PARCOURS VIA PATH2 ///////////////////////
-	tmp3 = path2;
-	ft_printf("\n---------------------- \n Parcours :\n\n");
-	while (tmp3)
-	{
-		ft_printf("salle : %s\n", tmp3->name);
-		tmp3 = tmp3->next;
+		ft_printf("\n---------------------- \n Parcours :\n\n");
+		tmp3 = tmp4->path;
+		while (tmp3)
+		{
+			ft_printf("Salle : %s\n", tmp3->name);
+			tmp3 = tmp3->next;
+		}
+		tmp4 = tmp4->next;
 	}
 	ft_printf("\n");
 	return (0);

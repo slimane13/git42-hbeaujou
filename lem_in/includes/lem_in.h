@@ -6,16 +6,16 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/03 14:20:35 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/06 18:27:19 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/07 14:16:10 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LEM_IN_H
 # define LEM_IN_H
 
-# include "./ft_printf/printf/ft_printf.h"
-# include "./ft_printf/get_next_line/get_next_line.h"
-# include "./ft_printf/libft/libft.h"
+# include "../ft_printf/printf/ft_printf.h"
+# include "../ft_printf/get_next_line/get_next_line.h"
+# include "../ft_printf/libft/libft.h"
 
 typedef struct s_room		t_room;
 typedef struct s_map		t_map;
@@ -87,14 +87,17 @@ void			ft_lstaddend_path(t_path **alst, t_path *new_r);
 void			ft_lstaddend_tun(t_tun **alst, t_tun *new_r);
 void			apply_map_to_tun(t_map **map);
 void			read_map(t_map **map);
-void			path_to_flag(t_path **path, t_map **map, int count);
+void			path_to_flag(t_path **path, t_map **map, int choix);
+void			reseau_to_flag(t_reseau **reseau, t_map **map);
 void			clean_flag(t_map **map);
+void			clean_from_end(t_map **map);
 void			put_fromend(t_map **map);
 void			put_fromend_recur(t_map **map, int coups);
 void			first_path_finding(t_map **map);
 void			path_finding(t_map **map, int nb);
+void			build_first_reseau(t_reseau **reseau, t_map **map);
+void			build_reseau(t_reseau **reseau, t_map **map, int count);
 
-t_reseau		*build_reseau(t_map **map, t_reseau **reseau);
 t_reseau		*new_reseau(int choix, t_path *path);
 t_path			*new_path(char *str);
 t_path			*fromend_to_path(t_map **tmp);

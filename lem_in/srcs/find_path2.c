@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 14:54:52 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/06 17:33:01 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/07 14:47:24 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,46 @@ void	clean_flag(t_map **map)
 	{
 		tmp->room->flag = 0;
 		tmp = tmp->next;
+	}
+}
+
+void	clean_from_end(t_map **map)
+{
+	t_map	*tmp;
+
+	tmp = *map;
+	while (tmp)
+	{
+		tmp->room->from_end = 0;
+		tmp = tmp->next;
+	}
+}
+
+void	reseau_to_flag(t_reseau **reseau, t_map **map)
+{
+	t_path		*tmp;
+	t_reseau	*tmp3;
+	t_map		*tmp2;
+	int			choix;
+
+	tmp3 = *reseau;
+	choix = 1;
+	while (tmp3)
+	{
+		tmp = tmp3->path;
+		while (tmp)
+		{
+			tmp2 = *map;
+			while (tmp2)
+			{
+				if (ft_strcmp(tmp2->room->name, tmp->name) == 0)
+					tmp2->room->flag = choix;
+				tmp2 = tmp2->next;
+			}
+			tmp = tmp->next;
+		}
+		tmp3 = tmp3->next;
+		choix++;
 	}
 }
 
