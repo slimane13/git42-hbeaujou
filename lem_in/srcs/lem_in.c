@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/04 14:13:18 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/07 15:13:30 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/07 16:40:42 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ int	main(void)
 	tmp4 = reseau;
 	while (tmp4)
 	{
-		ft_printf("\n---------------------- \n Parcours :\n\n");
+		ft_printf("\n---------------------- \n Parcours n %d :\n\n", tmp4->choix);
 		tmp3 = tmp4->path;
 		while (tmp3)
 		{
@@ -113,5 +113,21 @@ int	main(void)
 	ft_printf("\n");
 	///////////////////////// AFFICHAGE DES FOURMIS /////////////////////////
 	ft_printf("Il y a %d fourmis dans le labyrinthe\n\n", g_lem);
+	next_to_previous(&reseau);
+	int i = 0;
+	int n_path;
+	while (i < g_lem)
+	{
+		avance_lem(&reseau, i);
+		n_path = 1;
+		while (n_path <= nb_path)
+		{
+			affiche_path(n_path, &reseau);
+			ft_printf(" ");
+			n_path++;
+		}
+		ft_printf("\n");
+		i++;
+	}
 	return (0);
 }

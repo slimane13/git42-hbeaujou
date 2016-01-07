@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/03 14:20:35 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/07 15:05:37 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/07 16:31:47 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,9 @@ typedef struct s_reseau		t_reseau;
 struct			s_path
 {
 	char		*name;
+	int			ant;
 	t_path		*next;
+	t_path		*previous;
 };
 
 struct			s_reseau
@@ -52,7 +54,6 @@ struct			s_room
 	int			y;
 	int			from_end;
 	int			flag;
-	int			ant;
 	t_tun		*next;
 };
 
@@ -98,6 +99,9 @@ void			first_path_finding(t_map **map);
 void			path_finding(t_map **map, int nb);
 void			build_first_reseau(t_reseau **reseau, t_map **map);
 void			build_reseau(t_reseau **reseau, t_map **map, int count);
+void			affiche_path(int nb, t_reseau **res);
+void			avance_lem(t_reseau **res, int i);
+void			next_to_previous(t_reseau **res);
 
 t_reseau		*new_reseau(int choix, t_path *path);
 t_path			*new_path(char *str);
