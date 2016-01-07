@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/07 15:58:39 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/07 18:27:19 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/07 19:26:46 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,22 @@ void	affiche_path(int nb, t_reseau **res)
 		i++;
 	}
 	tmp2 = tmp->path;
-	tmp2 = tmp2->next;
-	while (tmp2)
+	while (tmp2->next)
+		tmp2 = tmp2->next;
+	while (tmp2->previous)
 	{
 		if (tmp2->ant != 0)
-			ft_printf("L%d-%s ", tmp2->ant, tmp2->name);
-		tmp2 = tmp2->next;
+		{
+			if (tmp2->ant % 4 == 0 && tmp2->ant != 0)
+				ft_printf("[0;31;40mL%d-%s ", tmp2->ant, tmp2->name);
+			else if (tmp2->ant % 4 == 1 && tmp2->ant != 0)
+				ft_printf("[0;32;40mL%d-%s ", tmp2->ant, tmp2->name);
+			else if (tmp2->ant % 4 == 2 && tmp2->ant != 0)
+				ft_printf("[0;33;40mL%d-%s ", tmp2->ant, tmp2->name);
+			else if (tmp2->ant % 4 == 3 && tmp2->ant != 0)
+				ft_printf("[0;34;40mL%d-%s ", tmp2->ant, tmp2->name);
+		}
+		tmp2 = tmp2->previous;
 	}
 }
 
@@ -70,12 +80,8 @@ void	avance_lem(t_reseau **res, int *i, int nb_path)
 		while (tmp2->next)
 			tmp2 = tmp2->next;
 		save = tmp2->ant;
-		////////////////// ESSAI DE FIN D AFFICHAGE /////////////////////////
 		if (save == g_lem)
-		{
 			g_end_affiche = 1;
-		}
-		///////////////////////////////////////////////////////////////////
 		while (tmp2->previous)
 		{
 			tmp2->ant = tmp2->previous->ant;

@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/04 14:13:18 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/07 17:59:30 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/07 19:31:11 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int	main(void)
 	reseau = NULL;
 	path = NULL;
 	path2 = NULL;
+	tmp2 = NULL;
 	///////////////////////// PARTIE OBLIGATOIRE ///////////////////////////
 	read_map(&map);
 	apply_map_to_tun(&map);
@@ -43,10 +44,12 @@ int	main(void)
 		build_reseau(&reseau, &map, count);
 		count++;
 	}
+//	ft_printf("TEST2\n");
 	tmp = map;
 	///////////////////////////// FIN DES PATH ///////////////////////////
-	ft_printf("Il y a maximum %d chemins exactement differents\n\n", nb_path);
+//	ft_printf("\nIl y a maximum %d chemins exactement differents\n\n", nb_path);
 	//////////////////// AFFICHAGE DE TOUTES LES SALLES ////////////////////
+/*
 	tmp = map;
 	while (tmp->next)
 	{
@@ -87,7 +90,9 @@ int	main(void)
 	else if (tmp->room->end == 1)
 		ft_putstr("et c'est l'arrivee ");
 	ft_printf("\n\n");
+*/
 	///////////////// AFFICHAGE DES FROM_END RESTANTS /////////////////////
+/*
 	tmp = map;
 	ft_printf("------------------\n From_end : \n\n");
 	while (tmp)
@@ -95,9 +100,8 @@ int	main(void)
 		ft_printf("salle : %s , from_end : %d\n", tmp->room->name, tmp->room->from_end);
 		tmp = tmp->next;
 	}
-	ft_printf("\n");
+*/
 	/////////////////////// TEST PARCOURS VIA RESEAU ///////////////////////
-	ft_printf("\n---------------------- \n Via reseau :\n\n");
 	tmp4 = reseau;
 	while (tmp4)
 	{
@@ -112,7 +116,7 @@ int	main(void)
 	}
 	ft_printf("\n");
 	///////////////////////// AFFICHAGE DES FOURMIS /////////////////////////
-	ft_printf("Il y a %d fourmis dans le labyrinthe\n\n", g_lem);
+	ft_printf("Il y a %d fourmis dans le labyrinthe\n", g_lem);
 	next_to_previous(&reseau);
 	int i = 1;
 	int n_path;

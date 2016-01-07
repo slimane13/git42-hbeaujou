@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/05 14:46:37 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/07 14:47:19 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/07 19:25:15 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,7 @@ void	build_reseau(t_reseau **reseau, t_map **map, int count)
 	while (tmp->room->start != 1)
 		tmp = tmp->next;
 	path = fromend_to_path(&tmp);
+//	ft_printf("TEST9\n");
 	tmp4 = new_reseau(count, path);
 	ft_lstaddend_reseau(reseau, tmp4);
 }
