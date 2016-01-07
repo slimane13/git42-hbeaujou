@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/07 15:58:39 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/07 18:01:29 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/07 18:27:19 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,8 @@ void	affiche_path(int nb, t_reseau **res)
 		i++;
 	}
 	tmp2 = tmp->path;
-	while (tmp2->next)
+	tmp2 = tmp2->next;
+	while (tmp2)
 	{
 		if (tmp2->ant != 0)
 			ft_printf("L%d-%s ", tmp2->ant, tmp2->name);
