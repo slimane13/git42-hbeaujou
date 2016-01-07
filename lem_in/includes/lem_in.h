@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/03 14:20:35 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/07 16:31:47 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/07 17:20:47 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ void			path_finding(t_map **map, int nb);
 void			build_first_reseau(t_reseau **reseau, t_map **map);
 void			build_reseau(t_reseau **reseau, t_map **map, int count);
 void			affiche_path(int nb, t_reseau **res);
-void			avance_lem(t_reseau **res, int i);
+void			avance_lem(t_reseau **res, int *i);
 void			next_to_previous(t_reseau **res);
 
 t_reseau		*new_reseau(int choix, t_path *path);

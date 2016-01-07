@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/04 14:13:18 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/07 16:40:42 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/07 17:24:51 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,20 +114,18 @@ int	main(void)
 	///////////////////////// AFFICHAGE DES FOURMIS /////////////////////////
 	ft_printf("Il y a %d fourmis dans le labyrinthe\n\n", g_lem);
 	next_to_previous(&reseau);
-	int i = 0;
+	int i = 1;
 	int n_path;
-	while (i < g_lem)
+	while (i <= g_lem)
 	{
-		avance_lem(&reseau, i);
+		avance_lem(&reseau, &i);
 		n_path = 1;
 		while (n_path <= nb_path)
 		{
 			affiche_path(n_path, &reseau);
-			ft_printf(" ");
 			n_path++;
 		}
 		ft_printf("\n");
-		i++;
 	}
 	return (0);
 }
