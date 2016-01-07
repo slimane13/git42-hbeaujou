@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/04 12:48:45 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/06 13:47:59 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/07 15:12:38 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int		g_begin_attrib_map;
 int		g_begin_tunnel;
 int		g_after_end;
 int		g_nb;
+int		g_lem;
 
 int		read_line(char *line)
 {
@@ -56,6 +57,8 @@ int		read_line(char *line)
 			return (0);
 		return (6);
 	}
+	else if (ft_isalldigit(line) == 1 && line[0] != '\n' && line[0] != '\0')
+		return (1);
 	else
 		return (0);
 }
@@ -66,7 +69,9 @@ int		apply_line(char *line, t_map **map, int t_1)
 	char	*line2;
 
 	t_3 = 0;
-	if (t_1 == 2)
+	if (t_1 == 1)
+		g_lem = ft_atoi(line);
+	else if (t_1 == 2)
 		;
 	else if (t_1 == 3)
 	{
@@ -101,6 +106,7 @@ void	read_map(t_map **map)
 
 	g_coups = 0;
 	g_nb = 0;
+	g_lem = 0;
 	g_after_start = 0;
 	g_after_end = 0;
 	g_begin_attrib_map = 0;

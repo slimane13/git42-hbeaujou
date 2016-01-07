@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/04 14:13:18 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/07 14:17:28 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/07 15:13:30 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ int	main(void)
 	else if (tmp->room->end == 1)
 		ft_putstr("et c'est l'arrivee ");
 	ft_printf("\n\n");
-	///////////////// AFFICHAGE DES FROM_END DES SALLES /////////////////////
+	///////////////// AFFICHAGE DES FROM_END RESTANTS /////////////////////
 	tmp = map;
 	ft_printf("------------------\n From_end : \n\n");
 	while (tmp)
@@ -111,5 +111,7 @@ int	main(void)
 		tmp4 = tmp4->next;
 	}
 	ft_printf("\n");
+	///////////////////////// AFFICHAGE DES FOURMIS /////////////////////////
+	ft_printf("Il y a %d fourmis dans le labyrinthe\n\n", g_lem);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/03 14:20:35 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/07 14:16:10 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/07 15:05:37 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ extern int		g_after_start;
 extern int		g_begin_attrib_map;
 extern int		g_begin_tunnel;
 extern int		g_nb;
+extern int		g_lem;
 
 int				apply_line(char *line, t_map **map, int t_1);
 int				read_line(char *line);
