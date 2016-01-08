@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/04 14:13:18 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/08 09:36:30 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/08 10:01:09 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ int	main(void)
 		build_reseau(&reseau, &map, count);
 		count++;
 	}
-//	ft_printf("TEST2\n");
 	tmp = map;
 	///////////////////////////// FIN DES PATH ///////////////////////////
 //	ft_printf("\nIl y a maximum %d chemins exactement differents\n\n", nb_path);
@@ -103,6 +102,7 @@ int	main(void)
 */
 	/////////////////////// TEST PARCOURS VIA RESEAU ///////////////////////
 	tmp4 = reseau;
+	ft_printf("\n[0;31;40m=========== START ============\n");
 	while (tmp4)
 	{
 		ft_printf("\n[0;36;40m---------------------- \n Parcours n %d :\n\n", tmp4->choix);
@@ -133,6 +133,8 @@ int	main(void)
 		ft_printf("\n");
 		g_total++;
 	}
-	ft_printf("[0;37;40mIl y a eu [0;35;40m%d [0;37;40mtours jusqu'a ce que toutes les fourmis arrivent\n", g_total);
+	g_total = g_total - 2;
+	ft_printf("[0;37;40mIl y a eu [0;35;40m%d [0;37;40mtours jusqu'a ce que toutes les fourmis arrivent\n\n", g_total);
+	ft_printf("[0;31;40m============ END =============\n\n");
 	return (0);
 }
