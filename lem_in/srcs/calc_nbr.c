@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 18:18:21 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/06 18:34:36 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/08 09:16:56 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,13 +69,18 @@ int		nbr_path(t_map **map)
 		res = end;
 	return (res);
 }
-//////////// A FAIRE ////////////////////
-/*
-void	first_path_finding(t_map **map)
-{
-}
 
-void	path_finding(t_map **map, int nb)
+int		calc_path_n(t_reseau **res)
 {
+	t_reseau	*tmp;
+	int			count;
+
+	count = 0;
+	tmp = *res;
+	while (tmp)
+	{
+		count++;
+		tmp = tmp->next;
+	}
+	return (count);
 }
-*/

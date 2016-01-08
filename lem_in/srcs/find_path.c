@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/05 14:46:37 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/07 19:25:15 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/08 09:11:07 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,15 @@ t_path	*fromend_to_path(t_map **tmp)
 	tmp2 = NULL;
 	while (tmp3->room->end != 1)
 	{
-		new = new_path(tmp3->room->name);
-		ft_lstaddend_path(&path, new);
-		tmp2 = find_shortest(&tmp3);
+		if (tmp3)
+		{
+			new = new_path(tmp3->room->name);
+			ft_lstaddend_path(&path, new);
+			tmp2 = find_shortest(&tmp3);
+		}
 		tmp3 = tmp2;
+		if (tmp3 == NULL)
+			return (NULL);
 	}
 	new = new_path(tmp3->room->name);
 	ft_lstaddend_path(&path, new);
@@ -102,7 +107,11 @@ void	build_reseau(t_reseau **reseau, t_map **map, int count)
 	while (tmp->room->start != 1)
 		tmp = tmp->next;
 	path = fromend_to_path(&tmp);
-//	ft_printf("TEST9\n");
-	tmp4 = new_reseau(count, path);
-	ft_lstaddend_reseau(reseau, tmp4);
+	if (path)
+	{
+		tmp4 = new_reseau(count, path);
+		ft_lstaddend_reseau(reseau, tmp4);
+	}
+	else
+		g_end_affiche = 2;
 }

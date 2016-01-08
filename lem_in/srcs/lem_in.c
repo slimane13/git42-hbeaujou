@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/04 14:13:18 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/07 19:31:11 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/08 09:15:29 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	main(void)
 	//////////////////////// AJOUT DU PREMIER PATH ////////////////////////
 	build_first_reseau(&reseau, &map);
 	//////////////////////// AJOUT DES AUTRES PATH ///////////////////////
-	while (count <= nb_path)
+	while (count <= nb_path && g_end_affiche != 2)
 	{
 		build_reseau(&reseau, &map, count);
 		count++;
@@ -117,6 +117,7 @@ int	main(void)
 	ft_printf("\n");
 	///////////////////////// AFFICHAGE DES FOURMIS /////////////////////////
 	ft_printf("Il y a %d fourmis dans le labyrinthe\n", g_lem);
+	nb_path = calc_path_n(&reseau);
 	next_to_previous(&reseau);
 	int i = 1;
 	int n_path;

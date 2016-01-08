@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/03 14:20:35 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/07 19:09:56 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/08 09:16:39 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ int				apply_tunnel(char *line, t_map **map);
 int				nbr_path(t_map **map);
 int				nbr_path_end(t_map **map);
 int				nbr_path_start(t_map **map);
+int				calc_path_n(t_reseau **res);
 
 void			ft_lstaddend_reseau(t_reseau **alst, t_reseau *new_r);
 void			ft_lstaddend_room(t_map **alst, t_map *new_r);

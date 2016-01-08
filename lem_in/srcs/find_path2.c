@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 14:54:52 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/07 14:47:24 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/08 09:09:47 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ t_map	*find_shortest(t_map **tmp)
 	min = 1000000;
 	nb_fe = 0;
 	tmp2 = (*tmp)->room->next;
+	ret = NULL;
 	while (tmp2)
 	{
 		if ((tmp2->p_map->room->from_end < min) &&
