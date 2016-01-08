@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/04 12:48:45 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/07 17:50:55 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/08 09:30:16 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int		g_after_end;
 int		g_nb;
 int		g_lem;
 int		g_end_affiche;
+int		g_total;
 
 int		read_line(char *line)
 {
@@ -108,6 +109,7 @@ void	read_map(t_map **map)
 	g_coups = 0;
 	g_nb = 0;
 	g_lem = 0;
+	g_total = 0;
 	g_after_start = 0;
 	g_after_end = 0;
 	g_begin_attrib_map = 0;

@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/04 14:13:18 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/08 09:15:29 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/08 09:36:30 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,18 +105,18 @@ int	main(void)
 	tmp4 = reseau;
 	while (tmp4)
 	{
-		ft_printf("\n---------------------- \n Parcours n %d :\n\n", tmp4->choix);
+		ft_printf("\n[0;36;40m---------------------- \n Parcours n %d :\n\n", tmp4->choix);
 		tmp3 = tmp4->path;
 		while (tmp3)
 		{
-			ft_printf("Salle : %s\n", tmp3->name);
+			ft_printf("[0;36;40mSalle : [0;37;40m%s\n", tmp3->name);
 			tmp3 = tmp3->next;
 		}
 		tmp4 = tmp4->next;
 	}
 	ft_printf("\n");
 	///////////////////////// AFFICHAGE DES FOURMIS /////////////////////////
-	ft_printf("Il y a %d fourmis dans le labyrinthe\n", g_lem);
+	ft_printf("Il y a [0;35;40m%d [0;37;40mfourmis dans le labyrinthe\n", g_lem);
 	nb_path = calc_path_n(&reseau);
 	next_to_previous(&reseau);
 	int i = 1;
@@ -131,6 +131,8 @@ int	main(void)
 			n_path++;
 		}
 		ft_printf("\n");
+		g_total++;
 	}
+	ft_printf("[0;37;40mIl y a eu [0;35;40m%d [0;37;40mtours jusqu'a ce que toutes les fourmis arrivent\n", g_total);
 	return (0);
 }
