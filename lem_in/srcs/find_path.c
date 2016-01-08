@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/05 14:46:37 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/08 09:11:07 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/08 16:47:22 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,26 +43,27 @@ void	put_fromend_recur(t_map **tmp, int coups)
 
 t_path	*fromend_to_path(t_map **tmp)
 {
-	t_map 	*tmp2;
-	t_map 	*tmp3;
-	t_path	*path;
-	t_path	*new;
+	t_map		*tmp2;
+	t_map		*tmp3;
+	t_path		*path;
+	t_path		*new;
+	int			i;
 
 	path = NULL;
 	tmp3 = *tmp;
 	tmp2 = NULL;
-	while (tmp3->room->end != 1)
+	i = 0;
+	while (tmp3->room->end != 1 && i < g_nbr_rooms)
 	{
 		if (tmp3)
-		{
-			new = new_path(tmp3->room->name);
-			ft_lstaddend_path(&path, new);
-			tmp2 = find_shortest(&tmp3);
-		}
+			cut_fromend_topath(&new, &tmp2, &tmp3, &path);
 		tmp3 = tmp2;
 		if (tmp3 == NULL)
 			return (NULL);
+		i++;
 	}
+	if (tmp3->room->end != 1)
+		exit_prgm();
 	new = new_path(tmp3->room->name);
 	ft_lstaddend_path(&path, new);
 	return (path);
@@ -93,12 +94,7 @@ void	build_reseau(t_reseau **reseau, t_map **map, int count)
 	t_path		*path;
 
 	tmp = *map;
-	clean_from_end(map);
-	clean_flag(map);
-	reseau_to_flag(reseau, map);
-	put_fromend(map);
-	clean_flag(map);
-	reseau_to_flag(reseau, map);
+	cut_build(reseau, map);
 	tmp = *map;
 	while (tmp->room->end != 1)
 		tmp = tmp->next;

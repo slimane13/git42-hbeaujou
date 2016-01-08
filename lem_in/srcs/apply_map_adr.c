@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/05 14:46:25 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/08 10:49:10 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/08 16:20:42 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	apply_map_to_tun(t_map **map)
 {
 	t_map	*tmp_m;
 	t_tun	*tmp_t;
+
 	tmp_m = *map;
 	while (tmp_m)
 	{
@@ -44,7 +45,7 @@ void	apply_map_to_tun(t_map **map)
 		{
 			while (tmp_t)
 			{
-				if(!(tmp_t->p_map = return_map_adr(map, tmp_t->name)))
+				if (!(tmp_t->p_map = return_map_adr(map, tmp_t->name)))
 					exit(0);
 				tmp_t = tmp_t->next;
 			}

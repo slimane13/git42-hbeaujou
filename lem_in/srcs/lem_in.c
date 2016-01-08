@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/04 14:13:18 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/08 10:45:44 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/08 15:23:13 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ int	main(void)
 	read_map(&map);
 	apply_map_to_tun(&map);
 	nb_path = nbr_path(&map);
+	nbr_rooms(&map);
 	//////////////////////// AJOUT DU PREMIER PATH ////////////////////////
 	build_first_reseau(&reseau, &map);
 	//////////////////////// AJOUT DES AUTRES PATH ///////////////////////

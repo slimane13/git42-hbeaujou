@@ -6,7 +6,7 @@
 #    By: hbeaujou <hbeaujou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/18 15:37:58 by hbeaujou          #+#    #+#              #
-#    Updated: 2016/01/07 16:13:59 by hbeaujou         ###   ########.fr        #
+#    Updated: 2016/01/08 16:55:52 by hbeaujou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,8 @@ SRC		= $(DIR_SRC)apply_line.c \
 		  $(DIR_SRC)lem_in.c \
 		  $(DIR_SRC)list_work.c \
 		  $(DIR_SRC)show_lem.c \
+		  $(DIR_SRC)ft_rajout.c \
+		  $(DIR_SRC)cut_read_line.c \
 
 all: $(NAME)
 

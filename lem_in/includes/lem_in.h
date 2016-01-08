@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/03 14:20:35 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/08 10:48:10 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/08 16:56:18 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,8 @@ extern int		g_nb;
 extern int		g_lem;
 extern int		g_end_affiche;
 extern int		g_total;
+extern int		g_nbr_rooms;
+extern int		g_catch_lem;
 
 int				apply_line(char *line, t_map **map, int t_1);
 int				read_line(char *line);
@@ -85,6 +87,13 @@ int				nbr_path(t_map **map);
 int				nbr_path_end(t_map **map);
 int				nbr_path_start(t_map **map);
 int				calc_path_n(t_reseau **res);
+int				is_valid_coord(char *line);
+int				cut_apply_line(char **line2, int *t_3, t_map **map);
+int				cut_read_1(void);
+int				cut_read_2(void);
+int				cut_read_3(void);
+int				cut_read_4(void);
+int				cut_read_5(void);
 
 void			ft_lstaddend_reseau(t_reseau **alst, t_reseau *new_r);
 void			ft_lstaddend_room(t_map **alst, t_map *new_r);
@@ -105,7 +114,11 @@ void			build_reseau(t_reseau **reseau, t_map **map, int count);
 void			affiche_path(int nb, t_reseau **res);
 void			avance_lem(t_reseau **res, int *i, int nb_path);
 void			next_to_previous(t_reseau **res);
+void			nbr_rooms(t_map **map);
 void			exit_prgm(void);
+void			cut_build(t_reseau **reseau, t_map **map);
+void			cut_fromend_topath(t_path **new, t_map **tmp2,
+		t_map **tmp3, t_path **path);
 
 t_reseau		*new_reseau(int choix, t_path *path);
 t_path			*new_path(char *str);
