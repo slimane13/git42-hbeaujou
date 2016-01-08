@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 18:18:21 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/08 10:00:55 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/08 10:47:58 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int		nbr_path_end(t_map **map)
 	while (tmp && tmp->room->end != 1)
 		tmp = tmp->next;
 	if (!tmp || tmp->room->end != 1)
-		exit(0);
+		exit_prgm();
 	tmp_t = tmp->room->next;
 	while (tmp_t)
 	{
@@ -43,8 +43,8 @@ int		nbr_path_start(t_map **map)
 	count = 0;
 	while (tmp && tmp->room->start != 1)
 		tmp = tmp->next;
-	if (tmp->room->start != 1)
-		exit(0);
+	if (!tmp || tmp->room->start != 1)
+		exit_prgm();
 	tmp_t = tmp->room->next;
 	while (tmp_t)
 	{
@@ -63,7 +63,6 @@ int		nbr_path(t_map **map)
 	res = 0;
 	start = nbr_path_start(map);
 	end = nbr_path_end(map);
-	ft_printf("CCCCCCC\n");
 	if (start < end)
 		res = start;
 	else

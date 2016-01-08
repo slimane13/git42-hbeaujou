@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/04 14:13:18 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/08 10:01:09 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/08 10:45:44 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int	main(void)
 
 	n = 1;
 	count = 2;
+	map = NULL;
 	reseau = NULL;
 	path = NULL;
 	path2 = NULL;

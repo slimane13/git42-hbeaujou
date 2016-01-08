@@ -6,11 +6,17 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/05 14:46:25 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/05 14:46:26 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/08 10:49:10 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
+
+void	exit_prgm(void)
+{
+	ft_printf("ERROR\n");
+	exit(0);
+}
 
 t_map	*return_map_adr(t_map **map, char *str)
 {
