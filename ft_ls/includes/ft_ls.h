@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/08 15:47:27 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/09 18:53:03 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/09 19:28:39 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,8 @@ void				parsing_one(char **av, t_flag **flag);
 void				size_to_modif2(t_file **files, int max);
 void				argc_one(t_file **files, t_flag **flags, char *str);
 void				into_dir(t_file **files, t_flag **flags, char *str);
+void				next_to_previous(t_file **files);
+void				tri_name(t_file **files);
 
 int					is_flag(char *str);
 int					max_len_2(t_file **files);
@@ -86,5 +88,6 @@ int					nbr_files(t_file **files);
 int					ft_ls(int ac, char **av);
 
 t_file				*new_file(char *name, struct stat *sb);
+void				tri_rev(t_file **files);
 
 #endif

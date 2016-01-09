@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/08 15:54:53 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/09 18:54:38 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/09 19:43:34 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,8 @@ void	argc_one(t_file **files, t_flag **flags, char *str)
 		while ((ent = readdir (dir)) != NULL)
 		{
 			stat(ent->d_name, &t_stats);
-			if (ft_strcmp(ent->d_name, ".") == 0 ||
-					ft_strcmp(ent->d_name, "..") == 0)
+			if ((ft_strcmp(ent->d_name, ".") == 0 ||
+					ft_strcmp(ent->d_name, "..") == 0) && EFA == 0)
 				;
 			else
 			{
@@ -90,8 +90,10 @@ void	argc_one(t_file **files, t_flag **flags, char *str)
 	else
 		perror ("");
 	modif_names(files);
-	if (EFR == 1)
+	if (EFR == 1 && EFT == 0)
 		tri_rev(files);
+	else if (EFT == 1)
+		tri_name(files);
 	if (EFL == 1)
 		affiche_column(files, flags);
 	else
