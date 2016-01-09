@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/09 14:29:47 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/09 18:37:01 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/09 18:49:15 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,7 @@ void	affiche_column(t_file **files, t_flag **flags)
 	tmp = *files;
 	if (EFRM == 1)
 	{
-		while (tmp && tmp->next)
+		while (tmp)
 		{
 			if ((S_ISDIR(tmp->stats.st_mode)) == 1 && ft_strcmp(tmp->name, ".") != 0 &&
 					ft_strcmp(tmp->name, "..") != 0)

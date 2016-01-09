@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/08 15:54:53 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/09 18:32:50 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/09 18:54:38 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,20 +90,25 @@ void	argc_one(t_file **files, t_flag **flags, char *str)
 	else
 		perror ("");
 	modif_names(files);
+	if (EFR == 1)
+		tri_rev(files);
 	if (EFL == 1)
 		affiche_column(files, flags);
 	else
 	{
 		affiche_files_acone(files);
+		tmp = *files;
 		if (EFRM == 1)
 		{
 			while (tmp)
 			{
 				if ((S_ISDIR(tmp->stats.st_mode)) == 1 && ft_strcmp(tmp->name, ".") != 0 &&
 						ft_strcmp(tmp->name, "..") != 0)
+				{
+					ft_printf("\n./%s :\n", tmp->name);
 					argc_one(files, flags, tmp->name);
+				}
 				tmp = tmp->next;
-				ft_printf("\n\n");
 			}
 		}
 	}

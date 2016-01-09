@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/08 15:47:27 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/09 18:13:57 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/09 18:53:03 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ typedef struct		s_file t_file;
 struct				s_file
 {
 	t_file			*next;
+	t_file			*previous;
 	char			*name;
 	char			*modif;
 	char			*modif2;
