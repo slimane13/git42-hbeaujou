@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/08 15:47:27 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/08 18:29:18 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/09 12:54:36 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,8 @@ typedef struct		s_flag
 
 void				ft_lstaddend_file(t_file **alst, t_file *new_r);
 void				parsing(char **av, t_flag **flag, t_file **files);
+void				attrib_flag(char *str, t_flag **flag);
+
+int					is_flag(char *str);
 
 t_file				*new_file(char *name);

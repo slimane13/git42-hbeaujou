@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/08 18:06:55 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/08 18:29:50 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/09 12:56:33 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,15 +46,18 @@ void	parsing(char **av, t_flag **flag, t_file **files)
 
 	i = 0;
 	j = 1;
+	if (av[j][0] == '-')
+	{
+		if (is_flag(av[j]) == 1)
+			attrib_flag(av[j], flag);	///////////// A FAIRE
+	   	else
+			exit(0);
+		j++;
+	}
 	while (av[j])
 	{
-		if (is_flag(av[j]) == 1)    ///////// A FAIRE
-			attrib_flag(av[j], flag); //////////////// A FAIRE
-		else
-		{
-			tmp = new_file(av[j]);
-			ft_lstaddend_file(files, tmp);
-		}
+		tmp = new_file(av[j]);
+		ft_lstaddend_file(files, tmp);
 		j++;
 	}
 }
