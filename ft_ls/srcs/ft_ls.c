@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/08 15:54:53 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/09 20:13:24 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/09 20:21:36 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	argc_one(t_file **files, t_flag **flags, char *str)
 		while ((ent = readdir (dir)) != NULL)
 		{
 			stat(ent->d_name, &t_stats);
-			if ((ft_strcmp(ent->d_name, ".") == 0 ||
+			if ((ent->d_name[0] == '.' ||
 					ft_strcmp(ent->d_name, "..") == 0) && EFA == 0)
 				;
 			else
