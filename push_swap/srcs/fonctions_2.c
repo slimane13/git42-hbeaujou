@@ -6,11 +6,11 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/03 11:18:13 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/07 11:49:30 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/09 15:00:05 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_pushswap.h"
+#include "../includes/ft_pushswap.h"
 
 int		ft_check_1(int ac, t_stack *a)
 {

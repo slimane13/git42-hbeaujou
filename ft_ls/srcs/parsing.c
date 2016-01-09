@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/08 18:06:55 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/09 14:38:03 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/09 16:56:57 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	ft_lstaddend_file(t_file **alst, t_file *new_r)
 	}
 }
 
-t_file	*new_file(char *name)
+t_file	*new_file(char *name, struct stat *sb)
 {
 	t_file	*res;
 
@@ -41,14 +41,16 @@ t_file	*new_file(char *name)
 		return (NULL);
 	res->next = NULL;
 	res->name = ft_strdup(name);
+	res->stats = *sb;
 	return (res);
 }
 
 void	parsing(char **av, t_flag **flag, t_file **files)
 {
-	t_file	*tmp;
-	int		i;
-	int		j;
+	t_file		*tmp;
+	int			i;
+	int			j;
+	struct stat	t_stats;
 
 	i = 0;
 	j = 1;
@@ -62,8 +64,17 @@ void	parsing(char **av, t_flag **flag, t_file **files)
 	}
 	while (av[j])
 	{
-		tmp = new_file(av[j]);
+		stat(av[j], &t_stats);
+		tmp = new_file(av[j], &t_stats);
 		ft_lstaddend_file(files, tmp);
 		j++;
 	}
+}
+
+void	parsing_one(char **av, t_flag **flag)
+{
+	if (is_flag(av[1]) == 1)
+		attrib_flag(av[1], flag);
+	else
+		exit_prgm(is_flag(av[1]));
 }

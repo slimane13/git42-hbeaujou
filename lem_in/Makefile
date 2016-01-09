@@ -3,45 +3,70 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hbeaujou <hbeaujou@student.42.fr>          +#+  +:+       +#+         #
+#    By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2015/08/18 15:37:58 by hbeaujou          #+#    #+#              #
-#    Updated: 2016/01/08 16:55:52 by hbeaujou         ###   ########.fr        #
+#    Created: 2016/01/01 20:43:29 by hbeaujou          #+#    #+#              #
+#    Updated: 2016/01/09 15:48:37 by hbeaujou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= lem_in
+NAME = lem-in
+
+SOURCES =	srcs/apply_line.c	\
+			srcs/apply_map_adr.c	\
+			srcs/calc_nbr.c	\
+			srcs/check_file.c	\
+			srcs/cut_read_line.c	\
+			srcs/find_path.c	\
+			srcs/find_path2.c	\
+			srcs/ft_rajout.c	\
+			srcs/is_valid.c	\
+			srcs/list_work.c	\
+			srcs/lem_in.c	\
+			srcs/show_lem.c	\
+
+
+HEADERS	= -I./includes/
+
+OBJECTS	= $(subst .c,.o,$(SOURCES))
+
+WFLAGS	= -Wall -Werror -Wextra
+
 CC		= gcc
-CFLAGS	= -Wall -Werror -Wextra
-DIR_INC	= includes/
-DIR_SRC	= srcs/
-SRC		= $(DIR_SRC)apply_line.c \
-		  $(DIR_SRC)apply_map_adr.c \
-		  $(DIR_SRC)calc_nbr.c \
-		  $(DIR_SRC)check_file.c \
-		  $(DIR_SRC)find_path.c \
-		  $(DIR_SRC)find_path2.c \
-		  $(DIR_SRC)is_valid.c \
-		  $(DIR_SRC)lem_in.c \
-		  $(DIR_SRC)list_work.c \
-		  $(DIR_SRC)show_lem.c \
-		  $(DIR_SRC)ft_rajout.c \
-		  $(DIR_SRC)cut_read_line.c \
+
+.SILENT:
+
+$(NAME): $(OBJECTS)
+	make -C ./ft_printf
+	$(CC) $(WFLAGS) -L./ft_printf/ -lftprintf $(OBJECTS) -o $(NAME)
+	printf "\e[32m----------------------------------\e[36m\n"
+	printf "\e[32m[✔]\e[36m $@"
+	printf "\n\e[32m----------------------------------\e[36m"
+	printf "\033[0m\n"
 
 all: $(NAME)
 
-$(NAME):
-		make -C ./ft_printf
-		$(CC) -L./ft_printf -lftprintf -o $(NAME) -I $(DIR_INC) $(SRC) $(CFLAGS)
+%.o: %.c
+	$(CC) $(WFLAGS) $(HEADERS) -c -o $@ $^
+	printf "\e[32m[✔]\e[36m $@ "
+	printf "\033[0m\n"
 
 clean:
-		make clean -C ./ft_printf
-		rm -rf $(OBJ)
+	make -C ./ft_printf clean
+	rm -rf $(OBJECTS)
+	printf "\e[31m----------------------------------\n"
+	printf "[✔]\e[36m $(NAME): Objects deleted\n"
+	printf "\e[31m----------------------------------\e[36m"
+	printf "\033[0m\n"
 
 fclean: clean
-		make fclean -C ./ft_printf
-		rm -rf $(NAME)
+	make -C ./ft_printf fclean
+	rm -rf $(NAME)
+	printf "\e[31m----------------------------------\n"
+	printf "[✔]\e[36m $(NAME): All deleted\n"
+	printf "\e[31m----------------------------------\e[36m"
+	printf "\033[0m\n"
 
-re:	fclean all
+re: fclean all
 
-.PHONY: fclean clean re
+.PHONY: re fclean clean all

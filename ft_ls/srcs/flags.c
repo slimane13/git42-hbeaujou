@@ -6,11 +6,24 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/09 12:29:52 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/09 14:39:00 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/09 16:58:28 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
+
+void	init_tab(int flags[9])
+{
+	flags[0] = 0;
+	flags[1] = 0;
+	flags[2] = 0;
+	flags[3] = 0;
+	flags[4] = 0;
+	flags[5] = 0;
+	flags[6] = 0;
+	flags[7] = 0;
+	flags[8] = 0;
+}
 
 int		is_flag(char *str)
 {
@@ -18,6 +31,7 @@ int		is_flag(char *str)
 	int i;
 
 	i = 1;
+	init_tab(flags);
 	while (str[i] != '\0')
 	{
 		if (str[i] == 'l' && flags[0] == 0)

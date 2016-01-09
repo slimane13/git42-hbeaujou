@@ -3,38 +3,63 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hbeaujou <hbeaujou@student.42.fr>          +#+  +:+       +#+         #
+#    By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2015/08/18 15:37:58 by hbeaujou          #+#    #+#              #
-#    Updated: 2016/01/03 16:16:10 by hbeaujou         ###   ########.fr        #
+#    Created: 2016/01/01 20:43:29 by hbeaujou          #+#    #+#              #
+#    Updated: 2016/01/09 15:39:41 by hbeaujou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= push_swap
+NAME = push_swap
+
+SOURCES =	srcs/fonctions_1.c	\
+			srcs/fonctions_2.c	\
+			srcs/fonctions_3.c	\
+			srcs/ft_rajout.c	\
+			srcs/pushswap.c	\
+
+
+HEADERS	= -I./includes/
+
+OBJECTS	= $(subst .c,.o,$(SOURCES))
+
+WFLAGS	= -Wall -Werror -Wextra
+
 CC		= gcc
-CFLAGS	= -Wall -Werror -Wextra
-DIR_INC	= includes/
-DIR_SRC	= srcs/
-SRC		= $(DIR_SRC)fonctions_1.c \
-		  $(DIR_SRC)fonctions_2.c \
-		  $(DIR_SRC)fonctions_3.c \
-		  $(DIR_SRC)ft_rajout.c \
-		  $(DIR_SRC)pushswap.c \
+
+.SILENT:
+
+$(NAME): $(OBJECTS)
+	make -C ./ft_printf
+	$(CC) $(WFLAGS) -L./ft_printf/ -lftprintf $(OBJECTS) -o $(NAME)
+	printf "\e[32m----------------------------------\e[36m\n"
+	printf "\e[32m[✔]\e[36m $@"
+	printf "\n\e[32m----------------------------------\e[36m"
+	printf "\033[0m\n"
 
 all: $(NAME)
 
-$(NAME):
-		make -C ./ft_printf
-		$(CC) -L./ft_printf -lftprintf -o $(NAME) -I $(DIR_INC) $(SRC) $(CFLAGS)
+%.o: %.c
+	$(CC) $(WFLAGS) $(HEADERS) -c -o $@ $^
+	printf "\e[32m[✔]\e[36m $@ "
+	printf "\033[0m\n"
 
 clean:
-		make clean -C ./ft_printf
-		rm -rf $(OBJ)
+	make -C ./ft_printf clean
+	rm -rf $(OBJECTS)
+	printf "\e[31m----------------------------------\n"
+	printf "[✔]\e[36m $(NAME): Objects deleted\n"
+	printf "\e[31m----------------------------------\e[36m"
+	printf "\033[0m\n"
 
 fclean: clean
-		make fclean -C ./ft_printf
-		rm -rf $(NAME)
+	make -C ./ft_printf fclean
+	rm -rf $(NAME)
+	printf "\e[31m----------------------------------\n"
+	printf "[✔]\e[36m $(NAME): All deleted\n"
+	printf "\e[31m----------------------------------\e[36m"
+	printf "\033[0m\n"
 
-re:	fclean all
+re: fclean all
 
-.PHONY: fclean clean re
+.PHONY: re fclean clean all

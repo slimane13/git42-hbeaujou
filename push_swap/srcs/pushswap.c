@@ -6,11 +6,11 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/03 10:59:08 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/07 11:49:08 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/09 15:40:16 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_pushswap.h"
+#include "../includes/ft_pushswap.h"
 
 int		g_coups;
 int		g_total;

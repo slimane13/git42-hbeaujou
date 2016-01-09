@@ -6,11 +6,11 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/03 11:18:19 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/03 11:29:25 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/09 15:00:13 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_pushswap.h"
+#include "../includes/ft_pushswap.h"
 
 void		swap(t_stack **stack)
 {
