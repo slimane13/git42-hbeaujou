@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/09 14:29:47 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/09 19:50:56 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/09 20:11:14 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,6 @@ void	affiche_column(t_file **files, t_flag **flags)
 	t_file			*tmp;
 	struct 	passwd	*pwd;
 	struct 	group	*pwd2;
-	t_file			**filesin;
 
 	tmp = *files;
 	max_size = max_len(files);

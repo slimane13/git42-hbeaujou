@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/08 15:54:53 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/09 19:58:12 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/09 20:13:24 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,12 @@ void	affiche_files_acone(t_file **files)
 	int		nb;
 	t_file	*tmp;
 
-	i = 0;
+	i = 1;
 	nb = nbr_files(files);
 	tmp = *files;
 	while (tmp)
 	{
-		if ((i % 4 == 0 && i != 0) || i == nb - 1)
+		if ((i % 5 == 0 && i != 0) || i == nb)
 			ft_printf("%s\n", tmp->name);
 		else
 			ft_printf("%s", tmp->modif);
@@ -133,7 +133,6 @@ void	init_flags(t_flag **flags)
 int		ft_ls(int ac, char **av)
 {
 	t_file			*files;
-	t_file			*tmp;
 	t_flag			*flags;
 
 	if (!(flags = (t_flag *)malloc(sizeof(t_flag))))
