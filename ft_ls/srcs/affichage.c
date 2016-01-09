@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/09 14:29:47 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/09 17:52:44 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/09 18:37:01 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,7 @@ void	affiche_chmod(t_file *tmp)
 		ft_putstr("-");
 	ft_putstr(" ");
 }
+
 void	affiche_column(t_file **files, t_flag **flags)
 {
 	int				max_size;
@@ -100,6 +101,7 @@ void	affiche_column(t_file **files, t_flag **flags)
 	t_file			*tmp;
 	struct 	passwd	*pwd;
 	struct 	group	*pwd2;
+	t_file			**filesin;
 
 	tmp = *files;
 	max_size = max_len(files);
@@ -116,5 +118,19 @@ void	affiche_column(t_file **files, t_flag **flags)
 		ft_printf("%s %s  %s  %s %s %s\n", tmp->modif2, pwd->pw_name,
 				pwd2->gr_name, tmp->modif, date, tmp->name);
 		tmp = tmp->next;
+	}
+	tmp = *files;
+	if (EFRM == 1)
+	{
+		while (tmp && tmp->next)
+		{
+			if ((S_ISDIR(tmp->stats.st_mode)) == 1 && ft_strcmp(tmp->name, ".") != 0 &&
+					ft_strcmp(tmp->name, "..") != 0)
+			{
+				ft_printf ("\n./%s :\n", tmp->name);
+				argc_one(files, flags, tmp->name);
+			}
+			tmp = tmp->next;
+		}
 	}
 }

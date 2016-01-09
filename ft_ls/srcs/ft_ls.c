@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/08 15:54:53 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/09 16:54:35 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/09 18:32:50 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,14 +63,15 @@ void	affiche_files_acone(t_file **files)
 	}
 }
 
-void	argc_one(t_file **files, t_flag **flags)
+void	argc_one(t_file **files, t_flag **flags, char *str)
 {
 	DIR				*dir;
 	struct dirent	*ent;
 	struct stat		t_stats;
 	t_file			*tmp;
 
-	if ((dir = opendir ("./")) != NULL)
+	*files = NULL;
+	if ((dir = opendir (str)) != NULL)
 	{
 		while ((ent = readdir (dir)) != NULL)
 		{
@@ -92,7 +93,21 @@ void	argc_one(t_file **files, t_flag **flags)
 	if (EFL == 1)
 		affiche_column(files, flags);
 	else
+	{
 		affiche_files_acone(files);
+		if (EFRM == 1)
+		{
+			while (tmp)
+			{
+				if ((S_ISDIR(tmp->stats.st_mode)) == 1 && ft_strcmp(tmp->name, ".") != 0 &&
+						ft_strcmp(tmp->name, "..") != 0)
+					argc_one(files, flags, tmp->name);
+				tmp = tmp->next;
+				ft_printf("\n\n");
+			}
+		}
+	}
+	tmp = *files;
 }
 
 void	init_flags(t_flag **flags)
@@ -108,7 +123,7 @@ void	init_flags(t_flag **flags)
 	EFD = 0;
 }
 
-int		main(int ac, char **av)
+int		ft_ls(int ac, char **av)
 {
 	t_file			*files;
 	t_file			*tmp;
@@ -122,7 +137,7 @@ int		main(int ac, char **av)
 	{
 		if (ac == 2)
 			parsing_one(av, &flags);
-		argc_one(&files, &flags);
+		argc_one(&files, &flags, "./");
 		return EXIT_SUCCESS;
 	}
 	else
@@ -136,48 +151,11 @@ int		main(int ac, char **av)
 		else
 			affiche_column(&files, &flags);
 	}
-	///////////////// TEST DE LA STRUCT STAT OP /////////////////////////
-	/*
-
-	   if (stat(av[1], &sb) == -1) {
-	   perror("stat");
-	   exit(EXIT_FAILURE);
-	   }
-
-	   ft_printf("File type:                ");
-
-	   switch (sb.st_mode & S_IFMT) {
-	   case S_IFBLK:  ft_printf("block device\n");            break;
-	   case S_IFCHR:  ft_printf("character device\n");        break;
-	   case S_IFDIR:  ft_printf("directory\n");               break;
-	   case S_IFIFO:  ft_printf("FIFO/pipe\n");               break;
-	   case S_IFLNK:  ft_printf("symlink\n");                 break;
-	   case S_IFREG:  ft_printf("regular file\n");            break;
-	   case S_IFSOCK: ft_printf("socket\n");                  break;
-	   default:       ft_printf("unknown?\n");                break;
-	   }
-
-	   ft_printf("I-node number:            %ld\n", (long) sb.st_ino);
-
-	   ft_printf("Mode:                     %lo (octal)\n",
-	   (unsigned long) sb.st_mode);
-
-	   ft_printf("Link count:               %ld\n", (long) sb.st_nlink);
-	   ft_printf("Ownership:                UID=%ld   GID=%ld\n",
-	   (long) sb.st_uid, (long) sb.st_gid);
-
-	   ft_printf("Preferred I/O block size: %ld bytes\n",
-	   (long) sb.st_blksize);
-	   ft_printf("File size:                %lld bytes\n",
-	   (long long) sb.st_size);
-	   ft_printf("Blocks allocated:         %lld\n",
-	   (long long) sb.st_blocks);
-
-	   ft_printf("Last status change:       %s", ctime(&sb.st_ctime));
-	   ft_printf("Last file access:         %s", ctime(&sb.st_atime));
-	   ft_printf("Last file modification:   %s", ctime(&sb.st_mtime));
-	   */
-	///////////////////////////// FIN DES TEST //////////////////////////
-
 	exit(EXIT_SUCCESS);
+}
+
+int		main(int ac, char **av)
+{
+	ft_ls(ac, av);
+	return (1);
 }
