@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/08 15:47:27 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/09 17:07:28 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/09 17:54:04 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ struct				s_file
 	t_file			*next;
 	char			*name;
 	char			*modif;
+	char			*modif2;
 	struct stat		stats;
 };
 
@@ -74,8 +75,10 @@ void				affiche_column(t_file **files, t_flag **flags);
 void 				affiche_files_acone(t_file **files);
 void				modif_names(t_file **files);
 void				parsing_one(char **av, t_flag **flag);
+void				size_to_modif2(t_file **files, int max);
 
 int					is_flag(char *str);
+int					max_len_2(t_file **files);
 int					nbr_files(t_file **files);
 
 t_file				*new_file(char *name, struct stat *sb);
