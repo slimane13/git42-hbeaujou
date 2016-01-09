@@ -57,7 +57,7 @@ void	size_to_modif(t_file **files, int max)
 	{
 		tmp->modif = ft_itoa(tmp->stats.st_size);
 		p = ft_strlen(tmp->modif);
-		while (p < max)
+		while (p <= max)
 		{
 			tmp->modif = ft_strjoin(" ", tmp->modif);
 			p++;
@@ -114,7 +114,7 @@ void	affiche_column(t_file **files, t_flag **flags)
 		date = ctime(&tmp->stats.st_mtime);
 		date = ft_strsub(date, 4, ft_strlen(date) - 13);
 		affiche_chmod(tmp);
-		ft_printf("%s %s  %s  %s %s %s\n", tmp->modif2, pwd->pw_name,
+		ft_printf(" %s %s  %s  %s %s %s\n", tmp->modif2, pwd->pw_name,
 				pwd2->gr_name, tmp->modif, date, tmp->name);
 		tmp = tmp->next;
 	}

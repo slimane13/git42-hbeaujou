@@ -44,6 +44,7 @@
 # define EFG (*flags)->f_g
 # define EFD (*flags)->f_d
 
+:x
 typedef struct		s_file t_file;
 
 struct				s_file
