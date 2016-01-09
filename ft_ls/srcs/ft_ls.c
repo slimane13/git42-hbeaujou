@@ -6,19 +6,69 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/08 15:54:53 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/09 13:12:20 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/09 14:54:05 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_ls.h"
 
-void	argc_one(void)
+void	modif_names(t_file **files)
 {
-	int				i
-	DIR				*dir;
-	struct dirent	*ent;
+	t_file	*tmp;
+	int		max;
+	int		p;
+
+	max = 0;
+	p = 0;
+	tmp = *files;
+	while (tmp)
+	{
+		p = ft_strlen(tmp->name);
+		p = p + 8 - (p % 8);
+		if (p > max)
+			max = p;
+		tmp = tmp->next;
+	}
+	tmp = *files;
+	while (tmp)
+	{
+		p = ft_strlen(tmp->name);
+		tmp->modif = ft_strdup(tmp->name);
+		while (p < max)
+		{
+			tmp->modif = ft_strjoin(tmp->modif, " ");
+			p++;
+		}
+		tmp = tmp->next;
+	}
+}
+
+void	affiche_files_acone(t_file **files)
+{
+	int 	i;
+	int		nb;
+	t_file	*tmp;
 
 	i = 0;
+	nb = nbr_files(files);
+	tmp = *files;
+	while (tmp)
+	{
+		if ((i % 4 == 0 && i != 0) || i == nb - 1)
+			ft_printf("%s\n", tmp->name);
+		else
+			ft_printf("%s", tmp->modif);
+		i++;
+		tmp = tmp->next;
+	}
+}
+
+void	argc_one(t_file **files)
+{
+	DIR				*dir;
+	struct dirent	*ent;
+	t_file			*tmp;
+
 	if ((dir = opendir ("./")) != NULL)
 	{
 		while ((ent = readdir (dir)) != NULL)
@@ -28,18 +78,16 @@ void	argc_one(void)
 				;
 			else
 			{
-				ft_printf ("%s", ent->d_name);
-				if (i % 5 == 0)
-					;
-				else
-					;
+				tmp = new_file(ent->d_name);
+				ft_lstaddend_file(files, tmp);
 			}
-			i++;
 		}
 		closedir (dir);
 	}
 	else
 		perror ("");
+	modif_names(files);
+	affiche_files_acone(files);
 }
 
 int		main(int ac, char **av)
@@ -50,19 +98,14 @@ int		main(int ac, char **av)
 
 	if (ac == 1)
 	{
-		argc_one();
+		argc_one(&files);
 		return EXIT_SUCCESS;
 	}
 	if(!(flag = (t_flag *)malloc(sizeof(t_flag))))
 		return (0);
 	files = NULL;
 	parsing(av, &flag, &files);
-	tmp = files;
-	while (tmp)
-	{
-		ft_printf("fichier : %s\n", tmp->name);
-		tmp = tmp->next;
-	}
+	affiche_files(&files, &flag);
 	///////////////// TEST DE LA STRUCT STAT OP /////////////////////////
 	/*
 	   struct stat sb;

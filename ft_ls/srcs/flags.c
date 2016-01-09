@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/09 12:29:52 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/09 12:54:24 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/09 14:39:00 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int		is_flag(char *str)
 		else if (str[i] == 'd' && flags[8] == 0)
 			flags[8] = 1;
 		else
-			return (0);
+			return (str[i + 1]);
 		i++;
 	}
 	return (1);
