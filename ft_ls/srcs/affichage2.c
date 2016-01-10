@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/09 17:51:17 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/09 18:08:05 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/10 12:04:22 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	into_dir(t_file **files, t_flag **flags, char *str)
 	if (EFL == 1)
 		affiche_column(files, flags);
 	else
-		affiche_files_acone(files);
+		affiche_files_acone(files, flags);
 }
 
 int		max_len_2(t_file **files)

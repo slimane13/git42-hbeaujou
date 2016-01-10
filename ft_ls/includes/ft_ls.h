@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/08 15:47:27 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/09 19:50:46 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/10 12:17:29 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@
 # define EFF (*flags)->f_f
 # define EFG (*flags)->f_g
 # define EFD (*flags)->f_d
+# define EFUN (*flags)->f_un
 
-:x
 typedef struct		s_file t_file;
 
 struct				s_file
@@ -68,13 +68,14 @@ typedef struct		s_flag
 	int				f_f;
 	int				f_g;
 	int				f_d;
+	int				f_un;
 }					t_flag;
 
 void				ft_lstaddend_file(t_file **alst, t_file *new_r);
 void				parsing(char **av, t_flag **flag, t_file **files);
 void				attrib_flag(char *str, t_flag **flag);
 void				affiche_column(t_file **files, t_flag **flags);
-void 				affiche_files_acone(t_file **files);
+void 				affiche_files_acone(t_file **files, t_flag **flags);
 void				modif_names(t_file **files);
 void				parsing_one(char **av, t_flag **flag);
 void				size_to_modif2(t_file **files, int max);
@@ -83,6 +84,7 @@ void				into_dir(t_file **files, t_flag **flags, char *str);
 void				next_to_previous(t_file **files);
 void				tri_time(t_file **files);
 void				tri_rev(t_file **files);
+void				tri_char(t_file **head);
 
 int					is_flag(char *str);
 int					max_len_2(t_file **files);

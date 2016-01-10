@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/08 15:54:53 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/09 20:21:36 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/10 12:35:45 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	modif_names(t_file **files)
 	}
 }
 
-void	affiche_files_acone(t_file **files)
+void	affiche_files_acone(t_file **files, t_flag **flags)
 {
 	int 	i;
 	int		nb;
@@ -54,7 +54,7 @@ void	affiche_files_acone(t_file **files)
 	tmp = *files;
 	while (tmp)
 	{
-		if ((i % 5 == 0 && i != 0) || i == nb)
+		if ((i % 5 == 0 && i != 0) || i == nb || EFUN == 1)
 			ft_printf("%s\n", tmp->name);
 		else
 			ft_printf("%s", tmp->modif);
@@ -92,13 +92,15 @@ void	argc_one(t_file **files, t_flag **flags, char *str)
 	modif_names(files);
 	if (EFT == 1)
 		tri_time(files);
+	else
+		tri_char(files);
 	if (EFR == 1)
 		tri_rev(files);
 	if (EFL == 1)
 		affiche_column(files, flags);
 	else
 	{
-		affiche_files_acone(files);
+		affiche_files_acone(files, flags);
 		tmp = *files;
 		if (EFRM == 1)
 		{
@@ -128,6 +130,7 @@ void	init_flags(t_flag **flags)
 	EFF = 0;
 	EFG = 0;
 	EFD = 0;
+	EFUN = 0;
 }
 
 int		ft_ls(int ac, char **av)
@@ -152,7 +155,7 @@ int		ft_ls(int ac, char **av)
 		if (FL == 0)
 		{
 			modif_names(&files);
-			affiche_files_acone(&files);
+			affiche_files_acone(&files, &flags);
 		}
 		else
 			affiche_column(&files, &flags);

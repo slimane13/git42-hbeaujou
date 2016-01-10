@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/09 14:29:47 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/09 20:11:14 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/10 12:36:49 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,12 +96,14 @@ void	affiche_chmod(t_file *tmp)
 void	affiche_column(t_file **files, t_flag **flags)
 {
 	int				max_size;
+	int				tot;
 	int				max_size2;
 	char			*date;
 	t_file			*tmp;
 	struct 	passwd	*pwd;
 	struct 	group	*pwd2;
 
+	tot = 0;
 	tmp = *files;
 	max_size = max_len(files);
 	size_to_modif(files, max_size);
@@ -109,6 +111,13 @@ void	affiche_column(t_file **files, t_flag **flags)
 	size_to_modif2(files, max_size);
 	pwd = getpwuid(tmp->stats.st_uid);
 	pwd2 = getgrgid(tmp->stats.st_gid);
+	while (tmp)
+	{
+		tot = tot + tmp->stats.st_blocks;
+		tmp = tmp->next;
+	}
+	tmp = *files;
+	ft_printf("total %d\n", tot);
 	while (tmp)
 	{
 		date = ctime(&tmp->stats.st_mtime);

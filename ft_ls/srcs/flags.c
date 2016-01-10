@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/09 12:29:52 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/09 16:58:28 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/10 12:01:42 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	init_tab(int flags[9])
 
 int		is_flag(char *str)
 {
-	int	flags[9];
+	int	flags[10];
 	int i;
 
 	i = 1;
@@ -52,6 +52,8 @@ int		is_flag(char *str)
 			flags[7] = 1;
 		else if (str[i] == 'd' && flags[8] == 0)
 			flags[8] = 1;
+		else if (str[i] == '1' && flags[9] == 0)
+			flags[9] = 1;
 		else
 			return (str[i + 1]);
 		i++;
@@ -84,6 +86,8 @@ void	attrib_flag(char *str, t_flag **flag)
 			(*flag)->f_g = 1;
 		else if (str[i] == 'd' && (*flag)->f_d == 0)
 			(*flag)->f_d = 1;
+		else if (str[i] == '1' && (*flag)->f_un == 0)
+			(*flag)->f_un = 1;
 		i++;
 	}
 }
