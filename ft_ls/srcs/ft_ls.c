@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/08 15:54:53 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/10 13:07:30 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/10 17:11:25 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	argc_one(t_file **files, t_flag **flags, char *str)
 	DIR				*dir;
 	struct dirent	*ent;
 	struct stat		t_stats;
-	struct stat	l_stats;
+	struct stat		l_stats;
 	t_file			*tmp;
 
 	*files = NULL;

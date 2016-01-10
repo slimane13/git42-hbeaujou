@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/04 14:13:18 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/10 14:48:21 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/10 17:26:59 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,10 @@ int		main(void)
 	t_cut_m		cut;
 
 	init_main(&cut);
+	if (g_lem == 0)
+		exit_prgm();
+	if (cut.tmp4->path == NULL)
+		exit_prgm();
 	affiche_debut(&cut);
 	affiche_fin(&cut);
 	return (0);
