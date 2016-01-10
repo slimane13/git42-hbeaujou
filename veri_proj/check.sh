@@ -19,6 +19,7 @@ if [ -s diff.txt ]
 then
 	echo "[0;31;40m      [X]Faute de norme"
 	echo "[0;36;40m-----------------------------------"
+	cat diff.txt
 else
 	echo "\033[32m      [✔]Norme OK"
 	echo "[0;36;40m-----------------------------------"
