@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/03 14:20:35 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/08 16:56:18 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/10 14:29:08 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,23 @@ struct			s_map
 	t_map		*next;
 	t_room		*room;
 };
+
+typedef struct	s_cut_m
+{
+	t_map		*map;
+	t_map		*tmp;
+	t_tun		*tmp2;
+	t_path		*tmp3;
+	t_path		*path;
+	t_path		*path2;
+	t_reseau	*tmp4;
+	t_reseau	*reseau;
+	int			n;
+	int			i;
+	int			count;
+	int			nb_path;
+	int			n_path;
+}				t_cut_m;
 
 extern int		g_coups;
 extern int		g_after_end;
