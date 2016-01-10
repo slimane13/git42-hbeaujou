@@ -1,6 +1,7 @@
 make fclean
 make
 make > maketest.txt
+echo "[0;36;40m-----------------------------------"
 if [ -s maketest.txt ]
 then
 	diff maketest.txt "Nothing to do for all" > diff.txt
