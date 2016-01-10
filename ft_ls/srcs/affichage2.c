@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/09 17:51:17 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/10 12:04:22 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/10 13:08:28 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	into_dir(t_file **files, t_flag **flags, char *str)
 	DIR				*dir;
 	struct dirent	*ent;
 	struct stat		t_stats;
+	struct stat		l_stats;
 	t_file			*tmp;
 
 	if ((dir = opendir (str)) != NULL)
@@ -24,12 +25,13 @@ void	into_dir(t_file **files, t_flag **flags, char *str)
 		while ((ent = readdir (dir)) != NULL)
 		{
 			stat(ent->d_name, &t_stats);
+			lstat(ent->d_name, &l_stats);
 			if (ft_strcmp(ent->d_name, ".") == 0 ||
 					ft_strcmp(ent->d_name, "..") == 0)
 				;
 			else
 			{
-				tmp = new_file(ent->d_name, &t_stats);
+				tmp = new_file(ent->d_name, &t_stats, &l_stats);
 				ft_lstaddend_file(files, tmp);
 			}
 		}

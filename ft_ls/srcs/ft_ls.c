@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/08 15:54:53 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/10 12:35:45 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/10 13:07:30 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ void	argc_one(t_file **files, t_flag **flags, char *str)
 	DIR				*dir;
 	struct dirent	*ent;
 	struct stat		t_stats;
+	struct stat	l_stats;
 	t_file			*tmp;
 
 	*files = NULL;
@@ -76,12 +77,13 @@ void	argc_one(t_file **files, t_flag **flags, char *str)
 		while ((ent = readdir (dir)) != NULL)
 		{
 			stat(ent->d_name, &t_stats);
+			lstat(ent->d_name, &l_stats);
 			if ((ent->d_name[0] == '.' ||
 					ft_strcmp(ent->d_name, "..") == 0) && EFA == 0)
 				;
 			else
 			{
-				tmp = new_file(ent->d_name, &t_stats);
+				tmp = new_file(ent->d_name, &t_stats, &l_stats);
 				ft_lstaddend_file(files, tmp);
 			}
 		}

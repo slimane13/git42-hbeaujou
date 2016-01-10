@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/08 15:47:27 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/10 12:17:29 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/10 13:08:00 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ struct				s_file
 	char			*modif;
 	char			*modif2;
 	struct stat		stats;
+	struct stat		lstats;
 };
 
 typedef struct		s_flag
@@ -91,6 +92,6 @@ int					max_len_2(t_file **files);
 int					nbr_files(t_file **files);
 int					ft_ls(int ac, char **av);
 
-t_file				*new_file(char *name, struct stat *sb);
+t_file				*new_file(char *name, struct stat *sb, struct stat *sa);
 
 #endif

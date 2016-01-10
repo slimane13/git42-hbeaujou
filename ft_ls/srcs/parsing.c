@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/08 18:06:55 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/09 18:53:16 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/10 13:09:12 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	ft_lstaddend_file(t_file **alst, t_file *new_r)
 	}
 }
 
-t_file	*new_file(char *name, struct stat *sb)
+t_file	*new_file(char *name, struct stat *sb, struct stat *sa)
 {
 	t_file	*res;
 
@@ -43,6 +43,7 @@ t_file	*new_file(char *name, struct stat *sb)
 	res->previous = NULL;
 	res->name = ft_strdup(name);
 	res->stats = *sb;
+	res->lstats = *sa;
 	return (res);
 }
 
@@ -52,6 +53,7 @@ void	parsing(char **av, t_flag **flag, t_file **files)
 	int			i;
 	int			j;
 	struct stat	t_stats;
+	struct stat	l_stats;
 
 	i = 0;
 	j = 1;
@@ -66,7 +68,8 @@ void	parsing(char **av, t_flag **flag, t_file **files)
 	while (av[j])
 	{
 		stat(av[j], &t_stats);
-		tmp = new_file(av[j], &t_stats);
+		lstat(av[j], &l_stats);
+		tmp = new_file(av[j], &t_stats, &l_stats);
 		ft_lstaddend_file(files, tmp);
 		j++;
 	}
