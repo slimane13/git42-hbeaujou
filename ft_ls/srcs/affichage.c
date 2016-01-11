@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/09 14:29:47 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/11 15:12:19 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/11 15:34:49 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,7 +140,7 @@ void	affiche_column(t_file **files, t_flag **flags, char *str, int ac)
 				path = ft_strjoin(path, tmp->name);
 				tmp2 = ft_strsub(path, 3, ft_strlen(path));
 				tmp2 = ft_strjoin("./", tmp2);
-				ft_printf ("\n%s :\n", tmp2);
+				ft_printf ("\n%s:\n", tmp2);
 				argc_one(files, flags, path, ac);
 			}
 			tmp = tmp->next;

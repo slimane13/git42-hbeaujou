@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/08 15:54:53 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/11 15:25:11 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/11 15:35:39 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,7 +138,10 @@ void	argc_one(t_file **files, t_flag **flags, char *str, int ac)
 					path = ft_strjoin(path, tmp->name);
 					tmp2 = ft_strsub(path, 3, ft_strlen(path));
 					tmp2 = ft_strjoin("./", tmp2);
-					ft_printf ("\n%s :\n", tmp2);
+					if (EFRM == 1 && EFUN == 1)
+						ft_printf ("\n%s:\n", tmp2);
+					else
+						ft_printf ("\n%s :\n", tmp2);
 					argc_one(files, flags, path, ac);
 				}
 				tmp = tmp->next;
