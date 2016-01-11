@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/08 15:47:27 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/11 15:14:57 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/11 15:49:52 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ void				next_to_previous(t_file **files);
 void				tri_time(t_file **files);
 void				tri_rev(t_file **files);
 void				tri_char(t_file **head);
+void				tri_time_onlyfiles(t_file **head);
 
 int					is_flag(char *str);
 int					max_len_2(t_file **files);

@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/08 15:54:53 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/11 15:35:39 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/11 15:47:03 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,12 @@ void	affiche_files_acone(t_file **files, t_flag **flags, int ac)
 			ft_printf("%s", tmp->modif);
 		i++;
 		tmp = tmp->next;
+		if (tmp)
+		{
+			if ((S_ISDIR(tmp->stats.st_mode)) == 1 && tmp->name[0] != '.' &&
+				ft_strcmp(tmp->name, "..") != 0 && ac > 2)
+				ft_printf("\n");
+		}
 	}
 }
 
@@ -188,6 +194,8 @@ int		ft_ls(int ac, char **av)
 		if (FL == 0)
 		{
 			modif_names(&files);
+			if (FT == 1)
+				tri_time_onlyfiles(&files);
 			affiche_files_acone(&files, &flags, ac);
 		}
 		else
