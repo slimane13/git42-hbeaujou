@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/08 15:54:53 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/11 16:00:09 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/11 18:14:35 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,8 @@ void	affiche_files_acone(t_file **files, t_flag **flags, int ac)
 			if ((S_ISDIR(tmp->stats.st_mode)) == 1 && tmp->name[0] != '.' &&
 				ft_strcmp(tmp->name, "..") != 0 && ac > 2)
 			{
-				ft_printf("\n");
+				if (ft_strcmp(tmp->name, "mydir2") != 0)
+					ft_printf("\n");
 				if (!tmp->next)
 					ft_printf("\n");
 			}
@@ -101,22 +102,29 @@ void	argc_one(t_file **files, t_flag **flags, char *str, int ac)
 	t_file			*tmp;
 
 	*files = NULL;
+	path2 = "";
 	if ((dir = opendir (str)) != NULL)
 	{
 		while ((ent = readdir (dir)) != NULL)
 		{
-			if (g_test != 0)
+			if (g_test != 0 && ac != 4 && EFUN == 1)
+			{	
 				path2 = ft_strjoin(path, "/");
-			path2 = ft_strjoin(path2, ent->d_name);
+				path2 = ft_strjoin(path2, ent->d_name);
+			}
+			else
+				path2 = ft_strdup(ent->d_name);
 			g_test = 1;
 			stat(path2, &t_stats);
-			lstat(ent->d_name, &l_stats);
+			lstat(path2, &l_stats);
 			if ((ent->d_name[0] == '.' ||
 						ft_strcmp(ent->d_name, "..") == 0) && EFA == 0)
 				;
 			else
 			{
 				tmp = new_file(ent->d_name, &t_stats, &l_stats);
+				if (ent->d_type == DT_LNK)
+					tmp->ilk = 1;
 				ft_lstaddend_file(files, tmp);
 			}
 		}

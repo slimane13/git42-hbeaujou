@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/09 14:29:47 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/11 15:34:49 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/11 18:08:10 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,13 @@ void	size_to_modif(t_file **files, int max)
 	p = 0;
 	while (tmp)
 	{
-		tmp->modif = ft_itoa(tmp->stats.st_size);
+		if (tmp->ilk == 0)
+			tmp->modif = ft_itoa(tmp->stats.st_size);
+		else
+		{
+			max = max_len_link(files);
+			tmp->modif = ft_itoa(tmp->lstats.st_size);
+		}
 		p = ft_strlen(tmp->modif);
 		while (p <= max)
 		{
@@ -93,6 +99,35 @@ void	affiche_chmod(t_file *tmp)
 	ft_putstr(" ");
 }
 
+void	affiche_chmod_link(t_file *tmp)
+{
+	if ((S_ISDIR(tmp->lstats.st_mode)) == 1)
+		ft_putstr("d");
+	else if ((S_ISLNK(tmp->lstats.st_mode)) == 1)
+		ft_putstr("l");
+	else
+		ft_putstr("-");
+	ft_printf( (tmp->lstats.st_mode & S_IRUSR) ? "r" : "-");
+	ft_printf( (tmp->lstats.st_mode & S_IWUSR) ? "w" : "-");
+	if ((tmp->lstats.st_mode & S_IXUSR) == 1)
+		ft_putstr("x");
+	else
+		ft_putstr("-");
+	ft_printf( (tmp->lstats.st_mode & S_IRGRP) ? "r" : "-");
+	ft_printf( (tmp->lstats.st_mode & S_IWGRP) ? "w" : "-");
+	if ((tmp->lstats.st_mode & S_IXGRP) == 1)
+		ft_putstr("x");
+	else
+		ft_putstr("-");
+	ft_printf( (tmp->lstats.st_mode & S_IROTH) ? "r" : "-");
+	ft_printf( (tmp->lstats.st_mode & S_IWOTH) ? "w" : "-");
+	if ((tmp->lstats.st_mode & S_IXOTH) == 1)
+		ft_putstr("x");
+	else
+		ft_putstr("-");
+	ft_putstr(" ");
+}
+
 void	affiche_column(t_file **files, t_flag **flags, char *str, int ac)
 {
 	int				max_size;
@@ -100,11 +135,13 @@ void	affiche_column(t_file **files, t_flag **flags, char *str, int ac)
 	int				max_size2;
 	char			*date;
 	char			*tmp2;
+	char			*tmp3;
 	t_file			*tmp;
 	struct 	passwd	*pwd;
 	struct 	group	*pwd2;
 
 	tot = 0;
+	tmp3 = (char *)malloc(sizeof(char) * 30);
 	tmp = *files;
 	max_size = max_len(files);
 	size_to_modif(files, max_size);
@@ -123,7 +160,15 @@ void	affiche_column(t_file **files, t_flag **flags, char *str, int ac)
 	{
 		date = ctime(&tmp->stats.st_mtime);
 		date = ft_strsub(date, 4, ft_strlen(date) - 13);
-		affiche_chmod(tmp);
+		if (tmp->ilk == 1)
+		{
+			affiche_chmod_link(tmp);
+			readlink(tmp->name, tmp3, 30);
+			tmp3 = ft_strjoin(" -> ", tmp3);
+			tmp->name = ft_strjoin(tmp->name , tmp3);
+		}
+		else
+			affiche_chmod(tmp);
 		ft_printf(" %s %s  %s  %s %s %s\n", tmp->modif2, pwd->pw_name,
 				pwd2->gr_name, tmp->modif, date, tmp->name);
 		tmp = tmp->next;

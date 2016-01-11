@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/08 18:06:55 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/11 14:55:09 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/11 17:16:51 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ t_file	*new_file(char *name, struct stat *sb, struct stat *sa)
 		return (NULL);
 	res->next = NULL;
 	res->previous = NULL;
+	res->ilk = 0;
 	res->name = ft_strdup(name);
 	res->stats = *sb;
 	res->lstats = *sa;
