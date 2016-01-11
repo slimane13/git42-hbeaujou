@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/08 15:47:27 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/10 16:47:18 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/11 15:14:57 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,16 +72,20 @@ typedef struct		s_flag
 	int				f_un;
 }					t_flag;
 
+extern char			*path;
+extern int			g_test;
+extern int			g_nbrf;
+
 void				ft_lstaddend_file(t_file **alst, t_file *new_r);
 void				parsing(char **av, t_flag **flag, t_file **files);
 void				attrib_flag(char *str, t_flag **flag);
-void				affiche_column(t_file **files, t_flag **flags);
-void 				affiche_files_acone(t_file **files, t_flag **flags);
+void				affiche_column(t_file **files, t_flag **flags, char *str, int ac);
+void 				affiche_files_acone(t_file **files, t_flag **flags, int ac);
 void				modif_names(t_file **files);
 void				parsing_one(char **av, t_flag **flag);
 void				size_to_modif2(t_file **files, int max);
-void				argc_one(t_file **files, t_flag **flags, char *str);
-void				into_dir(t_file **files, t_flag **flags, char *str);
+void				argc_one(t_file **files, t_flag **flags, char *str, int ac);
+void				into_dir(t_file **files, t_flag **flags, char *str, int ac);
 void				next_to_previous(t_file **files);
 void				tri_time(t_file **files);
 void				tri_rev(t_file **files);

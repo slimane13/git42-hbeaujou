@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/08 18:06:55 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/10 16:47:26 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/11 14:55:09 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,8 @@ void	parsing(char **av, t_flag **flag, t_file **files)
 			exit_prgm(is_flag(av[j]));
 		j++;
 	}
+	if (ft_strcmp(av[j] , "--") == 0)
+		j++;
 	while (av[j])
 	{
 		stat(av[j], &t_stats);

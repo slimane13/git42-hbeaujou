@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/09 14:29:47 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/10 16:47:22 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/11 15:12:19 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,12 +93,13 @@ void	affiche_chmod(t_file *tmp)
 	ft_putstr(" ");
 }
 
-void	affiche_column(t_file **files, t_flag **flags)
+void	affiche_column(t_file **files, t_flag **flags, char *str, int ac)
 {
 	int				max_size;
 	int				tot;
 	int				max_size2;
 	char			*date;
+	char			*tmp2;
 	t_file			*tmp;
 	struct 	passwd	*pwd;
 	struct 	group	*pwd2;
@@ -132,11 +133,15 @@ void	affiche_column(t_file **files, t_flag **flags)
 	{
 		while (tmp)
 		{
-			if ((S_ISDIR(tmp->stats.st_mode)) == 1 && ft_strcmp(tmp->name, ".") != 0 &&
+			if ((S_ISDIR(tmp->stats.st_mode)) == 1 && tmp->name[0] != '.' &&
 					ft_strcmp(tmp->name, "..") != 0)
 			{
-				ft_printf ("\n./%s :\n", tmp->name);
-				argc_one(files, flags, tmp->name);
+				path = ft_strjoin(str, "/");
+				path = ft_strjoin(path, tmp->name);
+				tmp2 = ft_strsub(path, 3, ft_strlen(path));
+				tmp2 = ft_strjoin("./", tmp2);
+				ft_printf ("\n%s :\n", tmp2);
+				argc_one(files, flags, path, ac);
 			}
 			tmp = tmp->next;
 		}

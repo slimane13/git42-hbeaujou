@@ -6,11 +6,15 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/08 15:54:53 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/10 17:11:25 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/11 15:25:11 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_ls.h"
+
+char	*path;
+int		g_test;
+int		g_nbrf;
 
 void	modif_names(t_file **files)
 {
@@ -43,10 +47,11 @@ void	modif_names(t_file **files)
 	}
 }
 
-void	affiche_files_acone(t_file **files, t_flag **flags)
+void	affiche_files_acone(t_file **files, t_flag **flags, int ac)
 {
 	int 	i;
 	int		nb;
+	char	*tmp2;
 	t_file	*tmp;
 
 	i = 1;
@@ -55,7 +60,19 @@ void	affiche_files_acone(t_file **files, t_flag **flags)
 	while (tmp)
 	{
 		if ((i % 5 == 0 && i != 0) || i == nb || EFUN == 1)
-			ft_printf("%s\n", tmp->name);
+		{
+			if ((S_ISDIR(tmp->stats.st_mode)) == 1 && tmp->name[0] != '.' &&
+					ft_strcmp(tmp->name, "..") != 0 && ac > 2)
+			{
+				if (g_nbrf != 1)
+					ft_printf("%s:\n", tmp->name);
+				tmp2 = ft_strjoin("./", tmp->name);
+				ft_printf("%c", 0);
+				argc_one(files, flags, tmp2, ac);
+			}
+			else
+				ft_printf("%s\n", tmp->name);
+		}
 		else
 			ft_printf("%s", tmp->modif);
 		i++;
@@ -63,9 +80,11 @@ void	affiche_files_acone(t_file **files, t_flag **flags)
 	}
 }
 
-void	argc_one(t_file **files, t_flag **flags, char *str)
+void	argc_one(t_file **files, t_flag **flags, char *str, int ac)
 {
 	DIR				*dir;
+	char			*path2;
+	char			*tmp2;
 	struct dirent	*ent;
 	struct stat		t_stats;
 	struct stat		l_stats;
@@ -76,10 +95,14 @@ void	argc_one(t_file **files, t_flag **flags, char *str)
 	{
 		while ((ent = readdir (dir)) != NULL)
 		{
-			stat(ent->d_name, &t_stats);
+			if (g_test != 0)
+				path2 = ft_strjoin(path, "/");
+			path2 = ft_strjoin(path2, ent->d_name);
+			g_test = 1;
+			stat(path2, &t_stats);
 			lstat(ent->d_name, &l_stats);
 			if ((ent->d_name[0] == '.' ||
-					ft_strcmp(ent->d_name, "..") == 0) && EFA == 0)
+						ft_strcmp(ent->d_name, "..") == 0) && EFA == 0)
 				;
 			else
 			{
@@ -99,20 +122,24 @@ void	argc_one(t_file **files, t_flag **flags, char *str)
 	if (EFR == 1)
 		tri_rev(files);
 	if (EFL == 1)
-		affiche_column(files, flags);
+		affiche_column(files, flags, str, ac);
 	else
 	{
-		affiche_files_acone(files, flags);
+		affiche_files_acone(files, flags, ac);
 		tmp = *files;
 		if (EFRM == 1)
 		{
 			while (tmp)
 			{
-				if ((S_ISDIR(tmp->stats.st_mode)) == 1 && ft_strcmp(tmp->name, ".") != 0 &&
+				if ((S_ISDIR(tmp->stats.st_mode)) == 1 && tmp->name[0] != '.' &&
 						ft_strcmp(tmp->name, "..") != 0)
 				{
-					ft_printf("\n./%s :\n", tmp->name);
-					argc_one(files, flags, tmp->name);
+					path = ft_strjoin(str, "/");
+					path = ft_strjoin(path, tmp->name);
+					tmp2 = ft_strsub(path, 3, ft_strlen(path));
+					tmp2 = ft_strjoin("./", tmp2);
+					ft_printf ("\n%s :\n", tmp2);
+					argc_one(files, flags, path, ac);
 				}
 				tmp = tmp->next;
 			}
@@ -138,6 +165,7 @@ void	init_flags(t_flag **flags)
 int		ft_ls(int ac, char **av)
 {
 	t_file			*files;
+	t_file			*tmp;
 	t_flag			*flags;
 
 	if (!(flags = (t_flag *)malloc(sizeof(t_flag))))
@@ -148,7 +176,7 @@ int		ft_ls(int ac, char **av)
 	{
 		if (ac == 2)
 			parsing_one(av, &flags);
-		argc_one(&files, &flags, "./");
+		argc_one(&files, &flags, "./", ac);
 		return EXIT_SUCCESS;
 	}
 	else
@@ -157,16 +185,42 @@ int		ft_ls(int ac, char **av)
 		if (FL == 0)
 		{
 			modif_names(&files);
-			affiche_files_acone(&files, &flags);
+			affiche_files_acone(&files, &flags, ac);
 		}
 		else
-			affiche_column(&files, &flags);
+		{
+			tmp = files;
+			while (tmp)
+			{
+				ft_printf("%s:\n", tmp->name);
+				argc_one(&files, &flags, tmp->name, ac);
+				tmp = tmp->next;
+				if (tmp)
+					ft_printf("\n");
+			}
+		}
 	}
 	exit(EXIT_SUCCESS);
 }
 
 int		main(int ac, char **av)
 {
+	g_nbrf = 0;
+	while (av[g_nbrf])
+		g_nbrf++;
+	if (ac > 1)
+	{
+		if (av[1][0] == '-' && av[1][1] != '-')
+			g_nbrf--;
+	}
+	if (ac > 2)
+	{
+		if (ft_strcmp(av[2], "--") == 0)
+			g_nbrf--;
+	}
+	g_nbrf--; 
+	g_test = 0;
+	path = ft_strdup("./");
 	ft_ls(ac, av);
 	return (1);
 }

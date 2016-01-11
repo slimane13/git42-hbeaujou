@@ -6,13 +6,13 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/09 17:51:17 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/10 13:08:28 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/11 15:15:10 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-void	into_dir(t_file **files, t_flag **flags, char *str)
+void	into_dir(t_file **files, t_flag **flags, char *str, int ac)
 {
 	DIR				*dir;
 	struct dirent	*ent;
@@ -41,9 +41,9 @@ void	into_dir(t_file **files, t_flag **flags, char *str)
 		perror ("");
 	modif_names(files);
 	if (EFL == 1)
-		affiche_column(files, flags);
+		affiche_column(files, flags, str, ac);
 	else
-		affiche_files_acone(files, flags);
+		affiche_files_acone(files, flags, ac);
 }
 
 int		max_len_2(t_file **files)
@@ -68,6 +68,7 @@ int		max_len_2(t_file **files)
 void	size_to_modif2(t_file **files, int max)
 {
 	int		p;
+	int		k;
 	t_file	*tmp;
 
 	tmp = *files;
@@ -76,7 +77,8 @@ void	size_to_modif2(t_file **files, int max)
 	{
 		tmp->modif2 = ft_itoa(tmp->stats.st_nlink);
 		p = ft_strlen(tmp->modif2);
-		while (p < max - 4)
+		k = p;
+		while (p < max - 3)
 		{
 			tmp->modif2 = ft_strjoin(" ", tmp->modif2);
 			p++;

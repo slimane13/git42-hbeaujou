@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/09 12:29:52 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/10 12:01:42 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/11 14:58:06 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	init_tab(int flags[9])
 	flags[6] = 0;
 	flags[7] = 0;
 	flags[8] = 0;
+	flags[9] = 0;
 }
 
 int		is_flag(char *str)
