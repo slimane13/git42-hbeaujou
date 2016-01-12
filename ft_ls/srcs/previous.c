@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/12 13:36:24 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/12 16:07:24 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/12 17:59:36 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,7 @@ void		ft_previous(char **argv, int argc)
 				start = 1;
 		}
 		tab = ft_maketab_of_argv(argv + start, argc - start, op);
+		ft_printf("");
 		ft_print_tab(tab, op, ft_getnb_out(argv + start, argc - start, op));
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/12 14:19:12 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/12 16:52:27 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/12 17:31:34 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,10 +73,10 @@ int		ft_checkfile(char *argv)
 			{
 				tmp = new_error(argv);
 				ft_lstaddend_error(tmp);
-				ft_putstr("ft_ls: ");
+				ft_putstr_fd("ft_ls: ", 2);
 				if (ft_strcmp(argv, "") == 0)
 				{
-					ft_putstr("fts_open: ");
+					ft_putstr_fd("fts_open: ", 2);
 					test = 1;
 				}
 				perror(argv);

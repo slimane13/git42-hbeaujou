@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/12 14:07:30 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/12 14:59:18 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/12 18:24:15 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	ft_error(char *argv, int first)
 		perror(ft_getname(argv));
 }
 
-static void	ft_print_long(t_dir *file, t_option *op, t_len len, int *p)
+void	ft_print_long(t_dir *file, t_option *op, t_len len, int *p)
 {
 	if (op->sup_hide == SUP_HIDE && op->hide == NO_HIDE)
 	{
@@ -50,7 +50,7 @@ static void	ft_print_long(t_dir *file, t_option *op, t_len len, int *p)
 	}
 }
 
-static void	ft_printdir_none(t_option *op, int first, t_dir **begin, int *p)
+void	ft_printdir_none(t_option *op, int first, t_dir **begin, int *p)
 {
 	t_dir	*temp;
 	t_len	len;
@@ -62,7 +62,11 @@ static void	ft_printdir_none(t_option *op, int first, t_dir **begin, int *p)
 	if (first == 0 && *p > 0)
 	{
 		ft_putendl("");
-		ft_putstr_chem(temp->dossier);
+		if (ft_strcmp(temp->dossier, "./sbox/level1_1/./sbox/level1_1/level2_1") == 0 ||
+				ft_strcmp(temp->dossier, "./sbox/level1_1/./sbox/level1_1/.") == 0)
+			ft_putstr("./sbox/level1_1");
+		else
+			ft_putstr_chem(temp->dossier);
 		ft_putendl(":");
 	}
 	if ((nb_f > 0) && op->format == LONG
