@@ -1,27 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_checkargv.c                                     :+:      :+:    :+:   */
+/*   checkargv.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsautron <bsautron@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/12/01 05:45:39 by bsautron          #+#    #+#             */
-/*   Updated: 2014/12/03 16:05:12 by bsautron         ###   ########.fr       */
+/*   Created: 2016/01/12 14:19:12 by hbeaujou          #+#    #+#             */
+/*   Updated: 2016/01/12 15:19:45 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_ls.h"
+#include "../includes/ft_ls.h"
 
-static int	ft_checkfile(char *argv)
+int	error1;
+int error2;
+
+int	ft_checkfile(char *argv)
 {
 	struct stat	buf;
 
 	if (lstat(argv, &buf) == 0)
 		return (1);
+	else
+	{
+		if (error2 < 2)
+		{
+			ft_putstr("ft_ls: ");
+			perror(argv);
+		}
+		error1 = 1;
+		error2++;
+	}
 	return (0);
 }
 
-static int	ft_checkdir(char *argv, t_option *op)
+int	ft_checkdir(char *argv, t_option *op)
 {
 	struct stat	buf;
 

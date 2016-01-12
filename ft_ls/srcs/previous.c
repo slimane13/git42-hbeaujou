@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/12 13:36:24 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/12 13:50:29 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/12 15:13:43 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static void	ft_print_tab(char ***tab, t_option *op, int *nb)
 
 	i = 0;
 	ft_sort_all(tab, op, nb);
-	while (i < nb[OUT_ERROR])
+	while (i < nb[OUT_ERROR] && error1 == 0)
 	{
 		ft_putstr_fd("ft_ls: ", 2);
 		perror(tab[OUT_ERROR][i]);
@@ -86,6 +86,8 @@ void		ft_previous(char **argv, int argc)
 	int			start;
 	char		***tab;
 
+	error1 = 0;
+	error2 = 0;
 	op = (t_option *)malloc(sizeof(t_option));
 	ft_initoption(&op);
 	if ((start = ft_start_after_option(argv, argc, op)) != -1)

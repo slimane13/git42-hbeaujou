@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_maketab_of_argv.c                               :+:      :+:    :+:   */
+/*   argv_to_tab.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsautron <bsautron@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/12/01 05:10:05 by bsautron          #+#    #+#             */
-/*   Updated: 2016/01/12 13:48:49 by hbeaujou         ###   ########.fr       */
+/*   Created: 2016/01/12 14:18:34 by hbeaujou          #+#    #+#             */
+/*   Updated: 2016/01/12 15:06:47 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-static char	***ft_gettab(char **argv, int argc, int *nb, t_option *op)
+char	***ft_gettab(char **argv, int argc, int *nb, t_option *op)
 {
 	int		i;
 	int		j;

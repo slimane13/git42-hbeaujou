@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printdir.c                                      :+:      :+:    :+:   */
+/*   printdir.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsautron <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/21 05:24:36 by bsautron          #+#    #+#             */
-/*   Updated: 2016/01/12 10:42:10 by hbeaujou         ###   ########.fr       */
+/*   Created: 2016/01/12 14:07:30 by hbeaujou          #+#    #+#             */
+/*   Updated: 2016/01/12 14:59:18 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-static void	ft_error(char *argv, int first)
+void	ft_error(char *argv, int first)
 {
 	if (!first)
 	{
@@ -21,7 +21,8 @@ static void	ft_error(char *argv, int first)
 		ft_putendl_fd(":", 2);
 	}
 	ft_putstr_fd("ft_ls: ", 2);
-	perror(ft_getname(argv));
+	if (error1 != 1)
+		perror(ft_getname(argv));
 }
 
 static void	ft_print_long(t_dir *file, t_option *op, t_len len, int *p)

@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/12 09:34:13 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/12 12:06:21 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/12 14:56:42 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <pwd.h>
+# include <errno.h>
 # include <grp.h>
 # include <sys/xattr.h>
 # include <unistd.h>
@@ -113,6 +114,8 @@ typedef struct	s_dir
 }				t_dir;
 
 extern char		check;
+extern int		error1;
+extern int		error2;
 
 char			*ft_getdir(char *argv);
 char			*ft_getname(char *argv);
@@ -135,6 +138,7 @@ void			ft_lstadd_ls(t_dir **begin_list, struct stat buf);
 void			ft_lstsort(t_dir **begin_list, t_option *op);
 void			ft_lstswap(t_dir **a, t_dir **b);
 void			ft_free_dir(t_dir **begin_list);
+int				ft_checkfile(char *argv);
 t_len			ft_initlen(void);
 t_len			ft_format(t_dir **begin, t_option *op);
 t_dir			*ft_recup(char *argv, t_option *op);
