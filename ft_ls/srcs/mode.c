@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/12 13:38:46 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/12 13:38:47 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/12 17:02:17 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void		ft_mode_grp(mode_t mode)
 		if (mode & 0010)
 			ft_putchar('s');
 		else
-			ft_putchar('l');
+			ft_putchar('S');
 	}
 	else if (mode & S_IXGRP)
 		ft_putchar('x');

@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/12 09:34:13 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/12 14:56:42 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/12 16:05:57 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,15 @@
 # define OUT_FILES		1
 # define OUT_DIR		2
 
-typedef struct	s_len
+typedef struct s_error t_error;
+
+struct		s_error
+{
+	char			*name;
+	t_error			*next;
+};
+
+typedef struct		s_len
 {
 	size_t			links;
 	size_t			uid;
@@ -113,9 +121,11 @@ typedef struct	s_dir
 	struct s_dir	*next;
 }				t_dir;
 
+extern char		*g_str;
 extern char		check;
 extern int		error1;
 extern int		error2;
+extern t_error	*lst;
 
 char			*ft_getdir(char *argv);
 char			*ft_getname(char *argv);

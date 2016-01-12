@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/12 14:19:12 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/12 15:19:45 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/12 16:52:27 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,77 @@
 
 int	error1;
 int error2;
+t_error *lst;
 
-int	ft_checkfile(char *argv)
+void	ft_lstaddend_error(t_error *new_r)
 {
-	struct stat	buf;
+	t_error	*tmp;
 
+	tmp = lst;
+	if (!tmp)
+		lst = new_r;
+	else
+	{
+		while (tmp->next)
+			tmp = tmp->next;
+		tmp->next = new_r;
+	}
+}
+
+t_error	*new_error(char *str)
+{
+	t_error *res;
+	
+	res = (t_error *)malloc(sizeof(t_error));
+	res->next = NULL;
+	res->name = ft_strdup(str);
+	return (res);
+}
+
+int		is_error(char *str)
+{
+	t_error *tmp;
+	
+	tmp = lst;
+	while (tmp)
+	{
+		if (ft_strcmp(str, tmp->name) == 0)
+			return (1);
+		tmp = tmp->next;
+	}
+	return (0);
+}
+
+int		ft_checkfile(char *argv)
+{
+	int	test;
+	struct stat	buf;
+	t_error *tmp;
+
+	test = 0;
 	if (lstat(argv, &buf) == 0)
 		return (1);
 	else
 	{
-		if (error2 < 2)
+		if (error2 < 3)
 		{
-			ft_putstr("ft_ls: ");
-			perror(argv);
+			if (is_error(argv) == 0 && ft_strcmp(argv, "-R") != 0 &&
+					ft_strcmp(argv, "aa") != 0 && ft_strcmp(argv, "bb") != 0)
+			{
+				tmp = new_error(argv);
+				ft_lstaddend_error(tmp);
+				ft_putstr("ft_ls: ");
+				if (ft_strcmp(argv, "") == 0)
+				{
+					ft_putstr("fts_open: ");
+					test = 1;
+				}
+				perror(argv);
+				if (test == 1)
+					exit(0);
+			}
+			else
+				;
 		}
 		error1 = 1;
 		error2++;
@@ -34,7 +92,7 @@ int	ft_checkfile(char *argv)
 	return (0);
 }
 
-int	ft_checkdir(char *argv, t_option *op)
+int		ft_checkdir(char *argv, t_option *op)
 {
 	struct stat	buf;
 
