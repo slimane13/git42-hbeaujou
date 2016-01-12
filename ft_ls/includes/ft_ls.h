@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/12 09:34:13 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/12 09:48:52 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/12 12:06:21 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,8 @@ typedef struct	s_dir
 	struct stat		buf;
 	struct s_dir	*next;
 }				t_dir;
+
+extern char		check;
 
 char			*ft_getdir(char *argv);
 char			*ft_getname(char *argv);

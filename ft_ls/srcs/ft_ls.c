@@ -6,14 +6,17 @@
 /*   By: bsautron <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/16 19:38:57 by bsautron          #+#    #+#             */
-/*   Updated: 2014/12/03 17:46:10 by bsautron         ###   ########.fr       */
+/*   Updated: 2016/01/12 12:07:19 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+char	check;
 
 #include "ft_ls.h"
 
 int		main(int argc, char *argv[])
 {
+	check = 'z';
 	ft_previous(argv + 1, argc - 1);
 	return (0);
 }

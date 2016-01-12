@@ -6,7 +6,7 @@
 /*   By: bsautron <bsautron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/03 15:30:52 by bsautron          #+#    #+#             */
-/*   Updated: 2014/12/03 18:31:16 by bsautron         ###   ########.fr       */
+/*   Updated: 2016/01/12 12:26:02 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,8 @@ void	ft_putcolors(t_dir *file, t_option *op)
 		ft_putendl("\033[33;37m");
 	}
 	else
-		no_colors(file, op);
+	{
+		if (ft_strcmp(file->name, "-dir") != 0)
+			no_colors(file, op);
+	}
 }

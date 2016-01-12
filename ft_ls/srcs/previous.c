@@ -6,7 +6,7 @@
 /*   By: bsautron <bsautron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/01 05:37:14 by bsautron          #+#    #+#             */
-/*   Updated: 2016/01/12 11:30:48 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/12 12:19:15 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,10 @@ static int	ft_start_after_option(char **argv, int argc, t_option *op)
 		i++;
 	}
 	if (i < argc && argv[i][0] == '-' && ft_check_option(argv[i], &op) &&
-			ft_strcmp(argv[i], "--") != 0 && ft_strcmp(argv[i], "---") != 0)
+			ft_strcmp(argv[i], "--") != 0 && ft_strcmp(argv[i], "---") != 0 &&
+			ft_strcmp(argv[i], "-file") != 0 && ft_strcmp(argv[i], "--file") != 0 &&
+			ft_strcmp(argv[i], "---file") != 0 && ft_strcmp(argv[i], "-dir") != 0 &&
+			ft_strcmp(argv[i], "--dir") != 0 && ft_strcmp(argv[i], "---dir") != 0)
 	{
 		ft_putstr_fd("ft_ls: illegal option -- ", 2);
 		ft_putchar_fd(ft_check_option(argv[i], &op), 2);
