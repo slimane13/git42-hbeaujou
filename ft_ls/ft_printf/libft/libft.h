@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/01 21:11:23 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/12 09:10:12 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/12 09:33:32 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef struct		s_list
 }					t_list;
 
 void				*ft_memset(void *s, int c, size_t n);
+void				ft_swap(char *a, char *b);
 int					ft_charcheck_in_str(char let, char *str);
 void				ft_sort_params(char **argv, int argc);
 void				ft_sort_params_rev(char **argv, int argc);
@@ -107,6 +108,7 @@ void				ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
 void				ft_lstdel(t_list **alst, void (*del)(void *, size_t));
 void				ft_lstadd(t_list **alst, t_list *new);
 void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
+void				ft_strsort(char *str);
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 char				*ft_strswap(char *str);
 char				*ft_strrev(char *str);

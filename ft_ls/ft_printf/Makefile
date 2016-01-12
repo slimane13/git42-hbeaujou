@@ -6,7 +6,7 @@
 #    By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/01 20:43:29 by hbeaujou          #+#    #+#              #
-#    Updated: 2016/01/12 09:11:22 by hbeaujou         ###   ########.fr        #
+#    Updated: 2016/01/12 09:31:42 by hbeaujou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -95,6 +95,7 @@ SOURCES =	printf/add_flag.c				\
 			libft/ft_sort_params.c			\
 			libft/ft_sort_params_rev.c		\
 			libft/ft_intlen.c				\
+			libft/ft_swap.c					\
 			libft/ft_memset.c				\
 			libft/ft_bzero.c				\
 			libft/ft_lstadd.c				\
@@ -161,6 +162,7 @@ SOURCES =	printf/add_flag.c				\
 			libft/ft_putendl.c				\
 			libft/ft_putendl_fd.c			\
 			libft/ft_putstr.c				\
+			libft/ft_strsort.c				\
 			libft/ft_putstr_fd.c			\
 			libft/ft_putstrstr.c			\
 			libft/ft_putstr_spec.c			\

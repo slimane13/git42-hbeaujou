@@ -5,100 +5,142 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/08 15:47:27 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/11 17:49:43 by hbeaujou         ###   ########.fr       */
+/*   Created: 2016/01/12 09:34:13 by hbeaujou          #+#    #+#             */
+/*   Updated: 2016/01/12 09:48:52 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	FT_LS_H
+#ifndef FT_LS_H
 # define FT_LS_H
 
-# include "../ft_printf/printf/ft_printf.h"
-# include "../ft_printf/libft/libft.h"
-# include <stdlib.h>
-# include <dirent.h>
-# include <sys/stat.h>
 # include <sys/types.h>
-# include <fcntl.h>
-# include <time.h>
+# include <sys/stat.h>
 # include <pwd.h>
 # include <grp.h>
+# include <sys/xattr.h>
+# include <unistd.h>
+# include <dirent.h>
+# include <time.h>
+# include <string.h>
+# include <stdlib.h>
+# include "../ft_printf/printf/ft_printf.h"
+# include "../ft_printf/libft/libft.h"
 
-# define FL flags->f_l
-# define FRM flags->f_R_maj
-# define FA flags->f_a
-# define FR flags->f_r_min
-# define FT flags->f_t
-# define FU flags->f_u
-# define FF flags->f_f
-# define FG flags->f_g
-# define FD flags->f_d
+# define REVERSE		1
+# define RECURSIVE		1
+# define HIDE			1
+# define SUP_HIDE		1
+# define LONG			1
+# define COLORS			1
+# define LISTED			1
+# define PIPE			1
+# define STOP			1
+# define UID			1
+# define LONG_DATE		1
 
-# define EFL (*flags)->f_l
-# define EFRM (*flags)->f_R_maj
-# define EFA (*flags)->f_a
-# define EFR (*flags)->f_r_min
-# define EFT (*flags)->f_t
-# define EFU (*flags)->f_u
-# define EFF (*flags)->f_f
-# define EFG (*flags)->f_g
-# define EFD (*flags)->f_d
-# define EFUN (*flags)->f_un
+# define NO_REVERSE		0
+# define NO_RECURSIVE	0
+# define NO_HIDE		0
+# define NO_SUP_HIDE	0
+# define NO_LONG		0
+# define NO_COLORS		0
+# define NO_LISTED		0
+# define NO_PIPE		0
+# define NO_STOP		0
+# define NO_UID			0
+# define NO_LONG_DATE	0
 
-typedef struct		s_file t_file;
+# define BY_NAME		1
+# define BY_TIME		2
+# define BY_SIZE		3
 
-struct				s_file
+# define DATE_MODIF		1
+# define DATE_CREATE	2
+# define DATE_ACCES		3
+
+# define OUT_ERROR		0
+# define OUT_FILES		1
+# define OUT_DIR		2
+
+typedef struct	s_len
 {
-	t_file			*next;
-	t_file			*previous;
+	size_t			links;
+	size_t			uid;
+	size_t			gid;
+	size_t			size;
+	size_t			major;
+	size_t			minor;
+	size_t			maj_min;
+	int				dev;
+	unsigned long	total_blocks;
+	int				nb_files;
+}				t_len;
+
+typedef struct	s_option
+{
+	int		rev;
+	int		rec;
+	int		by;
+	int		prio_by;
+	int		hide;
+	int		sup_hide;
+	int		colors;
+	int		format;
+	int		listed;
+	int		date;
+	int		long_date;
+	int		pipe;
+	int		uid;
+	int		stop;
+}				t_option;
+
+typedef struct	s_long
+{
+	char		*uid_name;
+	char		*gid_name;
+	char		*time;
+	char		*linkname;
+}				t_long;
+
+typedef struct	s_dir
+{
+	char			*dossier;
 	char			*name;
-	char			*modif;
-	char			*modif2;
-	int				ilk;
-	struct stat		stats;
-	struct stat		lstats;
-};
+	char			*absolute;
+	struct s_long	*format;
+	struct stat		buf;
+	struct s_dir	*next;
+}				t_dir;
 
-typedef struct		s_flag
-{
-	int				f_l;
-	int				f_R_maj;
-	int				f_a;
-	int				f_r_min;
-	int				f_t;
-	int				f_u;
-	int				f_f;
-	int				f_g;
-	int				f_d;
-	int				f_un;
-}					t_flag;
-
-extern char			*path;
-extern int			g_test;
-extern int			g_nbrf;
-
-void				ft_lstaddend_file(t_file **alst, t_file *new_r);
-void				parsing(char **av, t_flag **flag, t_file **files);
-void				attrib_flag(char *str, t_flag **flag);
-void				affiche_column(t_file **files, t_flag **flags, char *str, int ac);
-void 				affiche_files_acone(t_file **files, t_flag **flags, int ac);
-void				modif_names(t_file **files);
-void				parsing_one(char **av, t_flag **flag);
-void				size_to_modif2(t_file **files, int max);
-void				argc_one(t_file **files, t_flag **flags, char *str, int ac);
-void				into_dir(t_file **files, t_flag **flags, char *str, int ac);
-void				next_to_previous(t_file **files);
-void				tri_time(t_file **files);
-void				tri_rev(t_file **files);
-void				tri_char(t_file **head);
-void				tri_time_onlyfiles(t_file **head);
-
-int					max_len_link(t_file **files);
-int					is_flag(char *str);
-int					max_len_2(t_file **files);
-int					nbr_files(t_file **files);
-int					ft_ls(int ac, char **av);
-
-t_file				*new_file(char *name, struct stat *sb, struct stat *sa);
+char			*ft_getdir(char *argv);
+char			*ft_getname(char *argv);
+char			*ft_makedir(char *argv);
+char			*ft_makeabsolute(char *dir, char *file);
+int				ft_checkargv(char *argv, t_option *op);
+char			***ft_maketab_of_argv(char **argv, int argc, t_option *op);
+char			ft_check_option(char const *op, t_option **t_op);
+void			ft_previous(char **argv, int argc);
+int				*ft_getnb_out(char **argv, int argc, t_option *op);
+void			ft_printfile(char **argv, t_option *op, int *nb);
+void			ft_putstr_chem(char const *s);
+int				ft_hide_dir(char *absolute);
+void			ft_sort_params_dir(char **argv, int argc, t_option *op);
+int				ft_nbfiles(t_dir **begin, t_option *op);
+void			ft_putcolors(t_dir *file, t_option *op);
+void			ft_prepar(int argc, char **argv);
+t_dir			*ft_lstnew_ls(struct stat buf);
+void			ft_lstadd_ls(t_dir **begin_list, struct stat buf);
+void			ft_lstsort(t_dir **begin_list, t_option *op);
+void			ft_lstswap(t_dir **a, t_dir **b);
+void			ft_free_dir(t_dir **begin_list);
+t_len			ft_initlen(void);
+t_len			ft_format(t_dir **begin, t_option *op);
+t_dir			*ft_recup(char *argv, t_option *op);
+t_long			*ft_recup_long(struct stat buf, t_option *op);
+void			ft_initoption(t_option **t_op);
+void			ft_mode(char *argv, mode_t mode);
+void			ft_ls_long_or_not(t_dir *file, t_option *op, t_len len);
+void			ft_printdir(char *argv, t_option *op);
+char			*ft_strjoin_dir(const char *s1, const char *s2);
 
 #endif
