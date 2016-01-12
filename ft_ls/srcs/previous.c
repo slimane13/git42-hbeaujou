@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_previous.c                                      :+:      :+:    :+:   */
+/*   previous.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsautron <bsautron@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/12/01 05:37:14 by bsautron          #+#    #+#             */
-/*   Updated: 2016/01/12 12:34:32 by hbeaujou         ###   ########.fr       */
+/*   Created: 2016/01/12 13:36:24 by hbeaujou          #+#    #+#             */
+/*   Updated: 2016/01/12 13:50:29 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,12 @@ void		ft_previous(char **argv, int argc)
 	ft_initoption(&op);
 	if ((start = ft_start_after_option(argv, argc, op)) != -1)
 	{
+		if (argc >= 3)
+		{
+			if (ft_strcmp(argv[1], "-") == 0 && ft_strcmp(argv[2], "--") == 0 &&
+					ft_strcmp(argv[3], "---") == 0)
+				start = 1;
+		}
 		tab = ft_maketab_of_argv(argv + start, argc - start, op);
 		ft_print_tab(tab, op, ft_getnb_out(argv + start, argc - start, op));
 	}
