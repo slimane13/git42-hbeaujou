@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printfile.c                                     :+:      :+:    :+:   */
+/*   affiche_file.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsautron <bsautron@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/30 23:12:07 by bsautron          #+#    #+#             */
-/*   Updated: 2016/01/12 18:14:02 by hbeaujou         ###   ########.fr       */
+/*   Created: 2016/01/13 16:11:50 by hbeaujou          #+#    #+#             */
+/*   Updated: 2016/01/13 16:25:28 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void		ft_printfile(char **argv, t_option *op, int *nb)
 
 	i = 0;
 	file = NULL;
-	while (i < nb[OUT_FILES])
+	while (i < nb[1])
 	{
 		ft_getinfos_file(&file, argv[i], op);
 		i++;

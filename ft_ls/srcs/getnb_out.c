@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_getnb_out.c                                     :+:      :+:    :+:   */
+/*   getnb_out.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsautron <bsautron@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/12/01 05:51:57 by bsautron          #+#    #+#             */
-/*   Updated: 2014/12/03 17:40:51 by bsautron         ###   ########.fr       */
+/*   Created: 2016/01/13 16:14:00 by hbeaujou          #+#    #+#             */
+/*   Updated: 2016/01/13 16:28:21 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_init(int *nb_out)
 
 void	ft_none(int *nb_out, t_option *op)
 {
-	if (op->listed == LISTED)
+	if (op->listed == 1)
 		nb_out[1] = 1;
 	else
 		nb_out[2] = 1;

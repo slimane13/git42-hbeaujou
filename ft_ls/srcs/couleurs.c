@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putcolors.c                                     :+:      :+:    :+:   */
+/*   couleurs.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsautron <bsautron@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/12/03 15:30:52 by bsautron          #+#    #+#             */
-/*   Updated: 2016/01/12 12:26:02 by hbeaujou         ###   ########.fr       */
+/*   Created: 2016/01/13 16:12:36 by hbeaujou          #+#    #+#             */
+/*   Updated: 2016/01/13 16:35:20 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	no_colors(t_dir *file, t_option *op)
 	if (S_ISLNK(file->buf.st_mode))
 	{
 		ft_putstr(file->name);
-		if (op->format == LONG)
+		if (op->format == 1)
 		{
 			ft_putstr(" -> ");
 			ft_putstr(file->format->linkname);
@@ -30,9 +30,9 @@ void	no_colors(t_dir *file, t_option *op)
 
 void	ft_putcolors(t_dir *file, t_option *op)
 {
-	if (op->pipe == PIPE && S_ISDIR(file->buf.st_mode))
+	if (op->pipe == 1 && S_ISDIR(file->buf.st_mode))
 		file->name = ft_makedir(file->name);
-	if (op->colors == COLORS)
+	if (op->colors == 1)
 	{
 		if (S_ISDIR(file->buf.st_mode))
 			ft_putstr("\033[33;31m");
@@ -40,7 +40,7 @@ void	ft_putcolors(t_dir *file, t_option *op)
 		{
 			ft_putstr("\033[33;32m");
 			ft_putstr(file->name);
-			if (op->format == LONG)
+			if (op->format == 1)
 			{
 				ft_putstr("\033[33;37m -> ");
 				ft_putstr(file->format->linkname);

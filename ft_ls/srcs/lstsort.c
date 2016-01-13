@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstsort.c                                       :+:      :+:    :+:   */
+/*   lstsort.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsautron <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/21 00:30:16 by bsautron          #+#    #+#             */
-/*   Updated: 2014/12/04 16:07:13 by bsautron         ###   ########.fr       */
+/*   Created: 2016/01/13 16:14:43 by hbeaujou          #+#    #+#             */
+/*   Updated: 2016/01/13 16:31:27 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ static void	ft_swap_name(t_dir *a, t_dir *b, t_option *op)
 	int		res;
 
 	res = ft_strcmp(a->name, b->name);
-	if (res < 0 && op->rev == REVERSE)
+	if (res < 0 && op->rev == 1)
 		ft_lstswap(&a, &b);
-	else if (res > 0 && op->rev == NO_REVERSE)
+	else if (res > 0 && op->rev == 0)
 		ft_lstswap(&a, &b);
 }
 
@@ -36,9 +36,9 @@ static void	ft_lstsort_name(t_dir **begin_list, t_option *op)
 		while (rt_list != NULL)
 		{
 			res = ft_strcmp(rt_list->name, temp_list->name);
-			if ((res < 0 && op->rev == NO_REVERSE) || op->stop == STOP)
+			if ((res < 0 && op->rev == 0) || op->stop == 1)
 				ft_lstswap(&temp_list, &rt_list);
-			else if (res > 0 && op->rev == REVERSE)
+			else if (res > 0 && op->rev == 1)
 				ft_lstswap(&temp_list, &rt_list);
 			rt_list = rt_list->next;
 		}
@@ -59,13 +59,13 @@ static void	ft_lstsort_time(t_dir **begin_list, t_option *op)
 		while (rt_list != NULL)
 		{
 			res = temp_list->buf.st_mtime - rt_list->buf.st_mtime;
-			if (op->date == DATE_CREATE)
+			if (op->date == 2)
 				res = temp_list->buf.st_birthtime - rt_list->buf.st_birthtime;
-			else if (op->date == DATE_ACCES)
+			else if (op->date == 3)
 				res = temp_list->buf.st_atime - rt_list->buf.st_atime;
-			if (res > 0 && op->rev == REVERSE)
+			if (res > 0 && op->rev == 1)
 				ft_lstswap(&temp_list, &rt_list);
-			else if (res < 0 && op->rev == NO_REVERSE)
+			else if (res < 0 && op->rev == 0)
 				ft_lstswap(&temp_list, &rt_list);
 			else if (res == 0)
 				ft_swap_name(temp_list, rt_list, op);
@@ -88,9 +88,9 @@ static void	ft_lstsort_size(t_dir **begin_list, t_option *op)
 		while (rt_list != NULL)
 		{
 			res = temp_list->buf.st_size - rt_list->buf.st_size;
-			if (res > 0 && op->rev == REVERSE)
+			if (res > 0 && op->rev == 1)
 				ft_lstswap(&temp_list, &rt_list);
-			else if (res < 0 && op->rev == NO_REVERSE)
+			else if (res < 0 && op->rev == 0)
 				ft_lstswap(&temp_list, &rt_list);
 			else if (res == 0)
 				ft_swap_name(temp_list, rt_list, op);
@@ -102,10 +102,10 @@ static void	ft_lstsort_size(t_dir **begin_list, t_option *op)
 
 void		ft_lstsort(t_dir **begin_list, t_option *op)
 {
-	if (op->by == BY_NAME || op->stop == STOP)
+	if (op->by == 1 || op->stop == 1)
 		ft_lstsort_name(begin_list, op);
-	if (op->by == BY_TIME)
+	if (op->by == 2)
 		ft_lstsort_time(begin_list, op);
-	if (op->prio_by == BY_SIZE)
+	if (op->prio_by == 3)
 		ft_lstsort_size(begin_list, op);
 }

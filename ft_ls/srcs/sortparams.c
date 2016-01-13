@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sort_params_dir.c                               :+:      :+:    :+:   */
+/*   sortparams.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsautron <bsautron@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/12/01 20:45:34 by bsautron          #+#    #+#             */
-/*   Updated: 2014/12/03 17:46:03 by bsautron         ###   ########.fr       */
+/*   Created: 2016/01/13 16:15:32 by hbeaujou          #+#    #+#             */
+/*   Updated: 2016/01/13 16:33:20 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,9 @@ static void	ft_sort_time(char **argv, int argc, t_option *op)
 		while (j < argc)
 		{
 			lstat(argv[j], &bufj);
-			if (op->rev == NO_REVERSE && bufi.st_mtime < bufj.st_mtime)
+			if (op->rev == 0 && bufi.st_mtime < bufj.st_mtime)
 				ft_swap_str(&argv[i], &argv[j]);
-			if (op->rev == REVERSE && bufi.st_mtime > bufj.st_mtime)
+			if (op->rev == 1 && bufi.st_mtime > bufj.st_mtime)
 				ft_swap_str(&argv[i], &argv[j]);
 			j++;
 		}
@@ -48,10 +48,10 @@ static void	ft_sort_time(char **argv, int argc, t_option *op)
 
 void		ft_sort_params_dir(char **argv, int argc, t_option *op)
 {
-	if (op->by == BY_NAME && op->rev == NO_REVERSE)
+	if (op->by == 1 && op->rev == 0)
 		ft_sort_params(argv, argc);
-	if (op->by == BY_NAME && op->rev == REVERSE)
+	if (op->by == 1 && op->rev == 1)
 		ft_sort_params_rev(argv, argc);
-	if (op->by == BY_TIME)
+	if (op->by == 2)
 		ft_sort_time(argv, argc, op);
 }

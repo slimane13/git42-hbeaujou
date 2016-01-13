@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_verrif_option.c                                 :+:      :+:    :+:   */
+/*   check_options.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsautron <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/19 06:41:30 by bsautron          #+#    #+#             */
-/*   Updated: 2016/01/12 12:07:47 by hbeaujou         ###   ########.fr       */
+/*   Created: 2016/01/13 16:12:09 by hbeaujou          #+#    #+#             */
+/*   Updated: 2016/01/13 16:22:43 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,51 +15,51 @@
 static void	ft_putoption_aux(char op, t_option **t_op)
 {
 	if (op == 'R')
-		(*t_op)->rec = RECURSIVE;
+		(*t_op)->rec = 1;
 	if (op == 'r')
-		(*t_op)->rev = REVERSE;
+		(*t_op)->rev = 1;
 	if (op == 'a')
-		(*t_op)->hide = HIDE;
+		(*t_op)->hide = 1;
 	if (op == 'A')
-		(*t_op)->sup_hide = SUP_HIDE;
+		(*t_op)->sup_hide = 1;
 	if (op == 'l')
-		(*t_op)->format = LONG;
+		(*t_op)->format = 1;
 	if (op == '1')
-		(*t_op)->format = NO_LONG;
+		(*t_op)->format = 0;
 	if (op == 'G')
-		(*t_op)->colors = COLORS;
+		(*t_op)->colors = 1;
 	if (op == 'd')
-		(*t_op)->listed = LISTED;
+		(*t_op)->listed = 1;
 	if (op == 'p')
-		(*t_op)->pipe = PIPE;
+		(*t_op)->pipe = 1;
 }
 
 static void	ft_putoption(char op, t_option **t_op)
 {
 	ft_putoption_aux(op, t_op);
 	if (op == 'U')
-		(*t_op)->date = DATE_CREATE;
+		(*t_op)->date = 2;
 	if (op == 'T')
-		(*t_op)->long_date = LONG_DATE;
+		(*t_op)->long_date = 1;
 	if (op == 'g')
 	{
-		(*t_op)->uid = NO_UID;
-		(*t_op)->format = LONG;
+		(*t_op)->uid = 0;
+		(*t_op)->format = 1;
 	}
 	if (op == 't')
-		(*t_op)->by = BY_TIME;
+		(*t_op)->by = 2;
 	if (op == 'S')
 	{
-		(*t_op)->by = BY_SIZE;
-		(*t_op)->prio_by = BY_SIZE;
+		(*t_op)->by = 3;
+		(*t_op)->prio_by = 3;
 	}
 	if (op == 'u')
-		(*t_op)->date = DATE_ACCES;
+		(*t_op)->date = 3;
 	if (op == 'f')
 	{
-		(*t_op)->stop = STOP;
+		(*t_op)->stop = 1;
 		if (check != 'a')
-			(*t_op)->hide = HIDE;
+			(*t_op)->hide = 1;
 	}
 }
 

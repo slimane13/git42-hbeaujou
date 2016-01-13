@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/12 14:18:34 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/12 15:26:33 by hbeaujou         ###   ########.fr       */
+/*   Created: 2016/01/13 16:11:55 by hbeaujou          #+#    #+#             */
+/*   Updated: 2016/01/13 16:27:46 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,27 +46,23 @@ void		print_tab(char ***tab, int *nb)
 	int		i;
 
 	i = 0;
-	ft_putendl("-->LES ERREURS");
-	while (i < nb[OUT_ERROR])
+	while (i < nb[0])
 	{
-		ft_putendl(tab[OUT_ERROR][i]);
+		ft_putendl(tab[0][i]);
 		i++;
 	}
 	i = 0;
-	ft_putendl("\n-->LES FILES");
-	while (i < nb[OUT_FILES])
+	while (i < nb[1])
 	{
-		ft_putendl(tab[OUT_FILES][i]);
+		ft_putendl(tab[1][i]);
 		i++;
 	}
 	i = 0;
-	ft_putendl("\n-->LES DIRS");
-	while (i < nb[OUT_DIR])
+	while (i < nb[2])
 	{
-		ft_putendl(tab[OUT_DIR][i]);
+		ft_putendl(tab[2][i]);
 		i++;
 	}
-	ft_putendl("_____");
 }
 
 char		***ft_maketab_of_argv(char **argv, int argc, t_option *op)
@@ -82,15 +78,15 @@ char		***ft_maketab_of_argv(char **argv, int argc, t_option *op)
 	else
 	{
 		tab = (char ***)malloc(sizeof(char **) * 3);
-		if (op->listed == LISTED)
+		if (op->listed == 1)
 		{
-			tab[OUT_FILES] = (char **)malloc(sizeof(char *) * 1);
-			tab[OUT_FILES][0] = ft_strdup(".");
+			tab[1] = (char **)malloc(sizeof(char *) * 1);
+			tab[1][0] = ft_strdup(".");
 		}
 		else
 		{
-			tab[OUT_DIR] = (char **)malloc(sizeof(char *) * 1);
-			tab[OUT_DIR][0] = ft_strdup(".");
+			tab[2] = (char **)malloc(sizeof(char *) * 1);
+			tab[2][0] = ft_strdup(".");
 		}
 	}
 	return (tab);

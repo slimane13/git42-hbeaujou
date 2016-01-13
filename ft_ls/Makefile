@@ -6,7 +6,7 @@
 #    By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/01 20:43:29 by hbeaujou          #+#    #+#              #
-#    Updated: 2016/01/12 09:28:37 by hbeaujou         ###   ########.fr        #
+#    Updated: 2016/01/13 16:35:45 by hbeaujou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,6 +40,7 @@ SOURCES =	srcs/affiche_file.c		\
 			srcs/previous.c			\
 			srcs/printdir.c			\
 			srcs/recup.c			\
+			srcs/rajouts2.c			\
 			srcs/recupmass.c		\
 			srcs/sortparams.c		\
 

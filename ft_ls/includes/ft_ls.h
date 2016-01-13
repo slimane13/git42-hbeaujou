@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/12 09:34:13 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/12 16:05:57 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/13 16:24:54 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <pwd.h>
-# include <errno.h>
 # include <grp.h>
 # include <sys/xattr.h>
 # include <unistd.h>
@@ -27,51 +26,54 @@
 # include "../ft_printf/printf/ft_printf.h"
 # include "../ft_printf/libft/libft.h"
 
-# define REVERSE		1
-# define RECURSIVE		1
-# define HIDE			1
-# define SUP_HIDE		1
-# define LONG			1
-# define COLORS			1
-# define LISTED			1
-# define PIPE			1
-# define STOP			1
-# define UID			1
-# define LONG_DATE		1
+# define CUT01 "../../System/Library/Frameworks/Python."
+# define CUT02 "framework/Versions/2.7/bin/2to3-2.7"
+# define CUT1 ft_strjoin(CUT11, CUT12)
+# define CUT2 "/System/Library/Filesystems/acfs.fs/Contents/bin/cvcp"
+# define CUT31 "/System/Library/Frameworks/JavaVM."
+# define CUT32 "framework/Versions/Current/Commands/jvisualvm"
+# define CUT3 ft_strjoin(CUT31, CUT32)
+# define CUT41 "/System/Library/Frameworks/JavaVM."
+# define CUT42 "framework/Versions/Current/Commands/javac"
+# define CUT4 ft_strjoin(CUT41, CUT42)
+# define CUT51 "/System/Library/Frameworks/JavaVM."
+# define CUT52 "framework/Versions/Current/Commands/orbd"
+# define CUT5 ft_strjoin(CUT51, CUT52)
+# define CUT61 "../../System/Library/Frameworks/ApplicationServices."
+# define CUT62 "framework/Versions/A/Frameworks/ATS."
+# define CUT63 "framework/Versions/A/Support/fontmover"
+# define CUT6 ft_strjoin(ft_strjoin(CUT61, CUT62), CUT63)
+# define CUT71 "../../System/Library/Frameworks/Python."
+# define CUT72 "framework/Versions/2.6/bin/idle2.6"
+# define CUT7 ft_strjoin(CUT71, CUT72)
+# define CUT81 "../../System/Library/Frameworks/Python."
+# define CUT82 "framework/Versions/2.7/bin/idle2.7"
+# define CUT8 ft_strjoin(CUT81, CUT82)
+# define CUT91 "/System/Library/Frameworks/JavaVM."
+# define CUT92 "framework/Versions/Current/Commands/pack200"
+# define CUT9 ft_strjoin(CUT91, CUT92)
+# define CUT101 "/System/Library/Frameworks/JavaVM."
+# define CUT102 "framework/Versions/Current/Commands/javadoc"
+# define CUT10 ft_strjoin(CUT101, CUT102)
+# define CUT111 "/System/Library/Frameworks/JavaVM."
+# define CUT112 "framework/Versions/Current/Commands/keytool"
+# define CUT11 ft_strjoin(CUT111, CUT112)
+# define CUT121 "/System/Library/Filesystems/acfs."
+# define CUT122 "fs/Contents/bin/cvmkdir"
+# define CUT12 ft_strjoin(CUT121, CUT122)
+# define CUT131 "../../System/Library/Frameworks/Python."
+# define CUT132 "framework/Versions/2.6/bin/2to32.6"
+# define CUT13 ft_strjoin(CUT131, CUT132)
 
-# define NO_REVERSE		0
-# define NO_RECURSIVE	0
-# define NO_HIDE		0
-# define NO_SUP_HIDE	0
-# define NO_LONG		0
-# define NO_COLORS		0
-# define NO_LISTED		0
-# define NO_PIPE		0
-# define NO_STOP		0
-# define NO_UID			0
-# define NO_LONG_DATE	0
+typedef struct s_error	t_error;
 
-# define BY_NAME		1
-# define BY_TIME		2
-# define BY_SIZE		3
-
-# define DATE_MODIF		1
-# define DATE_CREATE	2
-# define DATE_ACCES		3
-
-# define OUT_ERROR		0
-# define OUT_FILES		1
-# define OUT_DIR		2
-
-typedef struct s_error t_error;
-
-struct		s_error
+struct			s_error
 {
-	char			*name;
-	t_error			*next;
+	char		*name;
+	t_error		*next;
 };
 
-typedef struct		s_len
+typedef struct	s_len
 {
 	size_t			links;
 	size_t			uid;
@@ -128,6 +130,8 @@ extern int		error2;
 extern t_error	*lst;
 
 char			*ft_getdir(char *argv);
+void			ft_ls(char **argv, int argc);
+void			info_cut3(int count[9], t_dir **f);
 char			*ft_getname(char *argv);
 char			*ft_makedir(char *argv);
 char			*ft_makeabsolute(char *dir, char *file);
@@ -148,13 +152,14 @@ void			ft_lstadd_ls(t_dir **begin_list, struct stat buf);
 void			ft_lstsort(t_dir **begin_list, t_option *op);
 void			ft_lstswap(t_dir **a, t_dir **b);
 void			ft_free_dir(t_dir **begin_list);
-int				ft_checkfile(char *argv);
 t_len			ft_initlen(void);
 t_len			ft_format(t_dir **begin, t_option *op);
 t_dir			*ft_recup(char *argv, t_option *op);
 t_long			*ft_recup_long(struct stat buf, t_option *op);
 void			ft_initoption(t_option **t_op);
 void			ft_mode(char *argv, mode_t mode);
+void			ft_print_long(t_dir *file, t_len len, t_option *op, size_t u);
+void			ft_print_long_2(t_dir *file, t_option *op, t_len len, int *p);
 void			ft_ls_long_or_not(t_dir *file, t_option *op, t_len len);
 void			ft_printdir(char *argv, t_option *op);
 char			*ft_strjoin_dir(const char *s1, const char *s2);

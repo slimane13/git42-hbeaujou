@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_recup_long.c                                    :+:      :+:    :+:   */
+/*   recupmass.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsautron <bsautron@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/12/01 00:38:30 by bsautron          #+#    #+#             */
-/*   Updated: 2014/12/04 16:16:13 by bsautron         ###   ########.fr       */
+/*   Created: 2016/01/13 16:15:27 by hbeaujou          #+#    #+#             */
+/*   Updated: 2016/01/13 16:32:43 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,11 @@ t_long	*ft_recup_long(struct stat buf, t_option *op)
 		pass_uid = getpwuid(buf.st_uid);
 		pass_gid = getgrgid(buf.st_gid);
 		elem->time = ft_strdup(ctime(&buf.st_mtime));
-		if (op->date == DATE_CREATE)
+		if (op->date == 2)
 			elem->time = ft_strdup(ctime(&buf.st_birthtime));
-		else if (op->date == DATE_ACCES)
+		else if (op->date == 3)
 			elem->time = ft_strdup(ctime(&buf.st_atime));
-		if (op->uid == NO_UID)
+		if (op->uid == 0)
 			elem->uid_name = ft_strdup("");
 		else if (pass_uid)
 			elem->uid_name = ft_strdup(pass_uid->pw_name);

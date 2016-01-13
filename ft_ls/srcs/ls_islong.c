@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/12 11:12:21 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/12 12:23:26 by hbeaujou         ###   ########.fr       */
+/*   Created: 2016/01/13 16:14:24 by hbeaujou          #+#    #+#             */
+/*   Updated: 2016/01/13 16:34:21 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@ void		ft_date_aux(t_dir *file)
 		write(1, file->format->time + 19, 5);
 }
 
-static void	ft_date(t_dir *file, t_option *op)
+void	ft_date(t_dir *file, t_option *op)
 {
 	time_t		t;
 
-	if (op->date == DATE_CREATE)
+	if (op->date == 2)
 	{
 		if (time(&t) - file->buf.st_birthtime > 15778800
 				|| t < file->buf.st_birthtime)
@@ -33,7 +33,7 @@ static void	ft_date(t_dir *file, t_option *op)
 		else
 			write(1, file->format->time + 3, 13);
 	}
-	else if (op->date == DATE_ACCES)
+	else if (op->date == 3)
 	{
 		if (time(&t) - file->buf.st_atime > 15778800 || t < file->buf.st_atime)
 			ft_date_aux(file);
@@ -49,7 +49,7 @@ static void	ft_date(t_dir *file, t_option *op)
 	}
 }
 
-static void	ft_link(t_dir *file, t_len len, size_t i)
+void	ft_link(t_dir *file, t_len len, size_t i)
 {
 	if (S_ISBLK(file->buf.st_mode) || S_ISCHR(file->buf.st_mode))
 	{
@@ -78,7 +78,7 @@ static void	ft_link(t_dir *file, t_len len, size_t i)
 	}
 }
 
-static void	ft_print_long(t_dir *file, t_len len, t_option *op, size_t u)
+void	ft_print_long(t_dir *file, t_len len, t_option *op, size_t u)
 {
 	size_t		i;
 
@@ -97,7 +97,7 @@ static void	ft_print_long(t_dir *file, t_len len, t_option *op, size_t u)
 	while (i++ < len.gid - ft_strlen(file->format->gid_name))
 		ft_putchar(' ');
 	ft_link(file, len, 0);
-	if (op->long_date == LONG_DATE)
+	if (op->long_date == 1)
 		write(1, file->format->time + 3, 21);
 	else
 		ft_date(file, op);
@@ -109,9 +109,9 @@ void		ft_ls_long_or_not(t_dir *file, t_option *op, t_len len)
 	size_t		u;
 
 	u = 2;
-	if (op->uid == NO_UID)
+	if (op->uid == 0)
 		u = 0;
-	if (op->format == LONG)
+	if (op->format == 1)
 		ft_print_long(file, len, op, u);
 	ft_putcolors(file, op);
 }

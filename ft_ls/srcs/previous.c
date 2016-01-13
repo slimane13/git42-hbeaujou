@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/12 13:36:24 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/12 17:59:36 by hbeaujou         ###   ########.fr       */
+/*   Created: 2016/01/13 16:15:09 by hbeaujou          #+#    #+#             */
+/*   Updated: 2016/01/13 16:27:25 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ static int	ft_start_after_option(char **argv, int argc, t_option *op)
 
 static void	ft_sort_all(char ***tab, t_option *op, int *nb)
 {
-	ft_sort_params(tab[OUT_ERROR], nb[OUT_ERROR]);
-	ft_sort_params_dir(tab[OUT_DIR], nb[OUT_DIR], op);
+	ft_sort_params(tab[0], nb[0]);
+	ft_sort_params_dir(tab[2], nb[2], op);
 }
 
 static void	ft_print_tab(char ***tab, t_option *op, int *nb)
@@ -57,25 +57,25 @@ static void	ft_print_tab(char ***tab, t_option *op, int *nb)
 
 	i = 0;
 	ft_sort_all(tab, op, nb);
-	while (i < nb[OUT_ERROR] && error1 == 0)
+	while (i < nb[0] && error1 == 0)
 	{
 		ft_putstr_fd("ft_ls: ", 2);
-		perror(tab[OUT_ERROR][i]);
+		perror(tab[0][i]);
 		i++;
 	}
-	if (nb[OUT_FILES])
-		ft_printfile(tab[OUT_FILES], op, nb);
+	if (nb[1])
+		ft_printfile(tab[1], op, nb);
 	i = 0;
-	while (i < nb[OUT_DIR])
+	while (i < nb[2])
 	{
 		if (nb[0] + nb[1] + nb[2] > 1)
 		{
 			if (i > 0 || nb[1] > 0)
 				ft_putendl("");
-			ft_putstr(tab[OUT_DIR][i]);
+			ft_putstr(tab[2][i]);
 			ft_putendl(":");
 		}
-		ft_printdir(tab[OUT_DIR][i], op);
+		ft_printdir(tab[2][i], op);
 		i++;
 	}
 }

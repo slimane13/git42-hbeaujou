@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_format.c                                        :+:      :+:    :+:   */
+/*   format.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsautron <bsautron@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/12/01 07:44:46 by bsautron          #+#    #+#             */
-/*   Updated: 2014/12/03 17:44:09 by bsautron         ###   ########.fr       */
+/*   Created: 2016/01/13 16:13:25 by hbeaujou          #+#    #+#             */
+/*   Updated: 2016/01/13 16:29:46 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void	ft_getlen(t_dir *temp, t_len *len, t_option *op)
 		len->gid = ft_strlen(temp->format->gid_name);
 	if (ft_intlen(temp->buf.st_size) > len->size)
 		len->size = ft_intlen(temp->buf.st_size);
-	if (op->format == LONG && (S_ISBLK(temp->buf.st_mode)
+	if (op->format == 1 && (S_ISBLK(temp->buf.st_mode)
 				|| S_ISCHR(temp->buf.st_mode)))
 	{
 		if (ft_intlen(major(temp->buf.st_rdev)) > len->major)
@@ -42,10 +42,10 @@ t_len		ft_format(t_dir **begin, t_option *op)
 	temp = *begin;
 	while (temp)
 	{
-		if ((op->hide == NO_HIDE && temp->name[0] != '.')
-				|| op->listed == LISTED)
+		if ((op->hide == 0 && temp->name[0] != '.')
+				|| op->listed == 1)
 			ft_getlen(temp, &len, op);
-		else if (op->hide == HIDE)
+		else if (op->hide == 1)
 			ft_getlen(temp, &len, op);
 		len.nb_files += 1;
 		temp = temp->next;

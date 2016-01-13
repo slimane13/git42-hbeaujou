@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/12 14:19:12 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/12 17:31:34 by hbeaujou         ###   ########.fr       */
+/*   Created: 2016/01/13 16:12:29 by hbeaujou          #+#    #+#             */
+/*   Updated: 2016/01/13 16:29:26 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,9 +96,9 @@ int		ft_checkdir(char *argv, t_option *op)
 {
 	struct stat	buf;
 
-	if ((op->listed != LISTED && stat(argv, &buf) == 0 && lstat(argv, &buf) == 0
+	if ((op->listed != 1 && stat(argv, &buf) == 0 && lstat(argv, &buf) == 0
 				&& S_ISDIR(buf.st_mode))
-			|| (S_ISLNK(buf.st_mode) && op->format == NO_LONG && opendir(argv)))
+			|| (S_ISLNK(buf.st_mode) && op->format == 0 && opendir(argv)))
 		return (1);
 	return (0);
 }

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/12 14:07:30 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/12 18:24:15 by hbeaujou         ###   ########.fr       */
+/*   Created: 2016/01/13 16:15:16 by hbeaujou          #+#    #+#             */
+/*   Updated: 2016/01/13 16:34:42 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ void	ft_error(char *argv, int first)
 		perror(ft_getname(argv));
 }
 
-void	ft_print_long(t_dir *file, t_option *op, t_len len, int *p)
+void	ft_print_long_2(t_dir *file, t_option *op, t_len len, int *p)
 {
-	if (op->sup_hide == SUP_HIDE && op->hide == NO_HIDE)
+	if (op->sup_hide == 1 && op->hide == 0)
 	{
 		if (!ft_strequ(file->name, ".") && !ft_strequ(file->name, ".."))
 		{
@@ -35,7 +35,7 @@ void	ft_print_long(t_dir *file, t_option *op, t_len len, int *p)
 			*p = *p + 1;
 		}
 	}
-	else if (op->hide == NO_HIDE)
+	else if (op->hide == 0)
 	{
 		if (file->name[0] != '.')
 		{
@@ -69,8 +69,8 @@ void	ft_printdir_none(t_option *op, int first, t_dir **begin, int *p)
 			ft_putstr_chem(temp->dossier);
 		ft_putendl(":");
 	}
-	if ((nb_f > 0) && op->format == LONG
-			&& (len.nb_files > 2 || (len.nb_files && op->hide == HIDE)))
+	if ((nb_f > 0) && op->format == 1
+			&& (len.nb_files > 2 || (len.nb_files && op->hide == 1)))
 	{
 		ft_putstr("total ");
 		ft_putnbr(len.total_blocks);
@@ -78,7 +78,7 @@ void	ft_printdir_none(t_option *op, int first, t_dir **begin, int *p)
 	}
 	while (temp)
 	{
-		ft_print_long(temp, op, len, p);
+		ft_print_long_2(temp, op, len, p);
 		temp = temp->next;
 	}
 }
@@ -92,7 +92,7 @@ static void	ft_printdir_rec(char *argv, t_option *op, int first, int *p)
 	{
 		temp = current;
 		ft_lstsort(&current, op);
-		if (!ft_hide_dir(argv) || op->hide == HIDE)
+		if (!ft_hide_dir(argv) || op->hide == 1)
 			ft_printdir_none(op, first, &temp, p);
 		while (temp)
 		{
@@ -115,7 +115,7 @@ void		ft_printdir(char *argv, t_option *op)
 	int		p;
 
 	p = 0;
-	if (op->rec == RECURSIVE)
+	if (op->rec == 1)
 		ft_printdir_rec(argv, op, 1, &p);
 	else
 	{
