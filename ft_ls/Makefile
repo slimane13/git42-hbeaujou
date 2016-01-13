@@ -6,7 +6,7 @@
 #    By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/01 20:43:29 by hbeaujou          #+#    #+#              #
-#    Updated: 2016/01/13 16:35:45 by hbeaujou         ###   ########.fr        #
+#    Updated: 2016/01/13 16:56:56 by hbeaujou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ SOURCES =	srcs/affiche_file.c		\
 			srcs/lstswap.c			\
 			srcs/makedir.c			\
 			srcs/mode.c				\
-			srcs/previous.c			\
+			srcs/the_main.c			\
 			srcs/printdir.c			\
 			srcs/recup.c			\
 			srcs/rajouts2.c			\

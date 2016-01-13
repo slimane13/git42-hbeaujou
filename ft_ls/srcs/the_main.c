@@ -6,13 +6,19 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/13 16:15:09 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/13 16:27:25 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/13 16:56:23 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-static int	ft_start_after_option(char **argv, int argc, t_option *op)
+void	gain_line(int *start)
+{
+	ft_putendl_fd("\nusage: ft_ls [-AGRSTUafgdlprtu1] [file ...]", 2);
+	*start = -1;
+}
+
+int		ft_start_after_option(char **argv, int argc, t_option *op)
 {
 	int		start;
 	int		i;
@@ -32,32 +38,28 @@ static int	ft_start_after_option(char **argv, int argc, t_option *op)
 		i++;
 	}
 	if (i < argc && argv[i][0] == '-' && ft_check_option(argv[i], &op) &&
-			ft_strcmp(argv[i], "--") != 0 && ft_strcmp(argv[i], "---") != 0 &&
-			ft_strcmp(argv[i], "-file") != 0 && ft_strcmp(argv[i], "--file") != 0 &&
-			ft_strcmp(argv[i], "---file") != 0 && ft_strcmp(argv[i], "-dir") != 0 &&
-			ft_strcmp(argv[i], "--dir") != 0 && ft_strcmp(argv[i], "---dir") != 0)
+			AR1 && AR2 && AR3 && AR4 && AR5 && AR6 && AR7 && AR8)
 	{
 		ft_putstr_fd("ft_ls: illegal option -- ", 2);
 		ft_putchar_fd(ft_check_option(argv[i], &op), 2);
-		ft_putendl_fd("\nusage: ft_ls [-AGRSTUafgdlprtu1] [file ...]", 2);
-		start = -1;
+		gain_line(&start);
 	}
 	return (start);
 }
 
-static void	ft_sort_all(char ***tab, t_option *op, int *nb)
+void	ft_sort_all(char ***tab, t_option *op, int *nb)
 {
 	ft_sort_params(tab[0], nb[0]);
 	ft_sort_params_dir(tab[2], nb[2], op);
 }
 
-static void	ft_print_tab(char ***tab, t_option *op, int *nb)
+void	ft_print_tab(char ***tab, t_option *op, int *nb)
 {
 	int		i;
 
 	i = 0;
 	ft_sort_all(tab, op, nb);
-	while (i < nb[0] && error1 == 0)
+	while (i < nb[0] && g_error1 == 0)
 	{
 		ft_putstr_fd("ft_ls: ", 2);
 		perror(tab[0][i]);
@@ -80,14 +82,14 @@ static void	ft_print_tab(char ***tab, t_option *op, int *nb)
 	}
 }
 
-void		ft_previous(char **argv, int argc)
+void	ft_ls(char **argv, int argc)
 {
 	t_option	*op;
 	int			start;
 	char		***tab;
 
-	error1 = 0;
-	error2 = 0;
+	g_error1 = 0;
+	g_error2 = 0;
 	op = (t_option *)malloc(sizeof(t_option));
 	ft_initoption(&op);
 	if ((start = ft_start_after_option(argv, argc, op)) != -1)

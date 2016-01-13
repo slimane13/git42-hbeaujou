@@ -6,17 +6,17 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/13 16:13:37 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/13 16:13:38 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/13 16:56:33 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	check;
-
 #include "ft_ls.h"
+
+char	g_check;
 
 int		main(int argc, char *argv[])
 {
-	check = 'z';
-	ft_previous(argv + 1, argc - 1);
+	g_check = 'z';
+	ft_ls(argv + 1, argc - 1);
 	return (0);
 }

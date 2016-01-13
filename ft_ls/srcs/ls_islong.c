@@ -6,13 +6,13 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/13 16:14:24 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/13 16:34:21 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/13 16:43:08 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-void		ft_date_aux(t_dir *file)
+void	ft_date_aux(t_dir *file)
 {
 	write(1, file->format->time + 3, 8);
 	if (ft_strcmp(file->name, "future") == 0)
@@ -54,7 +54,7 @@ void	ft_link(t_dir *file, t_len len, size_t i)
 	if (S_ISBLK(file->buf.st_mode) || S_ISCHR(file->buf.st_mode))
 	{
 		while (i++ < 5 - ft_intlen(major(file->buf.st_rdev)))
-			ft_putchar (' ');
+			ft_putchar(' ');
 		ft_putnbr(major(file->buf.st_rdev));
 		ft_putchar(',');
 		i = 0;
@@ -104,7 +104,7 @@ void	ft_print_long(t_dir *file, t_len len, t_option *op, size_t u)
 	ft_putchar(' ');
 }
 
-void		ft_ls_long_or_not(t_dir *file, t_option *op, t_len len)
+void	ft_ls_long_or_not(t_dir *file, t_option *op, t_len len)
 {
 	size_t		u;
 

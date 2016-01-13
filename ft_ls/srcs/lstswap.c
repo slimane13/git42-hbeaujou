@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/13 16:14:50 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/13 16:14:50 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/13 16:43:19 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,4 @@ void	ft_lstswap(t_dir **a, t_dir **b)
 	(*b)->absolute = temp->absolute;
 	(*b)->buf = temp->buf;
 	(*b)->format = temp->format;
-//	free(temp);
 }

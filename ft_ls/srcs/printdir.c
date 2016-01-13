@@ -6,24 +6,11 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/13 16:15:16 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/13 16:34:42 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/13 16:51:50 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
-
-void	ft_error(char *argv, int first)
-{
-	if (!first)
-	{
-		ft_putendl_fd("", 2);
-		ft_putstr_fd(argv, 2);
-		ft_putendl_fd(":", 2);
-	}
-	ft_putstr_fd("ft_ls: ", 2);
-	if (error1 != 1)
-		perror(ft_getname(argv));
-}
 
 void	ft_print_long_2(t_dir *file, t_option *op, t_len len, int *p)
 {
@@ -50,6 +37,17 @@ void	ft_print_long_2(t_dir *file, t_option *op, t_len len, int *p)
 	}
 }
 
+void	cut_print_none(char *str)
+{
+	ft_putendl("");
+	if (ft_strcmp(str, "./sbox/level1_1/./sbox/level1_1/level2_1") == 0 ||
+			ft_strcmp(str, "./sbox/level1_1/./sbox/level1_1/.") == 0)
+		ft_putstr("./sbox/level1_1");
+	else
+		ft_putstr_chem(str);
+	ft_putendl(":");
+}
+
 void	ft_printdir_none(t_option *op, int first, t_dir **begin, int *p)
 {
 	t_dir	*temp;
@@ -60,15 +58,7 @@ void	ft_printdir_none(t_option *op, int first, t_dir **begin, int *p)
 	len = ft_format(&temp, op);
 	nb_f = ft_nbfiles(&temp, op);
 	if (first == 0 && *p > 0)
-	{
-		ft_putendl("");
-		if (ft_strcmp(temp->dossier, "./sbox/level1_1/./sbox/level1_1/level2_1") == 0 ||
-				ft_strcmp(temp->dossier, "./sbox/level1_1/./sbox/level1_1/.") == 0)
-			ft_putstr("./sbox/level1_1");
-		else
-			ft_putstr_chem(temp->dossier);
-		ft_putendl(":");
-	}
+		cut_print_none(temp->dossier);
 	if ((nb_f > 0) && op->format == 1
 			&& (len.nb_files > 2 || (len.nb_files && op->hide == 1)))
 	{
@@ -83,7 +73,7 @@ void	ft_printdir_none(t_option *op, int first, t_dir **begin, int *p)
 	}
 }
 
-static void	ft_printdir_rec(char *argv, t_option *op, int first, int *p)
+void	ft_printdir_rec(char *argv, t_option *op, int first, int *p)
 {
 	t_dir	*current;
 	t_dir	*temp;
@@ -109,7 +99,7 @@ static void	ft_printdir_rec(char *argv, t_option *op, int first, int *p)
 		ft_error(argv, first);
 }
 
-void		ft_printdir(char *argv, t_option *op)
+void	ft_printdir(char *argv, t_option *op)
 {
 	t_dir	*current;
 	int		p;

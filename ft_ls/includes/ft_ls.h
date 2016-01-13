@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/12 09:34:13 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/13 16:24:54 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/13 16:54:11 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,15 @@
 # define CUT131 "../../System/Library/Frameworks/Python."
 # define CUT132 "framework/Versions/2.6/bin/2to32.6"
 # define CUT13 ft_strjoin(CUT131, CUT132)
+
+# define AR1 ft_strcmp(argv[i], "--") != 0
+# define AR2 ft_strcmp(argv[i], "---") != 0
+# define AR3 ft_strcmp(argv[i], "-file") != 0
+# define AR4 ft_strcmp(argv[i], "--file") != 0
+# define AR5 ft_strcmp(argv[i], "---file") != 0
+# define AR6 ft_strcmp(argv[i], "-dir") != 0
+# define AR7 ft_strcmp(argv[i], "--dir") != 0
+# define AR8 ft_strcmp(argv[i], "---dir") != 0
 
 typedef struct s_error	t_error;
 
@@ -124,11 +133,14 @@ typedef struct	s_dir
 }				t_dir;
 
 extern char		*g_str;
-extern char		check;
-extern int		error1;
-extern int		error2;
-extern t_error	*lst;
+extern char		g_check;
+extern int		g_error1;
+extern int		g_error2;
+extern t_error	*g_lst;
 
+void			cut_check(t_error *tmp, char *argv, int *test);
+void			ft_error(char *argv, int first);
+void			ft_lstaddend_error(t_error *new_r);
 char			*ft_getdir(char *argv);
 void			ft_ls(char **argv, int argc);
 void			info_cut3(int count[9], t_dir **f);

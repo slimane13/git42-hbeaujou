@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/13 12:31:51 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/13 16:00:06 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/13 16:49:35 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,6 @@ void	ft_getinfos(struct dirent *l, t_dir **f, char *argv, t_option *op)
 		(*f)->name = ft_strdup(l->d_name);
 		(*f)->dossier = ft_strjoin_dir(argv, "");
 		(*f)->absolute = ft_strdup(chem);
-//		free(chem);
 		(*f)->format = ft_recup_long(buf, op);
 		if (S_ISLNK(buf.st_mode))
 		{

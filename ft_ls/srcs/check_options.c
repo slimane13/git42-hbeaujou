@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/13 16:12:09 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/13 16:22:43 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/13 16:38:55 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static void	ft_putoption(char op, t_option **t_op)
 	if (op == 'f')
 	{
 		(*t_op)->stop = 1;
-		if (check != 'a')
+		if (g_check != 'a')
 			(*t_op)->hide = 1;
 	}
 }
@@ -80,7 +80,7 @@ char		ft_check_option(char const *op, t_option **t_op)
 			if (!ft_charcheck_in_str(my_op[i], options))
 				return (my_op[i]);
 			if (my_op[i] == 'f' && my_op[i + 1] == 'i')
-				check = 'a';
+				g_check = 'a';
 			ft_putoption(my_op[i], t_op);
 			i++;
 		}

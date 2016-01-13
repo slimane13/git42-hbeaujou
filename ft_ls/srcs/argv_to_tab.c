@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/13 16:11:55 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/13 16:27:46 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/13 16:39:14 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ char	***ft_gettab(char **argv, int argc, int *nb, t_option *op)
 	return (tab);
 }
 
-void		print_tab(char ***tab, int *nb)
+void	print_tab(char ***tab, int *nb)
 {
 	int		i;
 
@@ -65,7 +65,7 @@ void		print_tab(char ***tab, int *nb)
 	}
 }
 
-char		***ft_maketab_of_argv(char **argv, int argc, t_option *op)
+char	***ft_maketab_of_argv(char **argv, int argc, t_option *op)
 {
 	char	***tab;
 	int		*nb_out;
