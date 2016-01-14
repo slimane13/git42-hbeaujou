@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/01/13 17:08:43 by hbeaujou          #+#    #+#             */
+/*   Updated: 2016/01/13 17:08:44 by hbeaujou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
@@ -9,14 +21,14 @@
 # define MULTI_MEMORY		2
 # define MAX_FD			1000
 
-typedef struct		o_var
+typedef struct		s_var_3
 {
 	char			*return_line;
 	char			*memory;
 	long			len;
 	long			tampon;
 	int				file_lecture;
-}					p_var;
+}					t_var_3;
 
 int					get_next_line(int fd, char **line);
 

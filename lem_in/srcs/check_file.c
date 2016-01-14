@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/04 12:48:45 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/08 16:53:20 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/14 19:21:16 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int		read_line(char *line)
 	else if (line[0] == '#' && line[1] == '#')
 		return (2);
 	else if (test2 == 1)
-		return (cut_read_3());
+		return (cut_rajout(line));
 	else if (test3 == 1)
 		return (cut_read_4());
 	else if (ft_isalldigit(line) == 1 && line[0] != '\n' && line[0] != '\0')

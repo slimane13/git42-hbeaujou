@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/12 09:34:13 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/13 16:54:11 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/13 17:06:57 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,6 +138,7 @@ extern int		g_error1;
 extern int		g_error2;
 extern t_error	*g_lst;
 
+t_error			*new_error(char *str);
 void			cut_check(t_error *tmp, char *argv, int *test);
 void			ft_error(char *argv, int first);
 void			ft_lstaddend_error(t_error *new_r);

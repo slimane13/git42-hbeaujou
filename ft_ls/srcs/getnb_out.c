@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/13 16:14:00 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/13 16:28:21 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/13 17:01:48 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,16 @@ int		*ft_getnb_out(char **argv, int argc, t_option *op)
 	else
 		ft_none(nb_out, op);
 	return (nb_out);
+}
+
+int		ft_hide_dir(char *absolute)
+{
+	int		len;
+
+	len = ft_strlen(absolute);
+	while (absolute[len] != '/')
+		len--;
+	if (absolute[len + 1] == '.')
+		return (1);
+	return (0);
 }

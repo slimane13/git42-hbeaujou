@@ -6,13 +6,13 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/13 16:15:04 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/13 16:15:05 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/13 17:04:42 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-static void	ft_type_letter(mode_t mode)
+void	ft_type_letter(mode_t mode)
 {
 	if (S_ISREG(mode))
 		ft_putchar('-');
@@ -32,7 +32,7 @@ static void	ft_type_letter(mode_t mode)
 		ft_putchar('?');
 }
 
-static void	ft_mode_usr(mode_t mode)
+void	ft_mode_usr(mode_t mode)
 {
 	if (mode & S_IRUSR)
 		ft_putchar('r');
@@ -55,7 +55,7 @@ static void	ft_mode_usr(mode_t mode)
 		ft_putchar('-');
 }
 
-void		ft_mode_grp(mode_t mode)
+void	ft_mode_grp(mode_t mode)
 {
 	if (mode & S_IRGRP)
 		ft_putchar('r');
@@ -78,7 +78,7 @@ void		ft_mode_grp(mode_t mode)
 		ft_putchar('-');
 }
 
-void		ft_mode_oth(mode_t mode)
+void	ft_mode_oth(mode_t mode)
 {
 	if (mode & S_IROTH)
 		ft_putchar('r');
@@ -101,7 +101,7 @@ void		ft_mode_oth(mode_t mode)
 		ft_putchar('-');
 }
 
-void		ft_mode(char *argv, mode_t mode)
+void	ft_mode(char *argv, mode_t mode)
 {
 	if (mode)
 	{

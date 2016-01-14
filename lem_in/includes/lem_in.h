@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/03 14:20:35 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/10 14:29:08 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/14 19:22:03 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,7 @@ int				cut_read_2(void);
 int				cut_read_3(void);
 int				cut_read_4(void);
 int				cut_read_5(void);
+int				cut_rajout(char *line);
 
 void			ft_lstaddend_reseau(t_reseau **alst, t_reseau *new_r);
 void			ft_lstaddend_room(t_map **alst, t_map *new_r);

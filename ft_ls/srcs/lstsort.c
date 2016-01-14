@@ -6,13 +6,13 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/13 16:14:43 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/13 16:31:27 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/13 17:03:29 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-static void	ft_swap_name(t_dir *a, t_dir *b, t_option *op)
+void	ft_swap_name(t_dir *a, t_dir *b, t_option *op)
 {
 	int		res;
 
@@ -23,7 +23,7 @@ static void	ft_swap_name(t_dir *a, t_dir *b, t_option *op)
 		ft_lstswap(&a, &b);
 }
 
-static void	ft_lstsort_name(t_dir **begin_list, t_option *op)
+void	ft_lstsort_name(t_dir **begin_list, t_option *op)
 {
 	t_dir	*temp_list;
 	t_dir	*rt_list;
@@ -46,7 +46,7 @@ static void	ft_lstsort_name(t_dir **begin_list, t_option *op)
 	}
 }
 
-static void	ft_lstsort_time(t_dir **begin_list, t_option *op)
+void	ft_lstsort_time(t_dir **begin_list, t_option *op)
 {
 	t_dir	*temp_list;
 	t_dir	*rt_list;
@@ -75,7 +75,7 @@ static void	ft_lstsort_time(t_dir **begin_list, t_option *op)
 	}
 }
 
-static void	ft_lstsort_size(t_dir **begin_list, t_option *op)
+void	ft_lstsort_size(t_dir **begin_list, t_option *op)
 {
 	t_dir	*temp_list;
 	t_dir	*rt_list;
@@ -100,7 +100,7 @@ static void	ft_lstsort_size(t_dir **begin_list, t_option *op)
 	}
 }
 
-void		ft_lstsort(t_dir **begin_list, t_option *op)
+void	ft_lstsort(t_dir **begin_list, t_option *op)
 {
 	if (op->by == 1 || op->stop == 1)
 		ft_lstsort_name(begin_list, op);

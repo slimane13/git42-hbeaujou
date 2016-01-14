@@ -6,7 +6,7 @@
 #    By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/01 20:43:29 by hbeaujou          #+#    #+#              #
-#    Updated: 2016/01/13 16:56:56 by hbeaujou         ###   ########.fr        #
+#    Updated: 2016/01/13 17:05:29 by hbeaujou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,34 +14,21 @@ NAME = ft_ls
 
 SOURCES =	srcs/affiche_file.c		\
 			srcs/argv_to_tab.c		\
-			srcs/calcs1.c			\
 			srcs/check_options.c	\
-			srcs/check_path.c		\
 			srcs/checkargv.c		\
-			srcs/couleurs.c			\
-			srcs/dir_join.c			\
-			srcs/files.c			\
 			srcs/format.c			\
-			srcs/free_dir.c			\
 			srcs/ft_ls.c			\
-			srcs/getdir.c			\
-			srcs/getname.c			\
+			srcs/rajouts1.c			\
 			srcs/getnb_out.c		\
-			srcs/hide_dir.c			\
-			srcs/initlen.c			\
-			srcs/initoption.c		\
+			srcs/init.c				\
 			srcs/ls_islong.c		\
-			srcs/lstadd.c			\
-			srcs/lstnew.c			\
 			srcs/lstsort.c			\
-			srcs/lstswap.c			\
-			srcs/makedir.c			\
+			srcs/list_works.c		\
 			srcs/mode.c				\
 			srcs/the_main.c			\
 			srcs/printdir.c			\
 			srcs/recup.c			\
 			srcs/rajouts2.c			\
-			srcs/recupmass.c		\
 			srcs/sortparams.c		\
 
 HEADERS	= -I./includes/

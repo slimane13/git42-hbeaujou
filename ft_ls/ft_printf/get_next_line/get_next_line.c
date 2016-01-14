@@ -6,16 +6,16 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/15 09:26:55 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/07 12:26:03 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/13 17:08:28 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #include <stdio.h>
 
-static int		define(p_var **vari)
+static int		define(t_var_3 **vari)
 {
-	*vari = malloc(sizeof(p_var));
+	*vari = malloc(sizeof(t_var_3));
 	if (!*vari)
 		return (0);
 	(*vari)->len = BUF_SIZE;
@@ -29,7 +29,7 @@ static int		define(p_var **vari)
 	return (1);
 }
 
-static int		add_memory_size(p_var *vari)
+static int		add_memory_size(t_var_3 *vari)
 {
 	char		*new_memory;
 	long		new_size;
@@ -49,8 +49,8 @@ static int		add_memory_size(p_var *vari)
 	return (1);
 }
 
-static int		return_handle(p_var **pointer_to_vari
-									, p_var *vari, char **line)
+static int		return_handle(t_var_3 **pointer_to_vari
+									, t_var_3 *vari, char **line)
 {
 	if (vari->file_lecture < 0)
 		return (-1);
@@ -72,7 +72,7 @@ static int		return_handle(p_var **pointer_to_vari
 	return (1);
 }
 
-static int		return_line(p_var *vari)
+static int		return_line(t_var_3 *vari)
 {
 	while (vari->tampon > vari->return_line - vari->memory
 			&& *(vari->return_line) != '\n')
@@ -84,7 +84,7 @@ static int		return_line(p_var *vari)
 
 int				get_next_line(int const fd, char **line)
 {
-	static p_var	*get_in[MAX_FD];
+	static t_var_3	*get_in[MAX_FD];
 
 	if (fd >= MAX_FD || fd < 0 || line == NULL)
 		return (-1);
@@ -97,7 +97,8 @@ int				get_next_line(int const fd, char **line)
 		while (get_in[fd]->tampon + BUF_SIZE > get_in[fd]->len)
 			if (!add_memory_size(get_in[fd]))
 				return (-1);
-		get_in[fd]->file_lecture = read(fd, get_in[fd]->memory + get_in[fd]->tampon, BUF_SIZE);
+		get_in[fd]->file_lecture = read(fd,
+				get_in[fd]->memory + get_in[fd]->tampon, BUF_SIZE);
 		get_in[fd]->tampon = get_in[fd]->tampon + get_in[fd]->file_lecture;
 	}
 	return (return_handle(&get_in[fd], get_in[fd], line));

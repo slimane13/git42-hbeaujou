@@ -6,13 +6,52 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/13 16:13:25 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/13 16:29:46 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/13 17:00:37 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-static void	ft_getlen(t_dir *temp, t_len *len, t_option *op)
+void	ft_free_dir(t_dir **begin_list)
+{
+	t_dir	*temp;
+
+	temp = *begin_list;
+	while (temp)
+	{
+		free(temp->dossier);
+		free(temp->name);
+		free(temp->absolute);
+		free(temp->format->uid_name);
+		free(temp->format->gid_name);
+		free(temp->format->time);
+		temp = temp->next;
+	}
+	*begin_list = NULL;
+}
+
+int		ft_nbfiles(t_dir **begin, t_option *op)
+{
+	int		f;
+	t_dir	*temp;
+
+	temp = *begin;
+	f = 0;
+	while (temp)
+	{
+		if (op->hide == 0)
+		{
+			if (temp->name[0] != '.')
+				f++;
+		}
+		else
+			f++;
+		temp = temp->next;
+	}
+	return (f);
+}
+
+void	ft_getlen(t_dir *temp, t_len *len, t_option *op)
 {
 	len->total_blocks += temp->buf.st_blocks;
 	if (ft_intlen(temp->buf.st_nlink) > len->links)
@@ -33,7 +72,7 @@ static void	ft_getlen(t_dir *temp, t_len *len, t_option *op)
 	}
 }
 
-t_len		ft_format(t_dir **begin, t_option *op)
+t_len	ft_format(t_dir **begin, t_option *op)
 {
 	t_dir	*temp;
 	t_len	len;

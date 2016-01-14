@@ -6,11 +6,19 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/08 16:19:12 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/08 16:47:26 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/14 19:21:51 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
+
+int		cut_rajout(char *line)
+{
+	if (line[0] == 'L')
+		return (0);
+	else
+		return (cut_read_3());
+}
 
 void	cut_fromend_topath(t_path **new, t_map **tmp2,
 		t_map **tmp3, t_path **path)

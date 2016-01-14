@@ -6,13 +6,21 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/13 16:12:09 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/13 16:38:55 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/13 16:58:33 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-static void	ft_putoption_aux(char op, t_option **t_op)
+void	ft_putstr_chem(char const *s)
+{
+	if (s)
+		write(1, s, ft_strlen(s) - 1);
+	else if (s == NULL)
+		ft_putendl("(NULL)");
+}
+
+void	ft_putoption_aux(char op, t_option **t_op)
 {
 	if (op == 'R')
 		(*t_op)->rec = 1;
@@ -34,7 +42,7 @@ static void	ft_putoption_aux(char op, t_option **t_op)
 		(*t_op)->pipe = 1;
 }
 
-static void	ft_putoption(char op, t_option **t_op)
+void	ft_putoption(char op, t_option **t_op)
 {
 	ft_putoption_aux(op, t_op);
 	if (op == 'U')
@@ -63,7 +71,7 @@ static void	ft_putoption(char op, t_option **t_op)
 	}
 }
 
-char		ft_check_option(char const *op, t_option **t_op)
+char	ft_check_option(char const *op, t_option **t_op)
 {
 	char	*options;
 	char	*my_op;

@@ -6,13 +6,13 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/13 16:15:32 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/13 16:33:20 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/13 17:06:03 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-static void	ft_swap_str(char **a, char **b)
+void	ft_swap_str(char **a, char **b)
 {
 	char	*save;
 
@@ -21,7 +21,7 @@ static void	ft_swap_str(char **a, char **b)
 	*b = save;
 }
 
-static void	ft_sort_time(char **argv, int argc, t_option *op)
+void	ft_sort_time(char **argv, int argc, t_option *op)
 {
 	int			i;
 	int			j;
@@ -46,7 +46,7 @@ static void	ft_sort_time(char **argv, int argc, t_option *op)
 	}
 }
 
-void		ft_sort_params_dir(char **argv, int argc, t_option *op)
+void	ft_sort_params_dir(char **argv, int argc, t_option *op)
 {
 	if (op->by == 1 && op->rev == 0)
 		ft_sort_params(argv, argc);
