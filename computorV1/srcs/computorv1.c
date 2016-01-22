@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/22 09:03:18 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/22 12:04:02 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/22 12:10:35 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -240,6 +240,29 @@ int		solve(t_equ **equ, int degree)
 	return (res);
 }
 
+void	solve_degree_1(t_equ **equ, t_solve **answ)
+{
+	double	a;
+	double	b;
+	double	res;
+	double	ans;
+	t_elem	*tmp;
+	t_solve	*tmp2;
+
+	tmp = (*equ)->content;
+	while (tmp)
+	{
+		if (tmp->puissance == 1)
+			a = tmp->value;
+		else
+			b = tmp->value;
+		tmp = tmp->next;
+	}
+	ans = -b / a;
+	tmp2 = new_solve(ans);
+	ft_lstaddend_solve(answ, tmp2);
+}
+
 void	solve_zero(t_equ **equ, t_solve **answ)
 {
 	double	a;
@@ -253,7 +276,7 @@ void	solve_zero(t_equ **equ, t_solve **answ)
 	tmp = (*equ)->content;
 	while (tmp)
 	{
-		if (tmp->puissance == 0)
+		if (tmp->puissance == 2)
 			a = tmp->value;
 		else if (tmp->puissance == 1)
 			b = tmp->value;
@@ -336,6 +359,11 @@ int		main(int argc, char **argv)
 			find_solv(&equ, &answ);
 		}
 	}
+	else if (degree == 0)
+	{
+	}
+	else
+		solve_degree_1(&equ, &answ);
 	affiche_solve(&answ);
 	ft_printf("\n ----- Fin de la resolution ----- \n\n");
 }
