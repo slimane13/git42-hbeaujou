@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/22 09:03:18 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/22 11:50:01 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/22 12:04:02 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -228,7 +228,7 @@ int		solve(t_equ **equ, int degree)
 	tmp = (*equ)->content;
 	while (tmp)
 	{
-		if (tmp->puissance == 0)
+		if (tmp->puissance == 2)
 			a = tmp->value;
 		else if (tmp->puissance == 1)
 			b = tmp->value;
@@ -282,7 +282,7 @@ void	find_solv(t_equ **equ, t_solve **answ)
 	tmp = (*equ)->content;
 	while (tmp)
 	{
-		if (tmp->puissance == 0)
+		if (tmp->puissance == 2)
 			a = tmp->value;
 		else if (tmp->puissance == 1)
 			b = tmp->value;
@@ -295,6 +295,7 @@ void	find_solv(t_equ **equ, t_solve **answ)
 	tmp2 = new_solve(ans);
 	ft_lstaddend_solve(answ, tmp2);
 	ans = (-b + sqrt(res)) / (2 * a);
+	tmp2 = new_solve(ans);
 	tmp2 = new_solve(ans);
 	ft_lstaddend_solve(answ, tmp2);
 }
@@ -315,22 +316,25 @@ int		main(int argc, char **argv)
 	ft_printf("Forme reduite : ");
 	affiche_end(&equ);
 	ft_printf("Degre : %d\n\n", degree);
-	discri = solve(&equ, degree);
-	ft_printf("Discriminant : %d\n", discri);
-	if (discri < 0)
+	if (degree == 2)
 	{
-		ft_printf("Discriminant negatif, il n'y a pas de solution\n");
-		exit(0);
-	}
-	else if (discri == 0)
-	{
-		ft_printf("Discriminant nul, il n'y a qu'une solution :\n");
-		solve_zero(&equ, &answ);
-	}
-	else
-	{
-		ft_printf("Discriminant positif, il y a 2 solutions :\n");
-		find_solv(&equ, &answ);
+		discri = solve(&equ, degree);
+		ft_printf("Discriminant : %d\n", discri);
+		if (discri < 0)
+		{
+			ft_printf("Discriminant negatif, il n'y a pas de solution\n");
+			exit(0);
+		}
+		else if (discri == 0)
+		{
+			ft_printf("Discriminant nul, il n'y a qu'une solution :\n");
+			solve_zero(&equ, &answ);
+		}
+		else
+		{
+			ft_printf("Discriminant positif, il y a 2 solutions :\n");
+			find_solv(&equ, &answ);
+		}
 	}
 	affiche_solve(&answ);
 	ft_printf("\n ----- Fin de la resolution ----- \n\n");
