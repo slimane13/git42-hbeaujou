@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/22 09:03:18 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/22 12:10:35 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/22 12:41:27 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,16 +112,12 @@ int		check(t_equ **equ)
 
 	tmp = *equ;
 	max = 0;
-	while (tmp)
+	tmp2 = tmp->content;
+	while (tmp2)
 	{
-		tmp2 = tmp->content;
-		while (tmp2)
-		{
-			if (tmp2->puissance > max)
-				max = tmp2->puissance;
-			tmp2 = tmp2->next;
-		}
-		tmp = tmp->next;
+		if (tmp2->puissance > max && tmp2->value != 0)
+			max = tmp2->puissance;
+		tmp2 = tmp2->next;
 	}
 	return (max);
 }
@@ -180,12 +176,18 @@ void	affiche_solve(t_solve **answ)
 {
 	t_solve	*tmp;
 	int		i;
+	int		floa;
+	char	str2[50];
+	char	str[50];
 
 	tmp = *answ;
 	i = 1;
 	while (tmp)
 	{
-		printf("S%d = %f\n", i, tmp->value);
+		sprintf(str2, "%f", tmp->value);
+		floa = floa_calc(str2);
+		morphNumericString(str2, floa);
+		printf("S%d = %s\n", i, str2);
 		tmp = tmp->next;
 		i++;
 	}
@@ -254,10 +256,17 @@ void	solve_degree_1(t_equ **equ, t_solve **answ)
 	{
 		if (tmp->puissance == 1)
 			a = tmp->value;
-		else
+		else if (tmp->puissance == 0)
 			b = tmp->value;
 		tmp = tmp->next;
 	}
+	if (a == 0)
+	{
+		printf("Il n'y a pas de solution\n");
+		printf("\n [0;31;40m----- Fin de la resolution ----- \n\n");
+		exit(0);
+	}
+	printf("Il n'y a qu'une solution :\n");
 	ans = -b / a;
 	tmp2 = new_solve(ans);
 	ft_lstaddend_solve(answ, tmp2);
@@ -286,8 +295,6 @@ void	solve_zero(t_equ **equ, t_solve **answ)
 	}
 	res = b * b - 4 * a * c;
 	ans = (-b) / (2 * a);
-	tmp2 = new_solve(ans);
-	ft_lstaddend_solve(answ, tmp2);
 	tmp2 = new_solve(ans);
 	ft_lstaddend_solve(answ, tmp2);
 }
@@ -319,7 +326,6 @@ void	find_solv(t_equ **equ, t_solve **answ)
 	ft_lstaddend_solve(answ, tmp2);
 	ans = (-b + sqrt(res)) / (2 * a);
 	tmp2 = new_solve(ans);
-	tmp2 = new_solve(ans);
 	ft_lstaddend_solve(answ, tmp2);
 }
 
@@ -333,11 +339,11 @@ int		main(int argc, char **argv)
 
 	str = deblank(argv[1]);
 	parsing(&equ, str);
-	degree = check(&equ);
 	reduce(&equ);
-	ft_printf("\n ----- Demarrage de la resolution ----- \n\n");
-	ft_printf("Forme reduite : ");
+	ft_printf("\n [0;36;40m----- Demarrage de la resolution ----- \n\n");
+	ft_printf("[0;37;40mForme reduite : ");
 	affiche_end(&equ);
+	degree = check(&equ);
 	ft_printf("Degre : %d\n\n", degree);
 	if (degree == 2)
 	{
@@ -365,5 +371,5 @@ int		main(int argc, char **argv)
 	else
 		solve_degree_1(&equ, &answ);
 	affiche_solve(&answ);
-	ft_printf("\n ----- Fin de la resolution ----- \n\n");
+	ft_printf("\n [0;31;40m----- Fin de la resolution ----- \n\n");
 }
