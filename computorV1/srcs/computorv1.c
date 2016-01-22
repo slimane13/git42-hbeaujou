@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/22 09:03:18 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/22 11:14:08 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/22 11:50:01 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ void	after_equal(int *i, int *j, char *str, t_equ **equ)
 		tmp = ft_strsub(str, *j, *i - *j);
 		elem = new_elem(coef, ft_atoi(tmp));
 		ft_lstaddend_elem(&(*equ)->next->content, elem);
-		while ((str[*i] > '9' || str[*i] < '0') && str[*i] && str[*i] == '-')
+		while ((str[*i] > '9' || str[*i] < '0') && str[*i] && str[*i] != '-')
 			*i = *i + 1;
 	}
 }
@@ -128,48 +128,52 @@ int		check(t_equ **equ)
 
 int		floa_calc(char *str)
 {
-}
+	int	i;
+	int k;
+	int	count;
 
-void	affiche(t_equ **equ)
-{
-	t_equ	*tmp;
-	t_elem	*tmp2;
-	char	str[50];
-	int		floa;
-
-	tmp = *equ;
-	tmp2 = tmp->content;
-	while (tmp2)
+	count = 0;
+	i = 0;
+	k = 0;
+	while (str[i] != '.')
+		i++;
+	k = i;
+	while (str[i])
 	{
-		sprintf(str, "coef : %f | puissance : %d\n", tmp2->value, tmp2->puissance);
-		floa = floa_calc(str);
-		morphNumericString(str, floa);
-		printf("%s\n", str);
-		tmp2 = tmp2->next;
+		if (str[i] <= '9' && str[i] >= '0')
+			k = i;
+		i++;
 	}
-	tmp = tmp->next;
-	tmp2 = tmp->content;
-	while (tmp2)
-	{
-		sprintf(str, "coef : %f | puissance : %d\n", tmp2->value, tmp2->puissance);
-		morphNumericString(str, 3);
-		printf("%s\n", str);
-		tmp2 = tmp2->next;
-	}
+	return (k);
 }
 
 void	affiche_end(t_equ **equ)
 {
 	t_equ	*tmp;
 	t_elem	*tmp2;
+	char	*final;
+	char	str[50];
+	char	str2[50];
+	int		floa;
+	int		count;
 
 	tmp = *equ;
 	tmp2 = tmp->content;
+	count = 0;
 	while (tmp2)
 	{
-		printf("coef : %f | puissance : %d\n", tmp2->value, tmp2->puissance);
+		sprintf(str2, "%f", tmp2->value);
+		floa = floa_calc(str2);
+		morphNumericString(str2, floa);
+		sprintf(str, "%s * X^%d ", str2, tmp2->puissance);
+		if (count > 0 && tmp2->value >= 0)
+			printf("+ ");
+		printf("%s", str);
 		tmp2 = tmp2->next;
+		count++;
 	}
+	printf("= 0");
+	printf("\n");
 }
 
 void	affiche_solve(t_solve **answ)
@@ -181,9 +185,7 @@ void	affiche_solve(t_solve **answ)
 	i = 1;
 	while (tmp)
 	{
-//		sprintf(str, "Solution n%d : %f\n", i, tmp->value);
-//		morphNumericString(str, 3);
-		printf("Solution n%d : %f\n", i, tmp->value);
+		printf("S%d = %f\n", i, tmp->value);
 		tmp = tmp->next;
 		i++;
 	}
@@ -238,6 +240,35 @@ int		solve(t_equ **equ, int degree)
 	return (res);
 }
 
+void	solve_zero(t_equ **equ, t_solve **answ)
+{
+	double	a;
+	double	b;
+	double	c;
+	double	res;
+	double	ans;
+	t_elem	*tmp;
+	t_solve	*tmp2;
+
+	tmp = (*equ)->content;
+	while (tmp)
+	{
+		if (tmp->puissance == 0)
+			a = tmp->value;
+		else if (tmp->puissance == 1)
+			b = tmp->value;
+		else
+			c = tmp->value;
+		tmp = tmp->next;
+	}
+	res = b * b - 4 * a * c;
+	ans = (-b) / (2 * a);
+	tmp2 = new_solve(ans);
+	ft_lstaddend_solve(answ, tmp2);
+	tmp2 = new_solve(ans);
+	ft_lstaddend_solve(answ, tmp2);
+}
+
 void	find_solv(t_equ **equ, t_solve **answ)
 {
 	double	a;
@@ -278,11 +309,12 @@ int		main(int argc, char **argv)
 
 	str = deblank(argv[1]);
 	parsing(&equ, str);
-	affiche(&equ);
 	degree = check(&equ);
-	ft_printf("Degre : %d\n", degree);
 	reduce(&equ);
+	ft_printf("\n ----- Demarrage de la resolution ----- \n\n");
+	ft_printf("Forme reduite : ");
 	affiche_end(&equ);
+	ft_printf("Degre : %d\n\n", degree);
 	discri = solve(&equ, degree);
 	ft_printf("Discriminant : %d\n", discri);
 	if (discri < 0)
@@ -290,7 +322,16 @@ int		main(int argc, char **argv)
 		ft_printf("Discriminant negatif, il n'y a pas de solution\n");
 		exit(0);
 	}
-	else if (discri > 0)
+	else if (discri == 0)
+	{
+		ft_printf("Discriminant nul, il n'y a qu'une solution :\n");
+		solve_zero(&equ, &answ);
+	}
+	else
+	{
+		ft_printf("Discriminant positif, il y a 2 solutions :\n");
 		find_solv(&equ, &answ);
+	}
 	affiche_solve(&answ);
+	ft_printf("\n ----- Fin de la resolution ----- \n\n");
 }
