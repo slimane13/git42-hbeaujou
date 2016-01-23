@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/22 09:14:42 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/22 10:55:58 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/23 15:41:42 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*deblank(char* input)
 	output = input;
 	i = 0;
 	j = 0;
-	while (i < ft_strlen(input))
+	while (i < (int)ft_strlen(input))
 	{
 		if (input[i] != ' ' && input[i] != '\t')
 			output[j] = input[i];

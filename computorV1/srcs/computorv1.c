@@ -6,11 +6,13 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/22 09:03:18 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/22 12:41:27 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/23 15:41:23 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "computorv1.h"
+
+int	g_some;
 
 void	morphNumericString(char *s, int n)
 {
@@ -49,6 +51,8 @@ void	before_equal(int *i, int *j, char *str, t_equ **equ)
 			*i = *i + 1;
 		tmp = ft_strsub(str, *j, *i - *j);
 		coef = atof(tmp);
+		if (coef != 0)
+			g_some = 1;
 		while ((str[*i] > '9' || str[*i] < '0') && str[*i] != '=' && str[*i] != '-')
 			*i = *i + 1;
 		*j = *i;
@@ -75,6 +79,8 @@ void	after_equal(int *i, int *j, char *str, t_equ **equ)
 			*i = *i + 1;
 		tmp = ft_strsub(str, *j, *i - *j);
 		coef = atof(tmp);
+		if (coef != 0)
+			g_some = 1;
 		while ((str[*i] > '9' || str[*i] < '0') && str[*i] && str[*i] != '-')
 			*i = *i + 1;
 		*j = *i;
@@ -147,7 +153,6 @@ void	affiche_end(t_equ **equ)
 {
 	t_equ	*tmp;
 	t_elem	*tmp2;
-	char	*final;
 	char	str[50];
 	char	str2[50];
 	int		floa;
@@ -178,7 +183,6 @@ void	affiche_solve(t_solve **answ)
 	int		i;
 	int		floa;
 	char	str2[50];
-	char	str[50];
 
 	tmp = *answ;
 	i = 1;
@@ -246,7 +250,6 @@ void	solve_degree_1(t_equ **equ, t_solve **answ)
 {
 	double	a;
 	double	b;
-	double	res;
 	double	ans;
 	t_elem	*tmp;
 	t_solve	*tmp2;
@@ -337,6 +340,9 @@ int		main(int argc, char **argv)
 	t_equ		*equ;
 	t_solve		*answ;
 
+	if (argc > 0)
+		;
+	g_some = 0;
 	str = deblank(argv[1]);
 	parsing(&equ, str);
 	reduce(&equ);
@@ -367,6 +373,10 @@ int		main(int argc, char **argv)
 	}
 	else if (degree == 0)
 	{
+		if (g_some != 0)
+			ft_printf("Tous les reels sont solutions\n");
+		else
+			ft_printf("Il n'y a aucune solution\n");
 	}
 	else
 		solve_degree_1(&equ, &answ);

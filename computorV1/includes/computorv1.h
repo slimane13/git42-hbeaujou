@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/22 09:05:19 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/22 10:56:13 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/23 15:23:30 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ struct					s_solve
 	double	value;
 	t_solve	*next;
 };
+
+extern int	g_some;
 
 t_elem					*new_elem(double valu, int puissanc);
 t_equ					*new_equ(t_elem *conten);
