@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/19 13:43:40 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/22 17:44:50 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/02/01 12:32:43 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,11 @@ void	check_file(t_function **file)
 	t_function *tmp;
 
 	tmp = *file;
+	if (!tmp)
+	{
+		ft_printf("No content\n");
+		exit(1);
+	}
 	while (tmp->next)
 		tmp = tmp->next;
 	if (tmp->header == 1 || tmp->header == 2)

@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/21 15:24:07 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/22 14:33:47 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/26 13:53:12 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,15 @@ void	cut_param_3(t_tempo **vars, int test)
 	(*vars)->i++;
 	(*vars)->name = ft_strsub((*vars)->str2, 0, (*vars)->i);
 	(*vars)->j = (*vars)->i;
-	while ((*vars)->str2[(*vars)->j] != SEPARATOR_CHAR)
+	while ((*vars)->str2[(*vars)->j] != SEPARATOR_CHAR && IS_END)
 		(*vars)->j++;
+	test_no_params(vars);
 	(*vars)->param1 = ft_strsub((*vars)->str2,
 			(*vars)->i, (*vars)->j - (*vars)->i);
 	(*vars)->i = (*vars)->j + 1;
-	while ((*vars)->str2[(*vars)->i] != SEPARATOR_CHAR)
+	while ((*vars)->str2[(*vars)->i] != SEPARATOR_CHAR && IS_END)
 		(*vars)->i++;
+	test_no_params_2(vars);
 	(*vars)->j++;
 	(*vars)->param2 = ft_strsub((*vars)->str2,
 			(*vars)->j, (*vars)->i - (*vars)->j);

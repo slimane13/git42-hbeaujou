@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/19 14:47:32 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/21 15:20:21 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/26 11:56:50 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ int		the_number(char *str)
 	res = 0;
 	while (str[i] < '0' && str[i] > '9')
 		i++;
+	i++;
 	tmp = ft_strsub(str, i, ft_strlen(str) - i);
 	res = ft_atoi(tmp);
 	return (res);

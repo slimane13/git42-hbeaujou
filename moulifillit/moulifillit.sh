@@ -1,7 +1,5 @@
 #!/bin/bash -e
 
-gcc -o test_fillit *.c -L. -lft
-
 timeout() {
 	time=$1
 	command="/bin/sh -c \"$2\""

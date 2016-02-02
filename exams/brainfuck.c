@@ -6,12 +6,16 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 13:35:14 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/25 14:01:01 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/02/02 09:17:18 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <stdio.h>
+#include <unistd.h>
+
+void	ft_putchar(char c)
+{
+	write(1, &c, 1);
+}
 
 int	main(int argc, char **argv)
 {
@@ -25,9 +29,15 @@ int	main(int argc, char **argv)
 	idem = 0;
 	i = 0;
 	ptr = mem;
+	while (i < 2048)
+	{
+		mem[i] = 0;
+		i++;
+	}
+	i = 0;
 	if (argc != 2)
 	{
-		printf("\n"); // A FAIRE AVEC PUTCHAR
+		ft_putchar('\n'); // A FAIRE AVEC PUTCHAR
 		return (0);
 	}
 	while (argv[1][i])
@@ -41,7 +51,7 @@ int	main(int argc, char **argv)
 		else if (argv[1][i] == '-')
 			*ptr = *ptr - 1;
 		else if (argv[1][i] == '.')
-			printf("%c", *ptr); // A FAIRE AVEC PUTCHAR
+			ft_putchar(*ptr); // A FAIRE AVEC PUTCHAR
 		else if (argv[1][i] == '[')
 		{
 			if (*ptr == 0)
@@ -57,8 +67,10 @@ int	main(int argc, char **argv)
 						idem--;
 					i++;
 				}
+				i--;
 			}
 			trouve = 0;
+			idem = 0;
 		}
 		else if (argv[1][i] == ']')
 		{
@@ -75,7 +87,10 @@ int	main(int argc, char **argv)
 						idem--;
 					i--;
 				}
+				i++;
 			}
+			trouve = 0;
+			idem = 0;
 		}
 		else
 			;

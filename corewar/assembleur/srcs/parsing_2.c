@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/17 18:03:47 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/22 17:37:04 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/26 12:10:06 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,14 @@ int		str_to_int(char *str)
 	int		i;
 
 	i = 0;
-	while (ft_strcmp(g_op_tab[i].name, str) != 0)
+	while (ft_strcmp(g_op_tab[i].name, str) != 0 &&
+			ft_strcmp(g_op_tab[i].name, "0") != 0)
 		i++;
+	if (ft_strcmp(g_op_tab[i].name, "0") == 0)
+	{
+		ft_printf("Function with no parameters\n");
+		exit(0);
+	}
 	return (i);
 }
 

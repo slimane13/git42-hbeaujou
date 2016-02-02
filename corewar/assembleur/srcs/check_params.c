@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/21 16:07:51 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/21 16:15:15 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/26 13:46:42 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 void	cut_check_p1(char *str, char *str2, int *tab, int i)
 {
-	if (is_number(str) == 1 && the_number(str) <= REG_NUMBER)
+	if (is_number(str) == 1 && the_number(str) <= REG_NUMBER &&
+			the_number(str) > 0)
 	{
 		if (is_in_tab(T_REG, tab, i))
 			;
@@ -60,6 +61,13 @@ void	cut_check_p2(char *str, char *str2, int *tab, int i)
 
 void	cut_check_p3(char *str, char *str2, int *tab, int i)
 {
+	if (ft_strcmp(str, "\0") == 0)
+	{
+		ft_putstr_fd("No params for function : ", 2);
+		ft_putstr_fd(str2, 2);
+		ft_putchar('\n');
+		exit(0);
+	}
 	if (is_number(str) == 1)
 	{
 		if (is_in_tab(T_IND, tab, i))

@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/17 16:36:03 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/22 14:39:05 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/02/01 11:42:21 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,11 @@ int		cut_cut_cbegin(char *tmp, char *tmp2, int lenn)
 {
 	tmp2 = ft_strsub(tmp, lenn, ft_strlen(tmp) - 1);
 	tmp2 = ft_strtrim(tmp2);
+	if (ft_strlen(tmp2) > PROG_NAME_LENGTH)
+	{
+		ft_printf("Name too big\n");
+		exit(0);
+	}
 	if (tmp2[0] == '"' && tmp2[ft_strlen(tmp2) - 1] == '"')
 		return (100);
 	else
@@ -69,6 +74,11 @@ int		check_begin(char *tmp)
 	{
 		tmp2 = ft_strsub(tmp, lenc, ft_strlen(tmp) - 1);
 		tmp2 = ft_strtrim(tmp2);
+		if (ft_strlen(tmp2) > COMMENT_LENGTH)
+		{
+			ft_printf("Comment too big\n");
+			exit(0);
+		}
 		if (tmp2[0] == '"' && tmp2[ft_strlen(tmp2) - 1] == '"')
 			return (101);
 		else

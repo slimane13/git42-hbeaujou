@@ -6,11 +6,12 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/17 15:59:39 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/22 15:53:27 by dbousque         ###   ########.fr       */
+/*   Updated: 2016/01/26 12:15:19 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
+#include "convert_to_bytecode.h"
 
 char	*deblank(char *input)
 {
@@ -67,12 +68,6 @@ void	affiche(t_function **file)
 	}
 }
 
-char	is_valid_line(char *line)
-{
-	(void)line;
-	return (1);
-}
-
 int		convert_file(char *filename)
 {
 	t_function	*file;
@@ -89,7 +84,7 @@ int		convert_file(char *filename)
 		return (cant_read_file(filename));
 	while ((ret = get_next_line(fd, &line)) == 1)
 	{
-		if (!(test = is_valid_line(line)))
+		if (!(is_valid_line(line, g_lines_tot + 1)))
 			return (0);
 		test = check_line(line);
 		add_command(test, &file, line);

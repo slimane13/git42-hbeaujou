@@ -6,7 +6,7 @@
 /*   By: dbousque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/17 16:01:31 by dbousque          #+#    #+#             */
-/*   Updated: 2016/01/22 13:41:49 by dbousque         ###   ########.fr       */
+/*   Updated: 2016/01/25 19:43:03 by dbousque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,13 @@ int					resolve_unresolved_labels(t_list *labels_to_resolve);
 void				add_to_labels_to_resolve1(t_instruct *instruct,
 							t_function *function, int bytes_written_before,
 											t_bytes_n_labels *bytes_n_labels);
+char				is_empty_line(char *line);
 int					label_not_found(char *label);
+char				is_valid_line(char *line, int line_number);
+char				is_name_descr(char *line);
+char				is_comment_descr(char *line);
+char				is_comment_char(char c);
+char				is_comment_line(char *line);
+char				is_command(char *line);
 
 #endif

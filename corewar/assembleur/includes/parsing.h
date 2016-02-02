@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/17 16:00:06 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/22 17:37:26 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/26 13:52:39 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@
 # define HEADER 4
 # define REG 5
 # define LABEL 6
+
+# define IS_END (*vars)->str2[(*vars)->j]
 
 typedef struct s_function	t_function;
 typedef struct s_line		t_line;
@@ -148,6 +150,8 @@ void			make_line_3(t_function **file, t_tempo *vars);
 void			make_line_4(t_function **file, t_tempo *vars);
 void			make_line_5(t_function **file, t_tempo *vars);
 void			make_line_6(t_function **file, t_tempo *vars);
+void			test_no_params(t_tempo **vars);
+void			test_no_params_2(t_tempo **vars);
 
 t_function		*new_function(char *str);
 t_line			*new_line(int count);

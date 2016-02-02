@@ -6,30 +6,35 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 14:52:43 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/25 15:03:54 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/26 09:38:15 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <stdio.h>
 
-
-
 char	*ft_itoa_base(int a, int base)
 {
 	char	basec[16] = "0123456789ABCDEF";
 	char	*res;
-	int		tmp;
 	int		b;
 	int		i;
 
 	i = 0;
-	res = (char *)malloc(sizeof(char));
 	b = a;
+	if (base == 0)
+		return (NULL);
 	while (a != 0)
 	{
 		a = a / base;
 		i++;
+	}
+	res = (char *)malloc(sizeof(char) * i + 1);
+	if (b == 0)
+	{
+		res[0] = '0';
+		res[1] = '\0';
+		return (res);
 	}
 	res[i] = '\0';
 	i--;
@@ -44,8 +49,8 @@ char	*ft_itoa_base(int a, int base)
 
 int	main(void)
 {
-	int	a = 15;
+	int	a = 1423;
 
-	printf("%s\n", ft_itoa_base(a, 16));
+	printf("%s\n", ft_itoa_base(a, 2));
 	return (0);
 }

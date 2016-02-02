@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/18 14:21:34 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/21 16:47:53 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/01/26 13:47:11 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,13 @@ int		check_what_is(char *str)
 		j++;
 	str2 = ft_strsub(str, i, j - i);
 	i = 0;
-	while (ft_strcmp(g_op_tab[i].name, str2) != 0 && g_op_tab[i].nb_params != 0)
+	while (g_op_tab[i].nb_params != 0 && ft_strcmp(g_op_tab[i].name, str2) != 0)
 		i++;
+	if (g_op_tab[i].nb_params == 0)
+	{
+		ft_printf("%s : Function unknown\n", str2);
+		exit(0);
+	}
 	return (i + 1);
 }
 

@@ -6,7 +6,7 @@
 #    By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/01 20:43:29 by hbeaujou          #+#    #+#              #
-#    Updated: 2016/01/22 14:45:38 by hbeaujou         ###   ########.fr        #
+#    Updated: 2016/01/31 19:27:55 by hbeaujou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ SOURCES =	srcs/add_fct.c	\
 			srcs/ft_rajout2.c \
 			srcs/ft_rajout3.c \
 			srcs/ft_rajout4.c \
+			srcs/ft_rajout5.c \
 			srcs/list_work.c \
 			srcs/main.c \
 			srcs/make_line.c \
@@ -38,6 +39,8 @@ SOURCES =	srcs/add_fct.c	\
 			srcs/write_line_to_bytecode.c \
 			srcs/write_line_to_bytecode2.c \
 			srcs/write_line_to_bytecode3.c \
+			srcs/good_file_format.c \
+			srcs/good_file_format2.c
 
 HEADERS	= -I./includes/
 
@@ -50,7 +53,8 @@ CC		= gcc
 .SILENT:
 
 $(NAME): $(OBJECTS)
-	$(CC) $(WFLAGS) -L. libdodo.a $(OBJECTS) -o $(NAME)
+	make -C ../libft
+	$(CC) $(WFLAGS) ../libft/libft.a $(OBJECTS) -o $(NAME)
 	printf "\e[32m----------------------------------\e[36m\n"
 	printf "\e[32m[✔]\e[36m $@"
 	printf "\n\e[32m----------------------------------\e[36m"
@@ -64,6 +68,7 @@ all: $(NAME)
 	printf "\033[0m\n"
 
 clean:
+	make clean -C ../libft
 	rm -rf $(OBJECTS)
 	printf "\e[31m----------------------------------\n"
 	printf "[✔]\e[36m $(NAME): Objects deleted\n"
@@ -71,6 +76,7 @@ clean:
 	printf "\033[0m\n"
 
 fclean: clean
+	make fclean -C ../libft
 	rm -rf $(NAME)
 	printf "\e[31m----------------------------------\n"
 	printf "[✔]\e[36m $(NAME): All deleted\n"
