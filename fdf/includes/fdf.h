@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/08 12:24:55 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/08 12:55:28 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/02/02 11:01:24 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,16 @@
 #include "../ft_printf/libft/libft.h"
 #include "../ft_printf/get_next_line/get_next_line.h"
 
+# define W 13
+# define S 1
+# define A 0
+# define D 2
+# define P 35
+# define RIGHT 124
+# define LEFT 123
+# define UP 126
+# define DOWN 125
+
 typedef struct	s_point	t_point;
 typedef struct	s_line	t_line;
 
@@ -25,17 +35,11 @@ struct			s_point
 	t_point		*next;
 	int			x;
 	int			y;
-	int			h;
-};
-
-struct			s_line
-{
-	t_line		*next;
-	t_point		*line;
+	int			z;
 };
 
 void			ft_lstaddend_point(t_point **alst, t_point *new_r);
-void			ft_lstaddend_line(t_line **alst, t_line *new_r);
+
+int key_hook(int keycode, t_point **begin, void *window, void *init);
 
 t_point			*new_point(int x, int y, int h);
-t_line			*new_line(t_point *tp);

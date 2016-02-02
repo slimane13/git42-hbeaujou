@@ -6,11 +6,11 @@
 #    By: hbeaujou <hbeaujou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/18 15:37:58 by hbeaujou          #+#    #+#              #
-#    Updated: 2016/01/08 12:29:21 by hbeaujou         ###   ########.fr        #
+#    Updated: 2016/02/02 10:49:44 by hbeaujou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-gcc -o fdf srcs/*.c -L./ft_printf -lftprintf -L./minilibx_macos -lmlx -I./libft/ -I./minilibx_macos -framework OpenGL -framework AppKit
+gcc -o fdf srcs/*.c libft.a -L./minilibx_macos -lmlx -I./minilibx_macos -framework OpenGL -framework AppKit
 
 NAME_MINILIBX = mlx2_$(HOSTTYPE)
 DIR_MINILIBIX = ...

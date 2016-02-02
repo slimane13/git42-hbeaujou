@@ -6,18 +6,19 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/08 12:31:14 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/08 14:15:22 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/02/02 11:04:20 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <unistd.h>
+#include <stdlib.h>
+#include <fcntl.h>
 #include "../includes/fdf.h"
 
-int	main(void)
+int	main(int argc, char **argv)
 {
 	t_point	*tmp;
 	t_point *begin_p;
-	t_line	*tmp2;
-	t_line	*begin_l;
 	void	*init;
 	void	*window;
 	char	*line;
@@ -29,23 +30,25 @@ int	main(void)
 	int		x;
 	int		y;
 	int		done;
-
+	int		fd;
 
 	done = 0;
 	j = 0;
 	str = NULL;
 	begin_p = NULL;
 	tmp = NULL;
-	begin_l = NULL;
+	fd = open(argv[1], O_RDONLY);
+	if (argc == 3)
+		;
+	///////////////////////////// RECUP FILE ////////////////////////
 	while (done != 1)
 	{
 		i = 0;
 		k = 0;
-		get_next_line(0, &line);
-		if (j == 11)
+		get_next_line(fd, &line);
+		if (ft_strcmp(line, "\n") == 0 || ft_strcmp(line, "\0") == 0)
 			done = 1;
 		str = ft_strsplit(line, ' ');
-		begin_p = NULL;
 		while (str[k])
 		{
 			tmp = new_point(i, j, ft_atoi(str[k]));
@@ -53,29 +56,24 @@ int	main(void)
 			i++;
 			k++;
 		}
-		tmp2 = new_line(begin_p);
-		ft_lstaddend_line(&begin_l, tmp2);
 		j++;
 	}
-	
 	if (!(init = mlx_init()))
 		return (0);
-
-	window = mlx_new_window (init, 200, 200 , "TEST FDP");
-	
-	tmp2 = begin_l;
-	while (tmp2)
+	///////////////////////////// FENETRE /////////////////////////
+	window = mlx_new_window (init, 800, 800 , "TEST FDP");
+	///////////////////// AFFICHAGE DES PIXELS ////////////////////
+	tmp = begin_p;
+	while (tmp)
 	{
-		tmp = tmp2->line;
-		while (tmp)
-		{
-			if (tmp->h != 0)
-				mlx_pixel_put(init, window, 5 * tmp->x + 20, 5 * tmp->y + 20, 0xFF0000);
-			tmp = tmp->next;
-		}
-		tmp2 = tmp2->next;
+		ft_printf("x : %d - y : %d - z : %d\n", tmp->x, tmp->y, tmp->z);
+		if (tmp->z != 0)
+			mlx_pixel_put(init, window, 5 * tmp->x, 5 * tmp->y, 0xFF0000);
+		tmp = tmp->next;
 	}
-	
+	////////////////////////// INPUT //////////////////////////////
+	mlx_hook(window, 2, 3, key_hook, &begin_p);	
+	//////////////////////////// LOOP /////////////////////////////
 	mlx_loop(init);
 	return (0);
 }
