@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/09 16:22:38 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/04/09 19:03:10 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/04/09 21:29:24 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,12 @@ int main(int argc, char **argv)
 {
 	int i;
 	int j;
+	t_point *points;
 	char *line;
 	float **map;
 
 	i = 0;
+	points = NULL;
 	map = (float **)malloc(sizeof(float *) * WINDOW_HEIGHT);
 	while (i < WINDOW_HEIGHT)
 	{
@@ -31,6 +33,8 @@ int main(int argc, char **argv)
 	j = 0;
 	init_map(map);
 	put_in_map(map, argv);
+	map_to_list(map, &points);
+	// HAVE TO CENTER
 	printf("\n");
 	while (i < WINDOW_HEIGHT)
 	{
@@ -127,6 +131,30 @@ void	apply_point_to_map(char *sub, float **map)
 	printf("%d / %d / %f\n", width, height, z);
 }
 
+void	map_to_list(float **map, t_point **points)
+{
+	int i;
+	int j;
+	t_point *point;
+
+	i = 0;
+	point = NULL;
+	while (i < WINDOW_HEIGHT)
+	{
+		j = 0;
+		while (j < WINDOW_WIDTH)
+		{
+			if (map[i][j] != 0)
+			{
+				point = new_point(i, j, map[i][j]);
+				lst_addend_point(points, point);
+			}
+			j++;
+		}
+		i++;
+	}
+}
+
 char	*ft_strsub_slim(char const *s, unsigned int start, size_t len)
 {
 	char			*res;
@@ -145,8 +173,4 @@ char	*ft_strsub_slim(char const *s, unsigned int start, size_t len)
 	}
 	res[i - start] = '\0';
 	return (res);
-}
-
-void	check_around_point(float **map)
-{
 }
