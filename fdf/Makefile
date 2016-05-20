@@ -1,37 +1,53 @@
-# **************************************************************************** #
+#******************************************************************************#
 #                                                                              #
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hbeaujou <hbeaujou@student.42.fr>          +#+  +:+       +#+         #
+#    By: sksourou <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2015/08/18 15:37:58 by hbeaujou          #+#    #+#              #
-#    Updated: 2016/02/02 10:49:44 by hbeaujou         ###   ########.fr        #
+#    Created: 2015/07/27 20:05:53 by sksourou          #+#    #+#              #
+#    Updated: 2015/07/27 20:05:55 by sksourou         ###   ########.fr        #
 #                                                                              #
-# **************************************************************************** #
+#******************************************************************************#
 
-gcc -o fdf srcs/*.c libft.a -L./minilibx_macos -lmlx -I./minilibx_macos -framework OpenGL -framework AppKit
+NAME = FdF
 
-NAME_MINILIBX = mlx2_$(HOSTTYPE)
-DIR_MINILIBIX = ...
-CFLAGS += -I$(DIR_MINILIBIX)/include
-LDFLAGS += -L/usr/X11/lib -lXext -lX11 -L$(DIR_MINILIBIX)/$(NAME_MINILIBX)
-NAME = fdf
-CC		= gcc
-DIR_SRC	= srcs/
-SRC		= $(DIR_SRC)test.c \
+SRCS = srcs/main.c srcs/tools.c srcs/draw.c srcs/hook.c srcs/bresenham.c
 
-all: $(NAME)
+OBJS =		$(SRCS:.c=.o)
 
-$(NAME):
-		$(CC) -o $(NAME) $(CFLAGS) $(SRC) $(LDFLAGS)
+##INC_FILES =	-I includes/fdf.h \
+
+INCLUDES =	-I libft/ \
+		   		-I mini/ \
+		   		-I includes/
+
+LIBS =		-L libft/ -lft \
+			-L mini/ -lmlx -framework OpenGL -framework AppKit
+
+FLAGS =		-g -Wall -Wextra -Werror
+
+
+$(NAME):	$(OBJS)
+				@make -C libft/ fclean
+				@make -C libft/
+				@make -C mini/ clean
+				@make -C mini/
+				@echo "Create binary"
+				@gcc -o $(NAME) $(OBJS) $(LIBS)
+				@echo "Complitation ok"
+
+$(OBJS): %.o: %.c
+	@gcc $(FLAGS) $(INCLUDES) -c $< -o $@
+
+all:		$(NAME)
 
 clean:
-		rm -rf $(OBJ)
+	rm -f	$(OBJS)
 
 fclean: clean
-		rm -rf $(NAME)
+	rm -f	$(NAME)
 
-re:	fclean all
+re: fclean all
 
-.PHONY: fclean clean re
+.PHONY:	 all clean fclean re
