@@ -6,7 +6,7 @@
 #    By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/01 20:43:29 by hbeaujou          #+#    #+#              #
-#    Updated: 2016/01/31 19:27:55 by hbeaujou         ###   ########.fr        #
+#    Updated: 2016/03/28 16:12:13 by hbeaujou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,7 +54,7 @@ CC		= gcc
 
 $(NAME): $(OBJECTS)
 	make -C ../libft
-	$(CC) $(WFLAGS) ../libft/libft.a $(OBJECTS) -o $(NAME)
+	$(CC) ../libft/libft.a $(OBJECTS) -o $(NAME)
 	printf "\e[32m----------------------------------\e[36m\n"
 	printf "\e[32m[✔]\e[36m $@"
 	printf "\n\e[32m----------------------------------\e[36m"
@@ -63,7 +63,7 @@ $(NAME): $(OBJECTS)
 all: $(NAME)
 
 %.o: %.c
-	$(CC) $(WFLAGS) $(HEADERS) -c -o $@ $^
+	$(CC) $(HEADERS) -c -o $@ $^
 	printf "\e[32m[✔]\e[36m $@ "
 	printf "\033[0m\n"
 
