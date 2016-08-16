@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/22 09:03:18 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/23 15:41:23 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/08/16 12:05:00 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@ void	before_equal(int *i, int *j, char *str, t_equ **equ)
 		while (str[*i] <= '9' && str[*i] >= '0')
 			*i = *i + 1;
 		tmp = ft_strsub(str, *j, *i - *j);
+		if(ft_atoi(tmp) != 0)
+			g_some=1;
 		elem = new_elem(coef, ft_atoi(tmp));
 		ft_lstaddend_elem(&(*equ)->content, elem);
 		while ((str[*i] > '9' || str[*i] < '0') && str[*i] != '=' && str[*i] != '-')
@@ -87,6 +89,8 @@ void	after_equal(int *i, int *j, char *str, t_equ **equ)
 		while (str[*i] <= '9' && str[*i] >= '0')
 			*i = *i + 1;
 		tmp = ft_strsub(str, *j, *i - *j);
+		if(ft_atoi(tmp) != 0)
+			g_some=1;
 		elem = new_elem(coef, ft_atoi(tmp));
 		ft_lstaddend_elem(&(*equ)->next->content, elem);
 		while ((str[*i] > '9' || str[*i] < '0') && str[*i] && str[*i] != '-')
@@ -163,15 +167,21 @@ void	affiche_end(t_equ **equ)
 	count = 0;
 	while (tmp2)
 	{
-		sprintf(str2, "%f", tmp2->value);
-		floa = floa_calc(str2);
-		morphNumericString(str2, floa);
-		sprintf(str, "%s * X^%d ", str2, tmp2->puissance);
-		if (count > 0 && tmp2->value >= 0)
-			printf("+ ");
-		printf("%s", str);
-		tmp2 = tmp2->next;
-		count++;
+		if (tmp2->value != 0)
+		{
+			sprintf(str2, "%f", tmp2->value);
+			floa = floa_calc(str2);
+			morphNumericString(str2, floa);
+			sprintf(str, "%s * X^%d ", str2, tmp2->puissance);
+			if (count > 0 && tmp2->value >= 0)
+				printf("+ ");
+			printf("%s", str);
+			tmp2 = tmp2->next;
+			count++;
+		}
+		else {
+			tmp2 = tmp2->next;
+		}
 	}
 	printf("= 0");
 	printf("\n");
@@ -218,12 +228,28 @@ void	reduce(t_equ **equ)
 	}
 }
 
-int		solve(t_equ **equ, int degree)
+void	check_if_all_null(t_equ **equ)
 {
-	int		a;
-	int		b;
-	int		c;
-	int		res;
+	t_equ *tmp;
+	t_elem *elem;
+
+	tmp = *equ;
+	elem = tmp->content;
+	while(elem)
+	{
+		if (elem->value != 0)
+			g_some = 0;
+		elem = elem->next;
+	}
+
+}
+
+double	solve(t_equ **equ, int degree)
+{
+	double	a = 0;
+	double	b = 0;
+	double	c = 0;
+	double	res;
 	t_elem	*tmp;
 
 	if (degree > 2)
@@ -332,20 +358,155 @@ void	find_solv(t_equ **equ, t_solve **answ)
 	ft_lstaddend_solve(answ, tmp2);
 }
 
+void	add_0_beggining_1(t_equ **equ, int equ_num)
+{
+	t_elem	*tmp;
+
+	tmp = new_elem(0,0);
+	if (equ_num == 0)
+	{
+		tmp->next = (*equ)->content;
+		(*equ)->content = tmp;
+	} 
+	else
+	{
+		tmp->next = (*equ)->next->content;
+		(*equ)->next->content = tmp;
+	}
+}
+
+void	add_both_beggining_2(t_equ **equ, int equ_num)
+{
+	t_elem	*tmp;
+	t_elem	*tmp1;
+
+	tmp = new_elem(0,0);
+	tmp1 = new_elem(0,1);
+	tmp->next = tmp1;
+	if (equ_num == 0)
+	{
+		tmp1->next = (*equ)->content;
+		(*equ)->content = tmp;
+	}
+	else
+	{
+		tmp1->next = (*equ)->next->content;
+		(*equ)->next->content = tmp;
+	}
+}
+
+void	add_0_beggining_2(t_equ **equ, int equ_num)
+{
+	t_elem	*tmp;
+
+	tmp = new_elem(0,1);
+	if (equ_num == 0)
+	{
+		tmp->next = (*equ)->content->next;
+		(*equ)->content->next = tmp;
+	}
+	else
+	{
+		tmp->next = (*equ)->next->content->next;
+		(*equ)->next->content->next = tmp;
+	}
+}
+
+void	add_both_last(t_equ **equ, int equ_num)
+{
+	t_elem	*tmp;
+	t_elem	*tmp1;
+
+	tmp = new_elem(0,1);
+	tmp1 = new_elem(0,2);
+	tmp->next = tmp1;
+	if (equ_num == 0)
+		(*equ)->content->next = tmp;
+	else
+		(*equ)->next->content->next = tmp;
+}
+
+void	add_2_last(t_equ **equ, int equ_num)
+{
+	t_elem	*tmp;
+
+	tmp = new_elem(0,2);
+	if (equ_num == 0)
+		(*equ)->content->next->next = tmp;
+	else
+		(*equ)->next->content->next->next = tmp;
+}
+
+void	complete(t_equ **equ)
+{
+	t_equ	*tmp_equ;
+	t_elem	*tmp;
+	int		count;
+	int		equ_num;
+
+	tmp_equ = *equ;
+	equ_num = 0;
+	while (tmp_equ)
+	{
+		count = 0;
+		tmp = tmp_equ->content;
+		while (tmp)
+		{
+			if (tmp->puissance == 1 && count == 0)
+			{
+				add_0_beggining_1(equ, equ_num);
+				count++;
+			}
+			else if (tmp->puissance == 1 && count > 1)
+			{
+				ft_printf("Erreur de puissance\n");
+				exit(0);
+			}
+			else if (tmp->puissance == 2 && count == 0)
+			{
+				add_both_beggining_2(equ, equ_num);
+				count = count + 2;
+			}
+			else if (tmp->puissance == 2 && count == 1)
+			{
+				add_0_beggining_2(equ, equ_num);
+				count++;
+			}
+			else if (tmp->puissance == 2 && count > 2)
+			{
+				ft_printf("Erreur de puissance\n");
+				exit(0);
+			}
+			
+			if (tmp->next == NULL && tmp->puissance == 0)
+				add_both_last(equ, equ_num);
+			else if (tmp->next == NULL && tmp->puissance == 1)
+				add_2_last(equ, equ_num);
+			
+			count++;
+			tmp = tmp->next;
+		}
+		tmp_equ = tmp_equ->next;
+		equ_num++;
+	}
+}
+
 int		main(int argc, char **argv)
 {
 	char		*str;
 	int			degree;
-	int			discri;
+	double		discri;
 	t_equ		*equ;
 	t_solve		*answ;
-
+	
 	if (argc > 0)
 		;
 	g_some = 0;
 	str = deblank(argv[1]);
 	parsing(&equ, str);
+	complete(&equ);
 	reduce(&equ);
+	check_if_all_null(&equ);
 	ft_printf("\n [0;36;40m----- Demarrage de la resolution ----- \n\n");
 	ft_printf("[0;37;40mForme reduite : ");
 	affiche_end(&equ);
@@ -354,12 +515,9 @@ int		main(int argc, char **argv)
 	if (degree == 2)
 	{
 		discri = solve(&equ, degree);
-		ft_printf("Discriminant : %d\n", discri);
+		ft_printf("Discriminant : %f\n", discri);
 		if (discri < 0)
-		{
 			ft_printf("Discriminant negatif, il n'y a pas de solution\n");
-			exit(0);
-		}
 		else if (discri == 0)
 		{
 			ft_printf("Discriminant nul, il n'y a qu'une solution :\n");
@@ -378,8 +536,10 @@ int		main(int argc, char **argv)
 		else
 			ft_printf("Il n'y a aucune solution\n");
 	}
-	else
+	else if (degree == 1)
 		solve_degree_1(&equ, &answ);
+	else
+		ft_printf("Degre trop grand pour etre resolu\n");
 	affiche_solve(&answ);
 	ft_printf("\n [0;31;40m----- Fin de la resolution ----- \n\n");
 }
