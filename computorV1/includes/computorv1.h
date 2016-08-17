@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/22 09:05:19 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/01/23 15:23:30 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/08/17 17:25:29 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 #include <stdlib.h>
 #include <math.h>
 
-typedef struct s_elem	t_elem;
-typedef struct s_equ	t_equ;
-typedef struct s_solve	t_solve;
+typedef struct s_elem		t_elem;
+typedef struct s_equ		t_equ;
+typedef struct s_solve		t_solve;
 
 struct					s_equ
 {

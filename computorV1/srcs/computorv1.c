@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/22 09:03:18 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/08/16 12:05:00 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/08/17 17:31:53 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -495,6 +495,7 @@ int		main(int argc, char **argv)
 {
 	char		*str;
 	int			degree;
+	int			flag = 1;
 	double		discri;
 	t_equ		*equ;
 	t_solve		*answ;
@@ -502,7 +503,27 @@ int		main(int argc, char **argv)
 	if (argc > 0)
 		;
 	g_some = 0;
-	str = deblank(argv[1]);
+	if (argv[1])
+		str = deblank(argv[1]);
+	else
+	{
+		while (flag == 1)
+		{
+			get_next_line(0, &str);
+			if (str != NULL)
+			{
+				if (str[0] == '"' && str[ft_strlen(str) - 1] == '"')
+					str = ft_strsub(str, 1, ft_strlen(str)-2);
+				if ((str[0] >= 'a' && str[0] <= 'z') || (str[0] >= 'A' && str[0] <= 'Z' && str[0] != 'X'))
+				{
+					printf("Lettres non supportees\n");
+					exit(0);
+				}
+				str = deblank(str);
+				flag = 0;
+			}
+		}
+	}
 	parsing(&equ, str);
 	complete(&equ);
 	reduce(&equ);
@@ -517,7 +538,13 @@ int		main(int argc, char **argv)
 		discri = solve(&equ, degree);
 		ft_printf("Discriminant : %f\n", discri);
 		if (discri < 0)
-			ft_printf("Discriminant negatif, il n'y a pas de solution\n");
+		{
+			ft_printf("Discriminant negatif, les solutions son complexes\n");
+			ft_printf("S1 = (-1 - i%f)/2\n", sqrt(-discri));
+			ft_printf("S2 = (-1 + i%f)/2\n", sqrt(-discri));
+			ft_printf("\n [0;31;40m----- Fin de la resolution ----- \n\n");
+			exit(0);
+		}
 		else if (discri == 0)
 		{
 			ft_printf("Discriminant nul, il n'y a qu'une solution :\n");

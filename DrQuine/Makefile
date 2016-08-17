@@ -1,4 +1,4 @@
-NAME =	colleen grace sully
+NAME =	Colleen Grace Sully
 CC =	clang
 FLAGS =	-Werror -Wextra -Wall
 
