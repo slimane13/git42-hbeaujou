@@ -6,7 +6,7 @@
 /*   By: hbeaujou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/19 13:07:06 by hbeaujou          #+#    #+#             */
-/*   Updated: 2016/08/19 13:29:05 by hbeaujou         ###   ########.fr       */
+/*   Updated: 2016/08/19 13:42:03 by hbeaujou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void		*free_page(void *mem, int page_size, void *ptr)
 		{
 			int_mem = (int *)(mem + i - 4);
 			ft_putstr("TESTBZERO 111111\n");
-			ft_bzero(ptr, *int_mem);
+		//	ft_bzero(ptr, *int_mem);
 			ft_putstr("TESTBZERO 222222\n");
 			*int_mem = 0;
 			ft_putstr("all at zero values, calling unmap\n");
